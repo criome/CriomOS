@@ -2,7 +2,7 @@
   description = "Uniks";
 
   inputs = {
-    hob.url = github:maisiliym/hob;
+    hob.url = github:sajban/hob;
     uniks = {
       url = path:./lib;
       flake = false;

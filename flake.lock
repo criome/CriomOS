@@ -654,15 +654,15 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1638069060,
-        "narHash": "sha256-u5ykAh2Ino1DAoAPppk6iKQCuLQ37LL/6XW3tjkAIpM=",
-        "owner": "maisiliym",
+        "lastModified": 1638160842,
+        "narHash": "sha256-U0juyVlASOjiGeQ+8egkD3Ub86Fc5O2huICX+vLvDVY=",
+        "owner": "sajban",
         "repo": "hob",
-        "rev": "91e178ba474ed21043427a8c70753102ec866cd1",
+        "rev": "fb1c8b3d0e617d69356e2039552a708ab15a6145",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
+        "owner": "sajban",
         "repo": "hob",
         "type": "github"
       }
@@ -1503,15 +1503,15 @@
     "sajban": {
       "flake": false,
       "locked": {
-        "lastModified": 1615179828,
-        "narHash": "sha256-pJNIbgbj0Gq1P5jVVEkXMpC6rketj026oi4pwt5JVQ4=",
-        "owner": "maisiliym",
+        "lastModified": 1638091225,
+        "narHash": "sha256-bSz2KWPmkFlfdrDv8vs1bj2Qq03oK8cDbNdaDFzkalk=",
+        "owner": "sajban",
         "repo": "sajban",
-        "rev": "ab4a21933a4495b54c11960b2beb94af28909763",
+        "rev": "ac43158bfd570611e1b9d7be350f744f4217a20f",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
+        "owner": "sajban",
         "repo": "sajban",
         "type": "github"
       }
