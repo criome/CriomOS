@@ -99,7 +99,7 @@
           shen = shen-ecl-bootstrap;
 
           legacyPackages = pkgs;
-          packages = uyrld;
+          packages = { inherit pkgs; } // uyrld;
           defaultPackage = shen;
 
           devShell = pkgs.mkShell {

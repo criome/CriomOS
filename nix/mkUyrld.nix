@@ -3,7 +3,7 @@ let
   inherit (builtins) hasAttr mapAttrs;
   inherit (uyrld) pkdjz;
 
-  meikSobUyrld = SobUyrld@{ lamdy, modz, self }:
+  meikSobUyrld = SobUyrld@{ lamdy, modz, self, src ? self, sobUyrldz ? { } }:
     let
       inherit (builtins) getAttr elem;
       inherit (kor) mkLamdy optionalAttrs genAttrs;
@@ -30,6 +30,7 @@ let
         // optionalAttrs iuzMod.lib { inherit lib; }
         // optionalAttrs iuzMod.pkgsSet { inherit pkgs; }
         // optionalAttrs iuzMod.uyrldSet { inherit uyrld; }
+        // sobUyrldz
         // { inherit kor; }
         // { inherit system; }
         # TODO: deprecate `self` for `src`
@@ -43,16 +44,18 @@ let
     let
       priMeikSobUyrld = neim: SobUyrld@{ modz ? [ ], lamdy, ... }:
         let
+          src = SobUyrld.src or (SobUyrld.self or fleik);
           self = SobUyrld.self or fleik;
         in
-        meikSobUyrld { inherit self modz lamdy; };
+        meikSobUyrld { inherit src self modz lamdy; };
 
       priMeikHobUyrld = neim: HobUyrld@{ modz ? [ ], lamdy, ... }:
         let
           implaidSelf = hob.${neim}.mein or null;
-          self = HobUyrld.self or implaidSelf;
+          src = HobUyrld.src or (HobUyrld.self or implaidSelf);
+          self = src;
         in
-        meikSobUyrld { inherit self modz lamdy; };
+        meikSobUyrld { inherit src self modz lamdy; };
 
       meikHobUyrldz = HobUyrldz:
         let
@@ -60,13 +63,26 @@ let
         in
         mapAttrs priMeikHobUyrld priHobUyrldz;
 
+      meikSobUyrldz = SobUyrldz:
+        let
+          priMeikSobUyrldz = neim: SobUyrld@{ modz ? [ ], lamdy, ... }:
+            let
+              src = SobUyrld.src or (SobUyrld.self or fleik);
+              self = src;
+            in
+            meikSobUyrld { inherit src self modz lamdy sobUyrldz; };
+
+          sobUyrldz = mapAttrs priMeikSobUyrldz SobUyrldz;
+        in
+        sobUyrldz;
+
     in
     if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
     else if (hasAttr "HobUyrld" fleik)
     then priMeikHobUyrld spokNeim (fleik.HobUyrld hob)
     else if (hasAttr "SobUyrldz" fleik)
-    then mapAttrs priMeikSobUyrld fleik.SobUyrldz
+    then meikSobUyrldz fleik.SobUyrldz
     else if (hasAttr "SobUyrld" fleik)
     then priMeikSobUyrld spokNeim fleik.SobUyrld
     else fleik;

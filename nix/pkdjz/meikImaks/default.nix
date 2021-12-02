@@ -32,7 +32,7 @@ in
 let
   inherit (builtins) readFile concatStringsSep;
 
-  launcher = "vertico"; # TODO profile
+  launcher = "selectrum"; # TODO profile
 
   imaksTheme =
     if profile.dark then "'modus-vivendi"
