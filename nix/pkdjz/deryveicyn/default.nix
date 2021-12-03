@@ -1,47 +1,43 @@
-{ kor, system, shen, uniks }:
+{ kor, system, aski, hob }:
 let
   inherit (kor) mesydj mkImplicitVersion;
 in
 inputs@
 { name
 , src
-, uniksShen ? null
+, askiUniks ? null
 , version ? mkImplicitVersion src
-, uniksLib ? uniks.lib
 , nixInputs ? { }
 }:
 let
   inherit (builtins) pathExists concatStringsSep;
   name = concatStringsSep "-" [ inputs.name version ];
-  uniksLibPath = uniksLib + uniks.libSuffixPath;
-
-  explicitBuildFile = builtins.toFile "drvcn-${name}.shen"
-    uniksShen;
+  uniksLib = hob.uniks.mein + /lib.aski;
+  uniksBuilder = hob.uniks.mein + /builder.aski;
 
   implicitBuildFile =
     let
-      filePath = src + /fleik.shen;
-      legacyFilePath = src + /flake.shen;
+      filePath = src + /uniks.aski;
       fileExists = pathExists filePath;
-      legacyFileExists = pathExists legacyFilePath;
-      atLeastOneFilePresent = fileExists || legacyFileExists;
     in
-    assert mesydj atLeastOneFilePresent
-      "File ${filePath} missing";
-    if fileExists then filePath else legacyFilePath;
+    assert mesydj fileExists
+      "Uniks file missing: ${filePath}";
+    filePath;
 
-  buildFile =
-    if (uniksShen != null)
-    then explicitBuildFile
+  uniksBuildFile =
+    if (askiUniks != null)
+    then askiUniks
     else implicitBuildFile;
+
+  askiDeryveicyn = writeText "deryveicyn.aski" ''
+    (load "${uniksLib}")
+    (load "${uniksBuilder}")
+  '';
 
 in
 derivation {
-  inherit name system src shen nixInputs;
-
-  builder = shen + /bin/shen;
-
-  args = [ "eval" "--load" uniksLibPath "--load" buildFile ];
-
+  inherit name system src uniksBuildFile nixInputs;
+  builder = aski.current + /bin/aski;
+  args = [ askiDeryveicyn ];
   __structuredAttrs = true;
 }

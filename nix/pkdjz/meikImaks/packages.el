@@ -223,7 +223,7 @@
 
 (use-package shen-elisp)
 (use-package shen-mode
-  :mode "\\.shen\\'")
+  :mode "\\.\\(shen\\|aski\\)\\'")
 
 (use-package unicode-fonts
   :config (unicode-fonts-setup))

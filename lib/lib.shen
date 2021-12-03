@@ -1,6 +1,0 @@
-(package uniks [ ]
-
-(define ->Deryveicyn
-  -> ())
-
-)

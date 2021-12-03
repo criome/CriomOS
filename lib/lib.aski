@@ -1,0 +1,10 @@
+(package uniks [ ]
+
+ (define mkDeryveicyn
+     -> (mkDeryveicyn (mkStructuredAttrs))
+   [] -> ())
+
+ (define mkStructuredAttrs
+   -> (mkStructuredAttrs ()))
+
+)
