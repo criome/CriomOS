@@ -15,7 +15,7 @@ let
 
     deryveicyn = {
       lamdy = import ./deryveicyn;
-      modz = [ "pkdjz" ];
+      modz = [ "pkgs" "uyrld" "hob" ];
       self = null;
     };
 

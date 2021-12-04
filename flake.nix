@@ -3,15 +3,16 @@
 
   inputs = {
     hob.url = github:sajban/hob;
-    uniks = {
-      url = path:./lib;
+    UniksCore = {
+      url = path:./UniksCore;
       flake = false;
     };
   };
 
-  outputs = inputs@{ self, hob, uniks }:
+  outputs = inputs@{ self, hob, UniksCore }:
     let
-      hob = inputs.hob.Hob // { uniks.mein = inputs.uniks; };
+      uniks = { core = UniksCore; };
+      hob = inputs.hob.Hob;
       nixpkgs = hob.nixpkgs.mein;
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;
@@ -94,7 +95,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           mkUyrld = import ./nix/mkUyrld.nix;
-          uyrld = mkUyrld { inherit pkgs kor lib system hob; };
+          uyrld = mkUyrld { inherit pkgs kor lib system hob uniks; };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 

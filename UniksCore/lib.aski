@@ -1,7 +1,7 @@
 (package uniks [ ]
 
  (define mkDeryveicyn
-     -> (mkDeryveicyn (mkStructuredAttrs))
+   fromStructuredAttrs  -> (mkDeryveicyn (mkStructuredAttrs))
    [] -> ())
 
  (define mkStructuredAttrs
