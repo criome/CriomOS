@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "AskiCore": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-iXujqVUzA7/NLPQ+hRRJjZ0FJwVbQifrR0tYZVXSGLI=",
+        "path": "./AskiCore",
+        "type": "path"
+      },
+      "original": {
+        "path": "./AskiCore",
+        "type": "path"
+      }
+    },
     "BufOnly-nvim": {
       "flake": false,
       "locked": {
@@ -64,6 +76,30 @@
         "type": "github"
       }
     },
+    "LispCore": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-+bjg+84T9Fi/eJpRPDtF7EU9CPjGIEIP4Jtfotmk0qM=",
+        "path": "./LispCore",
+        "type": "path"
+      },
+      "original": {
+        "path": "./LispCore",
+        "type": "path"
+      }
+    },
+    "LispExtended": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-7XJG8YYG+ldTeAtUwqUlIjy9PiaMNy4cJkJ01kSZBHc=",
+        "path": "./LispExtended",
+        "type": "path"
+      },
+      "original": {
+        "path": "./LispExtended",
+        "type": "path"
+      }
+    },
     "LuaFormatter": {
       "flake": false,
       "locked": {
@@ -78,6 +114,66 @@
         "owner": "Koihik",
         "repo": "LuaFormatter",
         "type": "github"
+      }
+    },
+    "ShenBootstrap": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-BFAofEJblRM8HwFH+rnBh+dV+MOiJvW149D6Xr5lrJM=",
+        "path": "./ShenBootstrap",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenBootstrap",
+        "type": "path"
+      }
+    },
+    "ShenCore": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-3qcb5L0mUeoNEaGv/A2B2f5/hYIw5gcUek07HIb8yoM=",
+        "path": "./ShenCore",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenCore",
+        "type": "path"
+      }
+    },
+    "ShenExtended": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-kP4/3dppgXDzNqcmNw9x2VDPz7i3HmBuMZbxxld9jCk=",
+        "path": "./ShenExtended",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenExtended",
+        "type": "path"
+      }
+    },
+    "ShenTests": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-UnyCeHnKJL0+m9mNc8QOip52uaixno8B+vEb5FoY6yo=",
+        "path": "./ShenTests",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenTests",
+        "type": "path"
+      }
+    },
+    "UniksCore": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-wjNrxYbz1/L7bc+qPq9zYhJyocmbThgcKFZaGdpTm3s=",
+        "path": "./UniksCore",
+        "type": "path"
+      },
+      "original": {
+        "path": "./UniksCore",
+        "type": "path"
       }
     },
     "alacritty": {
@@ -98,16 +194,21 @@
     },
     "aski": {
       "inputs": {
-        "bootstrapKLambda": "bootstrapKLambda",
-        "lispPrimitives": "lispPrimitives",
-        "shenSource": "shenSource"
+        "AskiCore": "AskiCore",
+        "LispCore": "LispCore",
+        "LispExtended": "LispExtended",
+        "ShenBootstrap": "ShenBootstrap",
+        "ShenCore": "ShenCore",
+        "ShenExtended": "ShenExtended",
+        "ShenTests": "ShenTests",
+        "bootstrapKLambda": "bootstrapKLambda"
       },
       "locked": {
-        "lastModified": 1638070812,
-        "narHash": "sha256-R7mU3wVB62k5MKUaVCVPYrQYHt9Hb/Bvs0wjV9F4cvg=",
+        "lastModified": 1638609926,
+        "narHash": "sha256-11hHEzwYhrIYTYo/3pVWkZyDxpbh4lnoE5Bv9d4MWzc=",
         "owner": "sajban",
         "repo": "aski",
-        "rev": "9c9246c6c5542bef1472b40c67cae35aeed1f5fc",
+        "rev": "72dec272800a4c4513bd9002f41cf523780bd8b1",
         "type": "github"
       },
       "original": {
@@ -793,18 +894,6 @@
         "type": "github"
       }
     },
-    "lispPrimitives": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-Gm1wSL2sH/pGQM/Bl6Qjlb9n1K9wKQoyAP1qHPVB8Tg=",
-        "path": "./Primitives",
-        "type": "path"
-      },
-      "original": {
-        "path": "./Primitives",
-        "type": "path"
-      }
-    },
     "lowdown": {
       "flake": false,
       "locked": {
@@ -1463,8 +1552,8 @@
     },
     "root": {
       "inputs": {
-        "hob": "hob",
-        "uniks": "uniks"
+        "UniksCore": "UniksCore",
+        "hob": "hob"
       }
     },
     "rust-analyzer": {
@@ -1563,18 +1652,6 @@
         "owner": "NHALX",
         "repo": "shen-mode",
         "type": "github"
-      }
-    },
-    "shenSource": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-T35g38X1dkLEKr/YT2ga3MUesulRvM+kVOItlbsuV+8=",
-        "path": "./Sources",
-        "type": "path"
-      },
-      "original": {
-        "path": "./Sources",
-        "type": "path"
       }
     },
     "skrips": {
@@ -1686,18 +1763,6 @@
         "owner": "qmk",
         "repo": "uGFX",
         "type": "github"
-      }
-    },
-    "uniks": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-20j4QobeCCoyFV6IqQKKWZt1Rq4CNP/IyY6cCimqX28=",
-        "path": "./lib",
-        "type": "path"
-      },
-      "original": {
-        "path": "./lib",
-        "type": "path"
       }
     },
     "v-usb": {
