@@ -64,7 +64,7 @@ in
       enable = true;
       settings = {
         cmd_duration = {
-          show_notification = true;
+          show_notifications = true;
           min_time_to_notify = 10000; #TODO('requires build flag')
         };
         git_status = {

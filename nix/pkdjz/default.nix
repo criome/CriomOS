@@ -29,6 +29,11 @@ let
       modz = [ "pkgs" ];
     };
 
+    ementEl = {
+      lamdy = import ./ement-el;
+      modz = [ "pkgs" ];
+    };
+
     fzf = {
       lamdy = import ./fzf;
       modz = [ "pkgs" ];

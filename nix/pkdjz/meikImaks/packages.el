@@ -6,6 +6,8 @@
 
 (use-package dockerfile-mode :mode "Dockerfile")
 
+(use-package ement)
+
 (use-package xah-fly-keys
   :config
   (defun xfk-mentci-modify ()

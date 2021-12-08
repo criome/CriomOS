@@ -112,6 +112,21 @@ in
       };
     };
 
+    pantalaimon = {
+      enable = saizAtList.med;
+      settings = {
+        Default = {
+          LogLevel = "Debug";
+          SSL = true;
+        };
+        local-matrix = {
+          Homeserver = "https://matrix.org";
+          ListenAddress = "127.0.0.1";
+          ListenPort = 8008;
+        };
+      };
+    };
+
     redshift = {
       enable = true;
       package = pkgs.redshift-wlr;

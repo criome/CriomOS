@@ -436,6 +436,23 @@
         "type": "github"
       }
     },
+    "ement-el": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638940953,
+        "narHash": "sha256-ti5MzZkYHcG/7lATFFWVi8TDC7l6jU11RqwVS7vF7Ac=",
+        "owner": "maisiliym",
+        "repo": "ement.el",
+        "rev": "363dd2ef807ee31a45591f7f8eb5fdbd5a2edb0e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maisiliym",
+        "ref": "mein",
+        "repo": "ement.el",
+        "type": "github"
+      }
+    },
     "express_line-nvim": {
       "flake": false,
       "locked": {
@@ -685,6 +702,7 @@
         "dunst": "dunst",
         "dwm-vim": "dwm-vim",
         "emacs-overlay": "emacs-overlay",
+        "ement-el": "ement-el",
         "express_line-nvim": "express_line-nvim",
         "fenix": "fenix",
         "flake-compat": "flake-compat",
@@ -755,11 +773,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1638160842,
-        "narHash": "sha256-U0juyVlASOjiGeQ+8egkD3Ub86Fc5O2huICX+vLvDVY=",
+        "lastModified": 1638941347,
+        "narHash": "sha256-6j7uGW5NxxWR5xDUrQ9bTI6MD5OSPoS+g0QezsomcLY=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "fb1c8b3d0e617d69356e2039552a708ab15a6145",
+        "rev": "9493c7105ccaa35fbc8ff7213bc0c312bae69ade",
         "type": "github"
       },
       "original": {
@@ -771,17 +789,17 @@
     "home-manager": {
       "flake": false,
       "locked": {
-        "lastModified": 1634543704,
-        "narHash": "sha256-+8Xo80hDqpgUc6+nifslYtuacq9nnJr7eSTBA3N6cJA=",
-        "owner": "maisiliym",
+        "lastModified": 1636568613,
+        "narHash": "sha256-ZtCQzKSdCQF8L99f6U3md1S27YMFV6m3JmOG8Nu7S6c=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bc64fd2322ae673157df06dfcfb02831cc1508b9",
+        "rev": "f9ef6f3dd0af40bbc3d6fc4b95619b2fe71f8be2",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
-        "ref": "nixProfileCmd",
+        "owner": "nix-community",
         "repo": "home-manager",
+        "rev": "f9ef6f3dd0af40bbc3d6fc4b95619b2fe71f8be2",
         "type": "github"
       }
     },

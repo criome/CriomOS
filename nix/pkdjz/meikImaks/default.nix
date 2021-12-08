@@ -3,13 +3,32 @@ let
   emacs-overlay = src;
   pkgs = meikPkgs { overlays = [ emacs-overlay.overlay ]; };
   inherit (pkgs) writeText emacsPackagesFor emacsPgtkGcc;
+
+  emacs = emacsPgtkGcc;
   emacsPackages = emacsPackagesFor emacsPgtkGcc;
-  inherit (emacsPackages) elpaBuild withPackages melpaBuild;
+  inherit (emacsPackages) elpaBuild withPackages melpaBuild
+    trivialBuild;
+
   parseLib = import (emacs-overlay + /parse.nix)
     { inherit pkgs lib; };
   inherit (parseLib) parsePackagesFromUsePackage;
 
   customPackages = {
+    ement =
+      let
+        src = hob.ement-el.mein;
+      in
+      trivialBuild {
+        pname = "ement";
+        version = src.shortRev;
+        inherit src;
+        packageRequires = with emacsPackages; [
+          plz
+          cl-lib
+          ts
+        ];
+      };
+
     shen-mode =
       let src = hob.shen-mode.mein; in
       melpaBuild {
