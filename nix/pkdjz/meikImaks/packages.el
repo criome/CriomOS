@@ -6,7 +6,12 @@
 
 (use-package dockerfile-mode :mode "Dockerfile")
 
-(use-package ement)
+(use-package ement
+  :custom
+  (ement-room-images t))
+
+(use-package ement-room-list
+  :after (ement))
 
 (use-package xah-fly-keys
   :config

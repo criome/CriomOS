@@ -122,7 +122,9 @@ in
         local-matrix = {
           Homeserver = "https://matrix.org";
           ListenAddress = "127.0.0.1";
-          ListenPort = 8008;
+          ListenPort = 8009;
+          IgnoreVerification = true;
+          SSL = false;
         };
       };
     };

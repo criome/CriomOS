@@ -203,9 +203,10 @@ rec {
   };
 
   mkSaizAtList = saiz: {
-    min = if (saiz == 0) then false else true;
-    med = if (saiz == 2 || saiz == 3) then true else false;
-    max = if (saiz == 3) then true else false;
+    core = saiz == 0;
+    min = saiz >= 1;
+    med = saiz >= 2;
+    max = saiz == 3;
   };
 
   matcSaiz = saiz: ifNon: ifMin: ifMed: ifMax:
