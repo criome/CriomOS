@@ -6,7 +6,7 @@ let
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz) exAstrizEseseitcPriKriomz
-    bildyrKonfigz kacURLz dispatcyrzEseseitcKiz
+    bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
     izBildyr izNiksKac izDispatcyr izKriodaizd;
 
   inherit (konstynts.fileSystem.niks) priKriod;
@@ -72,6 +72,9 @@ in
       flake-registry = ${redjistri}
       experimental-features = nix-command flakes ca-references recursive-nix
       secret-key-files = ${priKriod}
+      keep-derivations = ${toString saizAtList.med}
+      keep-outputs = ${toString saizAtList.max}
+      !include nixTokens
     '';
 
     sshServe = {

@@ -181,9 +181,10 @@ rec {
 
   cortHacPath = path: builtins.hashFile "sha256" path;
 
+  mkStringHash = String: builtins.hashString "sha256" String;
+
   cortHacString = string:
-    builtins.substring 0 7
-      (builtins.hashString "sha256" string);
+    builtins.substring 0 7 (mkStringHash string);
 
   cortHacIuniks = iuniks:
     builtins.substring 0 7

@@ -122,7 +122,7 @@ in
 
       # start('pythonConfigs')
       ".config/youtube-dl/config".text = ''
-        -f 'bestvideo[ext=mp4]+bestaudio[ext=webm]/best[ext=webm]/best'
+        -f 'bestvideo[ext=webm]+bestaudio[ext=webm]/best[ext=webm]/best'
       '';
 
       ".config/ranger/rc.conf".text = '' ''
