@@ -34,11 +34,6 @@ let
       modz = [ "pkgs" ];
     };
 
-    fzf = {
-      lamdy = import ./fzf;
-      modz = [ "pkgs" ];
-    };
-
     guix = {
       lamdy = import ./guix;
       modz = [ "lib" "pkgs" "hob" ];
