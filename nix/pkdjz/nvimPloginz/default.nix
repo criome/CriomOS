@@ -1,4 +1,4 @@
-{ hob, bildNvimPlogin, fzf }:
+{ hob, bildNvimPlogin }:
 let
   inherit (builtins) mapAttrs;
 
@@ -11,15 +11,7 @@ let
   spoks = eksplisitSpoks
     // (mapAttrs (n: s: s.mein) implaidSpoks);
 
-  fzf-vim-core = bildNvimPlogin {
-    pname = "fzf";
-    version = fzf.version;
-    src = fzf.src;
-  };
-
-  ovyraidzIndeks = {
-    fzf-vim = { dependencies = [ fzf-vim-core ]; };
-  };
+  ovyraidzIndeks = { };
 
   mkSpok = neim: self:
     let

@@ -94,13 +94,13 @@
       mkOutputs = system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          inherit (pkgs) symlinkJoin linkFarm;
           mkUyrld = import ./nix/mkUyrld.nix;
           uyrld = mkUyrld { inherit pkgs kor lib system hob uniks; };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 
           legacyPackages = pkgs;
-          packages = { inherit pkgs; } // uyrld;
           defaultPackage = shen;
 
           devShell = pkgs.mkShell {
@@ -109,11 +109,30 @@
             buildInputs = [ shen ];
           };
 
+          mkSpokBranch = name: src:
+            symlinkJoin { inherit name; paths = [ src.outPath ]; };
+
+          mkSpokOutputs = name: branches:
+            mapAttrs mkSpokBranch branches;
+
+          hobOutputs = mapAttrs mkSpokOutputs hob;
+
+          mkSpokFarmEntry = name: spok:
+            { inherit name; path = spok.mein.outPath; };
+
+          allMeinHobOutputs = linkFarm "hob.mein"
+            (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
+
+          packages = uyrld // {
+            inherit pkgs;
+            hob = hobOutputs // { mein = allMeinHobOutputs; };
+          };
+
         in
         { inherit uyrld legacyPackages packages defaultPackage devShell; };
 
       perSystemOutputs = eachDefaultSystem mkOutputs;
 
     in
-    perSystemOutputs // { inherit uniksOS hob; };
+    perSystemOutputs // { inherit uniksOS; };
 }

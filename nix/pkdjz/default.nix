@@ -19,11 +19,6 @@ let
       self = null;
     };
 
-    dino = {
-      lamdy = import ./dino;
-      modz = [ "pkgs" ];
-    };
-
     dunst = {
       lamdy = import ./dunst;
       modz = [ "pkgs" ];
@@ -73,21 +68,6 @@ let
       modz = [ "pkgs" ];
     };
 
-    lowdown = {
-      lamdy = import ./lowdown;
-      modz = [ "pkgs" ];
-    };
-
-    LuaFormatter = {
-      lamdy = import ./LuaFormatter;
-      modz = [ "pkgs" ];
-    };
-
-    lua-language-server = {
-      lamdy = import ./lua-language-server;
-      modz = [ "pkgs" ];
-    };
-
     mach-nix = { lamdy = import ./mach-nix; };
 
     meikPkgs = {
@@ -124,11 +104,6 @@ let
       modz = [ "pkgs" ];
     };
 
-    neovim = {
-      lamdy = import ./neovim;
-      modz = [ "pkgs" ];
-    };
-
     nvimLuaPloginz = {
       lamdy = import ./nvimPloginz/lua.nix;
       modz = [ "hob" "pkdjz" ];
@@ -155,11 +130,6 @@ let
 
     nix = { lamdy = import ./nix; };
 
-    nixpkgs-fmt = {
-      lamdy = import ./nixpkgs-fmt;
-      modz = [ "pkdjz" ];
-    };
-
     nix-dev = {
       lamdy = import ./nix;
       modz = [ "pkgs" "pkdjz" ];
@@ -180,16 +150,6 @@ let
     ql2nix = {
       lamdy = import ./ql2nix;
       modz = [ "pkgsSet" ];
-    };
-
-    rnix-lsp = {
-      lamdy = import ./rnix-lsp;
-      modz = [ "pkdjz" ];
-    };
-
-    rust-analyzer = {
-      lamdy = import ./rust-analyzer;
-      modz = [ "pkgs" "pkdjz" ];
     };
 
     sbcl = {
@@ -217,17 +177,6 @@ let
     slynkPackages = {
       lamdy = import ./slynkPackages;
       modz = [ "pkgs" ];
-      self = null;
-    };
-
-    tree-sitter = {
-      lamdy = import ./tree-sitter;
-      modz = [ "pkgs" "pkdjz" ];
-    };
-
-    tree-sitter-parsers = {
-      lamdy = import ./tree-sitter/parsers.nix;
-      modz = [ "pkgs" "pkdjz" "hob" ];
       self = null;
     };
 

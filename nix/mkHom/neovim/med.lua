@@ -7,8 +7,6 @@ augroup FormatAutogroup
 augroup END
   ]], true)
 
-require('lspfuzzy').setup {}
-
 require'colorizer'.setup {
   'css',
   'javascript',

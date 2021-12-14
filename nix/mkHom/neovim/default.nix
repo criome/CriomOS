@@ -10,13 +10,12 @@ let
 
   aolPloginz = pkgs.vimPlugins // vimPloginz;
 
-  minVimLPloginz = with vimPloginz; [
+  minVimLPloginz = with aolPloginz; [
     dwm-vim
     vim-visual-multi
     fzf-vim
     zoxide-vim
     astronauta-nvim
-    guile-vim
     vim-shen
   ];
 
@@ -37,7 +36,6 @@ let
     vim-rooter
     ultisnips
     vim-snippets
-    bufferize-vim
     minimap-vim
     hop-nvim
   ];
@@ -55,7 +53,7 @@ let
     ++ (optionals saizAtList.med medLuaPloginz)
     ++ (optionals saizAtList.max maxLuaPloginz);
 
-  minLuaPloginz = with vimPloginz; [
+  minLuaPloginz = with aolPloginz; [
     plenary-nvim
     popup-nvim
     nvim-tree-lua
@@ -65,32 +63,23 @@ let
     nvim-treesitter
     nvim-treesitter-refactor
     nvim-treesitter-textobjects
-    nvim-bufferline-lua
+    bufferline-nvim
     telescope-nvim
     FTerm-nvim
     neogit # bogi
     gitsigns-nvim # bogi
-    BufOnly-nvim
-    nvim-autopairs
-    nvim-fzf
-    nvim-fzf-commands
-    kommentary
     express_line-nvim
   ];
 
-  medLuaPloginz = with vimPloginz; [
-    nvim-lspconfig
-    lsp-status-nvim
-    nvim-lspfuzzy
+  medLuaPloginz = with aolPloginz; [
     nvim-web-devicons
-    nvim-colorizer-lua
     nvim-base16-lua
-    nvim-lazygit
+    lazygit-nvim
     fzf-lsp-nvim
     formatter-nvim
   ];
 
-  maxLuaPloginz = with vimPloginz; [
+  maxLuaPloginz = with vimPlugins; [
     lspsaga-nvim
   ];
 
@@ -128,7 +117,6 @@ let
   goplsPath = "${pkgs.gopls}/bin/gopls";
   hlsWrapperPath = "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper";
   pylsPath = "${pkgs.python38Packages.python-language-server}/bin/pyls";
-  luaLSPath = "${pkdjz.luaLS.lua-lsp}/bin/lua-lsp";
 
   minKod = (readFile ./min.lua) + ''
     require'nvim-treesitter.configs'.setup {
@@ -272,7 +260,7 @@ let
     go
     neovim-remote
     nixpkgs-fmt
-    pkdjz.LuaFormatter
+    luaformatter
   ];
 
   maxPackages = with pkgs; [ ghc cabal-install stack ];
