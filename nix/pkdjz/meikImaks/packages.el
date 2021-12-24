@@ -1,8 +1,13 @@
+(use-package password-store)
+
+(use-package base16-theme)
+
 (use-package clojure-mode)
 
 (use-package company
-  :hook ((lisp-mode nix-mode shen-mode)
-	 . company-mode))
+  :hook
+  ((lisp-mode nix-mode shen-mode emacs-lisp-mode)
+   . company-mode))
 
 (use-package dockerfile-mode :mode "Dockerfile")
 
