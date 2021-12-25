@@ -55,7 +55,6 @@ let
 in
 {
   imports = [
-    ./sway.nix
     ./qutebrowser.nix
   ];
 

@@ -126,6 +126,8 @@ let
 
 in
 {
+  imports = [ ./sway.nix ];
+
   services = {
     gpg-agent = mkIf hazPriKriom {
       enable = true;

@@ -21,7 +21,7 @@ let
   termVis = shellLaunch "exec ${terminal} -e  ${nixProfileExec "vis"}";
   termNeovim = shellLaunch "exec ${terminal} -e ${neovim}";
   termBrowser = shellLaunch "exec ${terminal} -e ${nixProfileExec "w3m"}";
-  terminal = matcSaiz saiz "" "${nixProfileExec "foot"}" "${nixProfileExec "foot"}" "${nixProfileExec "foot"}";
+  terminal = nixProfileExec "foot";
 
   swayArgz = {
     inherit iuzColemak optionalString;
