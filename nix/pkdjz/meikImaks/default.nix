@@ -14,6 +14,16 @@ let
   inherit (parseLib) parsePackagesFromUsePackage;
 
   customPackages = {
+    base16-theme =
+      let
+        src = hob.base16-theme.mein;
+      in
+      trivialBuild {
+        pname = "base16-theme";
+        version = src.shortRev;
+        inherit src;
+      };
+
     ement =
       let
         src = hob.ement-el.mein;
@@ -41,6 +51,15 @@ let
            :repo "NHALX/shen-mode"
            :fetcher github)
         '';
+      };
+
+    xah-fly-keys =
+      let src = hob.xah-fly-keys.mein; in
+      trivialBuild {
+        pname = "xah-fly-keys";
+        inherit src;
+        version = src.shortRev;
+        commit = src.rev;
       };
   };
 
