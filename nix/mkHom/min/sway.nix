@@ -182,7 +182,6 @@ in
       pantheon.elementary-files
       pantheon.elementary-code
       # start("Qt")
-      nheko
       adwaita-qt
       qgnomeplatform
       waylandQtpass
