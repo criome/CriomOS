@@ -61,6 +61,7 @@ let
 
   nixpkgsPackages = with pkgs; [
     mksh # saner bash
+    retry
     ovyridynFzf
     alsaUtils
     pamixer
