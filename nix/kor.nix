@@ -204,7 +204,6 @@ rec {
   };
 
   mkSaizAtList = saiz: {
-    core = saiz == 0;
     min = saiz >= 1;
     med = saiz >= 2;
     max = saiz == 3;
