@@ -7,7 +7,6 @@ let
   ];
 
   semaDevPackages = with pkgs; [
-    mindforger
     krita
     calibre
     pandoc

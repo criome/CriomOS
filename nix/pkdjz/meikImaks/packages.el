@@ -1,3 +1,11 @@
+(use-package ssh-deploy)
+
+(use-package org-roam
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "~/git/wiki"))
+
 (use-package password-store)
 
 (use-package base16-theme)
@@ -228,7 +236,9 @@
   (flycheck-check-syntax-automatically
    '(save idle-change mode-enabled)))
 
-(use-package flycheck-guile)
+(use-package flycheck-guile
+  :custom
+  (geiser-default-implementation 'guile))
 
 (use-package notmuch :commands notmuch)
 (use-package notmuch-maildir)

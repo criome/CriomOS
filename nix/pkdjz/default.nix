@@ -2,6 +2,12 @@ hob:
 
 let
   pkdjz = {
+    beaker = {
+      lamdy = import ./beaker;
+      modz = [ "pkgs" ];
+      self = null;
+    };
+
     bildNvimPlogin = {
       lamdy = import ./bildNvimPlogin;
       modz = [ "pkgs" "pkdjz" ];
