@@ -7,7 +7,7 @@ in
   jumpdrive = {
     modz = [ "pkgs" "pkdjz" ];
     src = null;
-    lamdy = { stdenv, fetchurl, mksh, writeScript, mfgtools }:
+    lamdy = { stdenv, fetchurl, mksh, writeScriptBin, mfgtools }:
       let
         mkRelease = name: versionAndNarHashes:
           let
@@ -16,33 +16,37 @@ in
             url =
               "https://github.com/dreemurrs-embedded/Jumpdrive/releases/download/${version}/${name}.tar.xz";
 
-            src = fetchurl {
-              inherit url; hash = narHash;
-            };
+            src = fetchurl { inherit url; hash = narHash; };
 
-            launcherName = ("jumpdrive-" + name);
-            dataDirectory = "share/jumpdrive/${name}";
+            launcherName = "jumpdrive-" + name;
+            dataDirectorySuffix = "/share/jumpdrive/${name}";
 
-            launcherScript = writeScript launcherName ''
+            dataPkgName = name + "-data";
+
+            dataPkg = stdenv.mkDerivation
+              {
+                name = dataPkgName;
+                inherit src;
+                phases = [ "unpackPhase" "installPhase" ];
+
+                unpackPhase = "tar xf $src";
+
+                installPhase = ''
+                  mkdir -p $out${dataDirectorySuffix}
+                  cp -R ./* $out${dataDirectorySuffix}
+                '';
+              };
+
+            dataDirectory = dataPkg + dataDirectorySuffix;
+
+            launcherScript = writeScriptBin launcherName ''
               #!${mksh}/bin/mksh
-              cd $(dirname $0)/../${dataDirectory}
+              cd ${dataDirectory}
               ${mfgtools}/bin/uuu ${name}.lst
             '';
 
           in
-          stdenv.mkDerivation {
-            inherit name src;
-            phases = [ "unpackPhase" "installPhase" ];
-
-            unpackPhase = "tar xf $src";
-
-            installPhase = ''
-              mkdir -p $out/bin
-              cp ${launcherScript} $out/bin/${launcherName}
-              mkdir -p $out/${dataDirectory}
-              cp -R ./* $out/${dataDirectory}
-            '';
-          };
+          launcherScript;
 
         releasesNarHashes = {
           purism-librem5 = {
