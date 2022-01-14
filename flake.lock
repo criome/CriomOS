@@ -428,17 +428,18 @@
         "shen": "shen",
         "shen-mode": "shen-mode",
         "skrips": "skrips",
+        "species-el": "species-el",
         "tokei-vim": "tokei-vim",
         "vim-shen": "vim-shen",
         "xah-fly-keys": "xah-fly-keys",
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1640663933,
-        "narHash": "sha256-b40pPue8vXPYO+KBtC4GzM/9Ee1SZvDKdjNNOSzUBK0=",
+        "lastModified": 1641718396,
+        "narHash": "sha256-+AHxLmQd+urdXqRLJRLzCePPdNfkrJxeSD2zz6EJQl0=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "9c5c47c93b68ff67fbd1bc35f83163264bdc72f7",
+        "rev": "1b42fe6aad6e13a49d211039b8dbaf32683f022d",
         "type": "github"
       },
       "original": {
@@ -897,6 +898,22 @@
       "original": {
         "owner": "maisiliym",
         "repo": "skrips",
+        "type": "github"
+      }
+    },
+    "species-el": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641634832,
+        "narHash": "sha256-t1t2U8JojvPA3YxwnfGwrTS+SIsMtfWHz9sAf06nbQU=",
+        "owner": "sajban",
+        "repo": "species.el",
+        "rev": "4bd59648284f99950d2a0c43dcbcffb69a70e9e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sajban",
+        "repo": "species.el",
         "type": "github"
       }
     },

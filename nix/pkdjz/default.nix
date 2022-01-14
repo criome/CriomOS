@@ -202,5 +202,7 @@ let
     shen = pkdjz.shen-ecl-bootstrap;
   };
 
+  adHoc = (import ./adHoc.nix) hob;
+
 in
-pkdjz // aliases 
+adHoc // pkdjz // aliases

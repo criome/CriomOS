@@ -1,3 +1,5 @@
+(use-package elisp-lint)
+
 (use-package ssh-deploy)
 
 (use-package org-roam
