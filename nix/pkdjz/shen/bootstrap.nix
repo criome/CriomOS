@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   pname = "shen";
-  version = "31.01";
+  version = "S31.02";
   inherit src;
 
   buildInputs = [ sbcl ];

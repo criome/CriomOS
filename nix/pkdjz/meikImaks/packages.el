@@ -1,3 +1,7 @@
+(use-package with-editor
+  :hook
+  (eshell-mode . with-editor-export-editor))
+
 (use-package elisp-lint)
 
 (use-package ssh-deploy)

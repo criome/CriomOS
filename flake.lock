@@ -435,11 +435,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1641718396,
-        "narHash": "sha256-+AHxLmQd+urdXqRLJRLzCePPdNfkrJxeSD2zz6EJQl0=",
+        "lastModified": 1642310531,
+        "narHash": "sha256-bCAh+IbYR32sDkaQCPtnVYhyzu23JtTydaHoxpAUqbM=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "1b42fe6aad6e13a49d211039b8dbaf32683f022d",
+        "rev": "d49348d8c399dc77eadf359239e504ff69315488",
         "type": "github"
       },
       "original": {
@@ -857,16 +857,17 @@
     "shen": {
       "flake": false,
       "locked": {
-        "lastModified": 1637488354,
+        "lastModified": 1642309926,
         "narHash": "sha256-0IzI/EQxTds3kE7ouecTFo3truRcuqnafDnbn9qtAws=",
-        "owner": "maisiliym",
-        "repo": "shen",
-        "rev": "c5f66f19d56220f8ef34dd69a7a6f61373425708",
+        "owner": "sajban",
+        "repo": "aski",
+        "rev": "fa628fbe3b60d9bad4e536dd5fdc65898068a30f",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
-        "repo": "shen",
+        "owner": "sajban",
+        "ref": "shen-clean",
+        "repo": "aski",
         "type": "github"
       }
     },
