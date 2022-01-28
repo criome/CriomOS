@@ -2,7 +2,8 @@
 let
   emacs-overlay = src;
   pkgs = meikPkgs { overlays = [ emacs-overlay.overlay ]; };
-  inherit (pkgs) writeText emacsPackagesFor emacsPgtkGcc;
+  inherit (pkgs) writeText emacsPackagesFor emacsPgtkGcc
+    delta;
 
   emacs = emacsPgtkGcc;
   emacsPackages = emacsPackagesFor emacsPgtkGcc;
@@ -38,6 +39,11 @@ let
           ts
         ];
       };
+
+    magit-delta = emacsPackages.magit-delta.overrideAttrs
+      (attrs: {
+        buildInputs = attrs.buildInputs ++ [ delta ];
+      });
 
     shen-mode =
       let src = hob.shen-mode.mein; in

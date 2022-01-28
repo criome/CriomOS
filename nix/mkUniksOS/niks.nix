@@ -22,7 +22,7 @@ let
       };
       to = {
         type = "github";
-        owner = "maisiliym";
+        owner = "sajban";
         repo = "uniks";
       };
     }];

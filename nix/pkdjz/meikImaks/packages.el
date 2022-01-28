@@ -1,3 +1,8 @@
+(use-package rust-mode)
+
+(use-package magit-delta
+  :hook (magit-mode . magit-delta-mode))
+
 (use-package with-editor
   :hook
   (eshell-mode . with-editor-export-editor))
@@ -256,8 +261,7 @@
 (use-package unicode-fonts
   :config (unicode-fonts-setup))
 
-(use-package nix-mode
-  :mode "\\.nix\\'")
+(use-package nix-mode)
 (use-package nixpkgs-fmt
   :hook (nix-mode . nixpkgs-fmt-on-save-mode))
 

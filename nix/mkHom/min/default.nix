@@ -108,6 +108,7 @@ let
     eva # tui calculator
 
   ] ++ (optionals izUniksDev [
+    delta
     cpulimit
     usbutils
     pciutils
