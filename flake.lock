@@ -3,7 +3,7 @@
     "AskiCore": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-iXujqVUzA7/NLPQ+hRRJjZ0FJwVbQifrR0tYZVXSGLI=",
+        "narHash": "sha256-ZLyzoJbXHpV/z9rYycbCSVZvdi8yCoHUXz2P9ALVZ0I=",
         "path": "./AskiCore",
         "type": "path"
       },
@@ -63,7 +63,7 @@
     "LispCore": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-+bjg+84T9Fi/eJpRPDtF7EU9CPjGIEIP4Jtfotmk0qM=",
+        "narHash": "sha256-+naZjbJVOy934/vG5/IQqNRO46CsTWN5siHZF4lV1QQ=",
         "path": "./LispCore",
         "type": "path"
       },
@@ -72,46 +72,70 @@
         "type": "path"
       }
     },
-    "LispExtended": {
+    "LispCorePrimitives": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-7XJG8YYG+ldTeAtUwqUlIjy9PiaMNy4cJkJ01kSZBHc=",
-        "path": "./LispExtended",
+        "narHash": "sha256-buCczYUZ0biupPUUYgc36PsVVetu9NbsuLWnYJJgR9M=",
+        "path": "./LispCorePrimitives",
         "type": "path"
       },
       "original": {
-        "path": "./LispExtended",
+        "path": "./LispCorePrimitives",
         "type": "path"
       }
     },
-    "ShenBootstrap": {
+    "LispExtendedPrimitives": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BFAofEJblRM8HwFH+rnBh+dV+MOiJvW149D6Xr5lrJM=",
-        "path": "./ShenBootstrap",
+        "narHash": "sha256-2m8AQvk1UwXq7gQhLDBGbj6PYYTSpO/rLqcYQktpmwA=",
+        "path": "./LispExtendedPrimitives",
         "type": "path"
       },
       "original": {
-        "path": "./ShenBootstrap",
+        "path": "./LispExtendedPrimitives",
         "type": "path"
       }
     },
     "ShenCore": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-3qcb5L0mUeoNEaGv/A2B2f5/hYIw5gcUek07HIb8yoM=",
+        "narHash": "sha256-ZE0RsSkrVFV6wsUDydKKwj8C+rGRPSkTWk/L0/yV0e8=",
         "path": "./ShenCore",
         "type": "path"
       },
       "original": {
         "path": "./ShenCore",
+        "type": "path"
+      }
+    },
+    "ShenCoreBootstrap": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-P6muYTBiw/wwqN5HE3BqBvkbYDpjZ/HRyZ7ME2TbCOY=",
+        "path": "./ShenCoreBootstrap",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenCoreBootstrap",
+        "type": "path"
+      }
+    },
+    "ShenCoreTests": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-EbT8PfeWjkLIutpLuDQyLO9FiQyqP5i0BsvCo06zl7I=",
+        "path": "./ShenCoreTests",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenCoreTests",
         "type": "path"
       }
     },
     "ShenExtended": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kP4/3dppgXDzNqcmNw9x2VDPz7i3HmBuMZbxxld9jCk=",
+        "narHash": "sha256-L2F8dWUJQ3XxhiwrUZ2iffSEFkE8kab5mnaA9onY6wM=",
         "path": "./ShenExtended",
         "type": "path"
       },
@@ -120,15 +144,15 @@
         "type": "path"
       }
     },
-    "ShenTests": {
+    "ShenExtendedBootstrap": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-UnyCeHnKJL0+m9mNc8QOip52uaixno8B+vEb5FoY6yo=",
-        "path": "./ShenTests",
+        "narHash": "sha256-53aOf+qwIohFFXQ7H+OHNgM06sNIwUumL/rdM8Qku/g=",
+        "path": "./ShenExtendedBootstrap",
         "type": "path"
       },
       "original": {
-        "path": "./ShenTests",
+        "path": "./ShenExtendedBootstrap",
         "type": "path"
       }
     },
@@ -148,19 +172,21 @@
       "inputs": {
         "AskiCore": "AskiCore",
         "LispCore": "LispCore",
-        "LispExtended": "LispExtended",
-        "ShenBootstrap": "ShenBootstrap",
+        "LispCorePrimitives": "LispCorePrimitives",
+        "LispExtendedPrimitives": "LispExtendedPrimitives",
         "ShenCore": "ShenCore",
+        "ShenCoreBootstrap": "ShenCoreBootstrap",
+        "ShenCoreTests": "ShenCoreTests",
         "ShenExtended": "ShenExtended",
-        "ShenTests": "ShenTests",
+        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
         "bootstrapKLambda": "bootstrapKLambda"
       },
       "locked": {
-        "lastModified": 1638609926,
-        "narHash": "sha256-11hHEzwYhrIYTYo/3pVWkZyDxpbh4lnoE5Bv9d4MWzc=",
+        "lastModified": 1643004190,
+        "narHash": "sha256-5bhqicWfUVbijsNca3kfswbMAfQNerQfCdOIVndEsnI=",
         "owner": "sajban",
         "repo": "aski",
-        "rev": "72dec272800a4c4513bd9002f41cf523780bd8b1",
+        "rev": "d6d10ac7b086e66f14b998edb8d6aee9c9c3629b",
         "type": "github"
       },
       "original": {
@@ -204,7 +230,7 @@
     "bootstrapKLambda": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-E/NVPgXUdN6X9b8PJ6cmKJ2yBUZ3OtmTs6UmCDKHsnA=",
+        "narHash": "sha256-4RG8MmAyxz3qWt+FYThaEQHp8LMwAlxsnDAOw3cClYE=",
         "path": "./KLambda",
         "type": "path"
       },
@@ -435,11 +461,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1642310531,
-        "narHash": "sha256-bCAh+IbYR32sDkaQCPtnVYhyzu23JtTydaHoxpAUqbM=",
+        "lastModified": 1643431799,
+        "narHash": "sha256-kMpvV9yZQOXAlL3pnafVgBpyZGTtFyWu97+dSMA/l+0=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "d49348d8c399dc77eadf359239e504ff69315488",
+        "rev": "4bdaa4dc4bb3e753e3ac681df00980e449528c28",
         "type": "github"
       },
       "original": {
@@ -637,14 +663,15 @@
         "nixpkgs": [
           "hob",
           "nixpkgs"
-        ]
+        ],
+        "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
-        "lastModified": 1639153684,
-        "narHash": "sha256-JMXJBqdxFUSpYsb1GEPoXuc61ie4FO/JzqzQYoBvZjo=",
+        "lastModified": 1643379043,
+        "narHash": "sha256-TCOGKEuHBLgqfCUkMmEWsC/fCynmrPn4xXhZHKSa+0g=",
         "owner": "NixOS",
         "repo": "nix",
-        "rev": "f24ac3115f154edf72b995cffae6da3793862294",
+        "rev": "4bf6af7b555033de5c1d6851edb60a91940d43c3",
         "type": "github"
       },
       "original": {
@@ -683,6 +710,21 @@
         "owner": "mozilla",
         "repo": "nixpkgs-mozilla",
         "type": "github"
+      }
+    },
+    "nixpkgs-regression": {
+      "locked": {
+        "lastModified": 1643052045,
+        "narHash": "sha256-uGJ0VXIhWKGXxkeNnq4TvV3CIOkUJ3PAoLZ3HMzNVMw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
+        "type": "indirect"
       }
     },
     "nvim-base16-lua": {
