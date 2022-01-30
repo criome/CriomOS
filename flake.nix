@@ -3,37 +3,47 @@
 
   inputs = {
     hob.url = github:sajban/hob;
-    UniksCore = {
-      url = path:./UniksCore;
+
+    AskiCoreUniks = {
+      url = path:./AskiCoreUniks;
+      flake = false;
+    };
+    AskiUniks = {
+      url = path:./AskiUniks;
+      flake = false;
+    };
+    AskiDefaultBuilder = {
+      url = path:./AskiDefaultBuilder;
       flake = false;
     };
   };
 
-  outputs = inputs@{ self, hob, UniksCore }:
+  outputs = inputs@{ self, hob, ... }:
     let
-      uniks = { core = UniksCore; };
+      # (hak directInputsImports)
       hob = inputs.hob.Hob;
       nixpkgs = hob.nixpkgs.mein;
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;
-    in
-    let
+
+      AskiUniksSources = {
+        inherit (inputs) AskiCoreUniks AskiUniks AskiDefaultBuilder;
+      };
+
+      kor = import ./nix/kor.nix;
+      mkKriosfir = import ./nix/mkKriosfir;
+      mkKriozonz = import ./nix/mkKriozonz;
+      mkUniksOS = import ./nix/mkUniksOS;
+      mkHom = import ./nix/mkHom;
+
       inherit (builtins) fold attrNames mapAttrs;
       inherit (nixpkgs) lib;
-      kor = import ./nix/kor.nix;
       inherit (kor) mkLamdy arkSistymMap;
       inherit (flake-utils.lib) eachDefaultSystem;
 
-      kriosfirProposal = {
+      uncheckedKriosfirProposal = {
         maisiliym = hob.maisiliym.mein.NeksysProposal;
       };
-
-      mkKriosfir = import ./nix/mkKriosfir;
-      kriosfir = mkKriosfir { inherit kriosfirProposal kor lib; };
-      mkKriozonz = import ./nix/mkKriozonz;
-      kriozonz = mkKriozonz { inherit kor lib kriosfir; };
-      mkUniksOS = import ./nix/mkUniksOS;
-      mkHom = import ./nix/mkHom;
 
       mkNeksysDerivations = priNeksysNeim: kriozon:
         let
@@ -89,14 +99,12 @@
         in
         mapAttrs mkNeksysDerivationIndex kriozonz;
 
-      uniksOS = mkEachKriozonDerivations kriozonz;
-
       mkOutputs = system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
           mkUyrld = import ./nix/mkUyrld.nix;
-          uyrld = mkUyrld { inherit pkgs kor lib system hob uniks; };
+          uyrld = mkUyrld { inherit pkgs kor lib system hob AskiUniksSources; };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 
@@ -133,6 +141,11 @@
 
       perSystemOutputs = eachDefaultSystem mkOutputs;
 
+      proposedKriosfir = mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
+      proposedKriozonz = mkKriozonz { inherit kor lib proposedKriosfir; };
+
     in
-    perSystemOutputs // { inherit uniksOS; };
+    perSystemOutputs // {
+      kriozonz = mkEachKriozonDerivations proposedKriozonz;
+    };
 }

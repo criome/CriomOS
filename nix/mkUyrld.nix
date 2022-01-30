@@ -1,4 +1,4 @@
-{ kor, pkgs, lib, hob, system, uniks }:
+{ kor, pkgs, lib, hob, system, AskiUniksSources }:
 let
   inherit (builtins) hasAttr mapAttrs;
   inherit (uyrld) pkdjz;
@@ -36,7 +36,7 @@ let
         # TODO: deprecate `self` for `src`
         // { inherit self; }
         // { src = self; }
-        // { inherit uniks; };
+        // { inherit AskiUniksSources; };
 
     in
     mkLamdy { inherit klozyr lamdy; };

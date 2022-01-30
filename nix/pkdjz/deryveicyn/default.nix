@@ -1,37 +1,42 @@
-{ kor, system, aski, uniks, writeText }:
+{ kor, system, aski, AskiUniksSources, writeText }:
 let
   inherit (kor) mesydj mkImplicitVersion;
 in
 inputs@
 { name
 , src
-, askiUniks ? null
+, askiFleik ? null
 , version ? mkImplicitVersion src
 , nixInputs ? { }
 }:
 let
   inherit (builtins) pathExists concatStringsSep;
+  inherit (AskiUniksSources) AskiCoreUniks AskiUniks AskiDefaultBuilder;
   name = concatStringsSep "-" [ inputs.name version ];
-  uniksLib = uniks.core + /lib.aski;
-  uniksBuilder = uniks.core + /builder.aski;
 
   implicitBuildFile =
     let
-      filePath = src + /uniks.aski;
-      fileExists = pathExists filePath;
+      fleikPath = src + /fleik.aski;
+      legacyFilePath = src + /flake.aski;
+      fleikExists = (pathExists fleikPath);
+      fileExists = fleikExists || (pathExists legacyFilePath);
+      result =
+        if fleikExists then fleikPath
+        else legacyFilePath;
+
     in
     assert mesydj fileExists
-      "Uniks file missing: ${filePath}";
-    filePath;
+      "Aski fleik missing: ${fleikPath}";
+    result;
 
   uniksBuildFile =
-    if (askiUniks != null)
-    then askiUniks
+    if (askiFleik != null)
+    then askiFleik
     else implicitBuildFile;
 
   askiDeryveicyn = writeText "deryveicyn.aski" ''
-    (load "${uniksLib}")
-    (load "${uniksBuilder}")
+    (load "${AskiCoreUniks + /lib.aski}")
+    (load "${AskiDefaultBuilder + /builder.aski}")
   '';
 
 in

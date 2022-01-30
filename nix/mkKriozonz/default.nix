@@ -1,9 +1,9 @@
-{ kor, lib, kriosfir }:
+{ kor, lib, proposedKriosfir }:
 let
   inherit (builtins) mapAttrs;
   inherit (lib) evalModules;
 
-  metastriz = kriosfir;
+  metastriz = proposedKriosfir;
 
   hyraizynOptions = import ./hyraizynOptions.nix;
   mkHyraizynModule = import ./mkHyraizynModule.nix;
@@ -41,7 +41,7 @@ let
     # let priNeksysNeimz = attrNames neksys.astriz; in
     mapAttrs (pnn: pn: mkKriozon neksysNeim pnn) neksys.astriz;
 
-  ryzylt = mapAttrs mkNeksysKriozonz kriosfir.datom;
+  ryzylt = mapAttrs mkNeksysKriozonz proposedKriosfir.datom;
 
 in
 ryzylt

@@ -12,6 +12,42 @@
         "type": "path"
       }
     },
+    "AskiCoreUniks": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-rHxf9Xy9eOPBYylS/L0mqssS0D4HDfZkXdM//mY0/wA=",
+        "path": "./AskiCoreUniks",
+        "type": "path"
+      },
+      "original": {
+        "path": "./AskiCoreUniks",
+        "type": "path"
+      }
+    },
+    "AskiDefaultBuilder": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Sq2sDZ4TqM0kuTN+ON6jfAnfZrMTlyFW9y430/yKTrs=",
+        "path": "./AskiDefaultBuilder",
+        "type": "path"
+      },
+      "original": {
+        "path": "./AskiDefaultBuilder",
+        "type": "path"
+      }
+    },
+    "AskiUniks": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Zpw5k0lpafxdko9NdW8Yyakghx1ijMnG1wS3FjyQZuM=",
+        "path": "./AskiUniks",
+        "type": "path"
+      },
+      "original": {
+        "path": "./AskiUniks",
+        "type": "path"
+      }
+    },
     "ChibiOS": {
       "flake": false,
       "locked": {
@@ -153,18 +189,6 @@
       },
       "original": {
         "path": "./ShenExtendedBootstrap",
-        "type": "path"
-      }
-    },
-    "UniksCore": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-wjNrxYbz1/L7bc+qPq9zYhJyocmbThgcKFZaGdpTm3s=",
-        "path": "./UniksCore",
-        "type": "path"
-      },
-      "original": {
-        "path": "./UniksCore",
         "type": "path"
       }
     },
@@ -842,7 +866,9 @@
     },
     "root": {
       "inputs": {
-        "UniksCore": "UniksCore",
+        "AskiCoreUniks": "AskiCoreUniks",
+        "AskiDefaultBuilder": "AskiDefaultBuilder",
+        "AskiUniks": "AskiUniks",
         "hob": "hob"
       }
     },
