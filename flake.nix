@@ -35,15 +35,19 @@
       mkKriozonz = import ./nix/mkKriozonz;
       mkUniksOS = import ./nix/mkUniksOS;
       mkHom = import ./nix/mkHom;
+      neksysProposalHobSpokNames = import ./neksysProposalHobSpokNames.nix;
 
       inherit (builtins) fold attrNames mapAttrs;
       inherit (nixpkgs) lib;
-      inherit (kor) mkLamdy arkSistymMap;
+      inherit (kor) mkLamdy arkSistymMap genAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
 
-      uncheckedKriosfirProposal = {
-        maisiliym = hob.maisiliym.mein.NeksysProposal;
-      };
+      generateKriosfirProposalFromName = name:
+        hob."${name}".mein.NeksysProposal;
+
+      uncheckedKriosfirProposal = genAttrs
+        neksysProposalHobSpokNames
+        generateKriosfirProposalFromName;
 
       mkNeksysDerivations = priNeksysNeim: kriozon:
         let
