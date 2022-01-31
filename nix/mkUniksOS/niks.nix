@@ -55,8 +55,8 @@ in
     buildCores = astra.nbOfBildKorz;
 
     # Lowest priorities
-    daemonNiceLevel = 19;
-    daemonIONiceLevel = 7;
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedPriority = 7;
 
     sandboxPaths = [
       # "/links"  # TODO

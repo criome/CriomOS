@@ -11,11 +11,13 @@ argz@
 let
   inherit (lib) evalModules optional;
 
+  noUserModules = lib.evalModules ({
+    prefix = [ ];
+    modules = baseModules;
+  });
+
   nixosNixpkgsConfig = {
-    nixpkgs = {
-      inherit pkgs system;
-      # allowUnfree = true;
-    };
+    nixpkgs = { inherit pkgs system; };
   };
 
   specialArgs = {
@@ -23,16 +25,17 @@ let
   };
 
   baseModules = import (nixpkgs + /nixos/modules/module-list.nix);
-  qemuVmModule = import (nixpkgs + /nixos/modules/virtualisation/qemu-vm.nix);
-  isoImageModule = import (nixpkgs + /nixos/modules/installer/cd-dvd/iso-image.nix);
+  qemuVmModule = import
+    (nixpkgs + /nixos/modules/virtualisation/qemu-vm.nix);
+  isoImageModule = import
+    (nixpkgs + /nixos/modules/installer/cd-dvd/iso-image.nix);
 
   nixOSRev = src.shortRev;
 
   moduleArgsModule = {
     _module.args = {
-      inherit lib pkgs baseModules nixOSRev;
-    }
-    // moduleArgs;
+      inherit lib pkgs baseModules nixOSRev noUserModules;
+    } // moduleArgs;
   };
 
 in
