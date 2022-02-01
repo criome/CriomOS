@@ -70,7 +70,7 @@ in
 
     extraOptions = ''
       flake-registry = ${redjistri}
-      experimental-features = nix-command flakes ca-references recursive-nix
+      experimental-features = nix-command flakes recursive-nix
       secret-key-files = ${priKriod}
       keep-derivations = ${toString saizAtList.med}
       keep-outputs = ${toString saizAtList.max}
