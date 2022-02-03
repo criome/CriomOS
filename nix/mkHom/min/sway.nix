@@ -175,6 +175,7 @@ in
       wofi
       gitg
       pavucontrol
+      sonata
       dino
       transmission-remote-gtk
       ptask

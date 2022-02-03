@@ -142,6 +142,10 @@ in
       enableSshSupport = true;
       sshKeys = [ krimyn.priKriomz.${astra.neim}.keygrip ];
     };
+
+    mpd = {
+      enable = true;
+    };
   };
 
   programs = {

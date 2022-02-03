@@ -105,14 +105,14 @@ in
 
   services = {
     nix-serve = {
-      enable = izNiksKac;
+      enable = false; # (broken missingUserHomeDir)
       bindAddress = "127.0.0.1";
       port = serve.ports.internal;
       secretKeyFile = priKriod;
     };
 
     nginx = mkIf (izNiksKac && izKriodaizd) {
-      enable = true;
+      enable = false; # (brokenDependency nixServe)
       virtualHosts = {
         "[${astra.yggAddress}]:${toString serve.ports.external}" = {
           listen = [{ addr = "[${astra.yggAddress}]"; port = serve.ports.external; }];
