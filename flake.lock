@@ -111,7 +111,7 @@
     "KLambdaBootstrap": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kT/JJ1oQpFzo5bPG7sIrH8UT84nYe3tlytDpJ1SSLrI=",
+        "narHash": "sha256-4szc53KBAIZ58J51UV0GD669Fjeja0p2+3Q3UFOOFlY=",
         "path": "./KLambdaBootstrap",
         "type": "path"
       },
@@ -159,7 +159,7 @@
     "ShenCore": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-ZE0RsSkrVFV6wsUDydKKwj8C+rGRPSkTWk/L0/yV0e8=",
+        "narHash": "sha256-5OHBn6Pf9LDwe0BBf2uVG9rj3PEfuIrkuM/ieY1mHBU=",
         "path": "./ShenCore",
         "type": "path"
       },
@@ -195,7 +195,7 @@
     "ShenExtended": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-2mJwK2PcKjA0F5+EjvOcQGJ87aP35/7ocPs5ffIJouc=",
+        "narHash": "sha256-tZGwo+YsB4g+3LVBhKaEGsCHOdYhQHmew7HI92MIsfg=",
         "path": "./ShenExtended",
         "type": "path"
       },
@@ -207,12 +207,24 @@
     "ShenExtendedBootstrap": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kF0oG5NFc7L+v/NMLRjGd1cmXZuxw0HwB7D31lwr55M=",
+        "narHash": "sha256-IRH8tDEZ5SR1VN6s6kgLoAbLiO5NfvrbFcgOgqyXFSs=",
         "path": "./ShenExtendedBootstrap",
         "type": "path"
       },
       "original": {
         "path": "./ShenExtendedBootstrap",
+        "type": "path"
+      }
+    },
+    "ShenExtendedTests": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-YT24VUqVk2wfVM/nwo98L0DckwqY9KU9r59twrsA4Hc=",
+        "path": "./ShenExtendedTests",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenExtendedTests",
         "type": "path"
       }
     },
@@ -228,14 +240,15 @@
         "ShenCoreBootstrap": "ShenCoreBootstrap",
         "ShenCoreTests": "ShenCoreTests",
         "ShenExtended": "ShenExtended",
-        "ShenExtendedBootstrap": "ShenExtendedBootstrap"
+        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
+        "ShenExtendedTests": "ShenExtendedTests"
       },
       "locked": {
-        "lastModified": 1643774641,
-        "narHash": "sha256-uY7dfxOc02/UUicslSprKJ5fLaJrSQoMlvosufbbk5U=",
+        "lastModified": 1643945744,
+        "narHash": "sha256-JUfadHuZ5Ue9fR/g8g+c7CSYvwyMU8jPbn021zKhre8=",
         "owner": "sajban",
         "repo": "aski",
-        "rev": "4ce991a21cfe402c79d19902f3f9f82d8cb7d74b",
+        "rev": "5f9c14a2e079fa858949f95d7c598c4d838ffaed",
         "type": "github"
       },
       "original": {
@@ -498,11 +511,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1643774698,
-        "narHash": "sha256-BmJR7A371MNOQ/roiB8kR5rbYsKOyRVRRZvPni4XOXM=",
+        "lastModified": 1643946328,
+        "narHash": "sha256-4LYNKQLKC3jsJ+I6jaxA6XYJEcg5MtEBwwUNOiDpmQ8=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "40f35ee7af0c6acacdaabf940a6158eec39fa47d",
+        "rev": "eefb1d7e6e25009b3f296542c67701b4c405149b",
         "type": "github"
       },
       "original": {
