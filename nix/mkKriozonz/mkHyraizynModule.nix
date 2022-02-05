@@ -139,8 +139,8 @@ let
         map getEseseitcString fulyTrostydPriKriomNeimz;
 
       inherit (astra.mycin) modyl;
-      thinkpadModylz = [ "ThinkPad X240" "ThinkPad X230" ];
-      impozdHTModylz = [ "ThinkPad X240" ];
+      thinkpadModylz = [ "ThinkPadX240" "ThinkPadX230" ];
+      impozdHTModylz = [ "ThinkPadX240" ];
 
       computerModylz = thinkpadModylz ++ [ "rpi3B" ];
 

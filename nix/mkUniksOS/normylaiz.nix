@@ -4,9 +4,9 @@ let
   inherit (lib) concatStringsSep mkOverride;
   inherit (pkgs) mksh writeScript gnupg;
   inherit (hyraizyn) astra exAstriz;
+  inherit (hyraizyn.astra.spinyrz) tcipIzIntel;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
-  chipSetIsIntel = true; # TODO
 
   uniksOSShell = mksh + mksh.shellPath;
 
@@ -59,7 +59,7 @@ in
   };
 
   hardware = {
-    cpu.intel.updateMicrocode = chipSetIsIntel;
+    cpu.intel.updateMicrocode = tcipIzIntel;
   };
 
   services = {

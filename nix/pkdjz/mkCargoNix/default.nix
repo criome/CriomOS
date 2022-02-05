@@ -17,12 +17,13 @@ let
   defaultCrateOverrides = argz.defaultCrateOverrides
     // kreitOvyraidz // crateOverrides;
 
-  buildRustCrate =
+  buildRustCrateForPkgs = pkgs:
     if nightly
     then argz.buildRustCrate.override { rustc = nightlyRust.rust; }
     else argz.buildRustCrate;
 
 in
-cargoNix {
-  inherit lib pkgs buildRustCrate defaultCrateOverrides;
-}
+cargoNix
+  { inherit lib pkgs defaultCrateOverrides; }
+  // (optionalAttrs nightly
+  { inherit buildRustCrateForPkgs; })

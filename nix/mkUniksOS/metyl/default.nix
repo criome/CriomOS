@@ -2,11 +2,25 @@
 let
   inherit (builtins) readFile;
   inherit (kor) mkIf optional optionals optionalString optionalAttrs;
+  inherit (hyraizyn.astra.mycin) modyl;
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
     impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
 
-  izX230 = hyraizyn.astra.mycin.modyl == "ThinkPad X230";
-  izX240 = hyraizyn.astra.mycin.modyl == "ThinkPad X240";
+  izX230 = modyl == "ThinkPadX230";
+  izX240 = modyl == "ThinkPadX240";
+
+  enabledExtendedPowerSave = false;
+
+  scalingGovernor =
+    if enabledExtendedPowerSave then "schedutil"
+    else "powersave";
+
+  extendedPowerSaveTable = {
+    ThinkPadX240 = { min = 775000; max = 775000; };
+  };
+
+  extendedPowerSaveMinFreq = extendedPowerSaveTable."${modyl}".min;
+  extendedPowerSaveMaxFreq = extendedPowerSaveTable."${modyl}".max;
 
 in
 {
@@ -36,6 +50,7 @@ in
     kernelModules = [ "coretemp" ];
 
     kernelParams = (optional tcipIzIntel "intel_pstate=disable")
+      ++ (optional impozyzHaipyrThreding "nosmt=force")
       ++ (optionals computerIs.rpi3B [
       "cma=32M"
       "console=ttyS0,115200n8"
@@ -46,17 +61,13 @@ in
 
   };
 
-  powerManagement = {
-    powerUpCommands = optionalString impozyzHaipyrThreding (readFile ./softDisableHT.sh);
-    powerDownCommands = optionalString impozyzHaipyrThreding (readFile ./softEnableHT.sh);
-  };
-
   programs.light.enable = !izSentyr;
 
   console.useXkbConfig = iuzColemak;
 
   environment = {
-    systemPackages = optional tcipIzIntel pkgs.libva-utils;
+    systemPackages = optionals tcipIzIntel (with pkgs;
+      [ libva-utils i7z ]);
 
     interactiveShellInit = optionalString iuzColemak "stty -ixon"; # Disable Flow-control pause stone-age artifact;
     sessionVariables = (optionalAttrs iuzColemak {
@@ -114,8 +125,8 @@ in
         # Disables biospherocidist cpu frequencies
         CPU_BOOST_ON_AC = 0;
         CPU_BOOST_ON_BAT = 0;
-        CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        CPU_SCALING_GOVERNOR_ON_AC = scalingGovernor;
+        CPU_SCALING_GOVERNOR_ON_BAT = scalingGovernor;
         CPU_HWP_ON_AC = "power";
         CPU_HWP_ON_BAT = "power";
         # AC  = = Plugged-in External *DC* power source (computers do *not* run on A/C!)
@@ -131,7 +142,14 @@ in
         STOP_CHARGE_THRESH_BAT0 = 97;
         START_CHARGE_THRESH_BAT1 = 93;
         STOP_CHARGE_THRESH_BAT1 = 97;
-      };
+      }
+      // (optionalAttrs enabledExtendedPowerSave
+        {
+          CPU_SCALING_MIN_FREQ_ON_AC = extendedPowerSaveMinFreq;
+          CPU_SCALING_MIN_FREQ_ON_BAT = extendedPowerSaveMinFreq;
+          CPU_SCALING_MAX_FREQ_ON_AC = extendedPowerSaveMaxFreq;
+          CPU_SCALING_MAX_FREQ_ON_BAT = extendedPowerSaveMaxFreq;
+        });
     };
 
     thinkfan = mkIf modylIzThinkpad {

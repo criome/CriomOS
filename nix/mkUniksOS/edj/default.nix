@@ -5,8 +5,8 @@ let
 
   inherit (hyraizyn.astra.spinyrz) saizAtList;
 
-  izX230 = hyraizyn.astra.mycin.modyl == "ThinkPad X230";
-  izX240 = hyraizyn.astra.mycin.modyl == "ThinkPad X240";
+  izX230 = hyraizyn.astra.mycin.modyl == "ThinkPadX230";
+  izX240 = hyraizyn.astra.mycin.modyl == "ThinkPadX240";
 
   medPackages = optionals saizAtList.med (with pkgs; [ ]);
   maxPackages = optionals saizAtList.max (with pkgs; [ ]);

@@ -95,7 +95,7 @@ let
 
     mkCargoNix = {
       lamdy = import ./mkCargoNix;
-      modz = [ "pkgs" "lib" "pkdjz" ];
+      modz = [ "pkgs" "pkgsSet" "lib" "pkdjz" ];
       self = null;
     };
 
@@ -140,11 +140,6 @@ let
       lamdy = import ./nix;
       modz = [ "pkgs" "pkdjz" ];
       self = hob.nix.maisiliym.dev;
-    };
-
-    pkgs = {
-      lamdy = import ./pkgs;
-      modz = [ "pkdjz" ];
     };
 
     pkgsNvimPloginz = {
