@@ -2,6 +2,7 @@
 let
   inherit (builtins) readFile;
   inherit (kor) mkIf optional optionals optionalString optionalAttrs;
+  inherit (lib.generators) toINI;
   inherit (hyraizyn.astra.mycin) modyl;
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
     impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
@@ -9,11 +10,11 @@ let
   izX230 = modyl == "ThinkPadX230";
   izX240 = modyl == "ThinkPadX240";
 
-  enabledExtendedPowerSave = false;
+  enabledExtendedPowerSave = true;
 
   scalingGovernor =
-    if enabledExtendedPowerSave then "schedutil"
-    else "powersave";
+    if enabledExtendedPowerSave then "powersave"
+    else "schedutil";
 
   extendedPowerSaveTable = {
     ThinkPadX240 = { min = 775000; max = 775000; };
@@ -21,6 +22,17 @@ let
 
   extendedPowerSaveMinFreq = extendedPowerSaveTable."${modyl}".min;
   extendedPowerSaveMaxFreq = extendedPowerSaveTable."${modyl}".max;
+
+  autoCpufreqSettings = {
+    charger = {
+      governor = scalingGovernor;
+      turbo = "never";
+    };
+    battery = {
+      governor = scalingGovernor;
+      turbo = "never";
+    };
+  };
 
 in
 {
@@ -66,6 +78,11 @@ in
   console.useXkbConfig = iuzColemak;
 
   environment = {
+
+    etc = {
+      "auto-cpufreq.conf".text = toINI { } autoCpufreqSettings;
+    };
+
     systemPackages = optionals tcipIzIntel (with pkgs;
       [ libva-utils i7z ]);
 
@@ -79,6 +96,8 @@ in
   users.groups.plugdev = { };
 
   services = {
+    auto-cpufreq.enable = true;
+
     geoclue2 = {
       enable = saizAtList.min;
       enableDemoAgent = lib.mkOverride 0 true;
@@ -117,39 +136,6 @@ in
     logind = {
       lidSwitch = if izSentyr then "ignore" else "suspend";
       lidSwitchExternalPower = if izEdj then "suspend" else "ignore";
-    };
-
-    tlp = mkIf tcipIzIntel {
-      enable = true;
-      settings = {
-        # Disables biospherocidist cpu frequencies
-        CPU_BOOST_ON_AC = 0;
-        CPU_BOOST_ON_BAT = 0;
-        CPU_SCALING_GOVERNOR_ON_AC = scalingGovernor;
-        CPU_SCALING_GOVERNOR_ON_BAT = scalingGovernor;
-        CPU_HWP_ON_AC = "power";
-        CPU_HWP_ON_BAT = "power";
-        # AC  = = Plugged-in External *DC* power source (computers do *not* run on A/C!)
-        # 39 is the lowest setting
-        CPU_MAX_PERF_ON_AC = 39;
-        CPU_MIN_PERF_ON_AC = 0;
-        # Powered by *internal* battery (System may use external battery)
-        CPU_MAX_PERF_ON_BAT = 39;
-        CPU_MIN_PERF_ON_BAT = 0;
-        # Charge usb-powered computers (billions of computers without power ports!)
-        USB_BLACKLIST_PHONE = 1;
-        START_CHARGE_THRESH_BAT0 = 93;
-        STOP_CHARGE_THRESH_BAT0 = 97;
-        START_CHARGE_THRESH_BAT1 = 93;
-        STOP_CHARGE_THRESH_BAT1 = 97;
-      }
-      // (optionalAttrs enabledExtendedPowerSave
-        {
-          CPU_SCALING_MIN_FREQ_ON_AC = extendedPowerSaveMinFreq;
-          CPU_SCALING_MIN_FREQ_ON_BAT = extendedPowerSaveMinFreq;
-          CPU_SCALING_MAX_FREQ_ON_AC = extendedPowerSaveMaxFreq;
-          CPU_SCALING_MAX_FREQ_ON_BAT = extendedPowerSaveMaxFreq;
-        });
     };
 
     thinkfan = mkIf modylIzThinkpad {
