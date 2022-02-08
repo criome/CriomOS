@@ -12,6 +12,18 @@
         "type": "path"
       }
     },
+    "AskiCoreFleik": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-qOqDilUpjJVRGHaJqTIO2Y5eJaIQuGE0frZC9ZcZyNc=",
+        "path": "./AskiCoreFleik",
+        "type": "path"
+      },
+      "original": {
+        "path": "./AskiCoreFleik",
+        "type": "path"
+      }
+    },
     "AskiCoreUniks": {
       "flake": false,
       "locked": {
@@ -33,18 +45,6 @@
       },
       "original": {
         "path": "./AskiDefaultBuilder",
-        "type": "path"
-      }
-    },
-    "AskiFleik": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-hjqAEVuCrnt+7ph7TsvjovJEa/hodUc0K5guooIRBZE=",
-        "path": "./AskiFleik",
-        "type": "path"
-      },
-      "original": {
-        "path": "./AskiFleik",
         "type": "path"
       }
     },
@@ -111,7 +111,7 @@
     "KLambdaBootstrap": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-4szc53KBAIZ58J51UV0GD669Fjeja0p2+3Q3UFOOFlY=",
+        "narHash": "sha256-DyXKsiIc/k5XQV9n6noxeL4MwycXFNfklgBpxDvue2s=",
         "path": "./KLambdaBootstrap",
         "type": "path"
       },
@@ -147,12 +147,24 @@
     "LispExtendedPrimitives": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-2m8AQvk1UwXq7gQhLDBGbj6PYYTSpO/rLqcYQktpmwA=",
+        "narHash": "sha256-NsHHXvXLTUtkAOTSuiIqf0Li4XG9cJSgWxmb8izi3Nc=",
         "path": "./LispExtendedPrimitives",
         "type": "path"
       },
       "original": {
         "path": "./LispExtendedPrimitives",
+        "type": "path"
+      }
+    },
+    "ShenAski": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-C3Pgicf/bhS5jcZRQtRb77q6cjJzWM8xXQRazAxdD4o=",
+        "path": "./ShenAski",
+        "type": "path"
+      },
+      "original": {
+        "path": "./ShenAski",
         "type": "path"
       }
     },
@@ -195,7 +207,7 @@
     "ShenExtended": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-tZGwo+YsB4g+3LVBhKaEGsCHOdYhQHmew7HI92MIsfg=",
+        "narHash": "sha256-6PB5YLGpNYOofIweQXEQMrraa1Csfze+wsvptyGq658=",
         "path": "./ShenExtended",
         "type": "path"
       },
@@ -219,7 +231,7 @@
     "ShenExtendedTests": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-YT24VUqVk2wfVM/nwo98L0DckwqY9KU9r59twrsA4Hc=",
+        "narHash": "sha256-9b0mPdxzcmyjfuMOVvjwd7/JCeikF8OGqDiKL4KApk0=",
         "path": "./ShenExtendedTests",
         "type": "path"
       },
@@ -231,11 +243,12 @@
     "aski": {
       "inputs": {
         "AskiCore": "AskiCore",
-        "AskiFleik": "AskiFleik",
+        "AskiCoreFleik": "AskiCoreFleik",
         "KLambdaBootstrap": "KLambdaBootstrap",
         "LispCore": "LispCore",
         "LispCorePrimitives": "LispCorePrimitives",
         "LispExtendedPrimitives": "LispExtendedPrimitives",
+        "ShenAski": "ShenAski",
         "ShenCore": "ShenCore",
         "ShenCoreBootstrap": "ShenCoreBootstrap",
         "ShenCoreTests": "ShenCoreTests",
@@ -244,11 +257,11 @@
         "ShenExtendedTests": "ShenExtendedTests"
       },
       "locked": {
-        "lastModified": 1643945744,
-        "narHash": "sha256-JUfadHuZ5Ue9fR/g8g+c7CSYvwyMU8jPbn021zKhre8=",
+        "lastModified": 1644286711,
+        "narHash": "sha256-alLJDVKiOYb4wsKQErrINZFOB0XLOvn0daYRMsGlizk=",
         "owner": "sajban",
         "repo": "aski",
-        "rev": "5f9c14a2e079fa858949f95d7c598c4d838ffaed",
+        "rev": "4681bee6180c17d89ada9dc8c919c74b69433884",
         "type": "github"
       },
       "original": {
@@ -292,11 +305,11 @@
     "crate2nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1636316693,
-        "narHash": "sha256-WAxxfqPcFY2SFkgbUMnxMAIj3WbFf7Kw3622rYcz22I=",
+        "lastModified": 1643636139,
+        "narHash": "sha256-d+SsMV/ysXNu5mE1qIywpQdgleEKOdsK6L4h58AoFdc=",
         "owner": "kolloch",
         "repo": "crate2nix",
-        "rev": "d0c00673bafbaa648e84fb7595a0e4cd84c3b18a",
+        "rev": "7178e530f7d617ac0b61a6e53c7f3b28710fb6cf",
         "type": "github"
       },
       "original": {
@@ -511,11 +524,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1643946328,
-        "narHash": "sha256-4LYNKQLKC3jsJ+I6jaxA6XYJEcg5MtEBwwUNOiDpmQ8=",
+        "lastModified": 1644286781,
+        "narHash": "sha256-sivgVixBpv8fyR8i3I5DfBpSUPXS0bu5r6If79MuhB8=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "eefb1d7e6e25009b3f296542c67701b4c405149b",
+        "rev": "8d9f949afd1f1adf66272572153b610ff1868988",
         "type": "github"
       },
       "original": {
@@ -662,11 +675,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1635998578,
-        "narHash": "sha256-RHY2NQWALkCGnAsQYu9TYfuTjySqBq3dP812gc4gk84=",
+        "lastModified": 1643974413,
+        "narHash": "sha256-k85vaGT/VsdzlAnwb5/N59O5B4Mrk8uZEcHkssFk7bo=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "4ece55f1b54fc7d263a3da356ebf98d1aef80efc",
+        "rev": "efa8593a35cf8bd8b389ddca2a511e610cd388a5",
         "type": "github"
       },
       "original": {
