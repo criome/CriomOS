@@ -62,7 +62,6 @@ in
     kernelModules = [ "coretemp" ];
 
     kernelParams = (optional tcipIzIntel "intel_pstate=disable")
-      ++ (optional impozyzHaipyrThreding "nosmt=force")
       ++ (optionals computerIs.rpi3B [
       "cma=32M"
       "console=ttyS0,115200n8"
@@ -71,6 +70,11 @@ in
       "dtparam=audio=on"
     ]);
 
+  };
+
+  powerManagement = mkIf impozyzHaipyrThreding {
+    powerUpCommands = readFile ./softDisableHT.sh;
+    powerDownCommands = readFile ./softEnableHT.sh;
   };
 
   programs.light.enable = !izSentyr;
@@ -83,10 +87,10 @@ in
       "auto-cpufreq.conf".text = toINI { } autoCpufreqSettings;
     };
 
-    systemPackages = optionals tcipIzIntel (with pkgs;
-      [ libva-utils i7z ]);
+    systemPackages = optionals tcipIzIntel
+      (with pkgs; [ libva-utils i7z ]);
 
-    interactiveShellInit = optionalString iuzColemak "stty -ixon"; # Disable Flow-control pause stone-age artifact;
+    interactiveShellInit = optionalString iuzColemak "stty -ixon";
     sessionVariables = (optionalAttrs iuzColemak {
       XKB_DEFAULT_LAYOUT = "us";
       XKB_DEFAULT_VARIANT = "colemak";

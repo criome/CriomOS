@@ -1,10 +1,10 @@
 { config, kor, hyraizyn, pkgs, lib, ... }:
 let
   inherit (kor) mapAttrsToList eksportJSON;
-  inherit (lib) concatStringsSep mkOverride;
+  inherit (lib) concatStringsSep mkOverride optional;
   inherit (pkgs) mksh writeScript gnupg;
   inherit (hyraizyn) astra exAstriz;
-  inherit (hyraizyn.astra.spinyrz) tcipIzIntel;
+  inherit (hyraizyn.astra.spinyrz) tcipIzIntel saizAtList;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
@@ -23,7 +23,8 @@ in
 
     kernelPackages = pkgs.linuxPackages_latest;
 
-    supportedFilesystems = mkOverride 50 [ "xfs" "btrfs" ]; # TODO remove btrfs
+    supportedFilesystems = mkOverride 50
+      ([ "xfs" "btrfs" ] ++ (optional saizAtList.min "exfat"));
   };
 
   documentation = {
