@@ -129,9 +129,8 @@ in
       };
     };
 
-    redshift = {
+    gammastep = {
       enable = true;
-      package = pkgs.redshift-wlr;
       provider = "geoclue2";
       temperature = {
         day = 6000;
