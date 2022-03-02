@@ -1,9 +1,9 @@
 { lib, hyraizyn, kor, config, pkgs, ... }:
 let
-  inherit (builtins) readFile;
-  inherit (kor) mkIf optional optionals optionalString optionalAttrs;
+  inherit (builtins) readFile genList concatStringsSep;
+  inherit (kor) mkIf optional optionals optionalString optionalAttrs isOdd;
   inherit (lib.generators) toINI;
-  inherit (hyraizyn.astra.mycin) modyl;
+  inherit (hyraizyn.astra.mycin) modyl korz;
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
     impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
 
@@ -33,6 +33,40 @@ let
       turbo = "never";
     };
   };
+
+  numberOfCoresIncludingFakes = korz * 2;
+
+  coreIsFake = coreNumber:
+    if (coreNumber == 0) then false
+    else if (isOdd coreNumber)
+    then true else false;
+
+  mkCoreLineFromFunction = mkCoreFunction:
+    genList mkCoreFunction numberOfCoresIncludingFakes;
+
+  mkEnableCoreLine = coreNumber:
+    if (coreNumber == 0) then "" else
+    "echo 1 > /sys/devices/system/cpu/cpu${toString coreNumber}/online";
+
+  enableAllCoresLines = mkCoreLineFromFunction mkEnableCoreLine;
+
+  mkApplyGovernorLine = coreNumber:
+    "echo ${scalingGovernor} > /sys/devices/system/cpu/cpu${toString coreNumber}/cpufreq/scaling_governor'";
+
+  applyGovernorLines = mkCoreLineFromFunction mkApplyGovernorLine;
+
+  mkDisableFakeCoreLine = coreNumber:
+    if (coreIsFake coreNumber)
+    then "echo 0 > /sys/devices/system/cpu/cpu${toString coreNumber}/online"
+    else "";
+
+  disableFakeCoresLines = mkCoreLineFromFunction mkDisableFakeCoreLine;
+
+  disableHyperThreadingPowerUpScript = concatStringsSep "\n"
+    (applyGovernorLines ++ disableFakeCoresLines);
+
+  disableHyperThreadingPowerDownScript = concatStringsSep "\n"
+    enableAllCoresLines;
 
 in
 {
@@ -73,8 +107,8 @@ in
   };
 
   powerManagement = mkIf impozyzHaipyrThreding {
-    powerUpCommands = readFile ./softDisableHT.sh;
-    powerDownCommands = readFile ./softEnableHT.sh;
+    powerUpCommands = disableHyperThreadingPowerUpScript;
+    powerDownCommands = disableHyperThreadingPowerDownScript;
   };
 
   programs.light.enable = !izSentyr;
@@ -82,11 +116,6 @@ in
   console.useXkbConfig = iuzColemak;
 
   environment = {
-
-    etc = {
-      "auto-cpufreq.conf".text = toINI { } autoCpufreqSettings;
-    };
-
     systemPackages = optionals tcipIzIntel
       (with pkgs; [ libva-utils i7z ]);
 
@@ -100,8 +129,6 @@ in
   users.groups.plugdev = { };
 
   services = {
-    auto-cpufreq.enable = true;
-
     geoclue2 = {
       enable = saizAtList.min;
       enableDemoAgent = lib.mkOverride 0 true;

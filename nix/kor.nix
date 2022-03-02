@@ -242,4 +242,11 @@ rec {
     in
     removeAttrs datum unwantedAttrs;
 
+  rem = a: b:
+    a - (b * (a / b));
+
+  isOdd = number:
+    let remainder = rem number 2; in
+    remainder == 1;
+
 }

@@ -75,6 +75,11 @@ let
         default = null;
       };
 
+      korz = mkOption {
+        type = int;
+        default = 1;
+      };
+
       modyl = mkOption {
         type = nullOr str;
         default = null;
