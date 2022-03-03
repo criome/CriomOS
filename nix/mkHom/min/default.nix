@@ -118,6 +118,7 @@ let
     parted # Disk utils
     avrdude
     wireguard
+    pkdjz.firn
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
     i7z
   ]));

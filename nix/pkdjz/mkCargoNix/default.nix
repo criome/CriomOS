@@ -14,6 +14,8 @@
 }@yrgz:
 
 let
+  inherit (lib) optionalAttrs;
+
   defaultCrateOverrides = argz.defaultCrateOverrides
     // kreitOvyraidz // crateOverrides;
 

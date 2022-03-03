@@ -305,11 +305,11 @@
     "crate2nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1643636139,
-        "narHash": "sha256-d+SsMV/ysXNu5mE1qIywpQdgleEKOdsK6L4h58AoFdc=",
+        "lastModified": 1645954724,
+        "narHash": "sha256-2Qy3zjTLhQ1mFclwpQ2m07imh9HSkaSoMaWTB9E6KSg=",
         "owner": "kolloch",
         "repo": "crate2nix",
-        "rev": "7178e530f7d617ac0b61a6e53c7f3b28710fb6cf",
+        "rev": "2fc6a77b92d7ad07f90b33ca2608fb846049c084",
         "type": "github"
       },
       "original": {
@@ -420,6 +420,23 @@
         "type": "github"
       }
     },
+    "firn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646303059,
+        "narHash": "sha256-Ds5h9kg+8QkoJRNbCEMHkrCS91Z9G4spM58DX2SeacU=",
+        "owner": "maisiliym",
+        "repo": "firn",
+        "rev": "546f2f4724297409be4beefec926c11456e96e4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maisiliym",
+        "ref": "main",
+        "repo": "firn",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -496,6 +513,7 @@
         "ement-el": "ement-el",
         "express_line-nvim": "express_line-nvim",
         "fenix": "fenix",
+        "firn": "firn",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
@@ -524,11 +542,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1646204665,
-        "narHash": "sha256-/R996NHySqpJEmmouF3qNayeCc2YvKrzypqNIOv75xU=",
+        "lastModified": 1646306573,
+        "narHash": "sha256-87nDZC2+TfD4vURDuVy1qW1qDgP862WUJQsIkTietL8=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "44b8bf515571c2205a37e4f51a76ef5def763d05",
+        "rev": "4224a90315bd6ffc097e68b4292d690dba8a72be",
         "type": "github"
       },
       "original": {

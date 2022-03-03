@@ -4,6 +4,18 @@ let
 
 in
 {
+  firn =
+    {
+      modz = [ "pkdjz" ];
+      lamdy = { src, mkCargoNix, }:
+        let
+          cargoNixRyzylt = mkCargoNix {
+            cargoNix = import (src + /Cargo.nix);
+          };
+        in
+        cargoNixRyzylt.workspaceMembers.firn.build;
+    };
+
   jumpdrive = {
     modz = [ "pkgs" "pkdjz" ];
     src = null;
