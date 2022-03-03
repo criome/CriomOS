@@ -117,6 +117,7 @@ let
     gptfdisk
     parted # Disk utils
     avrdude
+    wireguard
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
     i7z
   ]));
