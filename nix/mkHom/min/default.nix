@@ -119,6 +119,8 @@ let
     avrdude
     wireguard
     pkdjz.firn
+    pkdjz.crate2nix
+    cargo
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
     i7z
   ]));
