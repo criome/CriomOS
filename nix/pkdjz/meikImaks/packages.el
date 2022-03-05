@@ -1,3 +1,5 @@
+(use-package tera-mode)
+
 (use-package rust-mode)
 
 (use-package magit-delta

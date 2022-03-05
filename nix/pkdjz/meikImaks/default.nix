@@ -59,6 +59,15 @@ let
         '';
       };
 
+    tera-mode =
+      let src = hob.tera-mode.mein; in
+      trivialBuild {
+        pname = "tera-mode";
+        inherit src;
+        version = src.shortRev;
+        commit = src.rev;
+      };
+
     xah-fly-keys =
       let src = hob.xah-fly-keys.mein; in
       trivialBuild {
