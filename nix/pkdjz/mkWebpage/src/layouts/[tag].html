@@ -1,0 +1,41 @@
+{% import "macros.html" as macros %}
+<html>
+  {% include "partials/head.html" %}
+  <body style="display: flex;">
+    <main style="width: 600px; margin: 0 auto; padding: 32px;">
+    <div>
+      <h1>{{tag_name | capitalize}}</h1>
+      {# Example: Render a list of pages that use the current firn/roam tag. #}
+      {% for tag in tagged_items %}
+        {% if tag.tag_type == "firn" %}
+          <li>
+            <a href="{{tag.path}}">{{tag.title}}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+
+      {# The below code is commented out.
+
+        If you wish to also render tags from org headline tags,
+        use something like the code below
+        and set tags > org = true in config.yaml.
+
+      <h3>Headline Tags</h3>
+      {% for tag in tagged_items %}
+        {% if tag.tag_type == "org" %}
+          <li>
+            <a href="{{tag.path}}">{{tag.title}}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      #}
+
+    </div>
+    </main>
+
+    <aside style="padding: 32px; width: 300px;">
+      {{macros::link_list(title="Tags", list_items=tags)}}
+    </aside>
+  </body>
+</html>

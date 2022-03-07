@@ -528,6 +528,7 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla",
         "nvim-base16-lua": "nvim-base16-lua",
         "nvim-cursorline": "nvim-cursorline",
+        "page-maisiliym-uniks": "page-maisiliym-uniks",
         "ql2nix": "ql2nix",
         "ron-vim": "ron-vim",
         "sajban": "sajban",
@@ -536,17 +537,18 @@
         "shen-mode": "shen-mode",
         "skrips": "skrips",
         "species-el": "species-el",
+        "tera-mode": "tera-mode",
         "tokei-vim": "tokei-vim",
         "vim-shen": "vim-shen",
         "xah-fly-keys": "xah-fly-keys",
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1646306573,
-        "narHash": "sha256-87nDZC2+TfD4vURDuVy1qW1qDgP862WUJQsIkTietL8=",
+        "lastModified": 1646642120,
+        "narHash": "sha256-qOseZer66E/lF5E1G/Uozb+69qYfPu7HcOyF1DjeoeQ=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "4224a90315bd6ffc097e68b4292d690dba8a72be",
+        "rev": "48880e3caf5d109f861cd6bcfd06287f77e830af",
         "type": "github"
       },
       "original": {
@@ -722,6 +724,18 @@
         "type": "github"
       }
     },
+    "mkWebpage": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-BGp3pEXb2BhV3A1/N7Vol02SzhL7yY6vl7FOsjMBexc=",
+        "path": "./nix/pkdjz/mkWebpage/src",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/pkdjz/mkWebpage/src",
+        "type": "path"
+      }
+    },
     "naersk": {
       "flake": false,
       "locked": {
@@ -840,6 +854,22 @@
         "type": "github"
       }
     },
+    "page-maisiliym-uniks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646627294,
+        "narHash": "sha256-w5r7X7KoXGEexE3UzGUSjZCLRCS1zAnkAewhUEuo7GE=",
+        "owner": "maisiliym",
+        "repo": "page.maisiliym.uniks",
+        "rev": "98a89d9619937a3f2ac5666cc800722bbfa061af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "maisiliym",
+        "repo": "page.maisiliym.uniks",
+        "type": "github"
+      }
+    },
     "printf": {
       "flake": false,
       "locked": {
@@ -926,7 +956,8 @@
         "AskiCoreUniks": "AskiCoreUniks",
         "AskiDefaultBuilder": "AskiDefaultBuilder",
         "AskiUniks": "AskiUniks",
-        "hob": "hob"
+        "hob": "hob",
+        "mkWebpage": "mkWebpage"
       }
     },
     "rust-analyzer-src": {
@@ -1040,6 +1071,22 @@
       "original": {
         "owner": "sajban",
         "repo": "species.el",
+        "type": "github"
+      }
+    },
+    "tera-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643416559,
+        "narHash": "sha256-Zs2jzBiyuWZzwxRZvYp4yFdkyEbVTeiKCNJQWHr8uJI=",
+        "owner": "svavs",
+        "repo": "tera-mode",
+        "rev": "cfee718214825e9d461842f538b94372ea55771a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "svavs",
+        "repo": "tera-mode",
         "type": "github"
       }
     },

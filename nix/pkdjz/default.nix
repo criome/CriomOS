@@ -99,6 +99,11 @@ let
       self = null;
     };
 
+    mkWebpage = {
+      lamdy = import ./mkWebpage;
+      modz = [ "pkgs" "lib" "pkdjz" ];
+    };
+
     mozPkgs = {
       lamdy = import ./mozPkgs;
       modz = [ "pkdjz" ];

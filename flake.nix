@@ -16,12 +16,24 @@
       url = path:./AskiDefaultBuilder;
       flake = false;
     };
+    mkWebpage = {
+      url = path:./nix/pkdjz/mkWebpage/src;
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, hob, ... }:
     let
-      # (hak directInputsImports)
-      hob = inputs.hob.Hob;
+      mkHobSpokMein = name: mein: { inherit mein; };
+
+      localHobSourcesRaw = {
+        inherit (inputs) mkWebpage
+          AskiCoreUniks AskiUniks AskiDefaultBuilder;
+      };
+
+      localHobSources = mapAttrs mkHobSpokMein localHobSourcesRaw;
+
+      hob = localHobSources // inputs.hob.Hob;
       nixpkgs = hob.nixpkgs.mein;
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;
@@ -35,18 +47,18 @@
       mkKriozonz = import ./nix/mkKriozonz;
       mkUniksOS = import ./nix/mkUniksOS;
       mkHom = import ./nix/mkHom;
-      neksysProposalHobSpokNames = import ./neksysProposalHobSpokNames.nix;
+      neksysNames = import ./neksysNames.nix;
 
-      inherit (builtins) fold attrNames mapAttrs;
+      inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
       inherit (kor) mkLamdy arkSistymMap genAttrs;
-      inherit (flake-utils.lib) eachDefaultSystem;
+      inherit (flake-utils.lib) eachDefaultSystem flattenTree;
 
       generateKriosfirProposalFromName = name:
         hob."${name}".mein.NeksysProposal;
 
       uncheckedKriosfirProposal = genAttrs
-        neksysProposalHobSpokNames
+        neksysNames
         generateKriosfirProposalFromName;
 
       mkNeksysDerivations = priNeksysNeim: kriozon:
@@ -108,7 +120,10 @@
           pkgs = nixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
           mkUyrld = import ./nix/mkUyrld.nix;
-          uyrld = mkUyrld { inherit pkgs kor lib system hob AskiUniksSources; };
+          uyrld = mkUyrld {
+            inherit pkgs kor lib system hob
+              neksysNames;
+          };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 
@@ -135,10 +150,11 @@
           allMeinHobOutputs = linkFarm "hob.mein"
             (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
 
-          packages = uyrld // {
-            inherit pkgs;
-            hob = hobOutputs // { mein = allMeinHobOutputs; };
-          };
+          packages = flattenTree
+            (uyrld // {
+              inherit pkgs;
+              hob = hobOutputs // { mein = allMeinHobOutputs; };
+            });
 
         in
         { inherit uyrld legacyPackages packages defaultPackage devShell; };

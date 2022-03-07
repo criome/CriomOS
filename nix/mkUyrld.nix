@@ -1,6 +1,6 @@
-{ kor, pkgs, lib, hob, system, AskiUniksSources }:
+{ kor, pkgs, lib, hob, system, neksysNames }:
 let
-  inherit (builtins) hasAttr mapAttrs;
+  inherit (builtins) hasAttr mapAttrs concatStringsSep elem;
   inherit (uyrld) pkdjz;
 
   meikSobUyrld = SobUyrld@{ lamdy, modz, self, src ? self, sobUyrldz ? { } }:
@@ -35,8 +35,7 @@ let
         // { inherit system; }
         # TODO: deprecate `self` for `src`
         // { inherit self; }
-        // { src = self; }
-        // { inherit AskiUniksSources; };
+        // { src = self; };
 
     in
     mkLamdy { inherit klozyr lamdy; };
@@ -77,6 +76,25 @@ let
         in
         sobUyrldz;
 
+      mkNeksysWebpageName = neksysNeim:
+        concatStringsSep "-" [ "page" neksysNeim "uniks" ];
+
+      neksysWebpageSpokNames = map mkNeksysWebpageName neksysNames;
+
+      isWebpageSpok = spokNeim:
+        elem spokNeim neksysWebpageSpokNames;
+
+      mkWebpageFleik = Webpage@{ content ? fleik, ... }:
+        let
+          SobUyrld = {
+            self = null;
+            modz = [ "pkdjz" ];
+            lamdy = { mkWebpage }:
+              mkWebpage Webpage;
+          };
+        in
+        meikSobUyrld SobUyrld;
+
     in
     if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
@@ -86,6 +104,10 @@ let
     then meikSobUyrldz fleik.SobUyrldz
     else if (hasAttr "SobUyrld" fleik)
     then priMeikSobUyrld spokNeim fleik.SobUyrld
+    else if (hasAttr "Webpage" fleik)
+    then mkWebpageFleik fleik.Webpage
+    else if (isWebpageSpok spokNeim)
+    then mkWebpageFleik { content = fleik; }
     else fleik;
 
   meikSpok = spokNeim: spok:
