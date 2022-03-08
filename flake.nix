@@ -55,7 +55,7 @@
       inherit (flake-utils.lib) eachDefaultSystem flattenTree;
 
       generateKriosfirProposalFromName = name:
-        hob."${name}".mein.NeksysProposal;
+        hob."${name}".mein.NeksysProposal or { };
 
       uncheckedKriosfirProposal = genAttrs
         neksysNames
