@@ -1,8 +1,8 @@
 {% import "macros.html" as macros %}
 <html>
   {% include "partials/head.html" %}
-  <body style="display: flex;">
-    <main style="width: 600px; margin: 0 auto; padding: 32px;">
+  <body>
+    <main>
     <div>
       <h1>{{tag_name | capitalize}}</h1>
       {# Example: Render a list of pages that use the current firn/roam tag. #}
@@ -34,7 +34,7 @@
     </div>
     </main>
 
-    <aside style="padding: 32px; width: 300px;">
+    <aside>
       {{macros::link_list(title="Tags", list_items=tags)}}
     </aside>
   </body>

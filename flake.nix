@@ -52,7 +52,7 @@
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
       inherit (kor) mkLamdy arkSistymMap genAttrs;
-      inherit (flake-utils.lib) eachDefaultSystem flattenTree;
+      inherit (flake-utils.lib) eachDefaultSystem;
 
       generateKriosfirProposalFromName = name:
         hob."${name}".mein.NeksysProposal or { };
@@ -150,11 +150,11 @@
           allMeinHobOutputs = linkFarm "hob.mein"
             (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
 
-          packages = flattenTree
-            (uyrld // {
-              inherit pkgs;
-              hob = hobOutputs // { mein = allMeinHobOutputs; };
-            });
+          packages = uyrld // {
+            inherit pkgs;
+            hob = hobOutputs;
+            fullHob = allMeinHobOutputs;
+          };
 
         in
         { inherit uyrld legacyPackages packages defaultPackage devShell; };

@@ -4,17 +4,33 @@ let
 
 in
 {
-  firn =
-    {
-      modz = [ "pkdjz" ];
-      lamdy = { src, mkCargoNix, }:
-        let
-          cargoNixRyzylt = mkCargoNix {
-            cargoNix = import (src + /Cargo.nix);
-          };
-        in
-        cargoNixRyzylt.workspaceMembers.firn.build;
-    };
+  reseter-css = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      let
+      in
+      stdenv.mkDerivation {
+        name = "reseter.css";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib
+          cp -R ./css $out/lib
+          cp -R ./src/* $out/lib
+        '';
+      };
+  };
+
+  firn = {
+    modz = [ "pkdjz" ];
+    lamdy = { src, mkCargoNix, }:
+      let
+        cargoNixRyzylt = mkCargoNix {
+          cargoNix = import (src + /Cargo.nix);
+        };
+      in
+      cargoNixRyzylt.workspaceMembers.firn.build;
+  };
 
   jumpdrive = {
     modz = [ "pkgs" "pkdjz" ];

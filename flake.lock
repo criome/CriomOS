@@ -528,8 +528,10 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla",
         "nvim-base16-lua": "nvim-base16-lua",
         "nvim-cursorline": "nvim-cursorline",
+        "page-bird-uniks": "page-bird-uniks",
         "page-maisiliym-uniks": "page-maisiliym-uniks",
         "ql2nix": "ql2nix",
+        "reseter-css": "reseter-css",
         "ron-vim": "ron-vim",
         "sajban": "sajban",
         "sbcl": "sbcl",
@@ -544,11 +546,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1646642120,
-        "narHash": "sha256-qOseZer66E/lF5E1G/Uozb+69qYfPu7HcOyF1DjeoeQ=",
+        "lastModified": 1646800569,
+        "narHash": "sha256-V5npUkc1zstyYpErJMIQkHFRutfvt0pik0hFvQsyF6Q=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "48880e3caf5d109f861cd6bcfd06287f77e830af",
+        "rev": "2ea9bdc2191ccd04c70dbddbb540608b9ed07fec",
         "type": "github"
       },
       "original": {
@@ -854,6 +856,22 @@
         "type": "github"
       }
     },
+    "page-bird-uniks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646716783,
+        "narHash": "sha256-L4H38uuT2iZocNBq/qfu9rnKblCHEf11bDRVqXXyacs=",
+        "owner": "laif-zone",
+        "repo": "bird",
+        "rev": "d6fe512275a40bdc4aa25670127d22f6a2fb2e68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "laif-zone",
+        "repo": "bird",
+        "type": "github"
+      }
+    },
     "page-maisiliym-uniks": {
       "flake": false,
       "locked": {
@@ -932,6 +950,22 @@
         "owner": "qmk",
         "repo": "qmk_firmware",
         "rev": "bc15c4f4ab81c1e2950dfc1c38cf86dc626573c9",
+        "type": "github"
+      }
+    },
+    "reseter-css": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638941869,
+        "narHash": "sha256-Co0rALTVN4rQfCHe2dAVWpSChRlZ/O0gxRR/vunzZsE=",
+        "owner": "resetercss",
+        "repo": "reseter.css",
+        "rev": "69e80080dbadcbfb812c068fc12ba6bad26b7b78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "resetercss",
+        "repo": "reseter.css",
         "type": "github"
       }
     },
