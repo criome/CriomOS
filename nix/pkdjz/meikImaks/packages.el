@@ -1,3 +1,5 @@
+(use-package json-mode)
+
 (use-package tera-mode)
 
 (use-package rust-mode)

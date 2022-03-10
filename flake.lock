@@ -729,7 +729,7 @@
     "mkWebpage": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BGp3pEXb2BhV3A1/N7Vol02SzhL7yY6vl7FOsjMBexc=",
+        "narHash": "sha256-ugt+CkmurNcdkktR34FJdAx8j/gxsvHRDN0KYXYo4ZE=",
         "path": "./nix/pkdjz/mkWebpage/src",
         "type": "path"
       },

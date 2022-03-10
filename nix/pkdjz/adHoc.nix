@@ -18,6 +18,9 @@ in
           cp -R ./css $out/lib
           cp -R ./src/* $out/lib
         '';
+        passthru = {
+          scssLib = "/lib/scss/reseter.scss";
+        };
       };
   };
 

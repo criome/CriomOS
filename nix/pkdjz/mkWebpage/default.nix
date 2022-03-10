@@ -1,11 +1,15 @@
-{ src, lib, kynvyrt, stdenv, firn }:
+{ src, lib, kynvyrt, stdenv, firn, reseter-css, writeText }:
 
 { content
 , theme ? "simple"
 }:
 
 let
-  inherit (lib) optionalAttrs;
+  inherit (lib) optionalAttrs concatStrings;
+  inherit (builtins) concatStringsSep readFile;
+
+  reseterScss = reseter-css + /lib/scss;
+
   firnFiles = src;
 
   firnConfig = {
@@ -38,6 +42,21 @@ let
     format = "yaml";
   };
 
+  scssPackages = [ reseter-css ];
+
+  mkScssImportString = scssPackage: concatStrings
+    [ "@import " "\"" scssPackage scssPackage.passthru.scssLib "\"" ";" ];
+
+  scssImports = concatStringsSep "\n"
+    (map mkScssImportString scssPackages);
+
+  mkWebpageScss = readFile (src + /sass/main.scss);
+
+  finalMainScss = concatStringsSep "\n"
+    [ scssImports mkWebpageScss ];
+
+  finalMainScssFile = writeText "main.scss" finalMainScss;
+
 in
 stdenv.mkDerivation {
   name = "website";
@@ -48,7 +67,9 @@ stdenv.mkDerivation {
 
   patchPhase = ''
     mkdir _firn
-    ln -s ${firnFiles}/* _firn/
+    cp -R ${firnFiles}/* _firn/
+    chmod u+w -R _firn
+    cp -f ${finalMainScssFile} _firn/sass/main.scss
     ln -s ${yamlConfig} _firn/config.yaml
   '';
 
