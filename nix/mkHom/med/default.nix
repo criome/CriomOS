@@ -50,7 +50,10 @@ let
     uyrld.kibord.kpBootCli
     # Manuals
     unbound.man
-  ];
+  ] ++ (with nodePackages; [
+    stylelint
+    postcss
+  ]);
 
 in
 {
