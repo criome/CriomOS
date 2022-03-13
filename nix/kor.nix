@@ -15,6 +15,9 @@ rec {
   genAttrs = names: f:
     listToAttrs (map (n: nameValuePair n (f n)) names);
 
+  genNamedAttrs = names: f:
+    listToAttrs (map (n: f n) names);
+
   zipAttrsWithNames = names: f: sets:
     listToAttrs (map
       (name: {

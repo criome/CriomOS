@@ -45,6 +45,16 @@ let
         buildInputs = attrs.buildInputs ++ [ delta ];
       });
 
+    org-remark =
+      let
+        src = hob.org-remark.mein;
+      in
+      trivialBuild {
+        pname = "org-remark";
+        version = src.shortRev;
+        inherit src;
+      };
+
     shen-mode =
       let src = hob.shen-mode.mein; in
       melpaBuild {

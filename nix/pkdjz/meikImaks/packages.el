@@ -1,3 +1,8 @@
+(use-package org-remark
+  :custom
+  (org-remark-notes-file-name "~/git/wiki/remark.org")
+  (org-remark-source-file-name #'abbreviate-file-name))
+
 (use-package json-mode)
 
 (use-package tera-mode)

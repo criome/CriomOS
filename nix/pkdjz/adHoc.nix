@@ -91,4 +91,40 @@ in
       in
       releases;
   };
+
+  pnpm2nix = {
+    modz = [ "pkgs" "pkgsSet" ];
+    lamdy = { kor, src, pkgs }:
+      let
+        inherit (kor) genNamedAttrs;
+        versions = [ 12 14 ];
+
+        mkPnpm2nixVersion = versionInt:
+          let version = toString versionInt; in
+          {
+            name = "v${version}";
+            value = (import src) {
+              inherit pkgs;
+              nodejs = pkgs."nodejs-${version}_x";
+              nodePackages = pkgs.nodePackages;
+            };
+          };
+
+      in
+      genNamedAttrs versions mkPnpm2nixVersion;
+  };
+
+  postcss-scss = {
+    modz = [ "pkdjz" ];
+    lamdy = { src, pnpm2nix }:
+      let
+        inherit (pnpm2nix.v12) mkPnpmPackage;
+
+      in
+      mkPnpmPackage {
+        inherit src;
+        shrinkwrapYML = src + /pnpm-lock.yaml;
+      };
+  };
+
 }

@@ -8,8 +8,6 @@ let
   inherit (lib) optionalAttrs concatStrings;
   inherit (builtins) concatStringsSep readFile;
 
-  reseterScss = reseter-css + /lib/scss;
-
   firnFiles = src;
 
   firnConfig = {
@@ -50,7 +48,7 @@ let
   scssImports = concatStringsSep "\n"
     (map mkScssImportString scssPackages);
 
-  mkWebpageScss = readFile (src + /sass/main.scss);
+  mkWebpageScss = readFile (firnFiles + /sass/main.scss);
 
   finalMainScss = concatStringsSep "\n"
     [ scssImports mkWebpageScss ];

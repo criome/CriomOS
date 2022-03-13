@@ -286,6 +286,22 @@
         "type": "github"
       }
     },
+    "base16-styles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1493578694,
+        "narHash": "sha256-cGezU4UofSHvx3ZeRU9JuV63jksxy0L9KzUO+uWfUt8=",
+        "owner": "samme",
+        "repo": "base16-styles",
+        "rev": "8db4f00ca9e5575ba52d98a204ee44a53e13d546",
+        "type": "github"
+      },
+      "original": {
+        "owner": "samme",
+        "repo": "base16-styles",
+        "type": "github"
+      }
+    },
     "base16-theme": {
       "flake": false,
       "locked": {
@@ -505,6 +521,7 @@
         "FTerm-nvim": "FTerm-nvim",
         "aski": "aski",
         "astronauta-nvim": "astronauta-nvim",
+        "base16-styles": "base16-styles",
         "base16-theme": "base16-theme",
         "crate2nix": "crate2nix",
         "dunst": "dunst",
@@ -528,8 +545,11 @@
         "nixpkgs-mozilla": "nixpkgs-mozilla",
         "nvim-base16-lua": "nvim-base16-lua",
         "nvim-cursorline": "nvim-cursorline",
+        "org-remark": "org-remark",
         "page-bird-uniks": "page-bird-uniks",
         "page-maisiliym-uniks": "page-maisiliym-uniks",
+        "pnpm2nix": "pnpm2nix",
+        "postcss-scss": "postcss-scss",
         "ql2nix": "ql2nix",
         "reseter-css": "reseter-css",
         "ron-vim": "ron-vim",
@@ -546,11 +566,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1646800569,
-        "narHash": "sha256-V5npUkc1zstyYpErJMIQkHFRutfvt0pik0hFvQsyF6Q=",
+        "lastModified": 1647139070,
+        "narHash": "sha256-52OmFJwGaCSNfaDGeFvJxaR2mA2NhsEXFK4hg6l5AJA=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "2ea9bdc2191ccd04c70dbddbb540608b9ed07fec",
+        "rev": "e320d0de5c275e07575d7f876fe5cb6de8ab71f2",
         "type": "github"
       },
       "original": {
@@ -856,6 +876,22 @@
         "type": "github"
       }
     },
+    "org-remark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647076105,
+        "narHash": "sha256-TuIHMWbCCS9aB6HVDupms+MJojdEgzEs2WY+9i0puxM=",
+        "owner": "nobiot",
+        "repo": "org-remark",
+        "rev": "e78cdff25edffc74bfe4c65f3a02777d454f6d96",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nobiot",
+        "repo": "org-remark",
+        "type": "github"
+      }
+    },
     "page-bird-uniks": {
       "flake": false,
       "locked": {
@@ -885,6 +921,39 @@
       "original": {
         "owner": "maisiliym",
         "repo": "page.maisiliym.uniks",
+        "type": "github"
+      }
+    },
+    "pnpm2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643819446,
+        "narHash": "sha256-FdP9KwevnpiG2a/qSDweFj9ovmCyGPpxr74DBcmkxcs=",
+        "owner": "LavaDesu",
+        "repo": "pnpm2nix",
+        "rev": "cc84a5dbb74e5ac6ece88965e52a48e719d36a24",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LavaDesu",
+        "ref": "next",
+        "repo": "pnpm2nix",
+        "type": "github"
+      }
+    },
+    "postcss-scss": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641793600,
+        "narHash": "sha256-lUAT7ppHZnMeH7xme15FovqKxByWcwln2UmmvEoovus=",
+        "owner": "postcss",
+        "repo": "postcss-scss",
+        "rev": "96b2743c2e1864564c36385905b2fad65127c39c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "postcss",
+        "repo": "postcss-scss",
         "type": "github"
       }
     },
