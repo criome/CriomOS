@@ -2,7 +2,7 @@
   description = "Uniks";
 
   inputs = {
-    hob.url = github:sajban/hob;
+    hob.url = github:sajban/hob/franticSwing;
 
     AskiCoreUniks = {
       url = path:./AskiCoreUniks;

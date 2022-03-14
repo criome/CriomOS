@@ -34,7 +34,7 @@ let
 
   moduleArgsModule = {
     _module.args = {
-      inherit lib pkgs baseModules nixOSRev noUserModules;
+      inherit lib baseModules nixOSRev noUserModules;
     } // moduleArgs;
   };
 
