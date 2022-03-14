@@ -119,7 +119,7 @@ let
         let astri = exAstriz.${n};
         in
         {
-          hostname = astri.uniksNeim;
+          hostName = astri.uniksNeim;
           sshUser = "niksBildyr";
           sshKey = "/root/.ssh/id_ed25519";
           system = astri.sistym;
