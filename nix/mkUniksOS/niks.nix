@@ -1,6 +1,7 @@
-{ kor, pkgs, hyraizyn, uyrld, konstynts, ... }:
+{ kor, lib, pkgs, hyraizyn, uyrld, konstynts, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter;
+  inherit (lib) boolToString;
   inherit (kor) optionals mkIf optional eksportJSON;
 
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
@@ -72,8 +73,8 @@ in
       flake-registry = ${redjistri}
       experimental-features = nix-command flakes recursive-nix
       secret-key-files = ${priKriod}
-      keep-derivations = ${toString saizAtList.med}
-      keep-outputs = ${toString saizAtList.max}
+      keep-derivations = ${boolToString saizAtList.med}
+      keep-outputs = ${boolToString saizAtList.max}
       !include nixTokens
     '';
 
