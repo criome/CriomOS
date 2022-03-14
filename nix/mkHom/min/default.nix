@@ -117,7 +117,7 @@ let
     gptfdisk
     parted # Disk utils
     avrdude
-    wireguard
+    wireguard-tools
     pkdjz.firn
     pkdjz.crate2nix
     cargo
