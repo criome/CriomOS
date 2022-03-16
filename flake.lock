@@ -561,16 +561,17 @@
         "species-el": "species-el",
         "tera-mode": "tera-mode",
         "tokei-vim": "tokei-vim",
+        "toodoo-el": "toodoo-el",
         "vim-shen": "vim-shen",
         "xah-fly-keys": "xah-fly-keys",
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1647179668,
-        "narHash": "sha256-HGIV5zQrzi+raBg70cfhn3XsPqvlM7YODBXy0LCR7Hs=",
+        "lastModified": 1647404504,
+        "narHash": "sha256-NrFjXWWOM7qQqaj5nS0iexP8XiTi3cbETxLIjBUZQFw=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "66cde7a5cb39cad2626dbd540b6d4690842a27fc",
+        "rev": "0f706228d1167205c3f0ed24bc61b9b5e0b3db09",
         "type": "github"
       },
       "original": {
@@ -1205,6 +1206,22 @@
       "original": {
         "owner": "vmchale",
         "repo": "tokei-vim",
+        "type": "github"
+      }
+    },
+    "toodoo-el": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647324063,
+        "narHash": "sha256-qG93vX8TBd+4WIkAAciTknWrgX87XmNqkgPQCapXBwM=",
+        "owner": "ChanderG",
+        "repo": "toodoo.el",
+        "rev": "149a563863c2f728c5f903475dbce50547c51000",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ChanderG",
+        "repo": "toodoo.el",
         "type": "github"
       }
     },

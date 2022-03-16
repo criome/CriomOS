@@ -1,3 +1,6 @@
+(use-package toodoo
+  :custom (toodoo-evil-base nil))
+
 (use-package org-remark
   :custom
   (org-remark-notes-file-name "~/git/wiki/remark.org")

@@ -78,6 +78,15 @@ let
         commit = src.rev;
       };
 
+    toodoo =
+      let src = hob.toodoo-el.mein; in
+      trivialBuild {
+        pname = "toodoo";
+        inherit src;
+        version = src.shortRev;
+        commit = src.rev;
+      };
+
     xah-fly-keys =
       let src = hob.xah-fly-keys.mein; in
       trivialBuild {
