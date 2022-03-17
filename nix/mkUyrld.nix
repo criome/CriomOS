@@ -1,4 +1,4 @@
-{ kor, pkgs, lib, hob, system, neksysNames }:
+{ kor, pkgs, lib, hob, system, neksysNames, bootstrapUyrld }:
 let
   inherit (builtins) hasAttr mapAttrs concatStringsSep elem;
   inherit (uyrld) pkdjz;
@@ -17,6 +17,7 @@ let
         "pkdjz"
         "uyrld"
         "uyrldSet"
+        "bootstrapUyrld"
       ];
 
       iuzMod = genAttrs Modz (n: (elem n modz));
@@ -30,6 +31,7 @@ let
         // optionalAttrs iuzMod.lib { inherit lib; }
         // optionalAttrs iuzMod.pkgsSet { inherit pkgs; }
         // optionalAttrs iuzMod.uyrldSet { inherit uyrld; }
+        // optionalAttrs iuzMod.bootstrapUyrld { inherit bootstrapUyrld; }
         // sobUyrldz
         // { inherit kor; }
         // { inherit system; }

@@ -2,6 +2,8 @@
   description = "Uniks";
 
   inputs = {
+    bootstrapUniks.url = github:sajban/uniks/spinningTops;
+
     hob.url = github:sajban/hob/franticSwing;
 
     AskiCoreUniks = {
@@ -22,7 +24,7 @@
     };
   };
 
-  outputs = inputs@{ self, hob, ... }:
+  outputs = inputs@{ self, ... }:
     let
       mkHobSpokMein = name: mein: { inherit mein; };
 
@@ -119,10 +121,11 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
+          bootstrapUyrld = inputs.bootstrapUniks.uyrld.${system};
           mkUyrld = import ./nix/mkUyrld.nix;
           uyrld = mkUyrld {
             inherit pkgs kor lib system hob
-              neksysNames;
+              neksysNames bootstrapUyrld;
           };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
