@@ -4,26 +4,6 @@ let
 
 in
 {
-  reseter-css = {
-    modz = [ "pkgs" ];
-    lamdy = { src, stdenv }:
-      let
-      in
-      stdenv.mkDerivation {
-        name = "reseter.css";
-        inherit src;
-        phases = [ "unpackPhase" "installPhase" ];
-        installPhase = ''
-          mkdir -p $out/lib
-          cp -R ./css $out/lib
-          cp -R ./src/* $out/lib
-        '';
-        passthru = {
-          scssLib = "/lib/scss/reseter.scss";
-        };
-      };
-  };
-
   firn = {
     modz = [ "pkdjz" ];
     lamdy = { src, mkCargoNix, }:
@@ -124,6 +104,26 @@ in
       mkPnpmPackage {
         inherit src;
         shrinkwrapYML = src + /pnpm-lock.yaml;
+      };
+  };
+
+  reseter-css = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      let
+      in
+      stdenv.mkDerivation {
+        name = "reseter.css";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib
+          cp -R ./css $out/lib
+          cp -R ./src/* $out/lib
+        '';
+        passthru = {
+          scssLib = "/lib/scss/reseter.scss";
+        };
       };
   };
 
