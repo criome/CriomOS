@@ -67,6 +67,16 @@ let
       default = null;
     };
 
+    linkLocalIPs = mkOption {
+      type = listOf attrs;
+      default = [ ];
+    };
+
+    wireguardPriKriom = mkOption {
+      type = nullOr str;
+      default = null;
+    };
+
     spinyrz = mkOption {
       type = attrs;
       default = { };

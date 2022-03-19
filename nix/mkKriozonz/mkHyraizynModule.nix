@@ -54,6 +54,8 @@ let
         neim = astriNeim;
         inherit (inputAstri) saiz spici;
 
+        linkLocalIPs = inputAstri.linkLocalIPs or [ ];
+
         trost = mkTrost
           [ inputAstri.trost inputMetastra.trost.astriz.${astriNeim} ];
 
@@ -79,6 +81,8 @@ let
           inherit (astri) spici trost saiz niksPriKriom
             yggAddress uniksNeim;
 
+          wireguardPriKriom = inputAstri.wireguardPriKriom or null;
+
         in
         rec {
           saizAtList = kor.mkSaizAtList saiz;
@@ -92,6 +96,7 @@ let
           izYggKriodaizd = yggAddress != null;
           izNeksisKriodaizd = izYggKriodaizd;
           izEseseitcKriodaizd = hasAttr "eseseitc" inputAstri.priKriomz;
+          hazWireguardPriKriom = wireguardPriKriom != null;
 
           izKriodaizd = izNiksKriodaizd && izYggKriodaizd && izEseseitcKriodaizd;
 

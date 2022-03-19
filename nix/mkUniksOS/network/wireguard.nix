@@ -2,7 +2,8 @@
 let
   inherit (builtins) mapAttrs attrNames filter;
   inherit (kor) mkIf;
-  inherit (hyraizyn.astra.spinyrz) izWireguardKriadyd wireguard;
+  inherit (hyraizyn) exAstriz;
+  inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom wireguard;
 
   untrustedProxies =
     map mkUntrustedProxy wireguard.untrustedProxies;
@@ -14,6 +15,8 @@ let
       endpoint = "";
     };
 
+  neksysPeers = map mkNeksysPeer exAstriz;
+
 in
 {
   networking = {
@@ -23,7 +26,7 @@ in
         wg0 = {
           ips = [ ];
           privateKey = "";
-          peers = untrustedProxies;
+          peers = neksysPeers ++ untrustedProxies;
         };
       };
     };
