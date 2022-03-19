@@ -1,5 +1,8 @@
 (use-package toodoo
-  :custom (toodoo-evil-base nil))
+  :init
+  (setq toodoo-evil-base nil)
+  :custom
+  (toodoo-main-file "~/git/wiki/todo.org"))
 
 (use-package org-remark
   :custom
