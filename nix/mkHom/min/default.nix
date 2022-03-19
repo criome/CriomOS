@@ -60,6 +60,7 @@ let
     { youtubeSupport = saizAtList.med; };
 
   nixpkgsPackages = with pkgs; [
+    pijul
     mksh # saner bash
     retry
     ovyridynFzf
