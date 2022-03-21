@@ -162,6 +162,7 @@ in
       # ctags
       swaylock
       grim
+      slurp
       waybar
       zathura
       wl-clipboard
