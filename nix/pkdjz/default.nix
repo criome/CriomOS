@@ -35,6 +35,11 @@ let
       modz = [ "pkgs" ];
     };
 
+    fetchPijul = {
+      lamdy = import ./fetchPijul;
+      modz = [ "pkgs" ];
+    };
+
     guix = {
       lamdy = import ./guix;
       modz = [ "lib" "pkgs" "hob" ];

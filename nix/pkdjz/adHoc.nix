@@ -72,6 +72,15 @@ in
       releases;
   };
 
+  pijulSrc = {
+    modz = [ "pkdjz" ];
+    lamdy = { fetchPijul }: fetchPijul {
+      name = "pijul-repo";
+      url = "https://nest.pijul.com/pijul/pijul";
+      sha256 = "J0hPEUXHHLwDRVC+90Vz9thTi/znLQ2trJ6ktUG5tKQ=";
+    };
+  };
+
   pnpm2nix = {
     modz = [ "pkgs" "pkgsSet" ];
     lamdy = { kor, src, pkgs }:
