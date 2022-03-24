@@ -48,26 +48,28 @@ in
   nix = {
     package = uyrld.pkdjz.nix;
 
-    trustedUsers = [ "root" "@nixdev" ];
+    settings = {
+      trusted-users = [ "root" "@nixdev" ];
 
-    allowedUsers = [ "@users" "nix-serve" ]
-      ++ optional izBildyr "niksBildyr";
+      allowed-users = [ "@users" "nix-serve" ]
+        ++ optional izBildyr "niksBildyr";
 
-    buildCores = astra.nbOfBildKorz;
+      build-cores = astra.nbOfBildKorz;
+
+      extra-sandbox-paths = [
+        # "/links"  # TODO
+      ];
+
+      trusted-public-keys = trostydBildPriKriomz;
+      substituters = kacURLz;
+      trusted-substituters = kacURLz;
+
+      auto-optimise-store = true;
+    };
 
     # Lowest priorities
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedPriority = 7;
-
-    sandboxPaths = [
-      # "/links"  # TODO
-    ];
-
-    binaryCachePublicKeys = trostydBildPriKriomz;
-    binaryCaches = kacURLz;
-    trustedBinaryCaches = kacURLz;
-
-    autoOptimiseStore = true;
 
     extraOptions = ''
       flake-registry = ${redjistri}
