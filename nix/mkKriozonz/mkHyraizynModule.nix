@@ -193,9 +193,7 @@ let
         (optionalAttrs (modyl != null)
           { "${modyl}" = true; });
 
-      wireguard = {
-        untrustedProxies = [ ];
-      };
+      wireguardUntrustedProxies = astra.wireguardUntrustedProxies or [ ];
     };
 
   mkKrimyn = krimynNeim:

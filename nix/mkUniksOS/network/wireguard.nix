@@ -3,16 +3,16 @@ let
   inherit (builtins) mapAttrs attrNames filter;
   inherit (kor) mkIf mapAttrsToList;
   inherit (hyraizyn) exAstriz;
-  inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom wireguard;
-
-  untrustedProxies =
-    map mkUntrustedProxy wireguard.untrustedProxies;
+  inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom
+    wireguardUntrustedProxies;
 
   mkUntrustedProxy = untrustedProxy: {
     allowedIPs = [ ];
     publicKey = "";
     endpoint = "";
   };
+
+  untrustedProxies = map mkUntrustedProxy wireguardUntrustedProxies;
 
   mkNeksysPeer = neim: astri: {
     allowedIPs = [ ];

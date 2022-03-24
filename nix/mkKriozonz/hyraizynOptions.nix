@@ -82,6 +82,11 @@ let
       default = null;
     };
 
+    wireguardUntrustedProxies = mkOption {
+      type = listOf attrs;
+      default = [ ];
+    };
+
     spinyrz = mkOption {
       type = attrs;
       default = { };
