@@ -54,11 +54,6 @@ in
     ];
   };
 
-  networking = {
-    hostName = astra.neim;
-    dhcpcd.extraConfig = "noipv4ll";
-  };
-
   hardware = {
     cpu.intel.updateMicrocode = tcipIzIntel;
   };

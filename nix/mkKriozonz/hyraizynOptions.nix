@@ -72,6 +72,11 @@ let
       default = [ ];
     };
 
+    neksysIp = mkOption {
+      type = nullOr str;
+      default = null;
+    };
+
     wireguardPriKriom = mkOption {
       type = nullOr str;
       default = null;

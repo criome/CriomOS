@@ -82,6 +82,7 @@ let
             yggAddress uniksNeim;
 
           wireguardPriKriom = inputAstri.wireguardPriKriom or null;
+          neksysIp = inputAstri.neksysIp or null;
 
         in
         rec {
@@ -191,6 +192,10 @@ let
       computerIs = computerIsNotMap //
         (optionalAttrs (modyl != null)
           { "${modyl}" = true; });
+
+      wireguard = {
+        untrustedProxies = [ ];
+      };
     };
 
   mkKrimyn = krimynNeim:
