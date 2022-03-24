@@ -97,6 +97,9 @@ let
         in
         meikSobUyrld SobUyrld;
 
+      fleikHasDefaultPackage = hasAttr "defaultPackage" fleik
+        && hasAttr system fleik.defaultPackage;
+
     in
     if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
@@ -110,6 +113,8 @@ let
     then mkWebpageFleik fleik.Webpage
     else if (isWebpageSpok spokNeim)
     then mkWebpageFleik { content = fleik; }
+    else if fleikHasDefaultPackage
+    then fleik.defaultPackage.${system}
     else fleik;
 
   meikSpok = spokNeim: spok:
