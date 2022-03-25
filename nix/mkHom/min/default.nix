@@ -126,9 +126,10 @@ let
     i7z
   ]));
 
-  uyrldPackages = [
+  uyrldPackages = with uyrld; [
     pkdjz.shen-bootstrap
-    uyrld.skrips
+    skrips
+    jujutsu
   ];
 
 in
