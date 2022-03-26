@@ -805,16 +805,15 @@
     "ement-el_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1639021354,
-        "narHash": "sha256-S2or0nN+Sbhb5UW+mthzzKQTmhHPXorlge0GfdfpeHM=",
-        "owner": "maisiliym",
+        "lastModified": 1648261977,
+        "narHash": "sha256-7igkb6h56VwTchU7l3poX0FFaLFyfSwKoXS7L/U9C2M=",
+        "owner": "alphapapa",
         "repo": "ement.el",
-        "rev": "50cee245580f792477190bb18e788ee5eb9f79cd",
+        "rev": "70c4d5346c5cd5d9796c59440675c80f0653c7a3",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
-        "ref": "mein",
+        "owner": "alphapapa",
         "repo": "ement.el",
         "type": "github"
       }
@@ -1170,11 +1169,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1648114428,
-        "narHash": "sha256-P2HdejLZolhYyiTocW3Ta4uHFlmeHlqfMWX7/Zq5XXs=",
+        "lastModified": 1648262069,
+        "narHash": "sha256-T0+xhM8Irutl36HTMI5Iu3XDjboq6odppPukuQnBxfQ=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "6cd8b034342fd269f59502d8d54b540d92012de7",
+        "rev": "7d34cf8a7e9c54aad7e7ae93e08493bf943f2eb7",
         "type": "github"
       },
       "original": {
