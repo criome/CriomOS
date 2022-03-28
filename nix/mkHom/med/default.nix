@@ -26,7 +26,6 @@ let
     # start('pythonPackages')
     ranger
     # C/C++
-    fish
     binutils
     openssh
     nginx

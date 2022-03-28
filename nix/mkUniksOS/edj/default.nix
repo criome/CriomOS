@@ -31,6 +31,8 @@ in
   programs = {
     file-roller.enable = saizAtList.med;
 
+    fish.enable = saizAtList.min;
+
     geary.enable = mkIf saizAtList.med (mkOverride 0 false); # force to disable keyring
 
     adb.enable = saizAtList.med;

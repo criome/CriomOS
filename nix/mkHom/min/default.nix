@@ -155,6 +155,8 @@ in
   };
 
   programs = {
+    fish.enable = saizAtList.min;
+
     git = {
       enable = true;
       userEmail = matrixID;
