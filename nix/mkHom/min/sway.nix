@@ -14,7 +14,7 @@ let
   homeDir = config.home.homeDirectory;
   nixProfileExec = name: "${homeDir}/.nix-profile/bin/${name}";
 
-  shell = nixProfileExec "mksh";
+  shell = zshEksek;
   zshEksek = nixProfileExec "zsh";
   neovim = nixProfileExec "nvim";
   elementaryCode = nixProfileExec "io.elementary.code";

@@ -57,7 +57,7 @@ in
   users = {
     users = mkKrimynUsers // rootUserAkses;
 
-    defaultUserShell = pkgs.mksh;
+    defaultUserShell = "/run/current-system/sw/bin/zsh";
 
   };
 

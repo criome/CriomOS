@@ -236,10 +236,6 @@ in
     file = {
       ".config/broot/conf.toml".text = brootConfig;
 
-      ".mkshrc".text = ''
-        [[ -n "$PS1" ]] && SHELL=${zshEksek} exec ${zshEksek}
-      '';
-
       ".cargo/config.toml".source = kynvyrt {
         neim = "cargo-config";
         format = "toml";

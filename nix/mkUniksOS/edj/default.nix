@@ -48,6 +48,10 @@ in
         export GDK_BACKEND=wayland
       '';
     };
+
+    zsh = {
+      enable = true;
+    };
   };
 
   services = {
