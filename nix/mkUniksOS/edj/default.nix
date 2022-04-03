@@ -23,6 +23,8 @@ in
     ];
   };
 
+  networking.networkmanager.enable = saizAtList.min;
+
   sound = {
     enable = true;
     extraConfig = "";
