@@ -13,10 +13,6 @@ let
 
   zshEksek = "${pkgs.zsh}/bin/zsh";
 
-  zoxideZshInit = pkgs.runCommandLocal "zoxideInit.zsh"
-    { nativeBuildInputs = [ pkgs.zoxide ]; }
-    "zoxide init zsh > $out";
-
   fzfBinds = [ ];
   fzfColemakBinds = import ./fzfColemak.nix;
 
@@ -98,7 +94,6 @@ let
     tio # serial tty
     androidenv.androidPkgs_9_0.platform-tools # adb/fastboot
     #== rust
-    zoxide
     sd
     ripgrep
     fd
@@ -155,7 +150,7 @@ in
   };
 
   programs = {
-    fish.enable = saizAtList.min;
+    fish.enable = true;
 
     git = {
       enable = true;
@@ -226,10 +221,10 @@ in
           . ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
           fi
         ''
-        + (readFile zoxideZshInit)
         + (optionalString iuzColemak (builtins.readFile ../nonNix/colemak.zsh));
     };
 
+    zoxide.enable = true;
   };
 
   home = {
