@@ -248,6 +248,16 @@ in
         };
       };
     };
+  };
 
+  xdg.configFile = {
+    "jj/config.toml".source = kynvyrt {
+      neim = "jujutsuConfigToml";
+      format = "toml";
+      valiu.user = {
+        name = neim;
+        email = matrixID;
+      };
+    };
   };
 }

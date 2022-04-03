@@ -853,6 +853,7 @@
     "fenix": {
       "inputs": {
         "nixpkgs": [
+          "bootstrapUniks",
           "hob",
           "nixpkgs"
         ],
@@ -1169,11 +1170,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1648262069,
-        "narHash": "sha256-T0+xhM8Irutl36HTMI5Iu3XDjboq6odppPukuQnBxfQ=",
+        "lastModified": 1648895189,
+        "narHash": "sha256-sxk9kDT/lTTcWdCFnttL66hM1KRGQBGf+zwzoQJYaxo=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "7d34cf8a7e9c54aad7e7ae93e08493bf943f2eb7",
+        "rev": "60bfb1576b22823f034eaae63d139f8b33db7533",
         "type": "github"
       },
       "original": {
@@ -1225,15 +1226,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1648099373,
-        "narHash": "sha256-2eEzlhXI1yOu19HHYDxt8LW2b24xcYOsdy7TE0Erz7M=",
-        "owner": "martinvonz",
+        "lastModified": 1648875883,
+        "narHash": "sha256-DCWkk1286jH+E7wJ/DAET+QAnYONAXI9KWIT3sFMgDE=",
+        "owner": "maisiliym",
         "repo": "jj",
-        "rev": "03aad3ac2e0a66b0633ef5f99fc216b5b88b9d3c",
+        "rev": "2d244d11ee7489c5b9bf4f473c06ca05b93942e4",
         "type": "github"
       },
       "original": {
-        "owner": "martinvonz",
+        "owner": "maisiliym",
         "repo": "jj",
         "type": "github"
       }
@@ -1427,10 +1428,12 @@
     "mach-nix": {
       "inputs": {
         "flake-utils": [
+          "bootstrapUniks",
           "hob",
           "flake-utils"
         ],
         "nixpkgs": [
+          "bootstrapUniks",
           "hob",
           "nixpkgs"
         ],
@@ -1553,7 +1556,7 @@
     "mkWebpage_2": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-ugt+CkmurNcdkktR34FJdAx8j/gxsvHRDN0KYXYo4ZE=",
+        "narHash": "sha256-Yxo6s2tzhF12JdMsywo6JCyk8zmHGJWsA670A4ztBG0=",
         "path": "./nix/pkdjz/mkWebpage/src",
         "type": "path"
       },
@@ -1598,6 +1601,7 @@
       "inputs": {
         "lowdown-src": "lowdown-src",
         "nixpkgs": [
+          "bootstrapUniks",
           "hob",
           "nixpkgs"
         ],
