@@ -1,0 +1,5 @@
+(sobFlakes
+ AskiCore (askiExecutable
+	    name aski
+	    dependencies [ShenCore ShenExtended LispCorePrimitives
+			  LispExtendedPrimitives]))

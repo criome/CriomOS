@@ -2,6 +2,12 @@ hob:
 
 let
   pkdjz = {
+    aski = {
+      lamdy = import ./aski;
+      modz = [ "uyrld" "pkgs" "pkdjz" ];
+      self = null;
+    };
+
     beaker = {
       lamdy = import ./beaker;
       modz = [ "pkgs" ];

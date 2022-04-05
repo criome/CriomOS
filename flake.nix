@@ -6,6 +6,58 @@
 
     hob.url = github:sajban/hob/franticSwing;
 
+    KLambdaBootstrap = {
+      url = path:./KLambdaBootstrap;
+      flake = false;
+    };
+    ShenAski = {
+      url = path:./ShenAski;
+      flake = false;
+    };
+    ShenCoreBootstrap = {
+      url = path:./ShenCoreBootstrap;
+      flake = false;
+    };
+    ShenCore = {
+      url = path:./ShenCore;
+      flake = false;
+    };
+    ShenCoreTests = {
+      url = path:./ShenCoreTests;
+      flake = false;
+    };
+    ShenExtendedBootstrap = {
+      url = path:./ShenExtendedBootstrap;
+      flake = false;
+    };
+    ShenExtended = {
+      url = path:./ShenExtended;
+      flake = false;
+    };
+    ShenExtendedTests = {
+      url = path:./ShenExtendedTests;
+      flake = false;
+    };
+    LispCore = {
+      url = path:./LispCore;
+      flake = false;
+    };
+    LispCorePrimitives = {
+      url = path:./LispCorePrimitives;
+      flake = false;
+    };
+    LispExtendedPrimitives = {
+      url = path:./LispExtendedPrimitives;
+      flake = false;
+    };
+    AskiCore = {
+      url = path:./AskiCore;
+      flake = false;
+    };
+    AskiCoreFleik = {
+      url = path:./AskiCoreFleik;
+      flake = false;
+    };
     AskiCoreUniks = {
       url = path:./AskiCoreUniks;
       flake = false;
@@ -29,13 +81,17 @@
       mkHobSpokMein = name: mein: { inherit mein; };
 
       localHobSourcesRaw = {
-        inherit (inputs) mkWebpage
+        inherit (inputs)
+          KLambdaBootstrap LispCore LispCorePrimitives LispExtendedPrimitives
+          ShenAski ShenCoreBootstrap ShenCore ShenCoreTests
+          ShenExtendedBootstrap ShenExtended ShenExtendedTests
+          AskiCore AskiCoreFleik mkWebpage
           AskiCoreUniks AskiUniks AskiDefaultBuilder;
       };
 
       localHobSources = mapAttrs mkHobSpokMein localHobSourcesRaw;
 
-      hob = localHobSources // inputs.hob.Hob;
+      hob = inputs.hob.Hob // localHobSources;
       nixpkgs = hob.nixpkgs.mein;
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;

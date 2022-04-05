@@ -1170,11 +1170,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1648895189,
-        "narHash": "sha256-sxk9kDT/lTTcWdCFnttL66hM1KRGQBGf+zwzoQJYaxo=",
+        "lastModified": 1649138973,
+        "narHash": "sha256-Lg4nbYOf9BtXWoPBxvTemKa61DGabCHkTPoNWR2wDY0=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "60bfb1576b22823f034eaae63d139f8b33db7533",
+        "rev": "a5aff2549467f4beaa3ed103aef3d329928f5a05",
         "type": "github"
       },
       "original": {
@@ -1631,15 +1631,15 @@
         "nixpkgs-regression": "nixpkgs-regression_2"
       },
       "locked": {
-        "lastModified": 1647033596,
-        "narHash": "sha256-7rQSktGC8+DmeyGOnzFMy1QwAYnw4JJphv+lEwFCwfU=",
-        "owner": "NixOS",
+        "lastModified": 1649138720,
+        "narHash": "sha256-SwnV10Utjzg2BrwZApI3b+oHhrM6PoIDmLXUtojIdb8=",
+        "owner": "sajban",
         "repo": "nix",
-        "rev": "d5322698a2abbc6d141e1d244e17b0d226a2f18b",
+        "rev": "0cb81d070d657110c920578ce83f0eddd70d93a9",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "sajban",
         "repo": "nix",
         "type": "github"
       }

@@ -1,4 +1,4 @@
-{ kor, system, aski, hob, writeText }:
+{ kor, system, aski, AskiCoreUniks, AskiUniks, AskiDefaultBuilder, writeText }:
 let
   inherit (kor) mesydj mkImplicitVersion;
 in
@@ -11,7 +11,6 @@ inputs@
 }:
 let
   inherit (builtins) pathExists concatStringsSep;
-  inherit (hob) AskiCoreUniks AskiUniks AskiDefaultBuilder;
   name = concatStringsSep "-" [ inputs.name version ];
 
   implicitBuildFile =
