@@ -3,6 +3,7 @@
     "AskiCore": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-ZLyzoJbXHpV/z9rYycbCSVZvdi8yCoHUXz2P9ALVZ0I=",
         "path": "./AskiCore",
         "type": "path"
@@ -15,6 +16,7 @@
     "AskiCoreFleik": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-qOqDilUpjJVRGHaJqTIO2Y5eJaIQuGE0frZC9ZcZyNc=",
         "path": "./AskiCoreFleik",
         "type": "path"
@@ -39,6 +41,7 @@
     "AskiCoreUniks": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-rHxf9Xy9eOPBYylS/L0mqssS0D4HDfZkXdM//mY0/wA=",
         "path": "./AskiCoreUniks",
         "type": "path"
@@ -75,6 +78,7 @@
     "AskiDefaultBuilder": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-Sq2sDZ4TqM0kuTN+ON6jfAnfZrMTlyFW9y430/yKTrs=",
         "path": "./AskiDefaultBuilder",
         "type": "path"
@@ -99,6 +103,7 @@
     "AskiUniks": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-Zpw5k0lpafxdko9NdW8Yyakghx1ijMnG1wS3FjyQZuM=",
         "path": "./AskiUniks",
         "type": "path"
@@ -219,7 +224,8 @@
     "KLambdaBootstrap": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-DyXKsiIc/k5XQV9n6noxeL4MwycXFNfklgBpxDvue2s=",
+        "lastModified": 1,
+        "narHash": "sha256-rusyGaan8eDqlEc7zmxMdYDoO4OKoPllC5juxP2qnko=",
         "path": "./KLambdaBootstrap",
         "type": "path"
       },
@@ -231,7 +237,7 @@
     "KLambdaBootstrap_2": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-rusyGaan8eDqlEc7zmxMdYDoO4OKoPllC5juxP2qnko=",
+        "narHash": "sha256-DyXKsiIc/k5XQV9n6noxeL4MwycXFNfklgBpxDvue2s=",
         "path": "./KLambdaBootstrap",
         "type": "path"
       },
@@ -243,6 +249,7 @@
     "LispCore": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-aebErJ/qYHaE/cdnWPwj3Kx3isN94bYKA8Jo//NJ42A=",
         "path": "./LispCore",
         "type": "path"
@@ -255,6 +262,7 @@
     "LispCorePrimitives": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-buCczYUZ0biupPUUYgc36PsVVetu9NbsuLWnYJJgR9M=",
         "path": "./LispCorePrimitives",
         "type": "path"
@@ -291,6 +299,7 @@
     "LispExtendedPrimitives": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-NsHHXvXLTUtkAOTSuiIqf0Li4XG9cJSgWxmb8izi3Nc=",
         "path": "./LispExtendedPrimitives",
         "type": "path"
@@ -315,7 +324,8 @@
     "ShenAski": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-C3Pgicf/bhS5jcZRQtRb77q6cjJzWM8xXQRazAxdD4o=",
+        "lastModified": 1,
+        "narHash": "sha256-uHRrb8o53xGmtfJWq/ygwblTfYLdY9lYwOvZ6R9CnO0=",
         "path": "./ShenAski",
         "type": "path"
       },
@@ -339,7 +349,8 @@
     "ShenCore": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-5OHBn6Pf9LDwe0BBf2uVG9rj3PEfuIrkuM/ieY1mHBU=",
+        "lastModified": 1,
+        "narHash": "sha256-NNMP9dh4BTdPx4W8mnhTCDvCoVYUXnhDFFUHDYU/z1M=",
         "path": "./ShenCore",
         "type": "path"
       },
@@ -351,6 +362,7 @@
     "ShenCoreBootstrap": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-P6muYTBiw/wwqN5HE3BqBvkbYDpjZ/HRyZ7ME2TbCOY=",
         "path": "./ShenCoreBootstrap",
         "type": "path"
@@ -375,6 +387,7 @@
     "ShenCoreTests": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-EbT8PfeWjkLIutpLuDQyLO9FiQyqP5i0BsvCo06zl7I=",
         "path": "./ShenCoreTests",
         "type": "path"
@@ -399,7 +412,7 @@
     "ShenCore_2": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-NNMP9dh4BTdPx4W8mnhTCDvCoVYUXnhDFFUHDYU/z1M=",
+        "narHash": "sha256-5OHBn6Pf9LDwe0BBf2uVG9rj3PEfuIrkuM/ieY1mHBU=",
         "path": "./ShenCore",
         "type": "path"
       },
@@ -411,7 +424,8 @@
     "ShenExtended": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-6PB5YLGpNYOofIweQXEQMrraa1Csfze+wsvptyGq658=",
+        "lastModified": 1,
+        "narHash": "sha256-0XpXnv70oWPwZ6F1qV5SjPjef7BfrvsnY1ED5kfmpUU=",
         "path": "./ShenExtended",
         "type": "path"
       },
@@ -423,6 +437,7 @@
     "ShenExtendedBootstrap": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-IRH8tDEZ5SR1VN6s6kgLoAbLiO5NfvrbFcgOgqyXFSs=",
         "path": "./ShenExtendedBootstrap",
         "type": "path"
@@ -447,6 +462,7 @@
     "ShenExtendedTests": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-9b0mPdxzcmyjfuMOVvjwd7/JCeikF8OGqDiKL4KApk0=",
         "path": "./ShenExtendedTests",
         "type": "path"
@@ -471,7 +487,7 @@
     "ShenExtended_2": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-0XpXnv70oWPwZ6F1qV5SjPjef7BfrvsnY1ED5kfmpUU=",
+        "narHash": "sha256-6PB5YLGpNYOofIweQXEQMrraa1Csfze+wsvptyGq658=",
         "path": "./ShenExtended",
         "type": "path"
       },
@@ -481,36 +497,6 @@
       }
     },
     "aski": {
-      "inputs": {
-        "AskiCore": "AskiCore",
-        "AskiCoreFleik": "AskiCoreFleik",
-        "KLambdaBootstrap": "KLambdaBootstrap",
-        "LispCore": "LispCore",
-        "LispCorePrimitives": "LispCorePrimitives",
-        "LispExtendedPrimitives": "LispExtendedPrimitives",
-        "ShenAski": "ShenAski",
-        "ShenCore": "ShenCore",
-        "ShenCoreBootstrap": "ShenCoreBootstrap",
-        "ShenCoreTests": "ShenCoreTests",
-        "ShenExtended": "ShenExtended",
-        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
-        "ShenExtendedTests": "ShenExtendedTests"
-      },
-      "locked": {
-        "lastModified": 1644286711,
-        "narHash": "sha256-alLJDVKiOYb4wsKQErrINZFOB0XLOvn0daYRMsGlizk=",
-        "owner": "sajban",
-        "repo": "aski",
-        "rev": "4681bee6180c17d89ada9dc8c919c74b69433884",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sajban",
-        "repo": "aski",
-        "type": "github"
-      }
-    },
-    "aski_2": {
       "inputs": {
         "AskiCore": "AskiCore_2",
         "AskiCoreFleik": "AskiCoreFleik_2",
@@ -527,11 +513,11 @@
         "ShenExtendedTests": "ShenExtendedTests_2"
       },
       "locked": {
-        "lastModified": 1644377756,
-        "narHash": "sha256-Lk/OQsItvHtvfqLNwHGflbrDcK3cChdhgxMW+hyCzKM=",
+        "lastModified": 1644286711,
+        "narHash": "sha256-alLJDVKiOYb4wsKQErrINZFOB0XLOvn0daYRMsGlizk=",
         "owner": "sajban",
         "repo": "aski",
-        "rev": "d5b0855701a1e5f36523678ccda88f9b37ebd9e6",
+        "rev": "4681bee6180c17d89ada9dc8c919c74b69433884",
         "type": "github"
       },
       "original": {
@@ -1121,7 +1107,6 @@
     "hob_2": {
       "inputs": {
         "FTerm-nvim": "FTerm-nvim_2",
-        "aski": "aski_2",
         "astronauta-nvim": "astronauta-nvim_2",
         "base16-styles": "base16-styles_2",
         "base16-theme": "base16-theme_2",
@@ -1157,11 +1142,11 @@
         "reseter-css": "reseter-css_2",
         "ron-vim": "ron-vim_2",
         "sajban": "sajban_2",
-        "sbcl": "sbcl_2",
         "shen": "shen_2",
         "shen-mode": "shen-mode_2",
         "skrips": "skrips_2",
         "species-el": "species-el_2",
+        "staticSbcl": "staticSbcl",
         "tera-mode": "tera-mode_2",
         "tokei-vim": "tokei-vim_2",
         "toodoo-el": "toodoo-el",
@@ -1170,11 +1155,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1649138973,
-        "narHash": "sha256-Lg4nbYOf9BtXWoPBxvTemKa61DGabCHkTPoNWR2wDY0=",
+        "lastModified": 1649150754,
+        "narHash": "sha256-1ArGYF6pm12W/ammWcn3BH2dpiThNw8cHqPSUoMgPzk=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "a5aff2549467f4beaa3ed103aef3d329928f5a05",
+        "rev": "74be6d21d5d35ccb9c53af80751ccbf2efcb1b42",
         "type": "github"
       },
       "original": {
@@ -1556,6 +1541,7 @@
     "mkWebpage_2": {
       "flake": false,
       "locked": {
+        "lastModified": 1,
         "narHash": "sha256-Yxo6s2tzhF12JdMsywo6JCyk8zmHGJWsA670A4ztBG0=",
         "path": "./nix/pkdjz/mkWebpage/src",
         "type": "path"
@@ -2159,9 +2145,22 @@
     },
     "root": {
       "inputs": {
+        "AskiCore": "AskiCore",
+        "AskiCoreFleik": "AskiCoreFleik",
         "AskiCoreUniks": "AskiCoreUniks",
         "AskiDefaultBuilder": "AskiDefaultBuilder",
         "AskiUniks": "AskiUniks",
+        "KLambdaBootstrap": "KLambdaBootstrap",
+        "LispCore": "LispCore",
+        "LispCorePrimitives": "LispCorePrimitives",
+        "LispExtendedPrimitives": "LispExtendedPrimitives",
+        "ShenAski": "ShenAski",
+        "ShenCore": "ShenCore",
+        "ShenCoreBootstrap": "ShenCoreBootstrap",
+        "ShenCoreTests": "ShenCoreTests",
+        "ShenExtended": "ShenExtended",
+        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
+        "ShenExtendedTests": "ShenExtendedTests",
         "bootstrapUniks": "bootstrapUniks",
         "hob": "hob_2",
         "mkWebpage": "mkWebpage_2"
@@ -2241,23 +2240,6 @@
         "owner": "daewok",
         "repo": "sbcl",
         "rev": "d5d319725e74b80921568ef018409ee00188ffea",
-        "type": "github"
-      },
-      "original": {
-        "owner": "daewok",
-        "ref": "static-executable-v2",
-        "repo": "sbcl",
-        "type": "github"
-      }
-    },
-    "sbcl_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1641230582,
-        "narHash": "sha256-If/Ps7u0v5CdTNkS0FHZpFg9kP7JjzpnuwnaQS0OkEI=",
-        "owner": "daewok",
-        "repo": "sbcl",
-        "rev": "cf151181ef34a8a08802611d51a0566b7a7aa1ec",
         "type": "github"
       },
       "original": {
@@ -2391,6 +2373,23 @@
       "original": {
         "owner": "sajban",
         "repo": "species.el",
+        "type": "github"
+      }
+    },
+    "staticSbcl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641230582,
+        "narHash": "sha256-If/Ps7u0v5CdTNkS0FHZpFg9kP7JjzpnuwnaQS0OkEI=",
+        "owner": "daewok",
+        "repo": "sbcl",
+        "rev": "cf151181ef34a8a08802611d51a0566b7a7aa1ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "daewok",
+        "ref": "static-executable-v2",
+        "repo": "sbcl",
         "type": "github"
       }
     },

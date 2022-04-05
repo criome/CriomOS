@@ -96,10 +96,6 @@
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;
 
-      AskiUniksSources = {
-        inherit (inputs) AskiCoreUniks AskiUniks AskiDefaultBuilder;
-      };
-
       kor = import ./nix/kor.nix;
       mkKriosfir = import ./nix/mkKriosfir;
       mkKriozonz = import ./nix/mkKriozonz;

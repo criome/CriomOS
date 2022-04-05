@@ -99,8 +99,8 @@ let
     }:
     let
       askiExecutable =
-        if withBootstrap then aski.bootstrap
-        else aski.current;
+        if withBootstrap then bootstrap
+        else current;
 
     in
     stdenv.mkDerivation {

@@ -27,7 +27,7 @@ let
 
     deryveicyn = {
       lamdy = import ./deryveicyn;
-      modz = [ "pkgs" "uyrld" "hob" ];
+      modz = [ "pkgs" "uyrld" "pkdjz" ];
       self = null;
     };
 
@@ -169,7 +169,7 @@ let
       modz = [ "pkgsSet" ];
     };
 
-    sbcl = {
+    staticSbcl = {
       lamdy = import ./sbcl/static.nix;
       modz = [ "pkgsSet" "pkgsStatic" ];
     };
