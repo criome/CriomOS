@@ -91,9 +91,10 @@ let
 
   mkKLambda =
     { src
-    , extendedSrc ? ShenExtended
+    , version
+    , extendedShenSrc ? ShenExtended
+    , shenAskiSrc ? ShenAski
     , withBootstrap ? false
-    , version ? kor.mkImplicitVersion src
     , shenMakeKLambda ? (ShenCoreBootstrap + /makeKLambda.shen)
     , shenMakeExtendedKLambda ? (ShenExtendedBootstrap + /makeKLambda.shen)
     }:
@@ -108,7 +109,8 @@ let
       inherit version src;
       buildInputs = [ askiExecutable ];
       patchPhase = ''
-        cp ${extendedSrc}/*.shen ./
+        cp ${extendedShenSrc}/*.shen ./
+        cp ${shenAskiSrc}/*.shen ./
       '';
       buildPhase = ''
         aski ${shenMakeKLambda}
@@ -128,7 +130,6 @@ let
 
   currentKLambda = mkKLambda {
     src = ShenCore;
-    extendedSrc = ShenExtended;
     version = currentVersion;
     withBootstrap = true;
   };

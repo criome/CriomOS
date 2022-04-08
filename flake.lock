@@ -325,7 +325,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-uHRrb8o53xGmtfJWq/ygwblTfYLdY9lYwOvZ6R9CnO0=",
+        "narHash": "sha256-8Owqw05fJM1LkFu9vXMlpQrsTXy451rFUAibJH19ABo=",
         "path": "./ShenAski",
         "type": "path"
       },
@@ -438,7 +438,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-IRH8tDEZ5SR1VN6s6kgLoAbLiO5NfvrbFcgOgqyXFSs=",
+        "narHash": "sha256-s9GegX9q30AGIohEH4Q04wXzJi8krBiqE4XSgjs6UeY=",
         "path": "./ShenExtendedBootstrap",
         "type": "path"
       },

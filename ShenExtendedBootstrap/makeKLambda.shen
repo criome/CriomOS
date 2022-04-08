@@ -28,5 +28,5 @@
              KLFile))
 
 (let ExtendedShenFiles
-    ["extended-types.shen" "extended-declarations.shen" "main.shen"]
+    ["extended-types.shen" "extended-declarations.shen" "main.shen" "aski.shen"]
   (map (fn generateKLambdaFile) ExtendedShenFiles))
