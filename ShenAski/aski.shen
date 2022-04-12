@@ -5,9 +5,10 @@
    [mein | Code] -> (mkMein Code))
 
  (datatype neksys
-    Astriz: astriz Krimynz : krimynz Trost: neksysTrost;
-     --------------------------------------------------
-            [Astriz Krimynz Trost] : neksys;)
+    PriNeksiz: (list priNeksys); Krimynz : (list krimyn);
+		     Trost: neksysTrost;
+     ===============================================
+            [PriNeksiz Krimynz Trost] : neksys;)
 
  (define mkNeksys
    [] -> [])
