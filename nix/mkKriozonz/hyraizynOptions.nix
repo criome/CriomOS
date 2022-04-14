@@ -68,7 +68,7 @@ let
     };
 
     linkLocalIPs = mkOption {
-      type = listOf attrs;
+      type = listOf str;
       default = [ ];
     };
 

@@ -1155,11 +1155,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1649150754,
-        "narHash": "sha256-1ArGYF6pm12W/ammWcn3BH2dpiThNw8cHqPSUoMgPzk=",
+        "lastModified": 1649928259,
+        "narHash": "sha256-G1z3UiUxO7lItbYaXyO6M/LNs8TF6bN37kOPYjfRfGA=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "74be6d21d5d35ccb9c53af80751ccbf2efcb1b42",
+        "rev": "78561cf53ba36f433ba078fc38ed280798223f3e",
         "type": "github"
       },
       "original": {
@@ -1481,11 +1481,11 @@
     },
     "maisiliym_2": {
       "locked": {
-        "lastModified": 1646204570,
-        "narHash": "sha256-fSkBr+F+Uz3rEZ4QIdbtUueqeJcpHscZh8HmaGVaBfU=",
+        "lastModified": 1649928221,
+        "narHash": "sha256-8qIkHc96GOd7IZW7vqFNsSwv+VsIKipiB8OusmwoSPA=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "6aaefc5b2a63f9c28fb6c066ce112a90ab8e3eba",
+        "rev": "55666139c30362e0998a0f55c7aae3fc8a37f8ad",
         "type": "github"
       },
       "original": {

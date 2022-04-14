@@ -1,26 +1,34 @@
 { kor, pkgs, hyraizyn, konstynts, ... }:
 let
-  inherit (builtins) mapAttrs attrNames filter;
-  inherit (kor) mkIf mapAttrsToList;
+  inherit (builtins) mapAttrs attrNames filter concatStringsSep;
+  inherit (kor) mkIf mapAttrsToList optionalAttrs filterAttrs;
   inherit (hyraizyn) exAstriz;
   inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom
     wireguardUntrustedProxies;
 
   mkUntrustedProxy = untrustedProxy: {
-    allowedIPs = [ ];
-    publicKey = "";
-    endpoint = "";
+    inherit (wireguardUntrustedProxies) publicKey endpoint;
+    allowedIPs = [ "0.0.0.0/0" ];
   };
 
-  untrustedProxies = map mkUntrustedProxy wireguardUntrustedProxies;
+  mkUntrustedProxyIp = untrustedProxy: untrustedProxy.interfaceIp;
+
+  untrustedProxiesPeers = map mkUntrustedProxy wireguardUntrustedProxies;
+
+  untrustedProxiesIps = map mkUntrustedProxyIp wireguardUntrustedProxies;
 
   mkNeksysPeer = neim: astri: {
-    allowedIPs = [ ];
-    publicKey = "";
-    endpoint = "";
+    allowedIPs = [ astri.neksysIp ];
+    publicKey = astri.wireguardPriKriom;
+    endpoint = concatStringsSep "." [ "wg" astri.neim ];
   };
 
-  neksysPeers = mapAttrsToList mkNeksysPeer exAstriz;
+  kriomaizdPriNeksiz = filterAttrs (n: v: v.spinyrz.hazWireguardPriKriom)
+    exAstriz;
+
+  neksysPeers = mapAttrsToList mkNeksysPeer kriomaizdPriNeksiz;
+
+  privateKeyFile = "/etc/wireguard/privateKey";
 
 in
 {
@@ -28,11 +36,18 @@ in
     wireguard = {
       enable = true;
       interfaces = {
-        wg0 = {
-          ips = [ ];
-          privateKeyFile = "";
-          peers = neksysPeers ++ untrustedProxies;
+        wgProxies = {
+          ips = untrustedProxiesIps;
+          peers = untrustedProxiesPeers;
+          inherit privateKeyFile;
         };
+
+        wgNeksys = {
+          ips = untrustedProxiesIps;
+          inherit privateKeyFile;
+          peers = neksysPeers;
+        };
+
       };
     };
   };

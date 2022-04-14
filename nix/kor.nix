@@ -61,6 +61,9 @@ rec {
   mapAttrs' = f: set:
     listToAttrs (map (attr: f attr set.${attr}) (attrNames set));
 
+  concatMapAttrs = f: set:
+    listToAttrs (concatMap (attr: f attr set.${attr}) (attrNames set));
+
   invertValueName = set: mapAttrs' (n: v: nameValuePair "${v}" n) set;
 
   filterAttrs = pred: set: listToAttrs (concatMap

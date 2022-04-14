@@ -13,7 +13,7 @@ let
   astriNeimz = attrNames inputMetastra.astriz;
   krimynNeimz = attrNames inputMetastra.krimynz;
 
-  metaUniksNeim = concatStringsSep "."
+  neksysUniksNeim = concatStringsSep "."
     [ metastraNeim "uniks" ];
 
   metaTrost = inputMetastra.trost.metastra;
@@ -50,11 +50,26 @@ let
 
       mycin = filteredMycin // { ark = tcekdArk; };
 
+      mkLinkLocalIP = linkLocalIP: with linkLocalIP;
+        let
+          interface =
+            if (spici == "ethernet") then "enp0s25"
+            else "wlp3s0";
+        in
+        "fe80::${suffix}%${interface}";
+
+      neksysIp = inputAstri.neksysIp or null;
+      wireguardPriKriom = inputAstri.wireguardPriKriom or null;
+
       astri = {
         neim = astriNeim;
+        inherit mycin wireguardPriKriom neksysIp;
         inherit (inputAstri) saiz spici;
 
-        linkLocalIPs = inputAstri.linkLocalIPs or [ ];
+        linkLocalIPs =
+          if (hasAttr "linkLocalIPs" inputAstri)
+          then (map mkLinkLocalIP inputAstri.linkLocalIPs)
+          else [ ];
 
         trost = mkTrost
           [ inputAstri.trost inputMetastra.trost.astriz.${astriNeim} ];
@@ -68,9 +83,8 @@ let
         inherit (inputAstri.priKriomz) niksPriKriom;
 
         uniksNeim = concatStringsSep "."
-          [ astriNeim "astriz" metaUniksNeim ];
+          [ astriNeim neksysUniksNeim ];
 
-        inherit mycin;
         sistym = arkSistymMap.${mycin.ark};
 
         nbOfBildKorz = 1; #TODO
@@ -81,8 +95,6 @@ let
           inherit (astri) spici trost saiz niksPriKriom
             yggAddress uniksNeim;
 
-          wireguardPriKriom = inputAstri.wireguardPriKriom or null;
-          neksysIp = inputAstri.neksysIp or null;
 
         in
         rec {

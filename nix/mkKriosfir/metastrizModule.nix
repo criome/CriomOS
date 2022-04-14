@@ -67,6 +67,22 @@ let
         type = AstriPriKriomSpici;
         default = { };
       };
+
+      linkLocalIPs = mkOption {
+        type = listOf attrs;
+        default = [ ];
+      };
+
+      neksysIp = mkOption {
+        type = nullOr str;
+        default = null;
+      };
+
+      wireguardPriKriom = mkOption {
+        type = nullOr str;
+        default = null;
+      };
+
     };
   };
 

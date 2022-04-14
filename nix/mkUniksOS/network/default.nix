@@ -1,20 +1,25 @@
 { kor, lib, hyraizyn, ... }:
 let
   inherit (lib) mkOverride optional;
-  inherit (kor) mapAttrs';
+  inherit (kor) concatMapAttrs;
   inherit (hyraizyn) astra exAstriz;
   inherit (builtins) concatStringsSep;
 
   mkUniksHostEntry = neim: astri:
     let
       inherit (astri) uniksNeim neksysIp;
-    in
-    {
-      name = uniksNeim;
-      value = optional (neksysIp != null) neksysIp;
-    };
+      mkPriNeksysHost = linkLocalIP: {
+        name = linkLocalIP;
+        value = [ (concatStringsSep "." [ "wg" astri.neim ]) ];
+      };
 
-  uniksHosts = mapAttrs' mkUniksHostEntry exAstriz;
+    in
+    (optional (neksysIp != null) {
+      name = neksysIp;
+      value = [ uniksNeim ];
+    }) ++ (map mkPriNeksysHost astri.linkLocalIPs);
+
+  uniksHosts = concatMapAttrs mkUniksHostEntry exAstriz;
 
 in
 {
