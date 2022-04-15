@@ -2,7 +2,7 @@
 let
   inherit (builtins) mapAttrs attrNames filter concatStringsSep;
   inherit (kor) mkIf mapAttrsToList optionalAttrs filterAttrs;
-  inherit (hyraizyn) exAstriz;
+  inherit (hyraizyn) astra exAstriz;
   inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom
     wireguardUntrustedProxies;
 
@@ -20,7 +20,7 @@ let
   mkNeksysPeer = neim: astri: {
     allowedIPs = [ astri.neksysIp ];
     publicKey = astri.wireguardPriKriom;
-    endpoint = concatStringsSep "." [ "wg" astri.neim ];
+    endpoint = concatStringsSep "." [ "wg" astri.uniksNeim ];
   };
 
   kriomaizdPriNeksiz = filterAttrs (n: v: v.spinyrz.hazWireguardPriKriom)
@@ -43,7 +43,7 @@ in
         };
 
         wgNeksys = {
-          ips = untrustedProxiesIps;
+          ips = [ astra.neksysIp ];
           inherit privateKeyFile;
           peers = neksysPeers;
           listenPort = 51820;

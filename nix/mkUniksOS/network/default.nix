@@ -10,7 +10,7 @@ let
       inherit (astri) uniksNeim neksysIp;
       mkPriNeksysHost = linkLocalIP: {
         name = linkLocalIP;
-        value = [ (concatStringsSep "." [ "wg" astri.neim ]) ];
+        value = [ (concatStringsSep "." [ "wg" uniksNeim ]) ];
       };
 
     in
