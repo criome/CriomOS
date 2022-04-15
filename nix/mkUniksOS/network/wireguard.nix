@@ -46,6 +46,7 @@ in
           ips = untrustedProxiesIps;
           inherit privateKeyFile;
           peers = neksysPeers;
+          listenPort = 51820;
         };
 
       };
