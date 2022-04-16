@@ -1128,6 +1128,7 @@
         "maisiliym": "maisiliym_2",
         "mfgtools": "mfgtools_2",
         "naersk": "naersk_2",
+        "netresolve": "netresolve",
         "nix": "nix_2",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-mozilla": "nixpkgs-mozilla_2",
@@ -1155,11 +1156,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1649928259,
-        "narHash": "sha256-G1z3UiUxO7lItbYaXyO6M/LNs8TF6bN37kOPYjfRfGA=",
+        "lastModified": 1650010174,
+        "narHash": "sha256-jUyajlA4VYImz+2Bq3FB6vn6UcvFyaoEbTGiAfytCKs=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "78561cf53ba36f433ba078fc38ed280798223f3e",
+        "rev": "3a563d05a2f1cf8a51ccb4f63bd6c81c2d12e289",
         "type": "github"
       },
       "original": {
@@ -1580,6 +1581,22 @@
       "original": {
         "owner": "nmattia",
         "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "netresolve": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643496191,
+        "narHash": "sha256-xv0kI6jeRO8wQVs7XhUZrwSTaCycyp2bVkoZ/aoBX8w=",
+        "owner": "crossdistro",
+        "repo": "netresolve",
+        "rev": "d40f1541447a99f4693e5f7d464720b31ee01351",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crossdistro",
+        "repo": "netresolve",
         "type": "github"
       }
     },

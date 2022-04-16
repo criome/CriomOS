@@ -72,6 +72,22 @@ in
       releases;
   };
 
+  netresolve = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv, bash, autoconf, automake, libtool, c-ares, pkg-config }:
+      stdenv.mkDerivation {
+        pname = "netresolve";
+        version = src.shortRev;
+        inherit src;
+        nativeBuildInputs = [ pkg-config autoconf automake libtool ];
+        buildInputs = [ c-ares ];
+        postPatch = ''
+          substituteInPlace autogen.sh --replace "/bin/bash" "${bash}/bin/bash"
+        '';
+        configureScript = "./autogen.sh";
+      };
+  };
+
   pijulSrc = {
     modz = [ "pkdjz" ];
     lamdy = { fetchPijul }: fetchPijul {
