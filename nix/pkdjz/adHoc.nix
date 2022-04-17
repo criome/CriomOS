@@ -162,4 +162,21 @@ in
       };
   };
 
+  wireguardNetresolved = {
+    modz = [ "pkgs" "pkdjz" ];
+    src = null;
+    lamdy = { wireguard-tools, makeWrapper, netresolve }:
+      let
+        netresolveLibPath = "${netresolve}/lib";
+        netresolvePreloads = "libnetresolve-libc.so.0 libnetresolve-asyncns.so.0";
+      in
+      wireguard-tools.overrideAttrs (attrs: {
+        postInstall = ''
+          wrapProgram $out/bin/wg \
+            --prefix LD_LIBRARY_PATH : "${netresolveLibPath}" \
+            --prefix LD_PRELOAD : "${netresolvePreloads}"
+        '';
+      });
+  };
+
 }

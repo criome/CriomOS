@@ -1,4 +1,4 @@
-{ kor, pkgs, hyraizyn, konstynts, ... }:
+{ kor, pkgs, hyraizyn, konstynts, pkdjz, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter concatStringsSep;
   inherit (kor) mkIf mapAttrsToList optionalAttrs filterAttrs;
@@ -35,6 +35,7 @@ in
   networking = {
     wireguard = {
       enable = true;
+      package = pkdjz.wireguardNetresolved;
       interfaces = {
         wgProxies = {
           ips = untrustedProxiesIps;

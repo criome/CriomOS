@@ -48,24 +48,22 @@ in
   nix = {
     package = uyrld.pkdjz.nix;
 
-    settings = {
-      trusted-users = [ "root" "@nixdev" ];
+    trustedUsers = [ "root" "@nixdev" ];
 
-      allowed-users = [ "@users" "nix-serve" ]
-        ++ optional izBildyr "niksBildyr";
+    allowedUsers = [ "@users" "nix-serve" ]
+      ++ optional izBildyr "niksBildyr";
 
-      build-cores = astra.nbOfBildKorz;
+    buildCores = astra.nbOfBildKorz;
 
-      extra-sandbox-paths = [
-        # "/links"  # TODO
-      ];
+    sandboxPaths = [
+      # "/links"  # TODO
+    ];
 
-      trusted-public-keys = trostydBildPriKriomz;
-      substituters = kacURLz;
-      trusted-substituters = kacURLz;
+    binaryCachePublicKeys = trostydBildPriKriomz;
+    binaryCaches = kacURLz;
+    trustedBinaryCaches = kacURLz;
 
-      auto-optimise-store = true;
-    };
+    autoOptimiseStore = true;
 
     # Lowest priorities
     daemonCPUSchedPolicy = "idle";

@@ -1156,11 +1156,11 @@
         "zoxide-vim": "zoxide-vim_2"
       },
       "locked": {
-        "lastModified": 1650010174,
-        "narHash": "sha256-jUyajlA4VYImz+2Bq3FB6vn6UcvFyaoEbTGiAfytCKs=",
+        "lastModified": 1650181596,
+        "narHash": "sha256-0u/4EnyCWWH+3luu0txgoTboxU+Qrnqc9P8QTE7sFOM=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "3a563d05a2f1cf8a51ccb4f63bd6c81c2d12e289",
+        "rev": "eefa3110ac2cdedbbbe6ad02ca9ad80a4fd2f416",
         "type": "github"
       },
       "original": {
@@ -1727,15 +1727,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1647176932,
-        "narHash": "sha256-822tW7LLmC/eoR70szNeyvsHIje24brAgbfixp37iuk=",
-        "owner": "NixOS",
+        "lastModified": 1650157532,
+        "narHash": "sha256-vx27HibN0E2Mybbc0d6moyCcvkydM3uC55R5qOhbwf8=",
+        "owner": "sajban",
         "repo": "nixpkgs",
-        "rev": "d853dc52d87692619412a074846144262d6a48b3",
+        "rev": "79889bc27afd8df32b623ffcf9080400e9c42743",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "sajban",
+        "ref": "franticSwing",
         "repo": "nixpkgs",
         "type": "github"
       }
