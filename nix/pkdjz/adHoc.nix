@@ -74,13 +74,23 @@ in
 
   netresolve = {
     modz = [ "pkgs" ];
-    lamdy = { src, stdenv, bash, autoconf, automake, libtool, c-ares, pkg-config }:
+    lamdy =
+      { src
+      , stdenv
+      , bash
+      , automake
+      , autoconf
+      , pkg-config
+      , libtool
+      , c-ares
+      , libasyncns
+      }:
       stdenv.mkDerivation {
         pname = "netresolve";
         version = src.shortRev;
         inherit src;
         nativeBuildInputs = [ pkg-config autoconf automake libtool ];
-        buildInputs = [ c-ares ];
+        buildInputs = [ c-ares libasyncns ];
         postPatch = ''
           substituteInPlace autogen.sh --replace "/bin/bash" "${bash}/bin/bash"
         '';
