@@ -20,7 +20,7 @@ let
   mkNeksysPeer = neim: astri: {
     allowedIPs = [ astri.neksysIp ];
     publicKey = astri.wireguardPriKriom;
-    endpoint = concatStringsSep "." [ "wg" astri.uniksNeim ];
+    endpoint = "wg.${astri.uniksNeim}:51820";
   };
 
   kriomaizdPriNeksiz = filterAttrs (n: v: v.spinyrz.hazWireguardPriKriom)
