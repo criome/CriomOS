@@ -3,6 +3,7 @@
 
   inputs = {
     bootstrapUniks.url = github:sajban/uniks/spinningTops;
+    nextUniks.url = github:sajban/uniks/eclipticPlane;
 
     hob.url = github:sajban/hob/franticSwing;
 
@@ -76,7 +77,7 @@
     };
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ self, bootstrapUniks, nextUniks ... }:
     let
       mkHobSpokMein = name: mein: { inherit mein; };
 
@@ -121,6 +122,7 @@
           inherit (kriozon.astra.mycin) ark;
           system = arkSistymMap.${ark};
           uyrld = self.uyrld.${system};
+          nextUyrld = self.nextUyrld.${system};
           hyraizyn = kriozon;
           src = self;
 
@@ -157,7 +159,7 @@
 
         in
         {
-          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn; };
+          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn nextUyrld; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
@@ -173,11 +175,12 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
-          bootstrapUyrld = inputs.bootstrapUniks.uyrld.${system};
+          bootstrapUyrld = bootstrapUniks.uyrld.${system};
+          nextUyrld = nextUniks.uyrld.${system};
           mkUyrld = import ./nix/mkUyrld.nix;
           uyrld = mkUyrld {
             inherit pkgs kor lib system hob
-              neksysNames bootstrapUyrld;
+              neksysNames bootstrapUyrld nextUyrld;
           };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
