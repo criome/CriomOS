@@ -2,10 +2,7 @@
   description = "Uniks";
 
   inputs = {
-    bootstrapUniks.url = github:sajban/uniks/spinningTops;
-    nextUniks.url = github:sajban/uniks/eclipticPlane;
-
-    hob.url = github:sajban/hob/franticSwing;
+    hob.url = github:sajban/hob/eclipticPlane;
 
     KLambdaBootstrap = {
       url = path:./KLambdaBootstrap;
@@ -77,7 +74,7 @@
     };
   };
 
-  outputs = inputs@{ self, bootstrapUniks, nextUniks ... }:
+  outputs = inputs@{ self, ... }:
     let
       mkHobSpokMein = name: mein: { inherit mein; };
 
@@ -94,6 +91,7 @@
 
       hob = inputs.hob.Hob // localHobSources;
       nixpkgs = hob.nixpkgs.mein;
+      nextNixpkgs = hob.nextNixpkgs.mein;
       flake-utils = hob.flake-utils.mein;
       emacs-overlay = hob.emacs-overlay.mein;
 
@@ -122,7 +120,7 @@
           inherit (kriozon.astra.mycin) ark;
           system = arkSistymMap.${ark};
           uyrld = self.uyrld.${system};
-          nextUyrld = self.nextUyrld.${system};
+          nextPkgs = nextNixpkgs.legacyPackages.${system};
           hyraizyn = kriozon;
           src = self;
 
@@ -144,7 +142,7 @@
               mkProfileHom = profileName: profile:
                 mkHom {
                   inherit lib kor uyrld kriozon krimyn
-                    profile hob home-manager pkgs;
+                    profile hob home-manager pkgs nextPkgs;
                 };
             in
             mapAttrs mkProfileHom krimynProfiles;
@@ -159,7 +157,7 @@
 
         in
         {
-          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn nextUyrld; };
+          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
@@ -174,13 +172,12 @@
       mkOutputs = system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          nextPkgs = nextNixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
-          bootstrapUyrld = bootstrapUniks.uyrld.${system};
-          nextUyrld = nextUniks.uyrld.${system};
           mkUyrld = import ./nix/mkUyrld.nix;
           uyrld = mkUyrld {
             inherit pkgs kor lib system hob
-              neksysNames bootstrapUyrld nextUyrld;
+              neksysNames nextPkgs;
           };
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;

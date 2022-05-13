@@ -19,7 +19,6 @@ in
   home = {
     packages = with pkgs; [
       # freecad # broken
-      element-desktop
     ]
     ++ (optionals izUniksDev uniksDevPackages)
     ++ (optionals izSemaDev semaDevPackages);

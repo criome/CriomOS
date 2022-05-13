@@ -7,6 +7,7 @@ argz@
 , krimyn
 , profile
 , uyrld
+, nextPkgs
 , hob
 }:
 let
@@ -41,7 +42,7 @@ let
     home.stateVersion = lib.trivial.release;
     _module.args = {
       inherit pkgs kor pkdjz uyrld hob
-        krimyn kriozon profile;
+        krimyn kriozon profile nextPkgs;
       hyraizyn = kriozon;
     };
   };

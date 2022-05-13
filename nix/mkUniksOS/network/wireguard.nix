@@ -35,7 +35,6 @@ in
   networking = {
     wireguard = {
       enable = true;
-      package = pkdjz.wireguardNetresolved;
       interfaces = {
         wgProxies = {
           ips = untrustedProxiesIps;

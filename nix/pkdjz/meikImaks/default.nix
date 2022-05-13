@@ -2,11 +2,11 @@
 let
   emacs-overlay = src;
   pkgs = meikPkgs { overlays = [ emacs-overlay.overlay ]; };
-  inherit (pkgs) writeText emacsPackagesFor emacsPgtkGcc
+  inherit (pkgs) writeText emacsPackagesFor emacsPgtkNativeComp
     delta;
 
-  emacs = emacsPgtkGcc;
-  emacsPackages = emacsPackagesFor emacsPgtkGcc;
+  emacs = emacsPgtkNativeComp;
+  emacsPackages = emacsPackagesFor emacsPgtkNativeComp;
   inherit (emacsPackages) elpaBuild withPackages melpaBuild
     trivialBuild;
 
