@@ -2,7 +2,7 @@
 let
   inherit (builtins) concatStringsSep readFile elem concatMap toJSON;
   inherit (kor) optionalString optionals mkIf mapAttrsToList optional optionalAttrs;
-  inherit (krimyn.spinyrz) izUniksDev saizAtList iuzColemak;
+  inherit (krimyn.spinyrz) izNiksDev saizAtList iuzColemak;
   inherit (hyraizyn) astra;
   inherit (profile) dark;
   inherit (pkgs) parinfer-rust writeText;
@@ -156,7 +156,7 @@ let
     hls = { cmd = [ hlsWrapperPath "--lsp" ]; };
   };
 
-  langServers = optionalAttrs izUniksDev (
+  langServers = optionalAttrs izNiksDev (
     (optionalAttrs saizAtList.med medLangServers) //
     (optionalAttrs saizAtList.max maxLangServers)
   );
@@ -246,7 +246,7 @@ let
     + minKod
     + themeKod
     + (readFile ./expressline.lua)
-    + (optionalString (izUniksDev && saizAtList.med)
+    + (optionalString (izNiksDev && saizAtList.med)
     (medLuaKod + optionalString saizAtList.max maxLuaKod));
 
   luaVimrc = writeText "vimrc.lua" initLuaKod;
@@ -269,7 +269,7 @@ in
 {
   home = {
     packages = minPackages
-      ++ (optionals (izUniksDev && saizAtList.med)
+      ++ (optionals (izNiksDev && saizAtList.med)
       (medPackages ++ (optionals saizAtList.max maxPackages)));
 
     sessionVariables = {

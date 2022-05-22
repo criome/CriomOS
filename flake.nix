@@ -1,5 +1,5 @@
 {
-  description = "Uniks";
+  description = "Krioniks";
 
   inputs = {
     hob.url = github:sajban/hob/eclipticPlane;
@@ -56,12 +56,12 @@
       url = path:./AskiCoreFleik;
       flake = false;
     };
-    AskiCoreUniks = {
-      url = path:./AskiCoreUniks;
+    AskiCoreNiks = {
+      url = path:./AskiCoreNiks;
       flake = false;
     };
-    AskiUniks = {
-      url = path:./AskiUniks;
+    AskiNiks = {
+      url = path:./AskiNiks;
       flake = false;
     };
     AskiDefaultBuilder = {
@@ -84,7 +84,7 @@
           ShenAski ShenCoreBootstrap ShenCore ShenCoreTests
           ShenExtendedBootstrap ShenExtended ShenExtendedTests
           AskiCore AskiCoreFleik mkWebpage
-          AskiCoreUniks AskiUniks AskiDefaultBuilder;
+          AskiCoreNiks AskiNiks AskiDefaultBuilder;
       };
 
       localHobSources = mapAttrs mkHobSpokMein localHobSourcesRaw;
@@ -98,7 +98,7 @@
       kor = import ./nix/kor.nix;
       mkKriosfir = import ./nix/mkKriosfir;
       mkKriozonz = import ./nix/mkKriozonz;
-      mkUniksOS = import ./nix/mkUniksOS;
+      mkKrioniks = import ./nix/mkKrioniks;
       mkHom = import ./nix/mkHom;
       neksysNames = import ./neksysNames.nix;
 
@@ -157,7 +157,7 @@
 
         in
         {
-          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn; };
+          os = mkKrioniks { inherit src nixpkgs kor uyrld hyraizyn; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
@@ -187,7 +187,7 @@
 
           devShell = pkgs.mkShell {
             inputsFrom = [ ];
-            UNIKSBOOTFILE = self + /boot.shen;
+            KRIONIKSBOOTFILE = self + /boot.shen;
             buildInputs = [ shen ];
           };
 

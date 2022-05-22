@@ -10,8 +10,8 @@ let
 
   libSuffixPath = "/lib/shen/lib.shen";
 
-  bootstrapUniksLib = stdenv.mkDerivation {
-    pname = "bootstrapUniksLib";
+  bootstrapNiksLib = stdenv.mkDerivation {
+    pname = "bootstrapNiksLib";
     version = mkImplicitVersion src;
     inherit src;
 
@@ -27,17 +27,17 @@ let
     '';
   };
 
-  uniksEnv = buildEnv {
-    name = "uniksEnv";
-    paths = [ uniksLib ];
+  niksEnv = buildEnv {
+    name = "niksEnv";
+    paths = [ niksLib ];
   };
 
-  uniksLib = deryveicyn {
-    name = "uniksLib";
-    uniksLib = bootstrapUniksLib;
+  niksLib = deryveicyn {
+    name = "niksLib";
+    niksLib = bootstrapNiksLib;
     inherit src;
     nixInputs = { inherit asdf; };
   };
 
 in
-{ inherit uniksLib uniksEnv libSuffixPath; }
+{ inherit niksLib niksEnv libSuffixPath; }

@@ -21,7 +21,7 @@ let
       type = enum magnytiud;
     };
 
-    uniksNeim = mkOption {
+    krioniksNeim = mkOption {
       type = str;
     };
 

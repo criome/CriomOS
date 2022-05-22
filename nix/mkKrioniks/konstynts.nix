@@ -9,8 +9,8 @@ let
 in
 {
   fileSystem = {
-    uniks = rec {
-      beisDyrektori = "/uniks";
+    niks = rec {
+      beisDyrektori = "/niks";
       podzDyrektori = beisDyrektori + "/podz";
     };
 

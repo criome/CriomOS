@@ -38,7 +38,7 @@ let
     };
 
     spici = mkOption {
-      type = enum [ "Uniks" "Sema" "Onlimityd" ];
+      type = enum [ "Niks" "Sema" "Onlimityd" ];
       default = "Sema";
     };
 

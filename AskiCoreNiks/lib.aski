@@ -1,4 +1,4 @@
-(package uniks [ ]
+(package niks [ ]
 
  (define mkDeryveicyn
    fromStructuredAttrs  -> (mkDeryveicyn (mkStructuredAttrs))

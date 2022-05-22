@@ -19,12 +19,12 @@ let
     flakes = [{
       from = {
         type = "indirect";
-        id = "uniks";
+        id = "niks";
       };
       to = {
         type = "github";
         owner = "sajban";
-        repo = "uniks";
+        repo = "niks";
       };
     }];
     version = 2;

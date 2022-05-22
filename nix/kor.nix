@@ -192,9 +192,9 @@ rec {
   cortHacString = string:
     builtins.substring 0 7 (mkStringHash string);
 
-  cortHacIuniks = iuniks:
+  cortHacFile = file:
     builtins.substring 0 7
-      (builtins.hashFile "sha256" iuniks);
+      (builtins.hashFile "sha256" file);
 
   arkSistymMap = {
     x86-64 = "x86_64-linux";

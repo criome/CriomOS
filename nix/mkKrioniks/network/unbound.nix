@@ -3,7 +3,7 @@
 let
   inherit (builtins) map concatStringsSep;
   inherit (kor) mapAttrsToList concatMapStringsSep;
-  inherit (hyraizyn.astra) uniksNeim;
+  inherit (hyraizyn.astra) krioniksNeim;
 
   stateDir = "/var/lib/private/unbound";
   runtimeDir = "/run/private/unbound";

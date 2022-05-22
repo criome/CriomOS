@@ -1,9 +1,9 @@
 { kor, pkgs, krimyn, ... }:
 let
   inherit (kor) optionals;
-  inherit (krimyn.spinyrz) izUniksDev izSemaDev;
+  inherit (krimyn.spinyrz) izNiksDev izSemaDev;
 
-  uniksDevPackages = with pkgs; [
+  niksDevPackages = with pkgs; [
   ];
 
   semaDevPackages = with pkgs; [
@@ -20,7 +20,7 @@ in
     packages = with pkgs; [
       # freecad # broken
     ]
-    ++ (optionals izUniksDev uniksDevPackages)
+    ++ (optionals izNiksDev niksDevPackages)
     ++ (optionals izSemaDev semaDevPackages);
   };
 

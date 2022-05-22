@@ -8,10 +8,10 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  uniksOSShell = mksh + mksh.shellPath;
+  niksOSShell = mksh + mksh.shellPath;
 
   mkAstriKnownHost = n: astri:
-    concatStringsSep " " [ astri.uniksNeim astri.eseseitc ];
+    concatStringsSep " " [ astri.krioniksNeim astri.eseseitc ];
 
   sshKnownHosts = concatStringsSep "\n"
     (mapAttrsToList mkAstriKnownHost exAstriz);
@@ -33,7 +33,7 @@ in
   };
 
   environment = {
-    binsh = uniksOSShell;
+    binsh = niksOSShell;
     shells = [ "/run/current-system/sw${mksh.shellPath}" ];
 
     etc = {

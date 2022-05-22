@@ -5,7 +5,7 @@ let
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
   inherit (krimyn.spinyrz) iuzColemak hazPriKriom
-    gitSigningKey matrixID saizAtList izUniksDev;
+    gitSigningKey matrixID saizAtList izNiksDev;
   inherit (krimyn) githubId neim;
   inherit (profile) dark;
 
@@ -103,7 +103,7 @@ let
     tokei # loc counter
     eva # tui calculator
 
-  ] ++ (optionals izUniksDev [
+  ] ++ (optionals izNiksDev [
     delta
     cpulimit
     usbutils

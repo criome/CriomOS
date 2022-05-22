@@ -2,7 +2,7 @@
 let
   inherit (builtins) readFile mapAttrs;
   inherit (kor) mkIf optionals optionalString matcSaiz;
-  inherit (krimyn.spinyrz) saizAtList iuzColemak izUniksDev izSemaDev;
+  inherit (krimyn.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
   inherit (krimyn) saiz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
@@ -195,7 +195,7 @@ in
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
       hunspellDicts.en-us-large
     ]
-    ++ (optionals izUniksDev (with pkgs; [
+    ++ (optionals izNiksDev (with pkgs; [
     ]))
     ++ (optionals izSemaDev (with pkgs; [
       inkscape

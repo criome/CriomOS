@@ -26,16 +26,16 @@
         "type": "path"
       }
     },
-    "AskiCoreUniks": {
+    "AskiCoreNiks": {
       "flake": false,
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-rHxf9Xy9eOPBYylS/L0mqssS0D4HDfZkXdM//mY0/wA=",
-        "path": "./AskiCoreUniks",
+        "path": "./AskiCoreNiks",
         "type": "path"
       },
       "original": {
-        "path": "./AskiCoreUniks",
+        "path": "./AskiCoreNiks",
         "type": "path"
       }
     },
@@ -52,16 +52,16 @@
         "type": "path"
       }
     },
-    "AskiUniks": {
+    "AskiNiks": {
       "flake": false,
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Zpw5k0lpafxdko9NdW8Yyakghx1ijMnG1wS3FjyQZuM=",
-        "path": "./AskiUniks",
+        "path": "./AskiNiks",
         "type": "path"
       },
       "original": {
-        "path": "./AskiUniks",
+        "path": "./AskiNiks",
         "type": "path"
       }
     },
@@ -1122,9 +1122,9 @@
       "inputs": {
         "AskiCore": "AskiCore",
         "AskiCoreFleik": "AskiCoreFleik",
-        "AskiCoreUniks": "AskiCoreUniks",
+        "AskiCoreNiks": "AskiCoreNiks",
         "AskiDefaultBuilder": "AskiDefaultBuilder",
-        "AskiUniks": "AskiUniks",
+        "AskiNiks": "AskiNiks",
         "KLambdaBootstrap": "KLambdaBootstrap",
         "LispCore": "LispCore",
         "LispCorePrimitives": "LispCorePrimitives",

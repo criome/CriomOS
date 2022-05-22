@@ -79,7 +79,7 @@ let
         sobUyrldz;
 
       mkNeksysWebpageName = neksysNeim:
-        concatStringsSep "-" [ "page" neksysNeim "uniks" ];
+        concatStringsSep "-" [ "page" neksysNeim "niks" ];
 
       neksysWebpageSpokNames = map mkNeksysWebpageName neksysNames;
 
@@ -120,11 +120,11 @@ let
   meikSpok = spokNeim: spok:
     meikFleik spokNeim spok.mein;
 
-  uniksSpoks = {
+  niksSpoks = {
     pkdjz.mein = { HobUyrldz = (import ./pkdjz); };
   };
 
-  spoks = hob // uniksSpoks;
+  spoks = hob // niksSpoks;
 
   uyrld = mapAttrs meikSpok spoks;
 

@@ -9,8 +9,8 @@ in
   };
 
   isoImage = {
-    isoBaseName = "uniksos";
-    volumeID = "uniksos-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
+    isoBaseName = "niksos";
+    volumeID = "niksos-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
 
     makeUsbBootable = true;
     makeEfiBootable = true;

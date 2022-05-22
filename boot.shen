@@ -1,1 +1,1 @@
-(output "hello uniks~%")
+(output "hello krioniks~%")

@@ -197,8 +197,8 @@ let
       self = null;
     };
 
-    uniks = {
-      lamdy = import ./uniks;
+    niks = {
+      lamdy = import ./niks;
       modz = [ "pkgs" "pkdjz" ];
     };
 

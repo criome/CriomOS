@@ -41,7 +41,7 @@ let
 
   nixosArgs = {
     inherit kor uyrld pkdjz hyraizyn;
-    uniksOSRev = src.shortRev;
+    niksOSRev = src.shortRev;
     konstynts = import ./konstynts.nix;
   };
 
@@ -51,10 +51,10 @@ let
     modules = nixosModules;
   };
 
-  bildUniksOSVM = ivaliueicyn.config.system.build.vm;
-  bildUniksOSIso = ivaliueicyn.config.system.build.isoImage;
-  bildUniksOS = ivaliueicyn.config.system.build.toplevel;
+  bildNiksOSVM = ivaliueicyn.config.system.build.vm;
+  bildNiksOSIso = ivaliueicyn.config.system.build.isoImage;
+  bildNiksOS = ivaliueicyn.config.system.build.toplevel;
 
 in
-if iuzIsoModule then bildUniksOSIso
-else bildUniksOS
+if iuzIsoModule then bildNiksOSIso
+else bildNiksOS

@@ -3,7 +3,7 @@ let
   inherit (builtins) readFile toJSON;
   inherit (kor) optionalString optionals;
   inherit (pkdjz) kynvyrt;
-  inherit (krimyn.spinyrz) izUniksDev iuzColemak;
+  inherit (krimyn.spinyrz) izNiksDev iuzColemak;
   inherit (pkgs) mksh;
 
   tokenaizdGhcli = pkgs.writeScriptBin "gh" ''
@@ -18,7 +18,7 @@ let
     exec "${pkgs.gitAndTools.hub}/bin/hub" "$@"
   '';
 
-  uniksDevPackages = with pkgs; [
+  niksDevPackages = with pkgs; [
     sbcl
     pkdjz.ql2nix.ql2nix
     # start('bash')
@@ -92,7 +92,7 @@ in
       lazygit
       #== rust
     ]
-    ++ optionals izUniksDev uniksDevPackages;
+    ++ optionals izNiksDev niksDevPackages;
 
     file = {
       # ".config/jesseduffield/lazygit/config.yml".text = { };

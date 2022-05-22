@@ -5,21 +5,21 @@ let
   inherit (hyraizyn) astra exAstriz;
   inherit (builtins) concatStringsSep;
 
-  mkUniksHostEntry = neim: astri:
+  mkNiksHostEntry = neim: astri:
     let
-      inherit (astri) uniksNeim neksysIp;
+      inherit (astri) krioniksNeim neksysIp;
       mkPriNeksysHost = linkLocalIP: {
         name = linkLocalIP;
-        value = [ (concatStringsSep "." [ "wg" uniksNeim ]) ];
+        value = [ (concatStringsSep "." [ "wg" krioniksNeim ]) ];
       };
 
     in
     (optional (neksysIp != null) {
       name = neksysIp;
-      value = [ uniksNeim ];
+      value = [ krioniksNeim ];
     }) ++ (map mkPriNeksysHost astri.linkLocalIPs);
 
-  uniksHosts = concatMapAttrs mkUniksHostEntry exAstriz;
+  niksHosts = concatMapAttrs mkNiksHostEntry exAstriz;
 
 in
 {
@@ -32,7 +32,7 @@ in
     hostName = astra.neim;
     dhcpcd.extraConfig = "noipv4ll";
     nameservers = [ "::1" ];
-    hosts = uniksHosts;
+    hosts = niksHosts;
   };
 
   services = {
