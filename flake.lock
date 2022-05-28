@@ -30,7 +30,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-rHxf9Xy9eOPBYylS/L0mqssS0D4HDfZkXdM//mY0/wA=",
+        "narHash": "sha256-w0lewzQZ2ClGmTuarwscVi4qjIDL2mGXJ7aIP5QkLQU=",
         "path": "./AskiCoreNiks",
         "type": "path"
       },
@@ -43,7 +43,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Sq2sDZ4TqM0kuTN+ON6jfAnfZrMTlyFW9y430/yKTrs=",
+        "narHash": "sha256-dMQ4qUC2aFkZrM88zvxdiu/tdOOakETGTVOuL9/N2yI=",
         "path": "./AskiDefaultBuilder",
         "type": "path"
       },
@@ -576,11 +576,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1652349965,
-        "narHash": "sha256-XCtIpTH9LOghcpBqEjgkoekzZYB4Jyqqjv4Z358a+VM=",
+        "lastModified": 1653650985,
+        "narHash": "sha256-7gA1d4jb58sYa6kalPjhBVBmmQLTPReZfMpLUSeduRM=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "792197a74f889c7964a2860f7a6e9e64608b2049",
+        "rev": "2bb9a519faa6053b0d7e250c70573b8733b2b328",
         "type": "github"
       },
       "original": {
@@ -824,16 +824,16 @@
     },
     "nextNixpkgs": {
       "locked": {
-        "lastModified": 1652338968,
-        "narHash": "sha256-qALo8FkeHAQ/P2Lw5jOpVavJf6Daqt74m+sJagfpsok=",
+        "lastModified": 1653635114,
+        "narHash": "sha256-rPu6i7XKXw2d9iLHp+5J7VAtEztZ3h0oYMtnvE+obKg=",
         "owner": "sajban",
         "repo": "nixpkgs",
-        "rev": "375ebb0ccf48cd71fc25664090e3748fdd4e1bc9",
+        "rev": "3a4ca363a64fbdc289e290f65aab71ba5a6b5f48",
         "type": "github"
       },
       "original": {
         "owner": "sajban",
-        "ref": "simmeringBucket",
+        "ref": "hangingGarden",
         "repo": "nixpkgs",
         "type": "github"
       }
