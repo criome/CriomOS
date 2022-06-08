@@ -72,6 +72,14 @@
       url = path:./nix/pkdjz/mkWebpage/src;
       flake = false;
     };
+    NixMkDatom = {
+      url = path:./NixMkDatom;
+      flake = false;
+    };
+    NixTests = {
+      url = path:./NixTests;
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, ... }:
@@ -101,6 +109,8 @@
       mkKrioniks = import ./nix/mkKrioniks;
       mkHom = import ./nix/mkHom;
       neksysNames = import ./neksysNames.nix;
+
+      mkDatom = import inputs.NixMkDatom { inherit kor lib; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -211,8 +221,13 @@
             fullHob = allMeinHobOutputs;
           };
 
+          tests = import inputs.NixTests { inherit lib mkDatom; };
+
         in
-        { inherit uyrld legacyPackages packages defaultPackage devShell; };
+        {
+          inherit uyrld legacyPackages tests
+            packages defaultPackage devShell;
+        };
 
       perSystemOutputs = eachDefaultSystem mkOutputs;
 

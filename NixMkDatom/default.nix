@@ -1,14 +1,17 @@
-lib:
+{ kor, lib }:
 
-{ inputs
-, types
-, methods
+{ types
+, methods ? { }
 , extraTypecheckingModule ? { }
 , extraModuleArgs ? { }
 }:
 
+inputs:
 
 let
+  inherit (kor) mkLamdyz;
+  inherit (lib) evalModules;
+
   argsModule = { config._module.args = extraModuleArgs // { inherit lib; }; };
 
   typeCheckingModule = { ... }: {
@@ -20,12 +23,10 @@ let
     modules = [ argsModule typeCheckingModule extraTypecheckingModule ];
   };
 
-  typeCheckedInput = typeCheckingEvaluation.config.inputs;
-
-  mkMethod = name: value: { };
+  typeCheckedInputs = typeCheckingEvaluation.config.inputs;
 
 in
 {
-  datom = typeCheckedInput;
-  methods = mapAttrs mkMethod methods;
+  datom = typeCheckedInputs;
+  methods = mkLamdyz { klozyr = inputs; lamdyz = methods; };
 }
