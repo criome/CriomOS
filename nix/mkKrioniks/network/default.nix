@@ -25,7 +25,6 @@ in
 {
   imports = [
     ./unbound.nix
-    ./wireguard.nix
   ];
 
   networking = {
