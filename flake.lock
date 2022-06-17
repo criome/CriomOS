@@ -165,6 +165,32 @@
         "type": "path"
       }
     },
+    "NixMkDatom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-6OxAgHaBC4td4lv6UI4MemDMV3JZ2XGz8/HL7eIcdY4=",
+        "path": "./NixMkDatom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./NixMkDatom",
+        "type": "path"
+      }
+    },
+    "NixTests": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-rK3VaaX/2TQjeC1dmntQiZdG0nxPGGl7MHanhLbdtp4=",
+        "path": "./NixTests",
+        "type": "path"
+      },
+      "original": {
+        "path": "./NixTests",
+        "type": "path"
+      }
+    },
     "ShenAski": {
       "flake": false,
       "locked": {
@@ -576,16 +602,16 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1653650985,
-        "narHash": "sha256-7gA1d4jb58sYa6kalPjhBVBmmQLTPReZfMpLUSeduRM=",
+        "lastModified": 1655457171,
+        "narHash": "sha256-W8omU3vGAABsoWR4SObO0nVIMt3eGub9hiFC2JVxL54=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "2bb9a519faa6053b0d7e250c70573b8733b2b328",
+        "rev": "0eef7b0c75405b0023c0ddb8ad50f273fc05ed82",
         "type": "github"
       },
       "original": {
         "owner": "sajban",
-        "ref": "eclipticPlane",
+        "ref": "simplerHob",
         "repo": "hob",
         "type": "github"
       }
@@ -1129,6 +1155,8 @@
         "LispCore": "LispCore",
         "LispCorePrimitives": "LispCorePrimitives",
         "LispExtendedPrimitives": "LispExtendedPrimitives",
+        "NixMkDatom": "NixMkDatom",
+        "NixTests": "NixTests",
         "ShenAski": "ShenAski",
         "ShenCore": "ShenCore",
         "ShenCoreBootstrap": "ShenCoreBootstrap",

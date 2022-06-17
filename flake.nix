@@ -2,7 +2,7 @@
   description = "Krioniks";
 
   inputs = {
-    hob.url = github:sajban/hob/eclipticPlane;
+    hob.url = github:sajban/hob/simplerHob;
 
     KLambdaBootstrap = {
       url = path:./KLambdaBootstrap;
@@ -84,9 +84,7 @@
 
   outputs = inputs@{ self, ... }:
     let
-      mkHobSpokMein = name: mein: { inherit mein; };
-
-      localHobSourcesRaw = {
+      localHobSources = {
         inherit (inputs)
           KLambdaBootstrap LispCore LispCorePrimitives LispExtendedPrimitives
           ShenAski ShenCoreBootstrap ShenCore ShenCoreTests
@@ -95,13 +93,11 @@
           AskiCoreNiks AskiNiks AskiDefaultBuilder;
       };
 
-      localHobSources = mapAttrs mkHobSpokMein localHobSourcesRaw;
-
       hob = inputs.hob.Hob // localHobSources;
-      nixpkgs = hob.nixpkgs.mein;
-      nextNixpkgs = hob.nextNixpkgs.mein;
-      flake-utils = hob.flake-utils.mein;
-      emacs-overlay = hob.emacs-overlay.mein;
+      nixpkgs = hob.nixpkgs;
+      nextNixpkgs = hob.nextNixpkgs;
+      flake-utils = hob.flake-utils;
+      emacs-overlay = hob.emacs-overlay;
 
       kor = import ./nix/kor.nix;
       mkKriosfir = import ./nix/mkKriosfir;
@@ -118,7 +114,7 @@
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateKriosfirProposalFromName = name:
-        hob."${name}".mein.NeksysProposal or { };
+        hob."${name}".NeksysProposal or { };
 
       uncheckedKriosfirProposal = genAttrs
         neksysNames
@@ -148,7 +144,7 @@
                 if (krimyn.stail == "emacs")
                 then emacsPkgs
                 else nixpkgs.legacyPackages.${system};
-              home-manager = hob.home-manager.mein;
+              home-manager = hob.home-manager;
               mkProfileHom = profileName: profile:
                 mkHom {
                   inherit lib kor uyrld kriozon krimyn
@@ -210,9 +206,9 @@
           hobOutputs = mapAttrs mkSpokOutputs hob;
 
           mkSpokFarmEntry = name: spok:
-            { inherit name; path = spok.mein.outPath; };
+            { inherit name; path = spok.outPath; };
 
-          allMeinHobOutputs = linkFarm "hob.mein"
+          allMeinHobOutputs = linkFarm "hob"
             (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
 
           packages = uyrld // {

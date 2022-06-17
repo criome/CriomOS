@@ -53,7 +53,7 @@ let
 
       priMeikHobUyrld = neim: HobUyrld@{ modz ? [ ], lamdy, ... }:
         let
-          implaidSelf = hob.${neim}.mein or null;
+          implaidSelf = hob.${neim} or null;
           src = HobUyrld.src or (HobUyrld.self or implaidSelf);
           self = src;
         in
@@ -118,10 +118,10 @@ let
     else fleik;
 
   meikSpok = spokNeim: spok:
-    meikFleik spokNeim spok.mein;
+    meikFleik spokNeim spok;
 
   niksSpoks = {
-    pkdjz.mein = { HobUyrldz = (import ./pkdjz); };
+    pkdjz = { HobUyrldz = (import ./pkdjz); };
   };
 
   spoks = hob // niksSpoks;
