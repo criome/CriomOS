@@ -602,11 +602,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1655457171,
-        "narHash": "sha256-W8omU3vGAABsoWR4SObO0nVIMt3eGub9hiFC2JVxL54=",
+        "lastModified": 1655540998,
+        "narHash": "sha256-h0QN4XvsvPbAug5SPhgWm9dAcAg+cp289p6FOPATu2g=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "0eef7b0c75405b0023c0ddb8ad50f273fc05ed82",
+        "rev": "5666c7267936f2146faa52d9313a4267a8a57ec4",
         "type": "github"
       },
       "original": {
@@ -850,16 +850,16 @@
     },
     "nextNixpkgs": {
       "locked": {
-        "lastModified": 1653635114,
-        "narHash": "sha256-rPu6i7XKXw2d9iLHp+5J7VAtEztZ3h0oYMtnvE+obKg=",
+        "lastModified": 1655539968,
+        "narHash": "sha256-AWF6UuG4GXdRt/mBTbNtE5fV1S35fCipRiHGXutZas8=",
         "owner": "sajban",
         "repo": "nixpkgs",
-        "rev": "3a4ca363a64fbdc289e290f65aab71ba5a6b5f48",
+        "rev": "ab502f52c4a2f04f2956d04a2f6990075290b711",
         "type": "github"
       },
       "original": {
         "owner": "sajban",
-        "ref": "hangingGarden",
+        "ref": "simplerHob",
         "repo": "nixpkgs",
         "type": "github"
       }
