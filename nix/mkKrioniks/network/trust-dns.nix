@@ -1,10 +1,10 @@
-{ config, lib, pkgs, kor, hyraizyn, uyrld, ... }:
+{ config, lib, pkgs, kor, hyraizyn, pkdjz, ... }:
 
 let
   inherit (builtins) map;
   inherit (lib) mkOverride;
   inherit (hyraizyn.astra) krioniksNeim;
-  inherit (uyrld.pkdjz) trust-dns;
+  inherit (pkdjz) trust-dns;
 
   trustDnsEksek = "${trust-dns}/bin/named";
 

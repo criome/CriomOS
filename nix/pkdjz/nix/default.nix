@@ -1,1 +1,1 @@
-{ src, system }: src.packages.${system}.nix
+{ src }: src.defaultPackage

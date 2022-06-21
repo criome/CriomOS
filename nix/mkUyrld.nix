@@ -1,12 +1,12 @@
 { kor, pkgs, lib, hob, system, neksysNames, nextPkgs }:
 let
   inherit (builtins) hasAttr mapAttrs concatStringsSep elem;
+  inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz;
 
   meikSobUyrld = SobUyrld@{ lamdy, modz, self, src ? self, sobUyrldz ? { } }:
     let
       inherit (builtins) getAttr elem;
-      inherit (kor) mkLamdy optionalAttrs genAttrs;
 
       Modz = [
         "lib"
@@ -100,6 +100,18 @@ let
       fleikHasDefaultPackage = hasAttr "defaultPackage" fleik
         && hasAttr system fleik.defaultPackage;
 
+      fleikHasPackages = hasAttr "packages" fleik
+        && hasAttr system fleik.packages;
+
+      fleikHasLegacyPackages = hasAttr "legacyPackages" fleik
+        && hasAttr system fleik.legacyPackages;
+
+      optionalSystemAttributes = {
+        defaultPackage = fleik.defaultPackage.${system} or { };
+        packages = fleik.packages.${system} or { };
+        legacyPackages = fleik.legacyPackages.${system} or { };
+      };
+
     in
     if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
@@ -113,18 +125,16 @@ let
     then mkWebpageFleik fleik.Webpage
     else if (isWebpageSpok spokNeim)
     then mkWebpageFleik { content = fleik; }
-    else if fleikHasDefaultPackage
-    then fleik.defaultPackage.${system}
-    else fleik;
+    else fleik // optionalSystemAttributes;
 
   meikSpok = spokNeim: spok:
     meikFleik spokNeim spok;
 
-  niksSpoks = {
+  krioniksSpoks = {
     pkdjz = { HobUyrldz = (import ./pkdjz); };
   };
 
-  spoks = hob // niksSpoks;
+  spoks = hob // krioniksSpoks;
 
   uyrld = mapAttrs meikSpok spoks;
 

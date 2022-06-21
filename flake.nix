@@ -197,13 +197,10 @@
             buildInputs = [ shen ];
           };
 
-          mkSpokBranch = name: src:
+          mkHobOutput = name: src:
             symlinkJoin { inherit name; paths = [ src.outPath ]; };
 
-          mkSpokOutputs = name: branches:
-            mapAttrs mkSpokBranch branches;
-
-          hobOutputs = mapAttrs mkSpokOutputs hob;
+          hobOutputs = mapAttrs mkHobOutput hob;
 
           mkSpokFarmEntry = name: spok:
             { inherit name; path = spok.outPath; };

@@ -1,4 +1,4 @@
-{ kor, pkgs, krimyn, ... }:
+{ kor, pkgs, krimyn, uyrld, ... }:
 let
   inherit (kor) optionals;
   inherit (krimyn.spinyrz) izNiksDev izSemaDev;
@@ -35,5 +35,14 @@ in
         }
       ];
     };
+
+    obs-studio = {
+      enable = true;
+      plugins =
+        with pkgs.obs-studio-plugins;
+        with uyrld.arcnmxNixexprs.legacyPackages.obs-studio-plugins;
+        [ obs-streamfx droidcam-obs wlrobs ];
+    };
+
   };
 }
