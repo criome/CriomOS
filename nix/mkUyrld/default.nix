@@ -130,13 +130,7 @@ let
   meikSpok = spokNeim: spok:
     meikFleik spokNeim spok;
 
-  krioniksSpoks = {
-    pkdjz = { HobUyrldz = (import ./pkdjz); };
-  };
-
-  spoks = hob // krioniksSpoks;
-
-  uyrld = mapAttrs meikSpok spoks;
+  uyrld = mapAttrs meikSpok hob;
 
 in
 uyrld

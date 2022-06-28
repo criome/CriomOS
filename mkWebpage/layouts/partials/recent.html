@@ -1,0 +1,21 @@
+{# NOTE! This partial will fail to render if files are missing
+their #+date_created and #+date_updated frontmatter. #}
+{% if sitemap | length > 0 %}
+<section>
+  <div>Recently Published</div>
+  <ul>
+    {% for i in sitemap | sort(attribute="kind.Sitemap.date_created") | reverse | slice(end=10) %}
+      <li><a href={{i.path}}>{{i.file}}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section>
+  <div>Recently Updated</div>
+  <ul>
+    {% for i in sitemap | sort(attribute="kind.Sitemap.date_updated") | reverse | slice(end=10) %}
+      <li><a href={{i.path}}>{{i.file}}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

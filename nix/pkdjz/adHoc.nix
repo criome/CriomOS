@@ -98,6 +98,17 @@ in
       };
   };
 
+  nixStaticUnstable = {
+    modz = [ "pkgsStatic" ];
+    src = hob.nix;
+    lamdy = { src, nixUnstable }:
+      nixUnstable.overrideAttrs (attrs: {
+        inherit src;
+        hardeningEnable = [ "pie" ];
+        hardeningDisable = [ "pie" ];
+      });
+  };
+
   pijulSrc = {
     modz = [ "pkdjz" ];
     lamdy = { fetchPijul }: fetchPijul {

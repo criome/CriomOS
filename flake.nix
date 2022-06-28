@@ -3,94 +3,45 @@
 
   inputs = {
     hob.url = github:sajban/hob/simplerHob;
-
-    KLambdaBootstrap = {
-      url = path:./KLambdaBootstrap;
-      flake = false;
-    };
-    ShenAski = {
-      url = path:./ShenAski;
-      flake = false;
-    };
-    ShenCoreBootstrap = {
-      url = path:./ShenCoreBootstrap;
-      flake = false;
-    };
-    ShenCore = {
-      url = path:./ShenCore;
-      flake = false;
-    };
-    ShenCoreTests = {
-      url = path:./ShenCoreTests;
-      flake = false;
-    };
-    ShenExtendedBootstrap = {
-      url = path:./ShenExtendedBootstrap;
-      flake = false;
-    };
-    ShenExtended = {
-      url = path:./ShenExtended;
-      flake = false;
-    };
-    ShenExtendedTests = {
-      url = path:./ShenExtendedTests;
-      flake = false;
-    };
-    LispCore = {
-      url = path:./LispCore;
-      flake = false;
-    };
-    LispCorePrimitives = {
-      url = path:./LispCorePrimitives;
-      flake = false;
-    };
-    LispExtendedPrimitives = {
-      url = path:./LispExtendedPrimitives;
-      flake = false;
-    };
-    AskiCore = {
-      url = path:./AskiCore;
-      flake = false;
-    };
-    AskiCoreFleik = {
-      url = path:./AskiCoreFleik;
-      flake = false;
-    };
-    AskiCoreNiks = {
-      url = path:./AskiCoreNiks;
-      flake = false;
-    };
-    AskiNiks = {
-      url = path:./AskiNiks;
-      flake = false;
-    };
-    AskiDefaultBuilder = {
-      url = path:./AskiDefaultBuilder;
-      flake = false;
-    };
-    mkWebpage = {
-      url = path:./nix/pkdjz/mkWebpage/src;
-      flake = false;
-    };
-    NixMkDatom = {
-      url = path:./NixMkDatom;
-      flake = false;
-    };
-    NixTests = {
-      url = path:./NixTests;
-      flake = false;
-    };
+    KLambdaBootstrap = { url = path:./KLambdaBootstrap; flake = false; };
+    ShenAski = { url = path:./ShenAski; flake = false; };
+    ShenCoreBootstrap = { url = path:./ShenCoreBootstrap; flake = false; };
+    ShenCore = { url = path:./ShenCore; flake = false; };
+    ShenCoreTests = { url = path:./ShenCoreTests; flake = false; };
+    ShenExtendedBootstrap = { url = path:./ShenExtendedBootstrap; flake = false; };
+    ShenExtended = { url = path:./ShenExtended; flake = false; };
+    ShenExtendedTests = { url = path:./ShenExtendedTests; flake = false; };
+    LispCore = { url = path:./LispCore; flake = false; };
+    LispCorePrimitives = { url = path:./LispCorePrimitives; flake = false; };
+    LispExtendedPrimitives = { url = path:./LispExtendedPrimitives; flake = false; };
+    AskiCore = { url = path:./AskiCore; flake = false; };
+    AskiCoreFleik = { url = path:./AskiCoreFleik; flake = false; };
+    AskiCoreNiks = { url = path:./AskiCoreNiks; flake = false; };
+    AskiNiks = { url = path:./AskiNiks; flake = false; };
+    AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
+    mkWebpage = { url = path:./mkWebpage; flake = false; };
+    kor = { url = path:./nix/kor; flake = false; };
+    mkDatom = { url = path:./nix/mkDatom; flake = false; };
+    mkUyrld = { url = path:./nix/mkUyrld; flake = false; };
+    mkKriosfir = { flake = false; url = path:./nix/mkKriosfir; };
+    mkKriozonz = { flake = false; url = path:./nix/mkKriozonz; };
+    mkKrioniks = { flake = false; url = path:./nix/mkKrioniks; };
+    pkdjz = { flake = false; url = path:./nix/pkdjz; };
+    mkHom = { flake = false; url = path:./nix/mkHom; };
+    neksysNames = { flake = false; url = path:./nix/neksysNames; };
+    tests = { url = path:./nix/tests; flake = false; };
   };
 
   outputs = inputs@{ self, ... }:
     let
       localHobSources = {
-        inherit (inputs)
-          KLambdaBootstrap LispCore LispCorePrimitives LispExtendedPrimitives
-          ShenAski ShenCoreBootstrap ShenCore ShenCoreTests
-          ShenExtendedBootstrap ShenExtended ShenExtendedTests
-          AskiCore AskiCoreFleik mkWebpage
-          AskiCoreNiks AskiNiks AskiDefaultBuilder;
+        inherit (inputs) KLambdaBootstrap LispCore LispCorePrimitives
+          LispExtendedPrimitives ShenAski ShenCoreBootstrap ShenCore
+          ShenCoreTests ShenExtendedBootstrap ShenExtended ShenExtendedTests
+          AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
+          mkWebpage;
+
+        pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
       hob = inputs.hob.Hob // localHobSources;
@@ -99,14 +50,14 @@
       flake-utils = hob.flake-utils;
       emacs-overlay = hob.emacs-overlay;
 
-      kor = import ./nix/kor.nix;
-      mkKriosfir = import ./nix/mkKriosfir;
-      mkKriozonz = import ./nix/mkKriozonz;
-      mkKrioniks = import ./nix/mkKrioniks;
-      mkHom = import ./nix/mkHom;
-      neksysNames = import ./neksysNames.nix;
-
-      mkDatom = import inputs.NixMkDatom { inherit kor lib; };
+      kor = import inputs.kor;
+      mkKriosfir = import inputs.mkKriosfir;
+      mkKriozonz = import inputs.mkKriozonz;
+      mkKrioniks = import inputs.mkKrioniks;
+      mkHom = import inputs.mkHom;
+      neksysNames = import inputs.neksysNames;
+      mkUyrld = import inputs.mkUyrld;
+      mkDatom = import inputs.mkDatom { inherit kor lib; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -180,7 +131,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
           nextPkgs = nextNixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
-          mkUyrld = import ./nix/mkUyrld.nix;
           uyrld = mkUyrld {
             inherit pkgs kor lib system hob
               neksysNames nextPkgs;
@@ -214,7 +164,7 @@
             fullHob = allMeinHobOutputs;
           };
 
-          tests = import inputs.NixTests { inherit lib mkDatom; };
+          tests = import inputs.tests { inherit lib mkDatom; };
 
         in
         {
