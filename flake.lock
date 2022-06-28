@@ -165,32 +165,6 @@
         "type": "path"
       }
     },
-    "NixMkDatom": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-6OxAgHaBC4td4lv6UI4MemDMV3JZ2XGz8/HL7eIcdY4=",
-        "path": "./NixMkDatom",
-        "type": "path"
-      },
-      "original": {
-        "path": "./NixMkDatom",
-        "type": "path"
-      }
-    },
-    "NixTests": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-rK3VaaX/2TQjeC1dmntQiZdG0nxPGGl7MHanhLbdtp4=",
-        "path": "./NixTests",
-        "type": "path"
-      },
-      "original": {
-        "path": "./NixTests",
-        "type": "path"
-      }
-    },
     "ShenAski": {
       "flake": false,
       "locked": {
@@ -702,6 +676,19 @@
         "type": "github"
       }
     },
+    "kor": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-yQgNf1tJH81RM62TQ4EQc+YIwZRdoROwsoztIocQlH4=",
+        "path": "./nix/kor",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/kor",
+        "type": "path"
+      }
+    },
     "kp_boot_32u4": {
       "flake": false,
       "locked": {
@@ -825,16 +812,94 @@
         "type": "github"
       }
     },
+    "mkDatom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-RDnwqaqZdqms6oZHniEBGM+Gc4HnhFnoO7N4UcMLuMA=",
+        "path": "./nix/mkDatom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkDatom",
+        "type": "path"
+      }
+    },
+    "mkHom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-mYw6H0O7m8jhlnLSx332LRq5gRbZxFclMrczXtH0vQo=",
+        "path": "./nix/mkHom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkHom",
+        "type": "path"
+      }
+    },
+    "mkKrioniks": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-NkmfL+TCX/RqfRkDAlLf7kA2W5q2DzRa/ikrDmu8y9Q=",
+        "path": "./nix/mkKrioniks",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKrioniks",
+        "type": "path"
+      }
+    },
+    "mkKriosfir": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-yTWJHNzUBzX/vEWlxw0qXqN3KQ41o7gE0zOP7rH69cU=",
+        "path": "./nix/mkKriosfir",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKriosfir",
+        "type": "path"
+      }
+    },
+    "mkKriozonz": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-J/ymVaPxblwkyEsZNn8QEBbK1q1yXLa6LPD6qkZRQ+Q=",
+        "path": "./nix/mkKriozonz",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKriozonz",
+        "type": "path"
+      }
+    },
+    "mkUyrld": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-Re3wn3I8boKLzxkUNWnaht8YyPkQBX6flvtGAhcTYV0=",
+        "path": "./nix/mkUyrld",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkUyrld",
+        "type": "path"
+      }
+    },
     "mkWebpage": {
       "flake": false,
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Yxo6s2tzhF12JdMsywo6JCyk8zmHGJWsA670A4ztBG0=",
-        "path": "./nix/pkdjz/mkWebpage/src",
+        "path": "./mkWebpage",
         "type": "path"
       },
       "original": {
-        "path": "./nix/pkdjz/mkWebpage/src",
+        "path": "./mkWebpage",
         "type": "path"
       }
     },
@@ -852,6 +917,19 @@
         "owner": "nmattia",
         "repo": "naersk",
         "type": "github"
+      }
+    },
+    "neksysNames": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-jziHpsI6Fi46il0yUr+rQEwXBBTEZB7vj+gs9rob4fU=",
+        "path": "./nix/neksysNames",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/neksysNames",
+        "type": "path"
       }
     },
     "netresolve": {
@@ -1036,6 +1114,19 @@
         "type": "github"
       }
     },
+    "pkdjz": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-3tabeaYPJeZIKk9NoGwyndga5kBW/iLewllrmunnNkg=",
+        "path": "./nix/pkdjz",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/pkdjz",
+        "type": "path"
+      }
+    },
     "pnpm2nix": {
       "flake": false,
       "locked": {
@@ -1177,8 +1268,6 @@
         "LispCore": "LispCore",
         "LispCorePrimitives": "LispCorePrimitives",
         "LispExtendedPrimitives": "LispExtendedPrimitives",
-        "NixMkDatom": "NixMkDatom",
-        "NixTests": "NixTests",
         "ShenAski": "ShenAski",
         "ShenCore": "ShenCore",
         "ShenCoreBootstrap": "ShenCoreBootstrap",
@@ -1187,7 +1276,17 @@
         "ShenExtendedBootstrap": "ShenExtendedBootstrap",
         "ShenExtendedTests": "ShenExtendedTests",
         "hob": "hob",
-        "mkWebpage": "mkWebpage"
+        "kor": "kor",
+        "mkDatom": "mkDatom",
+        "mkHom": "mkHom",
+        "mkKrioniks": "mkKrioniks",
+        "mkKriosfir": "mkKriosfir",
+        "mkKriozonz": "mkKriozonz",
+        "mkUyrld": "mkUyrld",
+        "mkWebpage": "mkWebpage",
+        "neksysNames": "neksysNames",
+        "pkdjz": "pkdjz",
+        "tests": "tests"
       }
     },
     "rust-analyzer-src": {
@@ -1317,6 +1416,19 @@
         "owner": "svavs",
         "repo": "tera-mode",
         "type": "github"
+      }
+    },
+    "tests": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-rK3VaaX/2TQjeC1dmntQiZdG0nxPGGl7MHanhLbdtp4=",
+        "path": "./nix/tests",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/tests",
+        "type": "path"
       }
     },
     "tokei-vim": {
