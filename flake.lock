@@ -598,11 +598,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1655801248,
-        "narHash": "sha256-RH8ru1KxKRx4IFPos0UViRcx2RfAxWHEJ5U6CjLJNbM=",
+        "lastModified": 1656558850,
+        "narHash": "sha256-r4EFQiWbzvO8TzGydjjL97tr7YbmqO+Pk6whcF/iTfg=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "5c39edbd6e68ce987173a6f6262875cdb13bd208",
+        "rev": "cde28b5dbacc20d9f02ae8f88aaedc78e0cf01f3",
         "type": "github"
       },
       "original": {
@@ -783,11 +783,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1649928221,
-        "narHash": "sha256-8qIkHc96GOd7IZW7vqFNsSwv+VsIKipiB8OusmwoSPA=",
+        "lastModified": 1656558607,
+        "narHash": "sha256-MjE+fEEKsqjJPdBdk4poaJhnmSMsj1trojQkGwOVWoY=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "55666139c30362e0998a0f55c7aae3fc8a37f8ad",
+        "rev": "cd36d4c12627bb250eb21d490fdbd7c5c20c6699",
         "type": "github"
       },
       "original": {
@@ -829,7 +829,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-5RFkPkV5+As5QmuyXQv/4Kv23NFAmv9IoTBzjPzKi8o=",
+        "narHash": "sha256-rA/QoRMFhzZZNTfICxmgBs5ZFGY+0+HoNAr/AkjSLY4=",
         "path": "./nix/mkHom",
         "type": "path"
       },
@@ -842,7 +842,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-0RpWGdNnQfoEF7tsxOAmAhlb133UuSRnI5m+oeHm1RU=",
+        "narHash": "sha256-ICwNuUJr2VlBS3HqdI6AvdO8H97pToBZA0h0j8RdIhQ=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -1118,7 +1118,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-3tabeaYPJeZIKk9NoGwyndga5kBW/iLewllrmunnNkg=",
+        "narHash": "sha256-QgJu6jxpcMX73n1BUYOJi0Zl2+2iRsgxUmDXSASBYI4=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

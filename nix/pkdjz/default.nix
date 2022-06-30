@@ -150,8 +150,6 @@ let
       self = null;
     };
 
-    nix = { lamdy = import ./nix; };
-
     nix-dev = {
       lamdy = import ./nix;
       modz = [ "pkgs" "pkdjz" ];
