@@ -3,14 +3,11 @@ let
   inherit (kor) optionals;
   inherit (krimyn.spinyrz) izNiksDev izSemaDev;
 
-  niksDevPackages = with pkgs; [
-  ];
+  niksDevPackages = with pkgs;
+    [ pandoc ];
 
-  semaDevPackages = with pkgs; [
-    krita
-    calibre
-    pandoc
-  ];
+  semaDevPackages = with pkgs;
+    [ krita calibre kdenlive ];
 
 in
 {

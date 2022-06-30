@@ -31,6 +31,8 @@ in
   };
 
   programs = {
+    droidcam.enable = saizAtList.max;
+
     file-roller.enable = saizAtList.med;
 
     fish.enable = saizAtList.min;
