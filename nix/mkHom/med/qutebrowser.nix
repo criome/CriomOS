@@ -28,6 +28,8 @@ let
     "https://login.linode.com"
     "https://mail.protonmail.com"
     "https://login.protonmail.com"
+    "https://mail.proton.me"
+    "https://login.proton.me"
     "https://www.cloudflare.com"
     "https://dash.cloudflare.com"
     "https://download.lineageos.org"
@@ -38,6 +40,7 @@ let
     "https://www.goodreads.com"
     "https://www.allmusic.com"
     "https://www.imdb.com"
+    "https://www.youtube.com"
   ];
 
   mkDomainString = domain:
