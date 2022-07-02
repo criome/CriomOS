@@ -30,6 +30,7 @@
     mkHom = { flake = false; url = path:./nix/mkHom; };
     neksysNames = { flake = false; url = path:./nix/neksysNames; };
     tests = { url = path:./nix/tests; flake = false; };
+    mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
   };
 
   outputs = inputs@{ self, ... }:
@@ -58,6 +59,7 @@
       neksysNames = import inputs.neksysNames;
       mkUyrld = import inputs.mkUyrld;
       mkDatom = import inputs.mkDatom { inherit kor lib; };
+      mkKriomDatom = import inputs.mkKriomDatom { inherit lib mkDatom; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -177,8 +179,12 @@
       proposedKriosfir = mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
       proposedKriozonz = mkKriozonz { inherit kor lib proposedKriosfir; };
 
+      kriomInput = uncheckedKriosfirProposal;
+      kriomDatom = mkKriomDatom kriomInput;
+
     in
     perSystemOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
+      kriom = kriomDatom.mkOutputs;
     };
 }

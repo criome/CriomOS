@@ -4,7 +4,7 @@
 , methods ? { }
 , extraTypecheckingModule ? { }
 , extraModuleArgs ? { }
-}:
+}@spec:
 
 inputs:
 
@@ -25,8 +25,7 @@ let
 
   typeCheckedInputs = typeCheckingEvaluation.config.inputs;
 
+  methods = mkLamdyz { klozyr = inputs; lamdyz = specs.methods; };
+
 in
-{
-  datom = typeCheckedInputs;
-  methods = mkLamdyz { klozyr = inputs; lamdyz = methods; };
-}
+methods // { datom = typeCheckedInputs; }
