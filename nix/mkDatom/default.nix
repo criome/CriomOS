@@ -1,6 +1,6 @@
 { kor, lib }:
 
-{ types
+{ typeModule
 , methods ? { }
 , extraTypecheckingModule ? { }
 , extraModuleArgs ? { }
@@ -10,12 +10,12 @@ inputs:
 
 let
   inherit (kor) mkLamdyz;
-  inherit (lib) evalModules;
+  inherit (lib) evalModules submodule;
 
   argsModule = { config._module.args = extraModuleArgs // { inherit lib; }; };
 
   typeCheckingModule = { ... }: {
-    options = { inputs = types; };
+    options.inputs = mkOption { type = (submodule typeModule); };
     config.inputs = inputs;
   };
 
@@ -23,9 +23,9 @@ let
     modules = [ argsModule typeCheckingModule extraTypecheckingModule ];
   };
 
-  typeCheckedInputs = typeCheckingEvaluation.config.inputs;
+  Datom = typeCheckingEvaluation.config.inputs;
 
-  methods = mkLamdyz { klozyr = inputs; lamdyz = specs.methods; };
+  methods = mkLamdyz { klozyr = Datom; lamdyz = spec.methods; };
 
 in
-methods // { datom = typeCheckedInputs; }
+methods // { inherit Datom; }

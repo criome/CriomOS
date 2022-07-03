@@ -1,14 +1,12 @@
-{ mkDatom, lib }: inputs:
+{ mkDatom, kor, lib }: inputKriom:
 let
-  types = {
-    kriozonz = mkOption {
-      type = attrsOf (submodule metastriSubmodule);
-    };
-  };
+  typeModule = import ./typeModule.nix;
 
   methods = {
     mkOutputs = { kriozonz }: { };
   };
 
+  extraModuleArgs = { inherit kor; };
+
 in
-mkDatom { inherit types methods; } inputs
+mkDatom { inherit typeModule methods extraModuleArgs; } inputKriom
