@@ -203,10 +203,8 @@
   :config
   (put 'magit-clean 'disabled nil))
 
-(use-package diff-hl
-  :config
-  (global-diff-hl-mode)
-  (diff-hl-flydiff-mode))
+(use-package git-gutter
+  :config (global-git-gutter-mode))
 
 (use-package projectile
   :config
