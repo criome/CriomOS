@@ -816,7 +816,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-RDnwqaqZdqms6oZHniEBGM+Gc4HnhFnoO7N4UcMLuMA=",
+        "narHash": "sha256-u9s2RxMpz0s0gcbIkDbmDJ3rxE3hWCkBMNtz5HkH5/I=",
         "path": "./nix/mkDatom",
         "type": "path"
       },
@@ -829,7 +829,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-rA/QoRMFhzZZNTfICxmgBs5ZFGY+0+HoNAr/AkjSLY4=",
+        "narHash": "sha256-SgGtrtEFSebDhjUpZyoyIBLRLTNgqi1BQvZONsjgnKU=",
         "path": "./nix/mkHom",
         "type": "path"
       },
@@ -838,11 +838,24 @@
         "type": "path"
       }
     },
+    "mkKriomDatom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-A4paj9ps8WE61qgsbNa1srxBkh8oW1vc/FzTnvtXdbA=",
+        "path": "./nix/mkKriomDatom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKriomDatom",
+        "type": "path"
+      }
+    },
     "mkKrioniks": {
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-ICwNuUJr2VlBS3HqdI6AvdO8H97pToBZA0h0j8RdIhQ=",
+        "narHash": "sha256-Bt8iONkDFF09B2H4OBwncO+jDLlKsmRj0m/uAWQgLHs=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -1118,7 +1131,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-QgJu6jxpcMX73n1BUYOJi0Zl2+2iRsgxUmDXSASBYI4=",
+        "narHash": "sha256-3kakft6ZA5G3zYXZ0bJHxhTTiUJhIJ5iydEwz0a1e/s=",
         "path": "./nix/pkdjz",
         "type": "path"
       },
@@ -1279,6 +1292,7 @@
         "kor": "kor",
         "mkDatom": "mkDatom",
         "mkHom": "mkHom",
+        "mkKriomDatom": "mkKriomDatom",
         "mkKrioniks": "mkKrioniks",
         "mkKriosfir": "mkKriosfir",
         "mkKriozonz": "mkKriozonz",

@@ -12,7 +12,7 @@ let
 
   enabledExtendedPowerSave = true;
 
-  scalingGovernor =
+  cpuFreqGovernor =
     if enabledExtendedPowerSave then "powersave"
     else "schedutil";
 
@@ -25,11 +25,11 @@ let
 
   autoCpufreqSettings = {
     charger = {
-      governor = scalingGovernor;
+      governor = cpuFreqGovernor;
       turbo = "never";
     };
     battery = {
-      governor = scalingGovernor;
+      governor = cpuFreqGovernor;
       turbo = "never";
     };
   };
@@ -51,7 +51,7 @@ let
   enableAllCoresLines = mkCoreLineFromFunction mkEnableCoreLine;
 
   mkApplyGovernorLine = coreNumber:
-    "echo ${scalingGovernor} > /sys/devices/system/cpu/cpu${toString coreNumber}/cpufreq/scaling_governor'";
+    "echo ${cpuFreqGovernor} > /sys/devices/system/cpu/cpu${toString coreNumber}/cpufreq/scaling_governor";
 
   applyGovernorLines = mkCoreLineFromFunction mkApplyGovernorLine;
 
@@ -62,11 +62,8 @@ let
 
   disableFakeCoresLines = mkCoreLineFromFunction mkDisableFakeCoreLine;
 
-  disableHyperThreadingPowerUpScript = concatStringsSep "\n"
-    (applyGovernorLines ++ disableFakeCoresLines);
-
-  disableHyperThreadingPowerDownScript = concatStringsSep "\n"
-    enableAllCoresLines;
+  disableHyperThreadingPowerUpScript = concatStringsSep "\n" disableFakeCoresLines;
+  disableHyperThreadingPowerDownScript = concatStringsSep "\n" enableAllCoresLines;
 
 in
 {
@@ -95,7 +92,7 @@ in
 
     kernelModules = [ "coretemp" ];
 
-    kernelParams = (optional tcipIzIntel "intel_pstate=disable")
+    kernelParams = (optionals tcipIzIntel [ "intel_pstate=disable" ])
       ++ (optionals computerIs.rpi3B [
       "cma=32M"
       "console=ttyS0,115200n8"
@@ -107,6 +104,7 @@ in
   };
 
   powerManagement = mkIf impozyzHaipyrThreding {
+    inherit cpuFreqGovernor;
     powerUpCommands = disableHyperThreadingPowerUpScript;
     powerDownCommands = disableHyperThreadingPowerDownScript;
   };

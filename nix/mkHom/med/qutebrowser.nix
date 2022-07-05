@@ -40,7 +40,7 @@ let
     "https://www.goodreads.com"
     "https://www.allmusic.com"
     "https://www.imdb.com"
-    "https://www.youtube.com"
+    "https://*.youtube.com"
   ];
 
   mkDomainString = domain:
