@@ -4,7 +4,7 @@ let
   inherit (kor) mkIf;
   inherit (hyraizyn.astra.spinyrz) izYggKriodaizd;
   inherit (konstynts) fileSystem;
-  inherit (konstynts.fileSystem.yggdrasil) priKriodJson
+  inherit (konstynts.fileSystem.yggdrasil) priKriadJson
     subDirName datomJson interfaceName combinedConfigJson;
   inherit (konstynts.network.yggdrasil) ports;
 
@@ -52,7 +52,7 @@ in
           ExecStart = "${jqEksek} '{ EncryptionPublicKey, EncryptionPrivateKey, SigningPublicKey, SigningPrivateKey }'";
           Sockets = "yggKriodFilter.socket";
           StandardInput = "socket";
-          # StandardOutput = "file:${priKriodJson}";
+          # StandardOutput = "file:${priKriadJson}";
           StandardOutput = "journal";
         };
       };
@@ -62,7 +62,7 @@ in
         requiredBy = [ "neksys-yggdrasil.service" ];
         before = [ "neksys-yggdrasil.service" ];
         serviceConfig = {
-          ExecStart = "${jqEksek} --slurp add ${priKriodJson} ${configFile}";
+          ExecStart = "${jqEksek} --slurp add ${priKriadJson} ${configFile}";
           StandardOutput = "file:${combinedConfigJson}";
         };
       };

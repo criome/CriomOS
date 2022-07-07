@@ -10,7 +10,7 @@ let
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
     izBildyr izNiksKac izDispatcyr izKriodaizd;
 
-  inherit (konstynts.fileSystem.niks) priKriod;
+  inherit (konstynts.fileSystem.niks) priKriad;
   inherit (konstynts.network.niks) serve;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
@@ -72,7 +72,7 @@ in
     extraOptions = ''
       flake-registry = ${redjistri}
       experimental-features = nix-command flakes recursive-nix
-      secret-key-files = ${priKriod}
+      secret-key-files = ${priKriad}
       keep-derivations = ${boolToString saizAtList.med}
       keep-outputs = ${boolToString saizAtList.max}
       !include nixTokens
@@ -109,7 +109,7 @@ in
       enable = false; # (broken missingUserHomeDir)
       bindAddress = "127.0.0.1";
       port = serve.ports.internal;
-      secretKeyFile = priKriod;
+      secretKeyFile = priKriad;
     };
 
     nginx = mkIf (izNiksKac && izKriodaizd) {
