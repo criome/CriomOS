@@ -8,7 +8,7 @@ let
     [ pandoc ];
 
   semaDevPackages = with pkgs;
-    [ krita calibre kdenlive ];
+    [ krita calibre kdenlive lbry ];
 
   updatedDroidCamObs = droidcam-obs.overrideAttrs (attrs:
     let version = "1.5.1"; in
@@ -40,7 +40,7 @@ let
 
 in
 {
-  imports = [ ./firefox.nix ];
+  imports = [ ];
 
   home = {
     packages = with pkgs; [

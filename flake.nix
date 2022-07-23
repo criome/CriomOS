@@ -161,7 +161,7 @@
             (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
 
           packages = uyrld // {
-            inherit pkgs;
+            inherit pkgs nextPkgs;
             hob = hobOutputs;
             fullHob = allMeinHobOutputs;
           };

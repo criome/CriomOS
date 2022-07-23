@@ -103,11 +103,12 @@ in
 
   };
 
-  powerManagement = mkIf impozyzHaipyrThreding {
-    inherit cpuFreqGovernor;
-    powerUpCommands = disableHyperThreadingPowerUpScript;
-    powerDownCommands = disableHyperThreadingPowerDownScript;
-  };
+  powerManagement = { inherit cpuFreqGovernor; } // (
+    optionalAttrs impozyzHaipyrThreding {
+      powerUpCommands = disableHyperThreadingPowerUpScript;
+      powerDownCommands = disableHyperThreadingPowerDownScript;
+    }
+  );
 
   programs.light.enable = !izSentyr;
 

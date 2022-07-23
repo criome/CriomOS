@@ -19,6 +19,7 @@ let
   '';
 
   niksDevPackages = with pkgs; [
+    qrencode
     sbcl
     pkdjz.ql2nix.ql2nix
     # start('bash')
