@@ -71,6 +71,12 @@ argz: with argz; ''
   # Browser
     bindsym $mod+k exec ${browser}
 
+  # Take a screenshot with all output and save it into screenshots
+  bindsym Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+
+  # Take a Screenshot with the region select
+  bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+
   # border toggle
     bindsym $mod+shift+b border toggle
 
