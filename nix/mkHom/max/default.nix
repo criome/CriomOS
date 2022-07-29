@@ -8,7 +8,7 @@ let
     [ pandoc ];
 
   semaDevPackages = with pkgs;
-    [ krita calibre kdenlive lbry ];
+    [ krita calibre kdenlive ];
 
   updatedDroidCamObs = droidcam-obs.overrideAttrs (attrs:
     let version = "1.5.1"; in

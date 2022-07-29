@@ -157,7 +157,9 @@ let
     };
   };
 
-  astriSubmodule = {
+  astriSubmodule = ({ name, config, ... }: {
+    let preNexus = { };
+    in
     options = {
       spici = mkOption {
         type = enum astriSpiciz;
@@ -204,7 +206,7 @@ let
       };
 
     };
-  };
+  });
 
 
   defaultTrost = 1;

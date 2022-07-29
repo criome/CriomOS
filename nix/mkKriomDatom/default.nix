@@ -3,7 +3,7 @@ let
   typeModule = import ./typeModule.nix;
 
   methods = {
-    mkOutputs = { kriozonz }: { };
+    mkOutputs = import ./mkOutputs.nix;
   };
 
   extraModuleArgs = { inherit kor; };

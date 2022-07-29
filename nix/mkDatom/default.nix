@@ -25,7 +25,9 @@ let
 
   Datom = typeCheckingEvaluation.config.inputs;
 
-  methods = mkLamdyz { klozyr = Datom; lamdyz = spec.methods; };
+  closure = Datom // { inherit kor lib; };
+
+  methods = mkLamdyz { klozyr = closure; lamdyz = spec.methods; };
 
 in
 methods // { inherit Datom; }
