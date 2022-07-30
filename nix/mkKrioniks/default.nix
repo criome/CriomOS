@@ -1,4 +1,4 @@
-{ src, nixpkgs, kor, uyrld, hyraizyn }:
+{ krioniksRev, nixpkgs, kor, uyrld, hyraizyn }:
 let
   inherit (kor) optional;
   inherit (uyrld) pkdjz;
@@ -40,8 +40,7 @@ let
     ++ (optional iuzMetylModule metylModule);
 
   nixosArgs = {
-    inherit kor uyrld pkdjz hyraizyn;
-    niksOSRev = src.shortRev;
+    inherit kor uyrld pkdjz hyraizyn krioniksRev;
     konstynts = import ./konstynts.nix;
   };
 

@@ -1,4 +1,4 @@
-{ pkgs, lib, hyraizyn, config, kor, nixOSRev, ... }:
+{ pkgs, lib, hyraizyn, config, kor, krioniksRev, nixOSRev, ... }:
 let
   inherit (lib) mkOverride;
 
@@ -9,8 +9,8 @@ in
   };
 
   isoImage = {
-    isoBaseName = "niksos";
-    volumeID = "niksos-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
+    isoBaseName = "krioniks";
+    volumeID = "krioniks-${krioniksRev}-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
 
     makeUsbBootable = true;
     makeEfiBootable = true;

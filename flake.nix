@@ -35,6 +35,8 @@
 
   outputs = inputs@{ self, ... }:
     let
+      krioniksRev = self.shortRev;
+
       localHobSources = {
         inherit (inputs) KLambdaBootstrap LispCore LispCorePrimitives
           LispExtendedPrimitives ShenAski ShenCoreBootstrap ShenCore
@@ -42,6 +44,7 @@
           AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
           mkWebpage;
 
+        krioniks = self;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -81,7 +84,6 @@
           uyrld = self.uyrld.${system};
           nextPkgs = nextNixpkgs.legacyPackages.${system};
           hyraizyn = kriozon;
-          src = self;
 
           krimynProfiles = {
             light = { dark = false; };
@@ -116,7 +118,7 @@
 
         in
         {
-          os = mkKrioniks { inherit src nixpkgs kor uyrld hyraizyn; };
+          os = mkKrioniks { inherit krioniksRev nixpkgs kor uyrld hyraizyn; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
