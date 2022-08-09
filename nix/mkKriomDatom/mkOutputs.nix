@@ -1,4 +1,5 @@
-{ kor, lib, hob, kriozonz }:
+{ kor, lib, kriozonz, mkOutputsOfSystem, krioniksRev }:
+
 let
   inherit (builtins) fold attrNames mapAttrs filterAttrs;
 
@@ -7,8 +8,8 @@ let
       inherit (kriozon) krimynz;
       inherit (kriozon.astra.mycin) ark;
       system = kor.arkSistymMap.${ark};
-      uyrld = self.uyrld.${system};
-      nextPkgs = nextNixpkgs.legacyPackages.${system};
+      outputsOfSystem = mkOutputsOfSystem system;
+      inherit (outputsOfSystem) pkgs uyrld nextPkgs;
       hyraizyn = kriozon;
 
       krimynProfiles = {
@@ -18,13 +19,12 @@ let
 
       mkKrimynHomz = krimynNeim: krimyn:
         let
-          emacsPkgs = uyrld.pkdjz.meikPkgs {
-            overlays = [ emacs-overlay.overlay ];
-          };
+          emacsPkgs = uyrld.pkdjz.meikPkgs
+            { overlays = [ uyrld.emacs-overlay.overlay ]; };
           pkgs =
             if (krimyn.stail == "emacs")
             then emacsPkgs
-            else nixpkgs.legacyPackages.${system};
+            else outputsOfSystem.pkgs;
           home-manager = hob.home-manager;
           mkProfileHom = profileName: profile:
             mkHom {
@@ -44,7 +44,7 @@ let
 
     in
     {
-      os = mkKrioniks { inherit src nixpkgs kor uyrld hyraizyn; };
+      os = mkKrioniks { inherit krioniksRev nixpkgs kor uyrld hyraizyn; };
       hom = mapAttrs mkKrimynHomz krimynz;
       imaks = mapAttrs mkKrimynImaks krimynz;
     };
@@ -54,4 +54,3 @@ let
 
 in
 mapAttrs mkNeksysDerivationIndex kriozonz
-

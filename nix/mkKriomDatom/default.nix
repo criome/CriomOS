@@ -6,7 +6,5 @@ let
     mkOutputs = import ./mkOutputs.nix;
   };
 
-  extraModuleArgs = { inherit kor; };
-
 in
-mkDatom { inherit typeModule methods extraModuleArgs; } inputKriom
+mkDatom { inherit typeModule methods; } inputKriom

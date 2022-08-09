@@ -41,6 +41,9 @@ let
     "https://www.allmusic.com"
     "https://www.imdb.com"
     "https://*.youtube.com"
+    "https://odysee.com"
+    "https://astro-charts.com"
+    "https://www.amazon.com"
   ];
 
   mkDomainString = domain:

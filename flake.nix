@@ -45,6 +45,15 @@
           mkWebpage;
 
         krioniks = self;
+
+        mkHom = {
+          SobUyrld = {
+            lamdy = import inputs.mkHom;
+            modz = [ "uyrld" "pkgs" "pkdjz" ];
+            src = hob.home-manager;
+          };
+        };
+
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -92,19 +101,16 @@
 
           mkKrimynHomz = krimynNeim: krimyn:
             let
-              emacsPkgs = uyrld.pkdjz.meikPkgs {
-                overlays = [ emacs-overlay.overlay ];
-              };
+              emacsPkgs = uyrld.pkdjz.meikPkgs
+                { overlays = [ emacs-overlay.overlay ]; };
               pkgs =
                 if (krimyn.stail == "emacs")
                 then emacsPkgs
                 else nixpkgs.legacyPackages.${system};
-              home-manager = hob.home-manager;
               mkProfileHom = profileName: profile:
-                mkHom {
-                  inherit lib kor uyrld kriozon krimyn
-                    profile hob home-manager pkgs nextPkgs;
-                };
+                let src = hob.home-manager; in
+                mkHom { inherit lib kor src uyrld pkgs nextPkgs; }
+                  { inherit kriozon krimyn profile; };
             in
             mapAttrs mkProfileHom krimynProfiles;
 
@@ -135,10 +141,12 @@
           pkgs = nixpkgs.legacyPackages.${system};
           nextPkgs = nextNixpkgs.legacyPackages.${system};
           inherit (pkgs) symlinkJoin linkFarm;
-          uyrld = mkUyrld {
-            inherit pkgs kor lib system hob
-              neksysNames nextPkgs;
-          };
+
+          uyrld = mkUyrld
+            { inherit pkgs kor lib system hob neksysNames nextPkgs; };
+
+          mkKrioniksFromKriom = kriom@{ ... }: { };
+
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 
@@ -171,10 +179,7 @@
           tests = import inputs.tests { inherit lib mkDatom; };
 
         in
-        {
-          inherit uyrld legacyPackages tests
-            packages defaultPackage devShell;
-        };
+        { inherit uyrld legacyPackages tests packages defaultPackage devShell; };
 
       perSystemOutputs = eachDefaultSystem mkOutputs;
 
@@ -184,9 +189,14 @@
       kriomInput = uncheckedKriosfirProposal;
       kriomDatom = mkKriomDatom kriomInput;
 
+      mkOutputsOfSystem = system:
+        mapAttrs (name: value: value.${system}) perSystemOutputs;
+
+      argumentsForKriomOutputs = { inherit krioniksRev mkOutputsOfSystem; };
+
     in
     perSystemOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      kriom = kriomDatom.mkOutputs;
+      kriom = kriomDatom.mkOutputs argumentsForKriomOutputs;
     };
 }

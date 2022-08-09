@@ -1,6 +1,6 @@
 { kor, pkgs, lib, hob, system, neksysNames, nextPkgs }:
 let
-  inherit (builtins) hasAttr mapAttrs concatStringsSep elem;
+  inherit (builtins) hasAttr mapAttrs concatStringsSep elem readDir;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz;
 
@@ -42,7 +42,7 @@ let
     in
     mkLamdy { inherit klozyr lamdy; };
 
-  meikFleik = spokNeim: fleik@{ ... }:
+  makeSpoke = spokNeim: fleik@{ ... }:
     let
       priMeikSobUyrld = neim: SobUyrld@{ modz ? [ ], lamdy, ... }:
         let
@@ -112,6 +112,12 @@ let
         legacyPackages = fleik.legacyPackages.${system} or { };
       };
 
+      hasFleikFile =
+        let fleikDirectoryFiles = readDir fleik; in
+        hasAttr "fleik.nix" fleikDirectoryFiles;
+
+      makeFleik = { };
+
     in
     if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
@@ -125,12 +131,10 @@ let
     then mkWebpageFleik fleik.Webpage
     else if (isWebpageSpok spokNeim)
     then mkWebpageFleik { content = fleik; }
+    else if hasFleikFile then makeFleik fleik
     else fleik // optionalSystemAttributes;
 
-  meikSpok = spokNeim: spok:
-    meikFleik spokNeim spok;
-
-  uyrld = mapAttrs meikSpok hob;
+  uyrld = mapAttrs makeSpoke hob;
 
 in
 uyrld

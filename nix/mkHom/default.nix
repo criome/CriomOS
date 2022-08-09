@@ -1,24 +1,13 @@
-argz@
-{ lib
-, home-manager
-, pkgs
-, kor
-, kriozon
-, krimyn
-, profile
-, uyrld
-, nextPkgs
-, hob
-}:
+{ lib, src, pkgs, kor, uyrld, nextPkgs }:
+{ kriozon, krimyn, profile }:
 let
   inherit (kor) optional;
-  inherit (argz.uyrld) pkdjz;
+  inherit (uyrld) pkdjz;
   inherit (krimyn) stail;
   inherit (krimyn.spinyrz) saizAtList;
-  inherit (home-manager.lib) homeManagerConfiguration;
 
-  mkHomeManagerModules = import (home-manager + /modules/modules.nix);
-  extendedLib = import (home-manager + /modules/lib/stdlib-extended.nix) lib;
+  mkHomeManagerModules = import (src + /modules/modules.nix);
+  extendedLib = import (src + /modules/lib/stdlib-extended.nix) lib;
   inherit (extendedLib) evalModules;
 
   homeManagerModules = mkHomeManagerModules {
@@ -41,7 +30,7 @@ let
   argzModule = {
     home.stateVersion = lib.trivial.release;
     _module.args = {
-      inherit pkgs kor pkdjz uyrld hob
+      inherit pkgs kor pkdjz uyrld
         krimyn kriozon profile nextPkgs;
       hyraizyn = kriozon;
     };
