@@ -27,7 +27,7 @@
     mkKriozonz = { flake = false; url = path:./nix/mkKriozonz; };
     mkKrioniks = { flake = false; url = path:./nix/mkKrioniks; };
     pkdjz = { flake = false; url = path:./nix/pkdjz; };
-    mkHom = { flake = false; url = path:./nix/mkHom; };
+    mkHomeConfig = { flake = false; url = path:./nix/mkHomeConfig; };
     neksysNames = { flake = false; url = path:./nix/neksysNames; };
     tests = { url = path:./nix/tests; flake = false; };
     mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
@@ -44,12 +44,10 @@
           AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
           mkWebpage;
 
-        krioniks = self;
-
-        mkHom = {
+        mkHomeConfig = {
           SobUyrld = {
-            lamdy = import inputs.mkHom;
-            modz = [ "uyrld" "pkgs" "pkdjz" ];
+            lamdy = import inputs.mkHomeConfig;
+            modz = [ "uyrldSet" "pkgsSet" "nextPkgs" ];
             src = hob.home-manager;
           };
         };
@@ -67,7 +65,7 @@
       mkKriosfir = import inputs.mkKriosfir;
       mkKriozonz = import inputs.mkKriozonz;
       mkKrioniks = import inputs.mkKrioniks;
-      mkHom = import inputs.mkHom;
+      mkHomeConfig = import inputs.mkHomeConfig;
       neksysNames = import inputs.neksysNames;
       mkUyrld = import inputs.mkUyrld;
       mkDatom = import inputs.mkDatom { inherit kor lib; };
@@ -108,9 +106,13 @@
                 then emacsPkgs
                 else nixpkgs.legacyPackages.${system};
               mkProfileHom = profileName: profile:
-                let src = hob.home-manager; in
-                mkHom { inherit lib kor src uyrld pkgs nextPkgs; }
-                  { inherit kriozon krimyn profile; };
+                let
+                  src = hob.home-manager;
+                  config = mkHomeConfig
+                    { inherit lib kor src uyrld pkgs nextPkgs; }
+                    { inherit kriozon krimyn profile; };
+                in
+                config.home.activationPackage;
             in
             mapAttrs mkProfileHom krimynProfiles;
 

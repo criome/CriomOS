@@ -1,4 +1,4 @@
-{ lib, src, pkgs, kor, uyrld, nextPkgs }:
+world@{ lib, src, pkgs, kor, uyrld, nextPkgs }:
 { kriozon, krimyn, profile }:
 let
   inherit (kor) optional;
@@ -39,9 +39,9 @@ let
   modules = homModules ++ homeManagerModules
     ++ [ argzModule stailModule ];
 
-  ival = evalModules {
+  evaluation = evalModules {
     inherit modules;
   };
 
 in
-ival.config.home.activationPackage
+evaluation.config

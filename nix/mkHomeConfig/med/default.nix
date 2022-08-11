@@ -39,7 +39,6 @@ let
     lf
     tokenaizdGhcli
     tokenaizdHub
-    vgo2nix
     #== rust
     git-series
     nixpkgs-fmt

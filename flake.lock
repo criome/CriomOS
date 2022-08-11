@@ -816,7 +816,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-u9s2RxMpz0s0gcbIkDbmDJ3rxE3hWCkBMNtz5HkH5/I=",
+        "narHash": "sha256-18MiLA8MiMuHVzCegDo67rLeG7KJqZPQHGaGfuMYJZE=",
         "path": "./nix/mkDatom",
         "type": "path"
       },
@@ -825,16 +825,16 @@
         "type": "path"
       }
     },
-    "mkHom": {
+    "mkHomeConfig": {
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Rwt4J0vTsjtZBqlRht59Zm/zk7V0vPCyNoFewFBXrzg=",
-        "path": "./nix/mkHom",
+        "narHash": "sha256-0IiGXkGODVMuRoONrlOo1N1dlHJgEB4eEoGQ6dDp8DQ=",
+        "path": "./nix/mkHomeConfig",
         "type": "path"
       },
       "original": {
-        "path": "./nix/mkHom",
+        "path": "./nix/mkHomeConfig",
         "type": "path"
       }
     },
@@ -842,7 +842,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-A4paj9ps8WE61qgsbNa1srxBkh8oW1vc/FzTnvtXdbA=",
+        "narHash": "sha256-1W4IAO9kUmpRSyFRq/xZLRFImz4nT4yHhlpQ4DbW6cA=",
         "path": "./nix/mkKriomDatom",
         "type": "path"
       },
@@ -855,7 +855,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-dNlGc8IxOQvjrKzNI/eSo3qd8N3pQyQPnGJ9BqFAHOY=",
+        "narHash": "sha256-HrOhRIZU5txcJ8uO9cRdUgk3uinzxFtEBHzT7bkrjoY=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -894,7 +894,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Re3wn3I8boKLzxkUNWnaht8YyPkQBX6flvtGAhcTYV0=",
+        "narHash": "sha256-FN30rX/kGNAzYU8gQeIzCvBoRD8KgZBDf2EaT1euh9s=",
         "path": "./nix/mkUyrld",
         "type": "path"
       },
@@ -1291,7 +1291,7 @@
         "hob": "hob",
         "kor": "kor",
         "mkDatom": "mkDatom",
-        "mkHom": "mkHom",
+        "mkHomeConfig": "mkHomeConfig",
         "mkKriomDatom": "mkKriomDatom",
         "mkKrioniks": "mkKrioniks",
         "mkKriosfir": "mkKriosfir",

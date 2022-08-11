@@ -9,7 +9,6 @@ let
       inherit (builtins) getAttr elem;
 
       Modz = [
-        "lib"
         "pkgs"
         "pkgsStatic"
         "pkgsSet"
@@ -28,12 +27,11 @@ let
         // optionalAttrs iuzMod.uyrld uyrld
         // optionalAttrs iuzMod.pkdjz pkdjz
         // optionalAttrs iuzMod.hob { inherit hob; }
-        // optionalAttrs iuzMod.lib { inherit lib; }
         // optionalAttrs iuzMod.pkgsSet { inherit pkgs; }
         // optionalAttrs iuzMod.uyrldSet { inherit uyrld; }
         // optionalAttrs iuzMod.nextPkgs { inherit nextPkgs; }
         // sobUyrldz
-        // { inherit kor; }
+        // { inherit kor lib; }
         // { inherit system; }
         # TODO: deprecate `self` for `src`
         // { inherit self; }
@@ -47,7 +45,7 @@ let
       priMeikSobUyrld = neim: SobUyrld@{ modz ? [ ], lamdy, ... }:
         let
           src = SobUyrld.src or (SobUyrld.self or fleik);
-          self = SobUyrld.self or fleik;
+          self = src;
         in
         meikSobUyrld { inherit src self modz lamdy; };
 
@@ -96,15 +94,6 @@ let
           };
         in
         meikSobUyrld SobUyrld;
-
-      fleikHasDefaultPackage = hasAttr "defaultPackage" fleik
-        && hasAttr system fleik.defaultPackage;
-
-      fleikHasPackages = hasAttr "packages" fleik
-        && hasAttr system fleik.packages;
-
-      fleikHasLegacyPackages = hasAttr "legacyPackages" fleik
-        && hasAttr system fleik.legacyPackages;
 
       optionalSystemAttributes = {
         defaultPackage = fleik.defaultPackage.${system} or { };

@@ -1,7 +1,7 @@
 { krioniksRev, nixpkgs, kor, uyrld, hyraizyn }:
 let
   inherit (kor) optional;
-  inherit (uyrld) pkdjz;
+  inherit (uyrld) pkdjz home-manager;
   inherit (pkdjz) ivalNixos;
   inherit (hyraizyn.astra.spinyrz) izEdj izHaibrid;
   inherit (hyraizyn.astra) mycin io;
@@ -37,6 +37,7 @@ let
 
   nixosModules = beisModules
     ++ (optional iuzEdjModule edjModule)
+    ++ (optional iuzIsoModule home-manager.nixosModules.default)
     ++ (optional iuzMetylModule metylModule);
 
   nixosArgs = {
