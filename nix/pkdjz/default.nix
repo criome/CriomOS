@@ -87,15 +87,9 @@ let
 
     mach-nix = { lamdy = import ./mach-nix; };
 
-    meikPkgs = {
-      lamdy = import ./meikPkgs;
-      modz = [ "lib" ];
-      self = hob.nixpkgs;
-    };
-
     meikImaks = {
       lamdy = import ./meikImaks;
-      modz = [ "pkdjz" "hob" ];
+      modz = [ "pkgsSet" "hob" ];
       self = hob.emacs-overlay;
     };
 

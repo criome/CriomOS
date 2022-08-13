@@ -1,5 +1,5 @@
-{ self, meikPkgs }:
+{ self, mkPkgs }:
 
-meikPkgs {
+mkPkgs {
   overlays = [ (import (self + /rust-overlay.nix)) ];
 }

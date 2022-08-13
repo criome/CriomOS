@@ -46,7 +46,7 @@ in
   };
 
   nix = {
-    package = uyrld.nix.defaultPackage;
+    package = uyrld.nix.packages.default;
 
     trustedUsers = [ "root" "@nixdev" ];
 

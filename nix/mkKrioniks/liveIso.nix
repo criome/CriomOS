@@ -1,14 +1,14 @@
-{ pkgs, lib, hyraizyn, config, kor, krioniksRev, nixOSRev, uyrld, ... }:
+{ pkgs, lib, hyraizyn, kor, krioniksRev, nixOSRev, uyrld, homeModule, ... }:
 let
   inherit (builtins) mapAttrs;
   inherit (lib) mkOverride;
-  inherit (uyrld) mkHomeConfig;
+  inherit (uyrld) mkHomeConfig pkdjz;
 
-  profile = "light";
+  iuzMetylModule = hyraizyn.astra.mycin.spici == "metyl";
+  profile = { dark = false; };
 
   mkUserConfig = name: krimyn:
-    let kriozon = hyraizyn; in
-    mkHomeConfig { inherit krimyn profile kriozon; };
+    { _module.args = { inherit krimyn profile; }; };
 
 in
 {
@@ -16,8 +16,13 @@ in
     supportedFilesystems = mkOverride 10 [ "btrfs" "vfat" "xfs" "ntfs" ];
   };
 
+  hardware.enableAllFirmware = iuzMetylModule;
+
   home-manager = {
     backupFileExtension = "backup";
+    extraSpecialArgs = { inherit kor pkdjz uyrld hyraizyn; };
+    sharedModules = [ homeModule ];
+    useGlobalPkgs = true;
     users = mapAttrs mkUserConfig hyraizyn.krimynz;
   };
 

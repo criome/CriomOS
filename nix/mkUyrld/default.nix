@@ -1,4 +1,4 @@
-{ kor, pkgs, lib, hob, system, neksysNames, nextPkgs }:
+{ kor, pkgs, lib, hob, system, neksysNames }:
 let
   inherit (builtins) hasAttr mapAttrs concatStringsSep elem readDir;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
@@ -16,7 +16,6 @@ let
         "pkdjz"
         "uyrld"
         "uyrldSet"
-        "nextPkgs"
       ];
 
       iuzMod = genAttrs Modz (n: (elem n modz));
@@ -29,7 +28,6 @@ let
         // optionalAttrs iuzMod.hob { inherit hob; }
         // optionalAttrs iuzMod.pkgsSet { inherit pkgs; }
         // optionalAttrs iuzMod.uyrldSet { inherit uyrld; }
-        // optionalAttrs iuzMod.nextPkgs { inherit nextPkgs; }
         // sobUyrldz
         // { inherit kor lib; }
         // { inherit system; }

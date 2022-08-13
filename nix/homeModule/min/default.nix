@@ -230,6 +230,11 @@ in
   home = {
     packages = nixpkgsPackages ++ uyrldPackages;
 
+    pointerCursor = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+    };
+
     file = {
       ".config/broot/conf.toml".text = brootConfig;
 

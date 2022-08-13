@@ -1,7 +1,6 @@
-{ kor, lib, src, meikPkgs, hob }:
+{ kor, lib, src, pkgs, hob }:
 let
   emacs-overlay = src;
-  pkgs = meikPkgs { overlays = [ emacs-overlay.overlay ]; };
   inherit (pkgs) writeText emacsPackagesFor emacsPgtkNativeComp
     delta;
 

@@ -1,4 +1,4 @@
-{ kor, krimyn, ... }:
+{ kor, lib, krimyn, ... }:
 let
   inherit (kor) optional;
 
@@ -8,6 +8,7 @@ in
     home = {
       username = krimyn.neim;
       homeDirectory = "/home/" + krimyn.neim;
+      stateVersion = lib.trivial.release;
     };
   };
 }

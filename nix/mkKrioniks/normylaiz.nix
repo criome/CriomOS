@@ -58,6 +58,8 @@ in
     cpu.intel.updateMicrocode = tcipIzIntel;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   services = {
     openssh = {
       enable = true;

@@ -1,8 +1,7 @@
 inputs@{ src, lib, pkgs, system }:
 
 argz@
-{ nixpkgs ? src
-, pkgs ? inputs.pkgs
+{ pkgs ? inputs.pkgs
 , modules ? [ ]
 , moduleArgs ? { }
 , iuzQemuVmModule ? false
@@ -21,14 +20,14 @@ let
   };
 
   specialArgs = {
-    modulesPath = toString (nixpkgs + /nixos/modules);
+    modulesPath = toString (src + /nixos/modules);
   };
 
-  baseModules = import (nixpkgs + /nixos/modules/module-list.nix);
+  baseModules = import (src + /nixos/modules/module-list.nix);
   qemuVmModule = import
-    (nixpkgs + /nixos/modules/virtualisation/qemu-vm.nix);
+    (src + /nixos/modules/virtualisation/qemu-vm.nix);
   isoImageModule = import
-    (nixpkgs + /nixos/modules/installer/cd-dvd/iso-image.nix);
+    (src + /nixos/modules/installer/cd-dvd/iso-image.nix);
 
   nixOSRev = src.shortRev;
 

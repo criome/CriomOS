@@ -1,4 +1,4 @@
-{ kor, pkgs, pkdjz, krimyn, config, profile, nextPkgs, ... }:
+{ kor, pkgs, pkdjz, krimyn, config, profile, ... }:
 let
   inherit (builtins) readFile mapAttrs;
   inherit (kor) mkIf optionals optionalString matcSaiz;
@@ -158,7 +158,7 @@ in
 
   home = {
     packages = with pkgs; [
-      nextPkgs.element-desktop
+      element-desktop
       # C
       # ctags
       swaylock

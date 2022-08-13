@@ -9,7 +9,7 @@ let
       inherit (kriozon.astra.mycin) ark;
       system = kor.arkSistymMap.${ark};
       outputsOfSystem = mkOutputsOfSystem system;
-      inherit (outputsOfSystem) pkgs uyrld nextPkgs;
+      inherit (outputsOfSystem) pkgs uyrld;
       hyraizyn = kriozon;
 
       krimynProfiles = {
@@ -19,18 +19,11 @@ let
 
       mkKrimynHomz = krimynNeim: krimyn:
         let
-          emacsPkgs = uyrld.pkdjz.meikPkgs
-            { overlays = [ uyrld.emacs-overlay.overlay ]; };
-          pkgs =
-            if (krimyn.stail == "emacs")
-            then emacsPkgs
-            else outputsOfSystem.pkgs;
-          home-manager = hob.home-manager;
           mkProfileHom = profileName: profile:
-            mkHom {
-              inherit lib kor uyrld kriozon krimyn
-                profile hob home-manager pkgs nextPkgs;
-            };
+            let homeConfig =
+              uyrld.mkHomeConfig
+                { inherit kriozon krimyn profile; };
+            in homeConfig.home.activationPackage;
         in
         mapAttrs mkProfileHom krimynProfiles;
 

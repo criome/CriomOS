@@ -1,11 +1,10 @@
-inputs@{ src, lib, system }:
-
-meikArgz@
-{ src ? inputs.src
-, lib ? inputs.lib
+inputs@
+{ nixpkgs
+, lib ? import (nixpkgs + /lib)
 , overlays ? [ ]
 , config ? { allowUnfree = true; }
-, localSystem ? { system = inputs.system; }
+, system ? null
+, localSystem ? { inherit (inputs) system; }
 , crossSystem ? localSystem
 }:
 let
@@ -20,7 +19,7 @@ let
     , overlays
     , ...
     }@args:
-    import (src + /pkgs/stdenv/linux) args;
+    import (nixpkgs + /pkgs/stdenv/linux) args;
 
   clumsyCrossLinuxStdenvStages =
     { lib
@@ -66,7 +65,7 @@ let
       (buildPackages: {
         inherit config;
         overlays = overlays ++ crossOverlays
-        ++ (if crossSystem.isWasm then [ (import (src + /pkgs/top-level/static.nix)) ] else [ ]);
+        ++ (if crossSystem.isWasm then [ (import (nixpkgs + /pkgs/top-level/static.nix)) ] else [ ]);
         selfBuild = false;
         stdenv = buildPackages.stdenv.override (old: rec {
           buildPlatform = localSystem;
@@ -148,7 +147,7 @@ let
 
       configEval = evalModules {
         modules = [
-          (src + /pkgs/top-level/config.nix)
+          (nixpkgs + /pkgs/top-level/config.nix)
           ({ options, ... }: {
             _file = "nixpkgs.config";
             config = intersectAttrs options config1;
@@ -162,9 +161,9 @@ let
       nixpkgsFun = newArgs: topLevelFn (args // newArgs);
 
       allPackages = newArgs:
-        import (src + /pkgs/top-level/stage.nix) ({ inherit lib nixpkgsFun; } // newArgs);
+        import (nixpkgs + /pkgs/top-level/stage.nix) ({ inherit lib nixpkgsFun; } // newArgs);
 
-      boot = import (src + /pkgs/stdenv/booter.nix) { inherit lib allPackages; };
+      boot = import (nixpkgs + /pkgs/stdenv/booter.nix) { inherit lib allPackages; };
 
       stages = stdenvStages {
         inherit lib localSystem crossSystem config overlays crossOverlays;
