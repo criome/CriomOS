@@ -1,7 +1,7 @@
 { kor, pkgs, krimyn, uyrld, ... }:
 let
   inherit (kor) optionals;
-  inherit (krimyn.spinyrz) izNiksDev izSemaDev;
+  inherit (krimyn.spinyrz) izNiksDev izSemaDev saizAtList;
   inherit (uyrld.arcnmxNixexprs.legacyPackages.obs-studio-plugins) droidcam-obs;
 
   niksDevPackages = with pkgs;
@@ -39,9 +39,7 @@ let
     });
 
 in
-{
-  imports = [ ];
-
+kor.mkIf saizAtList.max {
   home = {
     packages = with pkgs; [
       # freecad # broken

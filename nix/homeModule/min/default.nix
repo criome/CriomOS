@@ -128,9 +128,7 @@ let
   ];
 
 in
-{
-  imports = [ ./sway.nix ];
-
+mkIf saizAtList.min {
   services = {
     gpg-agent = mkIf hazPriKriom {
       enable = true;
@@ -141,7 +139,7 @@ in
       defaultCacheTtlSsh = 3600;
       maxCacheTtlSsh = 86400;
       enableSshSupport = true;
-      sshKeys = [ krimyn.priKriomz.${astra.neim}.keygrip ];
+      sshKeys = [ (krimyn.priKriomz.${astra.neim}.keygrip or null) ];
     };
 
     mpd = {

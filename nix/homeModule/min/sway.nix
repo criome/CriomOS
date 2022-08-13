@@ -76,7 +76,7 @@ let
   swayConfigString = import ./swayConf.nix swayArgz;
 
 in
-{
+mkIf saizAtList.min {
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures = { base = true; gtk = true; };

@@ -52,7 +52,7 @@ let
   domainListBlok = builtins.concatStringsSep "\n" mkDomainsList;
 
 in
-{
+kor.mkIf saizAtList.med {
   home = {
     packages = [ pkgs.qutebrowser ];
 

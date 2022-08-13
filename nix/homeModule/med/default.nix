@@ -3,7 +3,7 @@ let
   inherit (builtins) readFile toJSON;
   inherit (kor) optionalString optionals;
   inherit (pkdjz) kynvyrt;
-  inherit (krimyn.spinyrz) izNiksDev iuzColemak;
+  inherit (krimyn.spinyrz) izNiksDev iuzColemak saizAtList;
   inherit (pkgs) mksh;
 
   tokenaizdGhcli = pkgs.writeScriptBin "gh" ''
@@ -56,11 +56,7 @@ let
   ]);
 
 in
-{
-  imports = [
-    ./qutebrowser.nix
-  ];
-
+kor.mkIf saizAtList.med {
   programs = {
     starship = {
       enable = true;
