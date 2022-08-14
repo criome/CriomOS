@@ -2,7 +2,7 @@
 let
   inherit (builtins) readFile toString;
   inherit (kor) mkIf optionalString;
-  inherit (krimyn.spinyrz) iuzColemak;
+  inherit (krimyn.spinyrz) iuzColemak saizAtList;
   inherit (profile) dark;
 
   whitelist = [

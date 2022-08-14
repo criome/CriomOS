@@ -47,14 +47,6 @@
           AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
           mkWebpage;
 
-        mkHomeConfig = {
-          SobUyrld = {
-            lamdy = import inputs.mkHomeConfig;
-            modz = [ "uyrldSet" "pkgsSet" ];
-            src = hob.home-manager;
-          };
-        };
-
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -107,23 +99,12 @@
 
               mkProfileHom = profileName: profile:
                 let
-                  src = hob.home-manager;
-                  mkHomeManagerModules = import (src + /modules/modules.nix);
-                  extendedLib = import (src + /modules/lib/stdlib-extended.nix) lib;
-                  inherit (extendedLib) evalModules;
-                  homeManagerModules = mkHomeManagerModules {
-                    inherit pkgs;
-                    lib = extendedLib;
-                    useNixpkgsModule = false;
-                  };
-                  argzModule = {
-                    _module.args = {
-                      inherit kor pkdjz uyrld hyraizyn
-                        krimyn kriozon profile;
-                    };
-                  };
-                  modules = homeManagerModules ++ [ homeModule argzModule ];
-                  evaluation = evalModules { inherit modules; };
+                  modules = [ homeModule ];
+                  extraSpecialArgs =
+                    { inherit kor pkdjz uyrld hyraizyn krimyn profile; };
+                  evalHomeManager = hob.home-manager.lib.homeManagerConfiguration;
+                  evaluation = evalHomeManager
+                    { inherit modules extraSpecialArgs pkgs; };
                 in
                 evaluation.config.home.activationPackage;
             in
