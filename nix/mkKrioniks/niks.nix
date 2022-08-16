@@ -8,7 +8,8 @@ let
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz) exAstrizEseseitcPriKriomz
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
-    izBildyr izNiksKac izDispatcyr izKriodaizd;
+    izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd
+    krioniksNeim;
 
   inherit (konstynts.fileSystem.niks) priKriad;
   inherit (konstynts.network.niks) serve;
@@ -48,22 +49,24 @@ in
   nix = {
     package = uyrld.nix.packages.default;
 
-    trustedUsers = [ "root" "@nixdev" ];
+    settings = {
+      trusted-users = [ "root" "@nixdev" ];
 
-    allowedUsers = [ "@users" "nix-serve" ]
-      ++ optional izBildyr "niksBildyr";
+      allowed-users = [ "@users" "nix-serve" ]
+        ++ optional izBildyr "niksBildyr";
 
-    buildCores = astra.nbOfBildKorz;
+      build-cores = astra.nbOfBildKorz;
 
-    sandboxPaths = [
-      # "/links"  # TODO
-    ];
+      sandbox-paths = [
+        # "/links"  # TODO
+      ];
 
-    binaryCachePublicKeys = trostydBildPriKriomz;
-    binaryCaches = kacURLz;
-    trustedBinaryCaches = kacURLz;
+      trusted-public-keys = trostydBildPriKriomz;
+      substituters = kacURLz;
+      trusted-binary-caches = kacURLz;
 
-    autoOptimiseStore = true;
+      auto-optimise-store = true;
+    };
 
     # Lowest priorities
     daemonCPUSchedPolicy = "idle";
@@ -122,6 +125,16 @@ in
       };
     };
 
+  };
+
+  systemd.services = mkIf (!izNiksKriodaizd) {
+    mkNixPreKriad = {
+      description = "";
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        nix key generate-secret --key-namem ${krioniksNeim} > ${priKriad}
+      '';
+    };
   };
 
 }

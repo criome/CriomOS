@@ -137,7 +137,7 @@ in
       };
     };
 
-    localtime = { enable = saizAtList.min; };
+    localtimed = { enable = saizAtList.min; };
 
     udev.extraRules = ''
       # USBasp - USB programmer for Atmel AVR controllers
