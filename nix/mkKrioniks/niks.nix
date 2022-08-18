@@ -8,8 +8,7 @@ let
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz) exAstrizEseseitcPriKriomz
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
-    izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd
-    krioniksNeim;
+    izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd;
 
   inherit (konstynts.fileSystem.niks) priKriad;
   inherit (konstynts.network.niks) serve;
@@ -132,7 +131,7 @@ in
       description = "";
       wantedBy = [ "multi-user.target" ];
       script = ''
-        nix key generate-secret --key-namem ${krioniksNeim} > ${priKriad}
+        nix key generate-secret --key-namem ${astra.krioniksNeim} > ${priKriad}
       '';
     };
   };

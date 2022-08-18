@@ -10,7 +10,7 @@ inputs:
 
 let
   inherit (kor) mkLamdyz;
-  inherit (lib) evalModules submodule;
+  inherit (lib) evalModules submodule mkOption;
 
   argsModule = { config._module.args = extraModuleArgs // { inherit lib; }; };
 

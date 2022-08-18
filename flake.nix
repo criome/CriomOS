@@ -62,10 +62,11 @@
           mkHomeConfig neksysNames mkUyrld homeModule;
       };
 
-      inherit (imports) kor neksysNames mkPkgs homeModule;
+      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks;
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
-      mkKriomDatom = import inputs.mkKriomDatom { inherit lib mkDatom; };
+      mkKriomDatom = import inputs.mkKriomDatom
+        { inherit kor lib mkDatom mkKrioniks; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
