@@ -1,7 +1,7 @@
 { kor, pkgs, pkdjz, krimyn, hyraizyn, config, profile, uyrld, ... }:
 let
   inherit (builtins) concatStringsSep toString readFile toJSON;
-  inherit (kor) optionalString optionals mkIf mapAttrsToList;
+  inherit (kor) optionalString optionals mkIf mapAttrsToList optional;
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
   inherit (krimyn.spinyrz) iuzColemak hazPriKriom
@@ -130,7 +130,7 @@ let
 in
 mkIf saizAtList.min {
   services = {
-    gpg-agent = mkIf hazPriKriom {
+    gpg-agent = {
       enable = true;
       verbose = true;
       pinentryFlavor = "gnome3";
@@ -139,7 +139,7 @@ mkIf saizAtList.min {
       defaultCacheTtlSsh = 3600;
       maxCacheTtlSsh = 86400;
       enableSshSupport = true;
-      sshKeys = [ (krimyn.priKriomz.${astra.neim}.keygrip or null) ];
+      sshKeys = (optional hazPriKriom krimyn.priKriomz.${astra.neim}.keygrip);
     };
 
     mpd = {

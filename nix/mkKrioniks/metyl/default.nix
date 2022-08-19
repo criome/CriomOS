@@ -7,6 +7,10 @@ let
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
     impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
 
+  hasThunderbolt = modyl == "ThinkPadE15Gen2Intel";
+  hasNvme = modyl == "ThinkPadE15Gen2Intel";
+  requiresSofFirmware = modyl == "ThinkPadE15Gen2Intel";
+
   izX230 = modyl == "ThinkPadX230";
   izX240 = modyl == "ThinkPadX240";
 
@@ -78,7 +82,9 @@ in
       alsa-firmware
       openelec-dvb-firmware
     ]
-    ++ optional computerIs.rpi3B raspberrypiWirelessFirmware;
+    ++ optional computerIs.rpi3B raspberrypiWirelessFirmware
+    ++ optional requiresSofFirmware sof-firmware
+    ;
 
     opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel;
 
@@ -89,6 +95,11 @@ in
   boot = {
     extraModulePackages = [ ] ++
       (optional modylIzThinkpad config.boot.kernelPackages.acpi_call);
+
+    initrd = {
+      availableKernelModules = (optional hasThunderbolt "thunderbolt")
+        ++ (optional hasNvme "nvme");
+    };
 
     kernelModules = [ "coretemp" ];
 

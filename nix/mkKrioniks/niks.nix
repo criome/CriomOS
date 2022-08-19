@@ -130,6 +130,7 @@ in
     mkNixPreKriad = {
       description = "";
       wantedBy = [ "multi-user.target" ];
+      serviceConfig = { type = "oneshot"; };
       script = ''
         nix key generate-secret --key-namem ${astra.krioniksNeim} > ${priKriad}
       '';

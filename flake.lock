@@ -585,11 +585,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1660368097,
-        "narHash": "sha256-cERhDomvXS3rXvobnLg3nViGrHaM/mqOshdrf3btZ78=",
+        "lastModified": 1660884275,
+        "narHash": "sha256-QxHy9ad723fuf8KkSn+6Tg/YFFl4AQT+racqqFVBJg0=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "25cb87b9ef75bd45f0e2732b1f48665e92670ce5",
+        "rev": "b2e0a67af7329f308b0c3f7ef80321996fa8af0f",
         "type": "github"
       },
       "original": {
@@ -628,7 +628,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-lb7NgpUPnfakjPdsFsCwdpmVux6lUVoc/iY+DhwlLIE=",
+        "narHash": "sha256-ZZFOYDPO1u++JuI9h0qQvfnl3XXnDTIGBc9UzKtuKzg=",
         "path": "./nix/homeModule",
         "type": "path"
       },
@@ -792,11 +792,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1657021136,
-        "narHash": "sha256-EE3dgszTSzmnrh7nOBwciTa8/vi+zUt73cjkDHPjwbI=",
+        "lastModified": 1660884172,
+        "narHash": "sha256-5DtXSeIfdOkrGsz5czK7hXJoSXCuz0kN7K8qsuA5hkc=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "2197fa244cf443fabc8727f27680d05d839f4e56",
+        "rev": "3a20359c0003a3e49b22ca2ed4787d6411ced56a",
         "type": "github"
       },
       "original": {
@@ -851,7 +851,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-yKs/N5B4U+pF7W+jDix3fJx3Uzwaf9VulE4OGW6Kz50=",
+        "narHash": "sha256-5FYdq0ddZVOSJ/anYBqGcwuJEMXCu5XUHF562u2xhKY=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
