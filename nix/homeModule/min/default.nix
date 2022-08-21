@@ -104,6 +104,7 @@ let
     eva # tui calculator
 
   ] ++ (optionals izNiksDev [
+    yggdrasil
     delta
     cpulimit
     usbutils

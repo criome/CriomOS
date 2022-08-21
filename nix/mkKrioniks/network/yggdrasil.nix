@@ -1,7 +1,7 @@
 { kor, pkgs, hyraizyn, konstynts, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter;
-  inherit (kor) mkIf;
+  inherit (kor) mkIf optionalString;
   inherit (hyraizyn.astra.spinyrz) izYggKriodaizd;
   inherit (konstynts) fileSystem;
   inherit (konstynts.fileSystem.yggdrasil) priKriadJson
@@ -26,6 +26,21 @@ let
 
   configFile = mkConfigFile yggdrasilConfig;
 
+  seedYggdrasil = !izYggKriodaizd;
+
+  seedYggdrasilScript = pkgs.writeScript "createYggdrasilKeys.sh" ''
+    if [[ ! -e ${priKriadJson} ]]; then
+      ${yggExec} -genconf -json | \
+        ${pkgs.jq}/bin/jq '{ PublicKey, PrivateKey }' > ${priKriadJson}
+    fi
+  '';
+
+  yggdrasilKriomJson = "/etc/yggdrasilKriom.json";
+
+  extractYggNoudData = pkgs.writeScript "extractYggNoudData.sh" ''
+    ${yggCtlExec} -json -v getself > ${yggdrasilKriomJson}
+  '';
+
 in
 {
   networking.firewall = {
@@ -36,47 +51,29 @@ in
 
   systemd = {
     services = {
-      kriodaizYggdrasil = mkIf (!izYggKriodaizd) {
-        description = "Generate Yggdrasil kriod";
-        before = [ "yggKriodFilter.socket" ];
-        serviceConfig = {
-          ExecStart = "${yggExec} -genconf -json";
-          StandardOutput = "file:${yggKriodFilterSocket}";
-        };
-      };
+      yggdrasil = {
+        description = "Yggdrasil Network Service";
+        bindsTo = [ "network-online.target" ];
+        after = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
 
-      yggKriodFilter = mkIf (!izYggKriodaizd) {
-        description = "Filter generated yggdrasil kriod";
-        before = [ "kombainYggKonfig.service" ];
-        serviceConfig = {
-          ExecStart = "${jqEksek} '{ EncryptionPublicKey, EncryptionPrivateKey, SigningPublicKey, SigningPrivateKey }'";
-          Sockets = "yggKriodFilter.socket";
-          StandardInput = "socket";
-          # StandardOutput = "file:${priKriadJson}";
-          StandardOutput = "journal";
-        };
-      };
+        preStart = ''
+          ${optionalString seedYggdrasil seedYggdrasilScript} 
+          ${pkgs.jq}/bin/jq --slurp add ${priKriadJson} ${configFile} > ${combinedConfigJson}
+        '';
 
-      kombainYggKonfig = {
-        description = "Filter generated yggdrasil kriod";
-        requiredBy = [ "neksys-yggdrasil.service" ];
-        before = [ "neksys-yggdrasil.service" ];
         serviceConfig = {
-          ExecStart = "${jqEksek} --slurp add ${priKriadJson} ${configFile}";
-          StandardOutput = "file:${combinedConfigJson}";
-        };
-      };
+          ExecStart = '' 
+            ${yggExec} -useconffile ${combinedConfigJson}
+          '';
 
-      neksys-yggdrasil = {
-        description = "neksys Yggdrasil";
-        wantedBy = [ "neksys-online.target" ];
-        serviceConfig = {
-          ExecStart = "${yggExec} -useconffile ${combinedConfigJson}";
           ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
           Restart = "always";
+
           StateDirectory = subDirName;
           RuntimeDirectory = subDirName;
           RuntimeDirectoryMode = "0755";
+
           AmbientCapabilities = "CAP_NET_ADMIN";
           CapabilityBoundingSet = "CAP_NET_ADMIN";
           DynamicUser = true;
@@ -90,25 +87,6 @@ in
           RestrictRealtime = true;
           SystemCallArchitectures = "native";
           SystemCallFilter = "~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @raw-io @resources";
-        };
-      };
-
-      ekstraktYggDatom = mkIf (!izYggKriodaizd) {
-        description = "Extract generated yggdrasil datom";
-        serviceConfig = {
-          ExecStart = " ${yggCtlExec} -json -v getself";
-          StandardOutput = "file:${datomJson}";
-        };
-      };
-
-    };
-
-    sockets = {
-      yggKriodFilter = mkIf (!izYggKriodaizd) {
-        description = "Capture pre-filtered yggdrasil kriod";
-        socketConfig = {
-          ListenFIFO = yggKriodFilterSocket;
-          SocketMode = "0600";
         };
       };
     };

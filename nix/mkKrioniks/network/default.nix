@@ -25,6 +25,7 @@ in
 {
   imports = [
     ./unbound.nix
+    ./yggdrasil.nix
   ];
 
   networking = {
