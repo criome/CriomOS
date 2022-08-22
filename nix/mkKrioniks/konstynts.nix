@@ -29,7 +29,7 @@ in
       runtimeDirectory = systemd.runtimeDirectory
         + "/" + subDirName;
 
-      datomJson = runtimeDirectory + "/datom.json";
+      preKriomJson = runtimeDirectory + "/preKriom.json";
       priKriadJson = stateDirectory + "/priKriad.json";
       combinedConfigJson = stateDirectory + "/combinedConfig.json";
 

@@ -5,7 +5,7 @@ let
   inherit (hyraizyn.astra.spinyrz) izYggKriodaizd;
   inherit (konstynts) fileSystem;
   inherit (konstynts.fileSystem.yggdrasil) priKriadJson
-    subDirName datomJson interfaceName combinedConfigJson;
+    subDirName preKriomJson interfaceName combinedConfigJson;
   inherit (konstynts.network.yggdrasil) ports;
 
   yggExec = "${pkgs.yggdrasil}/bin/yggdrasil";
@@ -35,10 +35,8 @@ let
     fi
   '';
 
-  yggdrasilKriomJson = "/etc/yggdrasilKriom.json";
-
-  extractYggNoudData = pkgs.writeScript "extractYggNoudData.sh" ''
-    ${yggCtlExec} -json -v getself > ${yggdrasilKriomJson}
+  extractPreKriomJson = ''
+    ${yggCtlExec} -json -v getself > ${preKriomJson}
   '';
 
 in
@@ -61,6 +59,8 @@ in
           ${optionalString seedYggdrasil seedYggdrasilScript} 
           ${pkgs.jq}/bin/jq --slurp add ${priKriadJson} ${configFile} > ${combinedConfigJson}
         '';
+
+        postStart = optionalString seedYggdrasil extractPreKriomJson;
 
         serviceConfig = {
           ExecStart = '' 
