@@ -81,6 +81,7 @@ in
 
     xserver = {
       enable = saizAtList.med;
+      excludePackages = with pkgs; [ xorg.xorgserver.out ];
       displayManager = {
         gdm = {
           enable = saizAtList.med;
