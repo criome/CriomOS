@@ -8,8 +8,9 @@ let
     subDirName preKriomJson interfaceName combinedConfigJson;
   inherit (konstynts.network.yggdrasil) ports;
 
-  yggExec = "${pkgs.yggdrasil}/bin/yggdrasil";
-  yggCtlExec = "${pkgs.yggdrasil}/bin/yggdrasilctl";
+  package = pkgs.yggdrasil;
+  yggExec = "${package}/bin/yggdrasil";
+  yggCtlExec = "${package}/bin/yggdrasilctl";
   jqEksek = "${pkgs.jq}/bin/jq";
 
   yggKriodFilterSocket = fileSystem.systemd.runtimeDirectory + "/yggKriodFilter";
@@ -41,6 +42,8 @@ let
 
 in
 {
+  environment.systemPackages = [ package ];
+
   networking.firewall = {
     allowedUDPPorts = [ ports.multicast ];
     allowedTCPPorts = [ ports.linkLocalTCP ];

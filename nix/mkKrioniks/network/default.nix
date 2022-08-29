@@ -1,25 +1,36 @@
 { kor, lib, hyraizyn, ... }:
 let
-  inherit (lib) mkOverride optional;
   inherit (kor) concatMapAttrs;
+  inherit (lib) mkOverride optional optionals;
   inherit (hyraizyn) astra exAstriz;
   inherit (builtins) concatStringsSep;
 
-  mkNiksHostEntry = neim: astri:
+  mkKriomHostEntries = neim: astri:
     let
-      inherit (astri) krioniksNeim neksysIp;
-      mkPriNeksysHost = linkLocalIP: {
+      inherit (astri) krioniksNeim neksysIp yggAddress;
+
+      mkPreNeksysHost = linkLocalIP: {
         name = linkLocalIP;
-        value = [ (concatStringsSep "." [ "wg" krioniksNeim ]) ];
+        value = [ ("wg." + krioniksNeim) ];
+      };
+
+      neksysHost = {
+        name = neksysIp;
+        value = [ krioniksNeim ];
+      };
+
+      preNeksysHosts = map mkPreNeksysHost astri.linkLocalIPs;
+
+      neksysHosts = optionals (neksysIp != null)
+        ([ neksysHost ] ++ preNeksysHosts);
+
+      yggdrasilHost = optional (yggAddress != null) {
+        name = yggAddress;
+        value = [ krioniksNeim ];
       };
 
     in
-    (optional (neksysIp != null) {
-      name = neksysIp;
-      value = [ krioniksNeim ];
-    }) ++ (map mkPriNeksysHost astri.linkLocalIPs);
-
-  niksHosts = concatMapAttrs mkNiksHostEntry exAstriz;
+    yggdrasilHost ++ neksysHosts;
 
 in
 {
@@ -32,7 +43,7 @@ in
     hostName = astra.neim;
     dhcpcd.extraConfig = "noipv4ll";
     nameservers = [ "::1" ];
-    hosts = niksHosts;
+    hosts = concatMapAttrs mkKriomHostEntries exAstriz;
   };
 
   services = {

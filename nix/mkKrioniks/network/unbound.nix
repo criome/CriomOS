@@ -33,7 +33,8 @@ let
 in
 {
   services.unbound = {
-    enable = (!izEdj);
+    # enable = (!izEdj); # bootstrap
+    enable = true;
     settings = {
       server = {
         interface = listenIPs;
