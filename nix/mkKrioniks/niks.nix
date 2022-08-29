@@ -56,10 +56,6 @@ in
 
       build-cores = astra.nbOfBildKorz;
 
-      sandbox-paths = [
-        # "/links"  # TODO
-      ];
-
       trusted-public-keys = trostydBildPriKriomz;
       substituters = kacURLz;
       trusted-binary-caches = kacURLz;

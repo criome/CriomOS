@@ -585,11 +585,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1660884275,
-        "narHash": "sha256-QxHy9ad723fuf8KkSn+6Tg/YFFl4AQT+racqqFVBJg0=",
+        "lastModified": 1661752369,
+        "narHash": "sha256-5RuP39pTIw7LXBdtMdN2NSXLtIFL7JxrOTYoKw0RT+U=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "b2e0a67af7329f308b0c3f7ef80321996fa8af0f",
+        "rev": "21246971a441960bc3b8a153671433f95f4f6360",
         "type": "github"
       },
       "original": {
@@ -851,7 +851,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Z5LDsZvCAdCqDRZkSpdjlnXcXr8KL69S/87Ae4rRrao=",
+        "narHash": "sha256-yUqg9nN1GJtTqch6EbLW31TSMF8TWif5ULJCFeETvzE=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -983,11 +983,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660146246,
-        "narHash": "sha256-yR/HXmAmNZVdBmx5h1LIJ/7lhu85I8muISJkshjTXjM=",
+        "lastModified": 1661507100,
+        "narHash": "sha256-QyVy1ro2mox4E8lX4wNFizSkguHGLfpT1/zXko9qaNc=",
         "owner": "NixOS",
         "repo": "nix",
-        "rev": "8f3fdef1e0cce2a5c6fc2e0740a069092f93e1da",
+        "rev": "7918adbb628e7781cec1638c371f2009136be68a",
         "type": "github"
       },
       "original": {

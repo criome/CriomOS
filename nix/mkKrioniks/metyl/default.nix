@@ -126,8 +126,8 @@ in
   console.useXkbConfig = iuzColemak;
 
   environment = {
-    systemPackages = optionals tcipIzIntel
-      (with pkgs; [ libva-utils i7z ]);
+    systemPackages = (with pkgs; [ lm_sensors ]
+      ++ optionals tcipIzIntel [ libva-utils i7z ]);
 
     interactiveShellInit = optionalString iuzColemak "stty -ixon";
     sessionVariables = (optionalAttrs iuzColemak {

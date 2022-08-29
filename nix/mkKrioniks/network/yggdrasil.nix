@@ -21,8 +21,16 @@ let
   };
 
   yggdrasilConfig = {
-    LinkLocalTCPPort = ports.linkLocalTCP;
     IfName = "yggTun";
+    NodeInfoPrivacy = true;
+    MulticastInterfaces = [
+      {
+        Regex = ".*";
+        Beacon = true;
+        Listen = true;
+        Port = ports.linkLocalTCP;
+      }
+    ];
   };
 
   configFile = mkConfigFile yggdrasilConfig;
