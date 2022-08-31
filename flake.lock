@@ -585,11 +585,11 @@
         "zoxide-vim": "zoxide-vim"
       },
       "locked": {
-        "lastModified": 1661752369,
-        "narHash": "sha256-5RuP39pTIw7LXBdtMdN2NSXLtIFL7JxrOTYoKw0RT+U=",
+        "lastModified": 1661856288,
+        "narHash": "sha256-NsSaOLaGBYa5YDkMTwNQjft0VudDBQ91V8JmO8KiWGI=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "21246971a441960bc3b8a153671433f95f4f6360",
+        "rev": "afe3b6f000c2ef4c7538e50a21c55be6aa33fc0d",
         "type": "github"
       },
       "original": {
@@ -628,7 +628,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-B3gDHJoiAcJ+ABi1rQkOyNZBaC4t4GFBLgQqnwSIqkU=",
+        "narHash": "sha256-RXpInqf04sO7lWv59HJuiLxkUBGYJ6CB6fTTy/c1fKs=",
         "path": "./nix/homeModule",
         "type": "path"
       },
@@ -851,7 +851,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-yUqg9nN1GJtTqch6EbLW31TSMF8TWif5ULJCFeETvzE=",
+        "narHash": "sha256-eYtz6kMj4gS3oA0J8Tign0GfffrLu5Ow41mSFJgB8Kg=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -1112,7 +1112,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Aoz+pP1m+PP9dFGkqBcpGH9Dlla5cS/vzJPN+qe93+4=",
+        "narHash": "sha256-tZkvykV49Tjzpx7gJLZt6En93fuXqv9E7bddKClV5Y0=",
         "path": "./nix/pkdjz",
         "type": "path"
       },
@@ -1352,11 +1352,11 @@
     },
     "skrips": {
       "locked": {
-        "lastModified": 1635561914,
-        "narHash": "sha256-wgWoWDitbXwWwTUqyYUKg5qSdPxo4MVRKwFqCcX/bBU=",
+        "lastModified": 1661853840,
+        "narHash": "sha256-G+TwpW1M7/qFCmTG9MM/Zb5IQZ7FFx3kaQz+YEAZIyY=",
         "owner": "maisiliym",
         "repo": "skrips",
-        "rev": "90dd321650a52bab52460a7323b8af797cd1237b",
+        "rev": "3bfd66ab51930e63d9ecc51ff78616dbecb489c4",
         "type": "github"
       },
       "original": {

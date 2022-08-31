@@ -273,6 +273,9 @@
 
 (use-package ghq :commands ghq)
 
+(use-package shfmt
+  :hook (sh-mode . shfmt-on-save-mode))
+
 (use-package sly)
 (use-package sly-macrostep)
 (use-package sly-asdf)

@@ -1,4 +1,4 @@
-{ config, kor, hyraizyn, pkgs, lib, ... }:
+{ config, kor, hyraizyn, pkgs, lib, uyrld, ... }:
 let
   inherit (kor) mapAttrsToList eksportJSON;
   inherit (lib) concatStringsSep mkOverride optional;
@@ -51,6 +51,7 @@ in
 
     systemPackages = [
       pkgs.lm_sensors
+      uyrld.skrips.root
     ];
   };
 

@@ -118,13 +118,14 @@ let
     pkdjz.firn
     pkdjz.crate2nix
     cargo
+    shfmt
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
     i7z
   ]));
 
   uyrldPackages = with uyrld; [
     pkdjz.shen-bootstrap
-    skrips
+    skrips.user
     jujutsu.defaultPackage
   ];
 
