@@ -26,7 +26,7 @@ argz: with argz; ''
   smart_gaps on
   hide_edge_borders smart_no_gaps
 
-  input "1739:0:Synaptics_TM2927-001" {
+  input type:touchpad {
       tap enabled
       natural_scroll enabled
       middle_emulation enabled
@@ -38,13 +38,14 @@ argz: with argz; ''
     repeat_rate 35
   }
 
-  ${optionalString iuzColemak ''
-    input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout us
-    xkb_variant colemak
-    xkb_options caps:ctrl_modifier,caps:escape,altwin:swap_alt_win
-    }
-  '' # TODO - get model info in home closure. this is thinkpad x240 specific
+  ${optionalString iuzColemak # TODO - this is model specific
+    ''
+      input "1:1:AT_Translated_Set_2_keyboard" {
+        xkb_layout us
+        xkb_variant colemak
+        xkb_options caps:ctrl_modifier,caps:escape,altwin:swap_alt_win
+      }
+    ''
   }
 
   input "65261:58893:K.T.E.C._ErgoDone" {
