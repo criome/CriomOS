@@ -5,7 +5,12 @@ let
   inherit (krimyn.spinyrz) iuzColemak saizAtList;
   inherit (profile) dark;
 
-  whitelist = [
+  unstrictWhitelist = [
+    "https://*.google.com"
+    "https://*.youtube.com"
+  ];
+
+  strictWhitelist = [
     "https://duckduckgo.com"
     "https://github.com"
     "https://gitlab.com"
@@ -40,12 +45,13 @@ let
     "https://www.goodreads.com"
     "https://www.allmusic.com"
     "https://www.imdb.com"
-    "https://*.youtube.com"
     "https://rumble.com"
     "https://odysee.com"
     "https://astro-charts.com"
     "https://www.amazon.com"
   ];
+
+  whitelist = unstrictWhitelist ++ strictWhitelist;
 
   mkDomainString = domain:
     "config.set('content.javascript.enabled', True, '${domain}/*')";
