@@ -45,13 +45,6 @@
 
 (use-package dockerfile-mode :mode "Dockerfile")
 
-(use-package ement
-  :custom
-  (ement-room-images t))
-
-(use-package ement-room-list
-  :after (ement))
-
 (use-package xah-fly-keys
   :config
   (defun xfk-mentci-modify ()
@@ -210,10 +203,8 @@
   :config
   (put 'magit-clean 'disabled nil))
 
-(use-package diff-hl
-  :config
-  (global-diff-hl-mode)
-  (diff-hl-flydiff-mode))
+(use-package git-gutter
+  :config (global-git-gutter-mode))
 
 (use-package projectile
   :config
@@ -281,6 +272,9 @@
   :hook (nix-mode . nixpkgs-fmt-on-save-mode))
 
 (use-package ghq :commands ghq)
+
+(use-package shfmt
+  :hook (sh-mode . shfmt-on-save-mode))
 
 (use-package sly)
 (use-package sly-macrostep)

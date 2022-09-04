@@ -1,12 +1,11 @@
-{ kor, lib, src, meikPkgs, hob }:
+{ kor, lib, src, pkgs, hob }:
 let
   emacs-overlay = src;
-  pkgs = meikPkgs { overlays = [ emacs-overlay.overlay ]; };
-  inherit (pkgs) writeText emacsPackagesFor emacsPgtkGcc
+  inherit (pkgs) writeText emacsPackagesFor emacsPgtkNativeComp
     delta;
 
-  emacs = emacsPgtkGcc;
-  emacsPackages = emacsPackagesFor emacsPgtkGcc;
+  emacs = emacsPgtkNativeComp;
+  emacsPackages = emacsPackagesFor emacsPgtkNativeComp;
   inherit (emacsPackages) elpaBuild withPackages melpaBuild
     trivialBuild;
 
@@ -17,7 +16,7 @@ let
   customPackages = {
     base16-theme =
       let
-        src = hob.base16-theme.mein;
+        src = hob.base16-theme;
       in
       trivialBuild {
         pname = "base16-theme";
@@ -27,7 +26,7 @@ let
 
     ement =
       let
-        src = hob.ement-el.mein;
+        src = hob.ement-el;
       in
       trivialBuild {
         pname = "ement";
@@ -47,7 +46,7 @@ let
 
     org-remark =
       let
-        src = hob.org-remark.mein;
+        src = hob.org-remark;
       in
       trivialBuild {
         pname = "org-remark";
@@ -56,7 +55,7 @@ let
       };
 
     shen-mode =
-      let src = hob.shen-mode.mein; in
+      let src = hob.shen-mode; in
       melpaBuild {
         pname = "shen-mode";
         inherit src;
@@ -70,7 +69,7 @@ let
       };
 
     tera-mode =
-      let src = hob.tera-mode.mein; in
+      let src = hob.tera-mode; in
       trivialBuild {
         pname = "tera-mode";
         inherit src;
@@ -79,7 +78,7 @@ let
       };
 
     toodoo =
-      let src = hob.toodoo-el.mein; in
+      let src = hob.toodoo-el; in
       trivialBuild {
         pname = "toodoo";
         inherit src;
@@ -88,7 +87,7 @@ let
       };
 
     xah-fly-keys =
-      let src = hob.xah-fly-keys.mein; in
+      let src = hob.xah-fly-keys; in
       trivialBuild {
         pname = "xah-fly-keys";
         inherit src;

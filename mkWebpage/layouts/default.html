@@ -1,0 +1,17 @@
+{% import "macros.html" as macros %}
+<html>
+  {% include "partials/head.html" %}
+  <body>
+    <main>
+      {{render()}}
+    </main>
+
+    <aside>
+     <section>{{toc()}}</section>
+      {{macros::link_list(title="Backlinks", list_items=backlinks)}}
+      {{macros::link_list(title="Related", list_items=related)}}
+      {{macros::link_list(title="Sitemap", list_items=sitemap)}}
+      {{macros::link_list(title="Tags", list_items=tags)}}
+    </aside>
+  </body>
+</html>

@@ -7,10 +7,10 @@ let
 
   eksplisitSpoks = { };
 
-  mkImplaidSpoks = neim: spok: spok.mein;
+  mkImplaidSpoks = neim: spok: spok;
 
   spoks = eksplisitSpoks
-    // (mapAttrs (n: s: s.mein) implaidSpoks);
+    // (mapAttrs (n: s: s) implaidSpoks);
 
   fzf-vim-core = buildVimPluginFrom2Nix {
     pname = "fzf";

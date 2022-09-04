@@ -13,8 +13,8 @@ let
   astriNeimz = attrNames inputMetastra.astriz;
   krimynNeimz = attrNames inputMetastra.krimynz;
 
-  neksysUniksNeim = concatStringsSep "."
-    [ metastraNeim "uniks" ];
+  neksysKrioniksNeim = concatStringsSep "."
+    [ metastraNeim "kriom" ];
 
   metaTrost = inputMetastra.trost.metastra;
 
@@ -82,8 +82,8 @@ let
 
         inherit (inputAstri.priKriomz) niksPriKriom;
 
-        uniksNeim = concatStringsSep "."
-          [ astriNeim neksysUniksNeim ];
+        krioniksNeim = concatStringsSep "."
+          [ astriNeim neksysKrioniksNeim ];
 
         sistym = arkSistymMap.${mycin.ark};
 
@@ -93,7 +93,7 @@ let
       spinyrz =
         let
           inherit (astri) spici trost saiz niksPriKriom
-            yggAddress uniksNeim;
+            yggAddress krioniksNeim;
 
 
         in
@@ -118,7 +118,7 @@ let
             else mkEseseitcString inputAstri.priKriomz.eseseitc;
 
           nixPriKriom = optionalString izNiksKriodaizd
-            (concatStringsSep ":" [ uniksNeim niksPriKriom ]);
+            (concatStringsSep ":" [ krioniksNeim niksPriKriom ]);
         };
 
     in
@@ -137,7 +137,7 @@ let
         let astri = exAstriz.${n};
         in
         {
-          hostName = astri.uniksNeim;
+          hostName = astri.krioniksNeim;
           sshUser = "niksBildyr";
           sshKey = "/root/.ssh/id_ed25519";
           system = astri.sistym;
@@ -174,7 +174,7 @@ let
 
       kacURLz =
         let
-          mkKacURL = n: "niks." + exAstriz.${n}.uniksNeim;
+          mkKacURL = n: "niks." + exAstriz.${n}.krioniksNeim;
         in
         map mkKacURL kacyz;
 
@@ -239,7 +239,7 @@ let
 
         saizAtList = kor.mkSaizAtList krimyn.saiz;
 
-        matrixID = "@${krimyn.neim}:${metastra.neim}.uniks";
+        matrixID = "@${krimyn.neim}:${metastra.neim}.niks";
 
         gitSigningKey =
           if hazPriKriom then
@@ -249,7 +249,7 @@ let
         iuzColemak = krimyn.kibord == "colemak";
 
         izSemaDev = elem krimyn.spici [ "Sema" "Onlimityd" ];
-        izUniksDev = elem krimyn.spici [ "Uniks" "Onlimityd" ];
+        izNiksDev = elem krimyn.spici [ "Niks" "Onlimityd" ];
 
         eseseitcyz = mapAttrsToList (n: pk: mkEseseitcString pk.eseseitc)
           krimyn.priKriomz;

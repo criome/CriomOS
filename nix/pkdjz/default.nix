@@ -59,7 +59,7 @@ let
     ivalNixos = {
       lamdy = import ./ivalNixos;
       modz = [ "lib" "pkgsSet" ];
-      self = hob.nixpkgs.mein;
+      self = hob.nixpkgs;
     };
 
     kreitOvyraidz = {
@@ -77,7 +77,7 @@ let
     lib = {
       lamdy = import ./lib;
       modz = [ ];
-      self = hob.nixpkgs.mein;
+      self = hob.nixpkgs;
     };
 
     librem5-flash-image = {
@@ -87,16 +87,10 @@ let
 
     mach-nix = { lamdy = import ./mach-nix; };
 
-    meikPkgs = {
-      lamdy = import ./meikPkgs;
-      modz = [ "lib" ];
-      self = hob.nixpkgs.mein;
-    };
-
     meikImaks = {
       lamdy = import ./meikImaks;
-      modz = [ "pkdjz" "hob" ];
-      self = hob.emacs-overlay.mein;
+      modz = [ "pkgsSet" "hob" ];
+      self = hob.emacs-overlay;
     };
 
     mfgtools = {
@@ -118,7 +112,7 @@ let
     mozPkgs = {
       lamdy = import ./mozPkgs;
       modz = [ "pkdjz" ];
-      self = hob.nixpkgs-mozilla.mein;
+      self = hob.nixpkgs-mozilla;
     };
 
     naersk = {
@@ -150,8 +144,6 @@ let
       self = null;
     };
 
-    nix = { lamdy = import ./nix; };
-
     nix-dev = {
       lamdy = import ./nix;
       modz = [ "pkgs" "pkdjz" ];
@@ -161,7 +153,7 @@ let
     pkgsNvimPloginz = {
       lamdy = import ./pkgsNvimPloginz;
       modz = [ "pkgsSet" "lib" "pkdjz" ];
-      self = hob.nixpkgs.mein;
+      self = hob.nixpkgs;
     };
 
     ql2nix = {
@@ -177,7 +169,7 @@ let
     shen-bootstrap = {
       lamdy = import ./shen/bootstrap.nix;
       modz = [ "pkgs" ];
-      self = hob.shen.mein;
+      self = hob.shen;
     };
 
     shen-ecl-bootstrap = {
@@ -197,8 +189,8 @@ let
       self = null;
     };
 
-    uniks = {
-      lamdy = import ./uniks;
+    niks = {
+      lamdy = import ./niks;
       modz = [ "pkgs" "pkdjz" ];
     };
 

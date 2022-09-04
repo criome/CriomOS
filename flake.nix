@@ -1,108 +1,72 @@
 {
-  description = "Uniks";
+  description = "Krioniks";
 
   inputs = {
-    bootstrapUniks.url = github:sajban/uniks/spinningTops;
-    nextUniks.url = github:sajban/uniks/eclipticPlane;
-
-    hob.url = github:sajban/hob/franticSwing;
-
-    KLambdaBootstrap = {
-      url = path:./KLambdaBootstrap;
-      flake = false;
-    };
-    ShenAski = {
-      url = path:./ShenAski;
-      flake = false;
-    };
-    ShenCoreBootstrap = {
-      url = path:./ShenCoreBootstrap;
-      flake = false;
-    };
-    ShenCore = {
-      url = path:./ShenCore;
-      flake = false;
-    };
-    ShenCoreTests = {
-      url = path:./ShenCoreTests;
-      flake = false;
-    };
-    ShenExtendedBootstrap = {
-      url = path:./ShenExtendedBootstrap;
-      flake = false;
-    };
-    ShenExtended = {
-      url = path:./ShenExtended;
-      flake = false;
-    };
-    ShenExtendedTests = {
-      url = path:./ShenExtendedTests;
-      flake = false;
-    };
-    LispCore = {
-      url = path:./LispCore;
-      flake = false;
-    };
-    LispCorePrimitives = {
-      url = path:./LispCorePrimitives;
-      flake = false;
-    };
-    LispExtendedPrimitives = {
-      url = path:./LispExtendedPrimitives;
-      flake = false;
-    };
-    AskiCore = {
-      url = path:./AskiCore;
-      flake = false;
-    };
-    AskiCoreFleik = {
-      url = path:./AskiCoreFleik;
-      flake = false;
-    };
-    AskiCoreUniks = {
-      url = path:./AskiCoreUniks;
-      flake = false;
-    };
-    AskiUniks = {
-      url = path:./AskiUniks;
-      flake = false;
-    };
-    AskiDefaultBuilder = {
-      url = path:./AskiDefaultBuilder;
-      flake = false;
-    };
-    mkWebpage = {
-      url = path:./nix/pkdjz/mkWebpage/src;
-      flake = false;
-    };
+    hob.url = github:sajban/hob/frameOfReference;
+    KLambdaBootstrap = { url = path:./KLambdaBootstrap; flake = false; };
+    ShenAski = { url = path:./ShenAski; flake = false; };
+    ShenCoreBootstrap = { url = path:./ShenCoreBootstrap; flake = false; };
+    ShenCore = { url = path:./ShenCore; flake = false; };
+    ShenCoreTests = { url = path:./ShenCoreTests; flake = false; };
+    ShenExtendedBootstrap = { url = path:./ShenExtendedBootstrap; flake = false; };
+    ShenExtended = { url = path:./ShenExtended; flake = false; };
+    ShenExtendedTests = { url = path:./ShenExtendedTests; flake = false; };
+    LispCore = { url = path:./LispCore; flake = false; };
+    LispCorePrimitives = { url = path:./LispCorePrimitives; flake = false; };
+    LispExtendedPrimitives = { url = path:./LispExtendedPrimitives; flake = false; };
+    AskiCore = { url = path:./AskiCore; flake = false; };
+    AskiCoreFleik = { url = path:./AskiCoreFleik; flake = false; };
+    AskiCoreNiks = { url = path:./AskiCoreNiks; flake = false; };
+    AskiNiks = { url = path:./AskiNiks; flake = false; };
+    AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
+    mkWebpage = { url = path:./mkWebpage; flake = false; };
+    kor = { url = path:./nix/kor; flake = false; };
+    mkPkgs = { url = path:./nix/mkPkgs; flake = false; };
+    mkDatom = { url = path:./nix/mkDatom; flake = false; };
+    mkUyrld = { url = path:./nix/mkUyrld; flake = false; };
+    mkKriosfir = { flake = false; url = path:./nix/mkKriosfir; };
+    mkKriozonz = { flake = false; url = path:./nix/mkKriozonz; };
+    mkKrioniks = { flake = false; url = path:./nix/mkKrioniks; };
+    pkdjz = { flake = false; url = path:./nix/pkdjz; };
+    homeModule = { flake = false; url = path:./nix/homeModule; };
+    neksysNames = { flake = false; url = path:./nix/neksysNames; };
+    tests = { url = path:./nix/tests; flake = false; };
+    mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
   };
 
-  outputs = inputs@{ self, bootstrapUniks, nextUniks ... }:
+  outputs = inputs@{ self, ... }:
     let
-      mkHobSpokMein = name: mein: { inherit mein; };
+      krioniksRev =
+        let shortHash = kor.cortHacString self.narHash;
+        in self.shortRev or shortHash;
 
-      localHobSourcesRaw = {
-        inherit (inputs)
-          KLambdaBootstrap LispCore LispCorePrimitives LispExtendedPrimitives
-          ShenAski ShenCoreBootstrap ShenCore ShenCoreTests
-          ShenExtendedBootstrap ShenExtended ShenExtendedTests
-          AskiCore AskiCoreFleik mkWebpage
-          AskiCoreUniks AskiUniks AskiDefaultBuilder;
+      localHobSources = {
+        inherit (inputs) KLambdaBootstrap LispCore LispCorePrimitives
+          LispExtendedPrimitives ShenAski ShenCoreBootstrap ShenCore
+          ShenCoreTests ShenExtendedBootstrap ShenExtended ShenExtendedTests
+          AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
+          mkWebpage;
+
+        pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
-      localHobSources = mapAttrs mkHobSpokMein localHobSourcesRaw;
+      importInput = name: value:
+        import value;
 
       hob = inputs.hob.Hob // localHobSources;
-      nixpkgs = hob.nixpkgs.mein;
-      flake-utils = hob.flake-utils.mein;
-      emacs-overlay = hob.emacs-overlay.mein;
 
-      kor = import ./nix/kor.nix;
-      mkKriosfir = import ./nix/mkKriosfir;
-      mkKriozonz = import ./nix/mkKriozonz;
-      mkUniksOS = import ./nix/mkUniksOS;
-      mkHom = import ./nix/mkHom;
-      neksysNames = import ./neksysNames.nix;
+      inherit (hob) nixpkgs flake-utils emacs-overlay;
+
+      imports = mapAttrs importInput {
+        inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKrioniks
+          mkHomeConfig neksysNames mkUyrld homeModule;
+      };
+
+      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks;
+
+      mkDatom = import inputs.mkDatom { inherit kor lib; };
+      mkKriomDatom = import inputs.mkKriomDatom
+        { inherit kor lib mkDatom mkKrioniks; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -110,7 +74,7 @@
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateKriosfirProposalFromName = name:
-        hob."${name}".mein.NeksysProposal or { };
+        hob."${name}".NeksysProposal or { };
 
       uncheckedKriosfirProposal = genAttrs
         neksysNames
@@ -122,9 +86,8 @@
           inherit (kriozon.astra.mycin) ark;
           system = arkSistymMap.${ark};
           uyrld = self.uyrld.${system};
-          nextUyrld = self.nextUyrld.${system};
+          pkgs = self.pkgs.${system};
           hyraizyn = kriozon;
-          src = self;
 
           krimynProfiles = {
             light = { dark = false; };
@@ -133,19 +96,18 @@
 
           mkKrimynHomz = krimynNeim: krimyn:
             let
-              emacsPkgs = uyrld.pkdjz.meikPkgs {
-                overlays = [ emacs-overlay.overlay ];
-              };
-              pkgs =
-                if (krimyn.stail == "emacs")
-                then emacsPkgs
-                else nixpkgs.legacyPackages.${system};
-              home-manager = hob.home-manager.mein;
+              inherit (uyrld) pkdjz;
+
               mkProfileHom = profileName: profile:
-                mkHom {
-                  inherit lib kor uyrld kriozon krimyn
-                    profile hob home-manager pkgs;
-                };
+                let
+                  modules = [ homeModule ];
+                  extraSpecialArgs =
+                    { inherit kor pkdjz uyrld hyraizyn krimyn profile; };
+                  evalHomeManager = hob.home-manager.lib.homeManagerConfiguration;
+                  evaluation = evalHomeManager
+                    { inherit modules extraSpecialArgs pkgs; };
+                in
+                evaluation.config.home.activationPackage;
             in
             mapAttrs mkProfileHom krimynProfiles;
 
@@ -159,7 +121,8 @@
 
         in
         {
-          os = mkUniksOS { inherit src nixpkgs kor uyrld hyraizyn nextUyrld; };
+          os = imports.mkKrioniks
+            { inherit krioniksRev kor uyrld hyraizyn homeModule; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
@@ -173,39 +136,38 @@
 
       mkOutputs = system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs =
+            let
+              config = { allowUnfree = true; };
+              overlays = [ emacs-overlay.overlay ];
+            in
+            mkPkgs { inherit nixpkgs lib system config overlays; };
+
           inherit (pkgs) symlinkJoin linkFarm;
-          bootstrapUyrld = bootstrapUniks.uyrld.${system};
-          nextUyrld = nextUniks.uyrld.${system};
-          mkUyrld = import ./nix/mkUyrld.nix;
-          uyrld = mkUyrld {
-            inherit pkgs kor lib system hob
-              neksysNames bootstrapUyrld nextUyrld;
-          };
+
+          uyrld = imports.mkUyrld
+            { inherit pkgs kor lib system hob neksysNames; };
+
+          mkKrioniksFromKriom = kriom@{ ... }: { };
+
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
 
-          legacyPackages = pkgs;
-          defaultPackage = shen;
-
           devShell = pkgs.mkShell {
             inputsFrom = [ ];
-            UNIKSBOOTFILE = self + /boot.shen;
+            KRIONIKSBOOTFILE = self + /boot.shen;
             buildInputs = [ shen ];
           };
 
-          mkSpokBranch = name: src:
+          mkHobOutput = name: src:
             symlinkJoin { inherit name; paths = [ src.outPath ]; };
 
-          mkSpokOutputs = name: branches:
-            mapAttrs mkSpokBranch branches;
-
-          hobOutputs = mapAttrs mkSpokOutputs hob;
+          hobOutputs = mapAttrs mkHobOutput hob;
 
           mkSpokFarmEntry = name: spok:
-            { inherit name; path = spok.mein.outPath; };
+            { inherit name; path = spok.outPath; };
 
-          allMeinHobOutputs = linkFarm "hob.mein"
+          allMeinHobOutputs = linkFarm "hob"
             (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
 
           packages = uyrld // {
@@ -214,16 +176,27 @@
             fullHob = allMeinHobOutputs;
           };
 
+          tests = import inputs.tests { inherit lib mkDatom; };
+
         in
-        { inherit uyrld legacyPackages packages defaultPackage devShell; };
+        { inherit uyrld pkgs tests packages devShell; };
 
       perSystemOutputs = eachDefaultSystem mkOutputs;
 
-      proposedKriosfir = mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
-      proposedKriozonz = mkKriozonz { inherit kor lib proposedKriosfir; };
+      proposedKriosfir = imports.mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
+      proposedKriozonz = imports.mkKriozonz { inherit kor lib proposedKriosfir; };
+
+      kriomInput = uncheckedKriosfirProposal;
+      kriomDatom = mkKriomDatom kriomInput;
+
+      mkOutputsOfSystem = system:
+        mapAttrs (name: value: value.${system}) perSystemOutputs;
+
+      argumentsForKriomOutputs = { inherit krioniksRev mkOutputsOfSystem; };
 
     in
     perSystemOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
+      kriom = kriomDatom.mkOutputs argumentsForKriomOutputs;
     };
 }

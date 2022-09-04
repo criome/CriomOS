@@ -1,4 +1,4 @@
-{ kor, system, aski, AskiCoreUniks, AskiUniks, AskiDefaultBuilder, writeText }:
+{ kor, system, aski, AskiCoreNiks, AskiNiks, AskiDefaultBuilder, writeText }:
 let
   inherit (kor) mesydj mkImplicitVersion;
 in
@@ -28,19 +28,19 @@ let
       "Aski fleik missing: ${fleikPath}";
     result;
 
-  uniksBuildFile =
+  niksBuildFile =
     if (askiFleik != null)
     then askiFleik
     else implicitBuildFile;
 
   askiDeryveicyn = writeText "deryveicyn.aski" ''
-    (load "${AskiCoreUniks + /lib.aski}")
+    (load "${AskiCoreNiks + /lib.aski}")
     (load "${AskiDefaultBuilder + /builder.aski}")
   '';
 
 in
 derivation {
-  inherit name system src uniksBuildFile nixInputs;
+  inherit name system src niksBuildFile nixInputs;
   builder = aski.current + /bin/aski;
   args = [ askiDeryveicyn ];
   __structuredAttrs = true;

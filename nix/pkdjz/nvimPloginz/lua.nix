@@ -9,11 +9,11 @@ let
   };
 
   eksplisitSpoks = {
-    plenary-kor = hob.plenary-nvim.mein;
+    plenary-kor = hob.plenary-nvim;
   };
 
   spoks = eksplisitSpoks
-    // (mapAttrs (n: s: s.mein) implaidSpoks);
+    // (mapAttrs (n: s: s) implaidSpoks);
 
   ovyraidzIndeks = {
     plenary-kor = {

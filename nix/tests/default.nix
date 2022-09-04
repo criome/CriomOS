@@ -1,0 +1,5 @@
+{ lib, mkDatom }:
+
+{
+  datom = mkDatom { };
+}
