@@ -15,23 +15,23 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  niksRegistry = {
+  nixRegistry = {
     flakes = [{
       from = {
         type = "indirect";
-        id = "niks";
+        id = "kriomOS";
       };
       to = {
         type = "github";
         owner = "sajban";
-        repo = "niks";
+        repo = "uniks";
       };
     }];
     version = 2;
   };
 
-  redjistri = eksportJSON "niksRegistry.json"
-    niksRegistry;
+  redjistri = eksportJSON "nixRegistry.json"
+    nixRegistry;
 
 in
 {
@@ -52,7 +52,7 @@ in
       trusted-users = [ "root" "@nixdev" ];
 
       allowed-users = [ "@users" "nix-serve" ]
-        ++ optional izBildyr "niksBildyr";
+        ++ optional izBildyr "nixBuilder";
 
       build-cores = astra.nbOfBildKorz;
 
@@ -76,12 +76,6 @@ in
       !include nixTokens
     '';
 
-    sshServe = {
-      enable = izNiksKac;
-      keys = exAstrizEseseitcPriKriomz;
-      protocol = "ssh";
-    };
-
     distributedBuilds = izDispatcyr;
     buildMachines = optionals izDispatcyr bildyrKonfigz;
 
@@ -90,10 +84,10 @@ in
   users = {
     groups = {
       nixdev = { };
-      niksBildyr = { };
+      nixBuilder = { };
     };
     users = mkIf izBildyr {
-      niksBildyr = {
+      nixBuilder = {
         isNormalUser = true;
         useDefaultShell = true;
         openssh.authorizedKeys.keys = dispatcyrzEseseitcKiz;
@@ -103,15 +97,10 @@ in
   };
 
   services = {
-    nix-serve = {
-      enable = false; # (broken missingUserHomeDir)
-      bindAddress = "127.0.0.1";
-      port = serve.ports.internal;
-      secretKeyFile = priKriad;
-    };
 
-    nginx = mkIf (izNiksKac && izKriodaizd) {
-      enable = false; # (brokenDependency nixServe)
+
+    nginx = mkIf izNiksKac {
+      enable = true;
       virtualHosts = {
         "[${astra.yggAddress}]:${toString serve.ports.external}" = {
           listen = [{ addr = "[${astra.yggAddress}]"; port = serve.ports.external; }];
@@ -122,15 +111,51 @@ in
 
   };
 
-  systemd.services = mkIf (!izNiksKriodaizd) {
-    mkNixPreKriad = {
-      description = "";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = { type = "oneshot"; };
-      script = ''
-        nix key generate-secret --key-namem ${astra.krioniksNeim} > ${priKriad}
-      '';
-    };
-  };
+  systemd.services = optionalAttrs izNiksKac (
+    let
+      let cfg = {
+        bindAddress = "127.0.0.1";
+        port = serve.ports.internal;
+        secretKeyFile = priKriad;
+        extraParams = { };
+      };
+    in
+    {
+      nix-serve = {
+        description = "nix-serve binary cache server";
+        after = [ "network.target" ];
+        wantedBy = [ "multi-user.target" ];
 
+        path = [ config.nix.package.out pkgs.bzip2.bin ];
+        environment.NIX_REMOTE = "daemon";
+
+        script = ''
+          ${lib.optionalString (cfg.secretKeyFile != null) ''
+            export NIX_SECRET_KEY_FILE="$CREDENTIALS_DIRECTORY/NIX_SECRET_KEY_FILE"
+          ''}
+          exec ${pkgs.nix-serve}/bin/nix-serve --listen ${cfg.bindAddress}:${toString cfg.port} ${cfg.extraParams}
+        '';
+
+        serviceConfig = {
+          Restart = "always";
+          RestartSec = "5s";
+          User = "nix-serve";
+          Group = "nix-serve";
+          DynamicUser = true;
+          LoadCredential = lib.optionalString (cfg.secretKeyFile != null)
+            "NIX_SECRET_KEY_FILE:${cfg.secretKeyFile}";
+        };
+      }
+      // optionalAttrs (!izNiksKriodaizd) ({
+        mkNixPreKriad = {
+          description = "";
+          wantedBy = [ "multi-user.target" ];
+          serviceConfig = { type = "oneshot"; };
+          script = ''
+            nix key generate-secret --key-namem ${astra.krioniksNeim} > ${priKriad}
+          '';
+        };
+      });
+    }
+  );
 }

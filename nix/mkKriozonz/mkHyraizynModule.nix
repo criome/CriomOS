@@ -95,16 +95,15 @@ let
           inherit (astri) spici trost saiz niksPriKriom
             yggAddress krioniksNeim;
 
-
         in
         rec {
           saizAtList = kor.mkSaizAtList saiz;
           izEdj = spici == "edj";
           izSentyr = spici == "sentyr";
           izHaibrid = spici == "haibrid";
-          izBildyr = !izEdj && (trost >= 3) && saizAtList.med && izNiksKriodaizd;
+          izBildyr = !izEdj && (trost >= 3) && (saizAtList.med || izSentyr) && izKriodaizd;
           izDispatcyr = !izSentyr && (trost >= 3) && saizAtList.min;
-          izNiksKac = !izEdj && saizAtList.max && izNiksKriodaizd;
+          izNiksKac = !izEdj && saizAtList.min && izKriodaizd;
           izNiksKriodaizd = niksPriKriom != null;
           izYggKriodaizd = yggAddress != null;
           izNeksisKriodaizd = izYggKriodaizd;
