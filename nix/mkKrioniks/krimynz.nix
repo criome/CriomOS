@@ -1,7 +1,7 @@
 { hyraizyn, config, kor, pkgs, ... }:
 let
   inherit (builtins) filter mapAttrs attrNames hasAttr
-    concatStringsSep concatMap;
+    concatStringsSep concatMap optionalAttrs;
   inherit (kor) optionals optional optionalString mkIf;
 
   inherit (hyraizyn) astra exAstriz krimynz;
@@ -18,7 +18,7 @@ let
       inherit (krimyn.spinyrz) eseseitcyz hazPriKriom;
 
     in
-    {
+    optionalAttrs (trost > 0) {
       name = krimyn.neim;
 
       useDefaultShell = true;
