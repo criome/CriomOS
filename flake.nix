@@ -32,6 +32,7 @@
     neksysNames = { flake = false; url = path:./nix/neksysNames; };
     tests = { url = path:./nix/tests; flake = false; };
     mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
+    files = { url = path:./nix/files; flake = false; };
   };
 
   outputs = inputs@{ self, ... }:
@@ -59,7 +60,7 @@
 
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKrioniks
-          mkHomeConfig neksysNames mkUyrld homeModule;
+          mkHomeConfig neksysNames mkUyrld homeModule files;
       };
 
       inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks;

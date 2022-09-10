@@ -1,8 +1,8 @@
-{ kor, lib, pkgs, hyraizyn, uyrld, konstynts, ... }:
+{ kor, lib, pkgs, hyraizyn, uyrld, konstynts, config, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter;
   inherit (lib) boolToString;
-  inherit (kor) optionals mkIf optional eksportJSON;
+  inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
 
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
   inherit (hyraizyn) astra;
@@ -41,6 +41,7 @@ in
   };
 
   networking = {
+    firewall = { allowedTCPPorts = optional izNiksKac serve.ports.external; };
     hostName = astra.neim;
     dhcpcd.extraConfig = "noipv4ll";
   };
@@ -113,11 +114,11 @@ in
 
   systemd.services = optionalAttrs izNiksKac (
     let
-      let cfg = {
+      cfg = {
         bindAddress = "127.0.0.1";
         port = serve.ports.internal;
         secretKeyFile = priKriad;
-        extraParams = { };
+        extraParams = "";
       };
     in
     {
@@ -127,7 +128,10 @@ in
         wantedBy = [ "multi-user.target" ];
 
         path = [ config.nix.package.out pkgs.bzip2.bin ];
-        environment.NIX_REMOTE = "daemon";
+        environment = {
+          NIX_REMOTE = "daemon";
+          HOME = "$STATE_DIRECTORY";
+        };
 
         script = ''
           ${lib.optionalString (cfg.secretKeyFile != null) ''
@@ -142,6 +146,7 @@ in
           User = "nix-serve";
           Group = "nix-serve";
           DynamicUser = true;
+          StateDirectory = "nix-serve";
           LoadCredential = lib.optionalString (cfg.secretKeyFile != null)
             "NIX_SECRET_KEY_FILE:${cfg.secretKeyFile}";
         };

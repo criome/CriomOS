@@ -1,8 +1,8 @@
 { hyraizyn, config, kor, pkgs, ... }:
 let
   inherit (builtins) filter mapAttrs attrNames hasAttr
-    concatStringsSep concatMap optionalAttrs;
-  inherit (kor) optionals optional optionalString mkIf;
+    concatStringsSep concatMap;
+  inherit (kor) optionals optional optionalString mkIf optionalAttrs;
 
   inherit (hyraizyn) astra exAstriz krimynz;
   inherit (astra.spinyrz) adminEseseitcPriKriomz;
