@@ -8,10 +8,12 @@ let
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz) exAstrizEseseitcPriKriomz
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
-    izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd;
+    izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd
+    nixCacheUrl;
 
   inherit (konstynts.fileSystem.niks) priKriad;
   inherit (konstynts.network.niks) serve;
+  inherit (konstynts.fileSystem) yggdrasil;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
@@ -41,9 +43,9 @@ in
   };
 
   networking = {
-    firewall = { allowedTCPPorts = optional izNiksKac serve.ports.external; };
-    hostName = astra.neim;
-    dhcpcd.extraConfig = "noipv4ll";
+    firewall = {
+      allowedTCPPorts = optionals izNiksKac [ serve.ports.external 80 ];
+    };
   };
 
   nix = {
@@ -105,6 +107,10 @@ in
       virtualHosts = {
         "[${astra.yggAddress}]:${toString serve.ports.external}" = {
           listen = [{ addr = "[${astra.yggAddress}]"; port = serve.ports.external; }];
+          locations."/".proxyPass = "http://127.0.0.1:${toString serve.ports.internal}";
+        };
+        "${nixCacheUrl}" = {
+          listen = [{ addr = "[${astra.yggAddress}]"; port = 80; }];
           locations."/".proxyPass = "http://127.0.0.1:${toString serve.ports.internal}";
         };
       };

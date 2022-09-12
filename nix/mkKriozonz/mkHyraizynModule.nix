@@ -118,6 +118,8 @@ let
 
           nixPriKriom = optionalString izNiksKriodaizd
             (concatStringsSep ":" [ krioniksNeim niksPriKriom ]);
+
+          nixCacheUrl = if izNiksKac then ("nix." + krioniksNeim) else null;
         };
 
     in
@@ -134,10 +136,9 @@ let
     let
       mkBildyr = n:
         let astri = exAstriz.${n};
-        in
-        {
+        in {
           hostName = astri.krioniksNeim;
-          sshUser = "niksBildyr";
+          sshUser = "nixBuilder";
           sshKey = "/root/.ssh/id_ed25519";
           system = astri.sistym;
           maxJobs = astri.nbOfBildKorz;
@@ -173,7 +174,7 @@ let
 
       kacURLz =
         let
-          mkKacURL = n: "niks." + exAstriz.${n}.krioniksNeim;
+          mkKacURL = n: exAstriz.${n}.spinyrz.nixCacheUrl;
         in
         map mkKacURL kacyz;
 
