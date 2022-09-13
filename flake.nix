@@ -2,7 +2,7 @@
   description = "Krioniks";
 
   inputs = {
-    hob.url = github:sajban/hob/frameOfReference;
+    hob.url = github:sajban/hob/servingDinner;
     KLambdaBootstrap = { url = path:./KLambdaBootstrap; flake = false; };
     ShenAski = { url = path:./ShenAski; flake = false; };
     ShenCoreBootstrap = { url = path:./ShenCoreBootstrap; flake = false; };
