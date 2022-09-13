@@ -8,7 +8,7 @@ let
   mkKriomHostEntries = neim: astri:
     let
       inherit (astri) krioniksNeim neksysIp yggAddress;
-      inherit (astri.spinyrz) izNiksKac nixCacheUrl;
+      inherit (astri.spinyrz) izNiksKac nixCacheDomain;
 
       mkPreNeksysHost = linkLocalIP: {
         name = linkLocalIP;
@@ -28,7 +28,7 @@ let
       yggdrasilHost = optional (yggAddress != null) {
         name = yggAddress;
         value = [ krioniksNeim ] ++
-          (optional izNiksKac nixCacheUrl);
+          (optional izNiksKac nixCacheDomain);
       };
 
     in

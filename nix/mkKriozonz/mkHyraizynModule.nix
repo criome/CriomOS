@@ -119,7 +119,8 @@ let
           nixPriKriom = optionalString izNiksKriodaizd
             (concatStringsSep ":" [ krioniksNeim niksPriKriom ]);
 
-          nixCacheUrl = if izNiksKac then ("nix." + krioniksNeim) else null;
+          nixCacheDomain = if izNiksKac then ("nix." + krioniksNeim) else null;
+          nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
         };
 
     in
@@ -174,7 +175,7 @@ let
 
       kacURLz =
         let
-          mkKacURL = n: exAstriz.${n}.spinyrz.nixCacheUrl;
+          mkKacURL = n: exAstriz.${n}.spinyrz.nixUrl;
         in
         map mkKacURL kacyz;
 
