@@ -139,7 +139,7 @@ let
         in {
           hostName = astri.krioniksNeim;
           sshUser = "nixBuilder";
-          sshKey = "/root/.ssh/id_ed25519";
+          sshKey = "/etc/ssh/ssh_host_ed25519_key";
           system = astri.sistym;
           maxJobs = astri.nbOfBildKorz;
         };
