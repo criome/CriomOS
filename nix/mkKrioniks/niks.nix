@@ -52,10 +52,9 @@ in
     package = uyrld.nix.packages.default;
 
     settings = {
-      trusted-users = [ "root" "@nixdev" ];
+      trusted-users = [ "root" "@nixdev" ] ++ optional izBildyr "nixBuilder";
 
-      allowed-users = [ "@users" "nix-serve" ]
-        ++ optional izBildyr "nixBuilder";
+      allowed-users = [ "@users" "nix-serve" ];
 
       build-cores = astra.nbOfBildKorz;
 
@@ -163,7 +162,7 @@ in
           wantedBy = [ "multi-user.target" ];
           serviceConfig = { type = "oneshot"; };
           script = ''
-            nix key generate-secret --key-namem ${astra.krioniksNeim} > ${priKriad}
+            nix key generate-secret --key-name ${astra.krioniksNeim} > ${priKriad}
           '';
         };
       });

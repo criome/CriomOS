@@ -523,11 +523,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1663045203,
-        "narHash": "sha256-PoaAQitK1xcrsij1Ol8WyxGNnbtgICtk49lGl9LovOE=",
+        "lastModified": 1663054692,
+        "narHash": "sha256-NwNXZnouu3a+ULFMYZwx2M2++v9X9hryTeUfTFh4/WA=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "77fb39e5b1a215e555472551ac208f9a82203a7e",
+        "rev": "641c75079d09089ec95a18cab6486cc419734a7c",
         "type": "github"
       },
       "original": {
@@ -709,11 +709,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1663040063,
-        "narHash": "sha256-aSkna9HoSbtz16zU6IWA5vEUQyUKh4+ZNp/XbKGrykU=",
+        "lastModified": 1663054556,
+        "narHash": "sha256-JIR/joGbk+cf5TYy03Hv0y/SiCqEGJdAeQ8jBqisjmA=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "04d734e87e9cabcca034b33918971db02327c618",
+        "rev": "08ac6880f43f218d201e4cb2f6e018e3cf0d31b3",
         "type": "github"
       },
       "original": {
@@ -768,7 +768,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-HVHVeeNBntkYjqNvorIrwKR751SpJw/ywlWomwTohjY=",
+        "narHash": "sha256-2rw6cNqbWl2y1tu21Lxr0xDymt+ByATKk33CVh9M+0I=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
