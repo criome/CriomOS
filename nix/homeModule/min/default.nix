@@ -126,7 +126,6 @@ let
   uyrldPackages = with uyrld; [
     pkdjz.shen-bootstrap
     skrips.user
-    jujutsu.defaultPackage
   ];
 
 in
