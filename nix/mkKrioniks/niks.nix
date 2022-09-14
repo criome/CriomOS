@@ -9,7 +9,7 @@ let
   inherit (hyraizyn.astra.spinyrz) exAstrizEseseitcPriKriomz
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
     izBildyr izNiksKac izDispatcyr izKriodaizd izNiksKriodaizd
-    nixCacheUrl;
+    nixCacheDomain;
 
   inherit (konstynts.fileSystem.niks) priKriad;
   inherit (konstynts.network.niks) serve;
@@ -108,7 +108,7 @@ in
           listen = [{ addr = "[${astra.yggAddress}]"; port = serve.ports.external; }];
           locations."/".proxyPass = "http://127.0.0.1:${toString serve.ports.internal}";
         };
-        "${nixCacheUrl}" = {
+        "${nixCacheDomain}" = {
           listen = [{ addr = "[${astra.yggAddress}]"; port = 80; }];
           locations."/".proxyPass = "http://127.0.0.1:${toString serve.ports.internal}";
         };
