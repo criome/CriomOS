@@ -7,6 +7,9 @@ let
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
     impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
 
+  # TODO
+  hasTouchpad = true;
+
   hasThunderbolt = modyl == "ThinkPadE15Gen2Intel";
   hasNvme = modyl == "ThinkPadE15Gen2Intel";
   requiresSofFirmware = modyl == "ThinkPadE15Gen2Intel";
@@ -72,6 +75,8 @@ let
 in
 {
   hardware = {
+    cpu.intel.updateMicrocode = tcipIzIntel;
+
     firmware = with pkgs; [
       firmwareLinuxNonfree
       intel2200BGFirmware
@@ -121,7 +126,7 @@ in
     }
   );
 
-  programs.light.enable = !izSentyr;
+  programs = { };
 
   console.useXkbConfig = iuzColemak;
 
@@ -129,11 +134,6 @@ in
     systemPackages = (with pkgs; [ lm_sensors ]
       ++ optionals tcipIzIntel [ libva-utils i7z ]);
 
-    interactiveShellInit = optionalString iuzColemak "stty -ixon";
-    sessionVariables = (optionalAttrs iuzColemak {
-      XKB_DEFAULT_LAYOUT = "us";
-      XKB_DEFAULT_VARIANT = "colemak";
-    });
   };
 
   users.groups.plugdev = { };
@@ -165,6 +165,14 @@ in
     '';
 
     xserver = {
+      libinput = {
+        enable = hasTouchpad;
+        touchpad = {
+          naturalScrolling = true;
+          tapping = true;
+        };
+      };
+
       xkbVariant = optionalString iuzColemak "colemak";
       xkbOptions = "caps:ctrl_modifier, altwin:swap_alt_win";
 
@@ -215,6 +223,8 @@ in
         }
       ];
     };
+
+    udisks2.enable = true;
 
     acpid = {
       enable = true;

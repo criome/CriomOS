@@ -145,11 +145,20 @@ mkIf saizAtList.min {
 
     mpd = {
       enable = true;
+      musicDirectory = "~/Music";
     };
+
+    pueue = { enable = izNiksDev; };
   };
 
   programs = {
-    fish.enable = true;
+    bat = {
+      enable = true;
+      config = {
+        theme = "gruvbox-${if dark then "dark" else "light"}";
+        pager = "less -FR";
+      };
+    };
 
     git = {
       enable = true;
@@ -170,14 +179,6 @@ mkIf saizAtList.min {
     gpg = {
       enable = true;
       settings = { };
-    };
-
-    bat = {
-      enable = true;
-      config = {
-        theme = "gruvbox-${if dark then "dark" else "light"}";
-        pager = "less -FR";
-      };
     };
 
     htop = {

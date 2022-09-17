@@ -35,6 +35,7 @@ let
     "https://login.protonmail.com"
     "https://mail.proton.me"
     "https://login.proton.me"
+    "https://account.proton.me"
     "https://www.cloudflare.com"
     "https://dash.cloudflare.com"
     "https://download.lineageos.org"
