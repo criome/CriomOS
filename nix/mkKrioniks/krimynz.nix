@@ -53,12 +53,4 @@ let
   };
 
 in
-{
-  users = {
-    users = mkKrimynUsers // rootUserAkses;
-
-    defaultUserShell = "/run/current-system/sw/bin/zsh";
-
-  };
-
-}
+{ users = { users = mkKrimynUsers // rootUserAkses; }; }

@@ -84,17 +84,22 @@ in
   };
 
   users = {
-    groups = {
-      nixdev = { };
-      nixBuilder = { };
-    };
-    users = mkIf izBildyr {
+    groups = { nixdev = { }; }
+      // (optionalAttrs izBildyr { nixBuilder = { }; })
+      // (optionalAttrs izNiksKac { nix-serve = { gid = 199; }; });
+
+    users = (optionalAttrs izNiksKac {
+      nix-serve = {
+        uid = 199;
+        group = "nix-serve";
+      };
+    }) // (optionalAttrs izBildyr {
       nixBuilder = {
         isNormalUser = true;
         useDefaultShell = true;
         openssh.authorizedKeys.keys = dispatcyrzEseseitcKiz;
       };
-    };
+    });
 
   };
 
@@ -150,7 +155,6 @@ in
           RestartSec = "5s";
           User = "nix-serve";
           Group = "nix-serve";
-          DynamicUser = true;
           StateDirectory = "nix-serve";
           LoadCredential = lib.optionalString (cfg.secretKeyFile != null)
             "NIX_SECRET_KEY_FILE:${cfg.secretKeyFile}";

@@ -1,10 +1,15 @@
 { config, kor, hyraizyn, pkgs, lib, uyrld, ... }:
 let
   inherit (kor) mapAttrsToList eksportJSON;
-  inherit (lib) concatStringsSep mkOverride optional;
+  inherit (lib) concatStringsSep mkOverride optional mkIf optionalString optionalAttrs;
   inherit (pkgs) mksh writeScript gnupg;
   inherit (hyraizyn) astra exAstriz;
-  inherit (hyraizyn.astra.spinyrz) tcipIzIntel saizAtList;
+  inherit (hyraizyn.astra.spinyrz) tcipIzIntel saizAtList iuzColemak;
+
+  # TODO
+  hasAudioOutput = true;
+  hasVideoOutput = true;
+  hasAcceleratedVideoOutput = true;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
@@ -50,16 +55,42 @@ in
     };
 
     systemPackages = [
-      pkgs.lm_sensors
       uyrld.skrips.root
     ];
+
+    interactiveShellInit = optionalString iuzColemak "stty -ixon";
+    sessionVariables = (optionalAttrs iuzColemak {
+      XKB_DEFAULT_LAYOUT = "us";
+      XKB_DEFAULT_VARIANT = "colemak";
+    });
   };
 
-  hardware = {
-    cpu.intel.updateMicrocode = tcipIzIntel;
-  };
+  networking.networkmanager.enable = saizAtList.min;
 
   nixpkgs.config.allowUnfree = true;
+
+  programs = {
+
+    adb.enable = saizAtList.med;
+
+    light.enable = hasVideoOutput;
+
+    sway = mkIf hasAcceleratedVideoOutput {
+      enable = true;
+      wrapperFeatures = {
+        base = true;
+        gtk = true;
+      };
+
+      extraSessionCommands = ''
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export GDK_BACKEND=wayland
+      '';
+    };
+
+    zsh.enable = true;
+  };
 
   services = {
     openssh = {
@@ -67,6 +98,25 @@ in
       passwordAuthentication = false;
       ports = [ 22 ];
     };
+
+    pipewire = mkIf hasAudioOutput {
+      enable = true;
+      alsa.enable = true;
+      jack.enable = true;
+      pulse.enable = true;
+    };
+
+    udev = {
+      extraRules = ''
+        # What is this for?
+        ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="dialout", MODE="0660"
+      '';
+    };
+  };
+
+  sound = {
+    enable = true;
+    extraConfig = "";
   };
 
   systemd = {
@@ -74,4 +124,10 @@ in
       withHomed = true;
     };
   };
+
+  users = {
+    defaultUserShell = "/run/current-system/sw/bin/zsh";
+    groups.dialout = { };
+  };
+
 }

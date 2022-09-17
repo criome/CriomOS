@@ -103,7 +103,7 @@ let
           izHaibrid = spici == "haibrid";
           izBildyr = !izEdj && (trost >= 3) && (saizAtList.med || izSentyr) && izKriodaizd;
           izDispatcyr = !izSentyr && (trost >= 3) && saizAtList.min;
-          izNiksKac = !izEdj && saizAtList.min && izKriodaizd;
+          izNiksKac = izSentyr && saizAtList.min && izKriodaizd;
           izNiksKriodaizd = niksPriKriom != null;
           izYggKriodaizd = yggAddress != null;
           izNeksisKriodaizd = izYggKriodaizd;
@@ -141,6 +141,7 @@ let
           hostName = astri.krioniksNeim;
           sshUser = "nixBuilder";
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
+          supportedFeatures = optional astri.spinyrz.izSentyr "big-parallel";
           system = astri.sistym;
           maxJobs = astri.nbOfBildKorz;
         };

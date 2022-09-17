@@ -3,10 +3,7 @@ let
   inherit (kor) mkIf optional optionals optionalString optionalAttrs;
   inherit (lib) mkOverride;
 
-  inherit (hyraizyn.astra.spinyrz) saizAtList;
-
-  izX230 = hyraizyn.astra.mycin.modyl == "ThinkPadX230";
-  izX240 = hyraizyn.astra.mycin.modyl == "ThinkPadX240";
+  inherit (hyraizyn.astra.spinyrz) saizAtList izEdj;
 
   medPackages = optionals saizAtList.med (with pkgs; [ ]);
   maxPackages = optionals saizAtList.max (with pkgs; [ ]);
@@ -23,52 +20,14 @@ in
     ];
   };
 
-  networking.networkmanager.enable = saizAtList.min;
-
-  sound = {
-    enable = true;
-    extraConfig = "";
-  };
-
   programs = {
-    droidcam.enable = saizAtList.max;
-
     file-roller.enable = saizAtList.med;
-
     fish.enable = saizAtList.min;
-
     geary.enable = mkIf saizAtList.med (mkOverride 0 false); # force to disable keyring
-
-    adb.enable = saizAtList.med;
-
-    sway = {
-      enable = true;
-      wrapperFeatures = {
-        base = true;
-        gtk = true;
-      };
-
-      extraSessionCommands = ''
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export GDK_BACKEND=wayland
-      '';
-    };
-
-    zsh = {
-      enable = true;
-    };
   };
 
   services = {
     power-profiles-daemon.enable = false;
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      jack.enable = true;
-      pulse.enable = true;
-    };
 
     dbus.packages = mkIf saizAtList.med [ pkgs.gcr ];
 
@@ -85,7 +44,7 @@ in
       displayManager = {
         gdm = {
           enable = saizAtList.med;
-          autoSuspend = true;
+          autoSuspend = izEdj;
         };
       };
 
@@ -98,27 +57,6 @@ in
           '';
         };
       };
-
-      libinput = {
-        enable = true;
-        touchpad = {
-          naturalScrolling = true;
-          tapping = true;
-        };
-      };
-
-    };
-
-    udisks2.enable = true;
-
-    udev = {
-      extraRules = ''
-        # What is this for?
-        ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="dialout", MODE="0660"
-      '';
     };
   };
-
-  users.groups.dialout = { };
-
 }
