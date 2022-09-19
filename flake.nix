@@ -63,7 +63,32 @@
           mkHomeConfig neksysNames mkUyrld homeModule files;
       };
 
-      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks;
+      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks mkUyrld;
+
+      mkPkgsFromSystem = system:
+        let
+          config = { allowUnfree = true; };
+          overlays = [ emacs-overlay.overlay ];
+        in
+        mkPkgs { inherit nixpkgs lib system config overlays; };
+
+      mkPkgsAndUyrldFromSystem = system:
+        let
+          pkgs =
+            let
+              config = { allowUnfree = true; };
+              overlays = [ emacs-overlay.overlay ];
+            in
+            mkPkgs { inherit nixpkgs lib system config overlays; };
+          uyrld = mkUyrld { inherit pkgs kor lib system hob neksysNames; };
+        in
+        { inherit pkgs uyrld; };
+
+      perSystemPkgsAndUyrld = eachDefaultSystem mkPkgsAndUyrldFromSystem;
+
+      mkPkgsAndUyrld = system:
+        mapAttrs (name: value: value.${system}) perSystemPkgsAndUyrld;
+
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
       mkKriomDatom = import inputs.mkKriomDatom
@@ -86,8 +111,8 @@
           inherit (kriozon) krimynz;
           inherit (kriozon.astra.mycin) ark;
           system = arkSistymMap.${ark};
-          uyrld = self.uyrld.${system};
-          pkgs = self.pkgs.${system};
+          pkgsAndUyrld = mkPkgsAndUyrld system;
+          inherit (pkgsAndUyrld) pkgs uyrld;
           hyraizyn = kriozon;
 
           krimynProfiles = {
@@ -135,21 +160,11 @@
         in
         mapAttrs mkNeksysDerivationIndex kriozonz;
 
-      mkOutputs = system:
+      mkNixApiOutputsPerSystem = system:
         let
-          pkgs =
-            let
-              config = { allowUnfree = true; };
-              overlays = [ emacs-overlay.overlay ];
-            in
-            mkPkgs { inherit nixpkgs lib system config overlays; };
-
+          pkgsAndUyrld = mkPkgsAndUyrld system;
+          inherit (pkgsAndUyrld) pkgs uyrld;
           inherit (pkgs) symlinkJoin linkFarm;
-
-          uyrld = imports.mkUyrld
-            { inherit pkgs kor lib system hob neksysNames; };
-
-          mkKrioniksFromKriom = kriom@{ ... }: { };
 
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
@@ -180,9 +195,9 @@
           tests = import inputs.tests { inherit lib mkDatom; };
 
         in
-        { inherit uyrld pkgs tests packages devShell; };
+        { inherit tests packages devShell; };
 
-      perSystemOutputs = eachDefaultSystem mkOutputs;
+      perSystemAllOutputs = eachDefaultSystem mkNixApiOutputsPerSystem;
 
       proposedKriosfir = imports.mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
       proposedKriozonz = imports.mkKriozonz { inherit kor lib proposedKriosfir; };
@@ -190,13 +205,10 @@
       kriomInput = uncheckedKriosfirProposal;
       kriomDatom = mkKriomDatom kriomInput;
 
-      mkOutputsOfSystem = system:
-        mapAttrs (name: value: value.${system}) perSystemOutputs;
-
-      argumentsForKriomOutputs = { inherit krioniksRev mkOutputsOfSystem; };
+      argumentsForKriomOutputs = { inherit krioniksRev mkPkgsAndUyrld; };
 
     in
-    perSystemOutputs // {
+    perSystemAllOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
       kriom = kriomDatom.mkOutputs argumentsForKriomOutputs;
     };

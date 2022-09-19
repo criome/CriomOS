@@ -6,7 +6,7 @@
 , extraModuleArgs ? { }
 }@spec:
 
-inputs:
+datom:
 
 let
   inherit (kor) mkLamdyz;
@@ -15,15 +15,15 @@ let
   argsModule = { config._module.args = extraModuleArgs // { inherit lib; }; };
 
   typeCheckingModule = { ... }: {
-    options.inputs = mkOption { type = (submodule typeModule); };
-    config.inputs = inputs;
+    options.datom = mkOption { type = (submodule typeModule); };
+    config.datom = datom;
   };
 
   typeCheckingEvaluation = evalModules {
     modules = [ argsModule typeCheckingModule extraTypecheckingModule ];
   };
 
-  Datom = typeCheckingEvaluation.config.inputs;
+  Datom = typeCheckingEvaluation.config.datom;
 
   closure = Datom // { inherit kor lib; };
 

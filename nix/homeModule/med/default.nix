@@ -37,8 +37,8 @@ let
     ghq
     elvish
     lf
-    # tokenaizdGhcli # broken by gopass
-    # tokenaizdHub # broken by gopass
+    tokenaizdGhcli
+    tokenaizdHub
     #== rust
     git-series
     nixpkgs-fmt
@@ -83,7 +83,7 @@ kor.mkIf saizAtList.med {
       opusTools
       mediainfo
       #== go
-      # gopass # broken, fixed in nixpkgs master
+      gopass
       git-bug
       lazygit
       #== rust
