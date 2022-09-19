@@ -795,7 +795,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-L95g/6C9kc4uTpIt+wFEg860+lkGd/he0F5uUM5pHjk=",
+        "narHash": "sha256-ytfvBicRrc8FDgyh1+Pe3gfakali0hWuysRkvjVw7cI=",
         "path": "./nix/mkKriozonz",
         "type": "path"
       },

@@ -97,12 +97,13 @@ let
 
         in
         rec {
+          izFullyTrusted = trost == 3;
           saizAtList = kor.mkSaizAtList saiz;
           izEdj = spici == "edj";
           izSentyr = spici == "sentyr";
           izHaibrid = spici == "haibrid";
-          izBildyr = !izEdj && (trost >= 3) && (saizAtList.med || izSentyr) && izKriodaizd;
-          izDispatcyr = !izSentyr && (trost >= 3) && saizAtList.min;
+          izBildyr = !izEdj && izFullyTrusted && (saizAtList.med || izSentyr) && izKriodaizd;
+          izDispatcyr = !izSentyr && izFullyTrusted && saizAtList.min;
           izNiksKac = izSentyr && saizAtList.min && izKriodaizd;
           izNiksKriodaizd = niksPriKriom != null;
           izYggKriodaizd = yggAddress != null;
@@ -150,7 +151,7 @@ let
         let
           adminKrimyn = krimynz.${adminKrimynNeim};
           priKriomAstriNeimz = attrNames adminKrimyn.priKriomz;
-          izAstriFulyTrostyd = n: astriz.${n}.spinyrz.izDispatcyr;
+          izAstriFulyTrostyd = n: astriz.${n}.spinyrz.izFullyTrusted;
           fulyTrostydPriKriomNeimz = filter izAstriFulyTrostyd priKriomAstriNeimz;
           getEseseitcString = n:
             if (adminKrimyn.priKriomz.${n}.eseseitc == null)
