@@ -325,6 +325,23 @@
         "type": "github"
       }
     },
+    "eldev": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662672849,
+        "narHash": "sha256-yna3SPVUb6Dzt0Wrl7EY05oNrGHSFVJL1QFhUKNb3DQ=",
+        "owner": "doublep",
+        "repo": "eldev",
+        "rev": "659f4d9c97a44cf29ded5594b3f5de8da99ec973",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doublep",
+        "ref": "1.2.2",
+        "repo": "eldev",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
@@ -449,6 +466,21 @@
         "type": "github"
       }
     },
+    "goldragon": {
+      "locked": {
+        "lastModified": 1663666582,
+        "narHash": "sha256-f5GyGuLH9W7o7aK//9X0oa2NgFFt5ifpDo4DV++244w=",
+        "owner": "LiGoldragon",
+        "repo": "goldragon",
+        "rev": "7da4ce4732061b00b06dd6d5df691d02210bccfe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LiGoldragon",
+        "repo": "goldragon",
+        "type": "github"
+      }
+    },
     "googletest": {
       "flake": false,
       "locked": {
@@ -494,6 +526,7 @@
         "firn": "firn",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
+        "goldragon": "goldragon",
         "home-manager": "home-manager",
         "kibord": "kibord",
         "librem5-flash-image": "librem5-flash-image",
@@ -510,6 +543,7 @@
         "page-maisiliym-uniks": "page-maisiliym-uniks",
         "pnpm2nix": "pnpm2nix",
         "postcss-scss": "postcss-scss",
+        "pueue-el": "pueue-el",
         "ql2nix": "ql2nix",
         "reseter-css": "reseter-css",
         "ron-vim": "ron-vim",
@@ -523,11 +557,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1663417725,
-        "narHash": "sha256-DP/UW+GJd3SaqQJrRE6vhYkEPUGBtaQ/CuA7kzpk+sY=",
+        "lastModified": 1663667189,
+        "narHash": "sha256-naeZFeVmwMZbIkCIJMQ2d4b11QT6nYEtQO5JyF49npo=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "c21ba194f3403c7fae29d1974332cdf36e010f51",
+        "rev": "f0937c6563170126eb96ddb355c79105aaa28153",
         "type": "github"
       },
       "original": {
@@ -710,11 +744,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1663386058,
-        "narHash": "sha256-zD9pCStI+QxlZr9zEnBBJmAvFH2WHUmqbfm+3XUm7GI=",
+        "lastModified": 1663666260,
+        "narHash": "sha256-XR/TyZ3utVggAVUW/RiCZZH8pCseprpJtAxt9iuAbVA=",
         "owner": "maisiliym",
         "repo": "maisiliym",
-        "rev": "4d1ebb41c49cc628a1331bf8a5019fae5381c061",
+        "rev": "1b67b40ea3c97cdf65c423f9e4996ec76c72606f",
         "type": "github"
       },
       "original": {
@@ -1053,6 +1087,32 @@
       "original": {
         "owner": "qmk",
         "repo": "printf",
+        "type": "github"
+      }
+    },
+    "pueue-el": {
+      "inputs": {
+        "eldev": "eldev",
+        "emacs-overlay": [
+          "hob",
+          "emacs-overlay"
+        ],
+        "nixpkgs": [
+          "hob",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1663246167,
+        "narHash": "sha256-RbYeiF8pKFzkzfyxoqyA11D85x8JAbD5ui0eKDwTAPc=",
+        "owner": "xFA25E",
+        "repo": "pueue",
+        "rev": "169ffd565462cb72eaff0b376d1f37c81a4b5fbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xFA25E",
+        "repo": "pueue",
         "type": "github"
       }
     },
