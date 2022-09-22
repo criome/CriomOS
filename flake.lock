@@ -777,25 +777,12 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Wvdf/yZ9M1yJCXc6a6hvjmBXU/RTJW7+qehlxux9nSg=",
+        "narHash": "sha256-j/4P/ZjZau34M/QplmEps/6MUWqlAvqp0g17lqHFSaY=",
         "path": "./nix/mkDatom",
         "type": "path"
       },
       "original": {
         "path": "./nix/mkDatom",
-        "type": "path"
-      }
-    },
-    "mkKriomDatom": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ERjkhcCFW0eMhoYxOKTTPGCJHUd/xXdxIbtcTjqVzEM=",
-        "path": "./nix/mkKriomDatom",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkKriomDatom",
         "type": "path"
       }
     },
@@ -822,6 +809,19 @@
       },
       "original": {
         "path": "./nix/mkKriosfir",
+        "type": "path"
+      }
+    },
+    "mkKriozonDatom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-mmfw5VbEniLIhoTiS1ldhpzd8n7q6QDX9ddl2AsjKfs=",
+        "path": "./nix/mkKriozonDatom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKriozonDatom",
         "type": "path"
       }
     },
@@ -897,7 +897,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-jziHpsI6Fi46il0yUr+rQEwXBBTEZB7vj+gs9rob4fU=",
+        "narHash": "sha256-VzvmdMiyJQDabjZTVl3UjHBx8TdtmcFhGIgzXTZljMA=",
         "path": "./nix/neksysNames",
         "type": "path"
       },
@@ -1220,9 +1220,9 @@
         "homeModule": "homeModule",
         "kor": "kor",
         "mkDatom": "mkDatom",
-        "mkKriomDatom": "mkKriomDatom",
         "mkKrioniks": "mkKrioniks",
         "mkKriosfir": "mkKriosfir",
+        "mkKriozonDatom": "mkKriozonDatom",
         "mkKriozonz": "mkKriozonz",
         "mkPkgs": "mkPkgs",
         "mkUyrld": "mkUyrld",

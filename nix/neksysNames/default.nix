@@ -1,4 +1,3 @@
 [
-  "maisiliym"
-  "bird"
+  "goldragon"
 ]

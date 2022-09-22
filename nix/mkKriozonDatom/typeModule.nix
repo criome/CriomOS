@@ -157,56 +157,58 @@ let
     };
   };
 
-  astriSubmodule = ({ name, config, ... }: {
-    let preNexus = { };
+  astriSubmodule = ({ name, config, ... }:
+    let
+      preNexus = { };
     in
-    options = {
-      spici = mkOption {
-        type = enum astriSpiciz;
-        default = "sentyr";
-      };
+    {
+      options = {
+        spici = mkOption {
+          type = enum astriSpiciz;
+          default = "sentyr";
+        };
 
-      saiz = mkOption {
-        type = enum magnytiud;
-        default = 0;
-      };
+        saiz = mkOption {
+          type = enum magnytiud;
+          default = 0;
+        };
 
-      trost = mkOption {
-        type = enum magnytiud;
-        default = 1;
-      };
+        trost = mkOption {
+          type = enum magnytiud;
+          default = 1;
+        };
 
-      mycin = mkOption {
-        type = mycinSpici;
-      };
+        mycin = mkOption {
+          type = mycinSpici;
+        };
 
-      io = mkOption {
-        type = submodule { options = IoOptions; };
-        default = { };
-      };
+        io = mkOption {
+          type = submodule { options = IoOptions; };
+          default = { };
+        };
 
-      priKriomz = mkOption {
-        type = AstriPriKriomSpici;
-        default = { };
-      };
+        priKriomz = mkOption {
+          type = AstriPriKriomSpici;
+          default = { };
+        };
 
-      linkLocalIPs = mkOption {
-        type = listOf attrs;
-        default = [ ];
-      };
+        linkLocalIPs = mkOption {
+          type = listOf attrs;
+          default = [ ];
+        };
 
-      neksysIp = mkOption {
-        type = nullOr str;
-        default = null;
-      };
+        neksysIp = mkOption {
+          type = nullOr str;
+          default = null;
+        };
 
-      wireguardPriKriom = mkOption {
-        type = nullOr str;
-        default = null;
-      };
+        wireguardPriKriom = mkOption {
+          type = nullOr str;
+          default = null;
+        };
 
-    };
-  });
+      };
+    });
 
 
   defaultTrost = 1;
@@ -276,8 +278,8 @@ let
 in
 {
   options = {
-    kriozonz = mkOption {
-      type = attrsOf (submodule metastriSubmodule);
+    subzones = mkOption {
+      type = (submodule metastriSubmodule);
     };
   };
 }
