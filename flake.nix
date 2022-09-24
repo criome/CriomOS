@@ -206,6 +206,6 @@
     in
     perSystemAllOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      outputs = Kriozon.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld; };
+      subzones = Kriozon.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld homeModule; };
     };
 }

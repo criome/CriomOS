@@ -279,7 +279,7 @@ in
 {
   options = {
     subzones = mkOption {
-      type = (submodule metastriSubmodule);
+      type = attrsOf (submodule metastriSubmodule);
     };
   };
 }

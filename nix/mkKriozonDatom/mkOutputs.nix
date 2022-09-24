@@ -1,5 +1,5 @@
-{ kor, lib, kriozonz }:
-{ mkKrioniks, mkPkgsAndUyrld, krioniksRev }:
+{ kor, lib, subzones }:
+{ mkKrioniks, mkPkgsAndUyrld, krioniksRev, homeModule }:
 
 let
   inherit (builtins) fold attrNames mapAttrs filterAttrs;
@@ -39,7 +39,7 @@ let
 
     in
     {
-      os = mkKrioniks { inherit krioniksRev kor uyrld hyraizyn; };
+      os = mkKrioniks { inherit krioniksRev kor uyrld hyraizyn homeModule; };
       hom = mapAttrs mkKrimynHomz krimynz;
       imaks = mapAttrs mkKrimynImaks krimynz;
     };
@@ -48,4 +48,4 @@ let
     mapAttrs mkNeksysDerivations neksysPrineksysIndeks;
 
 in
-mapAttrs mkNeksysDerivationIndex kriozonz
+mapAttrs mkNeksysDerivationIndex subzones
