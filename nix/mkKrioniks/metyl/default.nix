@@ -131,8 +131,9 @@ in
   console.useXkbConfig = iuzColemak;
 
   environment = {
-    systemPackages = (with pkgs; [ lm_sensors ]
-      ++ optionals tcipIzIntel [ libva-utils i7z ]);
+    systemPackages = with pkgs; [ lm_sensors ]
+      ++ optionals tcipIzIntel [ libva-utils i7z ]
+      ++ optionals saizAtList.max [ win-virtio ];
 
   };
 
@@ -269,6 +270,12 @@ in
         };
       };
 
+    };
+  };
+
+  virtualisation = {
+    libvirtd = {
+      enable = saizAtList.max;
     };
   };
 }
