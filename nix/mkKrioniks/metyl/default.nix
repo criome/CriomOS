@@ -274,8 +274,7 @@ in
   };
 
   virtualisation = {
-    libvirtd = {
-      enable = saizAtList.max;
-    };
+    libvirtd = { enable = saizAtList.max; };
+    spiceUSBRedirection.enable = saizAtList.max;
   };
 }
