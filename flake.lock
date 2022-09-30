@@ -790,7 +790,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-5uuw9kH1EwX+c/dBL6XbdQspiO038tJX8bqFIWiaQAU=",
+        "narHash": "sha256-If1pksN+G5PNtFuaqlb1cXPHzQXLl/TA8OR9JdNNqYY=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },

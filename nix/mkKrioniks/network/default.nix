@@ -44,7 +44,7 @@ in
   networking = {
     hostName = astra.neim;
     dhcpcd.extraConfig = "noipv4ll";
-    nameservers = [ "::1" ];
+    nameservers = [ "::1" "127.0.0.1" ];
     hosts = concatMapAttrs mkKriomHostEntries exAstriz;
   };
 
