@@ -777,7 +777,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-j/4P/ZjZau34M/QplmEps/6MUWqlAvqp0g17lqHFSaY=",
+        "narHash": "sha256-MskTsVv1kbtAEDn2NS3NdInbFrjivKaOWLM5pH0tRv4=",
         "path": "./nix/mkDatom",
         "type": "path"
       },
@@ -786,11 +786,24 @@
         "type": "path"
       }
     },
+    "mkKriomDatom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-3g/hgmmA3Izl7/5t9zaPb1nI6sEE2e5yJD4hLIpjySQ=",
+        "path": "./nix/mkKriomDatom",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nix/mkKriomDatom",
+        "type": "path"
+      }
+    },
     "mkKrioniks": {
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-If1pksN+G5PNtFuaqlb1cXPHzQXLl/TA8OR9JdNNqYY=",
+        "narHash": "sha256-V7FkgI3jnfkXTjtUodYJzSQeXM5N0pNNX5GgPO0ja9U=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -809,19 +822,6 @@
       },
       "original": {
         "path": "./nix/mkKriosfir",
-        "type": "path"
-      }
-    },
-    "mkKriozonDatom": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-RKIBmsUmRd1iVzMF8EIhvczaLlIipFyza+rbQbpwOBY=",
-        "path": "./nix/mkKriozonDatom",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkKriozonDatom",
         "type": "path"
       }
     },
@@ -1032,7 +1032,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-tZkvykV49Tjzpx7gJLZt6En93fuXqv9E7bddKClV5Y0=",
+        "narHash": "sha256-300sNI6De4E1O7qXabwhM16dFEI1EKTIOJaiFVlMR2Y=",
         "path": "./nix/pkdjz",
         "type": "path"
       },
@@ -1220,9 +1220,9 @@
         "homeModule": "homeModule",
         "kor": "kor",
         "mkDatom": "mkDatom",
+        "mkKriomDatom": "mkKriomDatom",
         "mkKrioniks": "mkKrioniks",
         "mkKriosfir": "mkKriosfir",
-        "mkKriozonDatom": "mkKriozonDatom",
         "mkKriozonz": "mkKriozonz",
         "mkPkgs": "mkPkgs",
         "mkUyrld": "mkUyrld",

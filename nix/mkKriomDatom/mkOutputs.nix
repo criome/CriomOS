@@ -1,17 +1,19 @@
-{ kor, lib, subzones }:
+{ kor, lib, self }:
 { mkKrioniks, mkPkgsAndUyrld, krioniksRev, homeModule }:
 
 let
+  inherit (self) subKrioms;
   inherit (builtins) fold attrNames mapAttrs filterAttrs;
 
-  mkNeksysDerivations = priNeksysNeim: kriozon:
+  mkNodeDerivations = subKriomName: nodeName: node:
     let
-      inherit (kriozon) krimynz;
-      inherit (kriozon.astra.mycin) ark;
+      hyraizyn = node;
+
+      inherit (node) krimynz;
+      inherit (node.astra.mycin) ark;
       system = kor.arkSistymMap.${ark};
       pkgsAndUyrld = mkPkgsAndUyrld system;
       inherit (pkgsAndUyrld) pkgs uyrld;
-      hyraizyn = kriozon;
 
       krimynProfiles = {
         light = { dark = false; };
@@ -23,7 +25,7 @@ let
           mkProfileHom = profileName: profile:
             let
               homeConfig = uyrld.mkHomeConfig
-                { inherit kriozon krimyn profile; };
+                { inherit hyraizyn krimyn profile; };
             in
             homeConfig.home.activationPackage;
         in
@@ -33,7 +35,7 @@ let
         let
           inherit (uyrld.pkdjz) meikImaks;
           mkProfileImaks = profileName: profile:
-            meikImaks { inherit kriozon krimyn profile; };
+            meikImaks { inherit krimyn profile; };
         in
         mapAttrs mkProfileImaks krimynProfiles;
 
@@ -44,8 +46,11 @@ let
       imaks = mapAttrs mkKrimynImaks krimynz;
     };
 
-  mkNeksysDerivationIndex = neksysNeim: neksysPrineksysIndeks:
-    mapAttrs mkNeksysDerivations neksysPrineksysIndeks;
+  mkSubKriomDerivations = subKriomName: nodes:
+    let
+      primedMkNodeDerivations = mkNodeDerivations subKriomName;
+    in
+    mapAttrs mkNodeDerivations nodes;
 
 in
-mapAttrs mkNeksysDerivationIndex subzones
+mapAttrs mkSubKriomDerivations subKrioms

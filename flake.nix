@@ -31,7 +31,7 @@
     homeModule = { flake = false; url = path:./nix/homeModule; };
     neksysNames = { flake = false; url = path:./nix/neksysNames; };
     tests = { url = path:./nix/tests; flake = false; };
-    mkKriozonDatom = { url = path:./nix/mkKriozonDatom; flake = false; };
+    mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
     files = { url = path:./nix/files; flake = false; };
   };
 
@@ -90,7 +90,7 @@
         mapAttrs (name: value: value.${system}) perSystemPkgsAndUyrld;
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
-      mkKriozonDatom = import inputs.mkKriozonDatom { inherit kor lib mkDatom; };
+      mkKriomDatom = import inputs.mkKriomDatom { inherit kor lib mkDatom; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -201,11 +201,11 @@
       proposedKriozonz = imports.mkKriozonz { inherit kor lib proposedKriosfir; };
 
       kriomInput = uncheckedKriosfirProposal;
-      Kriozon = mkKriozonDatom { subzones = kriomInput; };
+      Kriom = mkKriomDatom { subKrioms = kriomInput; };
 
     in
     perSystemAllOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      subzones = Kriozon.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld homeModule; };
+      outputs = Kriom.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld homeModule; };
     };
 }

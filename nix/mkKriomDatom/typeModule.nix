@@ -278,7 +278,7 @@ let
 in
 {
   options = {
-    subzones = mkOption {
+    subKrioms = mkOption {
       type = attrsOf (submodule metastriSubmodule);
     };
   };

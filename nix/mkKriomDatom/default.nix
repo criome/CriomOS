@@ -6,6 +6,7 @@ let
 
   methods = {
     mkOutputs = import ./mkOutputs.nix;
+    nodes = import ./nodes.nix;
   };
 
 in

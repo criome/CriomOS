@@ -2,13 +2,12 @@
 
 { name
 , typeModule
-, topLevelType ? lib.attrsOf
 , typeModuleExtraArgs ? { }
 , methods ? { }
 , extraModuleArgs ? { }
 }@spec:
 
-datom:
+input:
 
 let
   inherit (kor) mkLamdyz;
@@ -26,17 +25,20 @@ let
   };
 
   typeCheckingModule = { lib, ... }: with lib; {
-    options.datom = mkOption { type = typeSubmodule; };
+    options.self = mkOption { type = typeSubmodule; };
   };
 
   typeCheckingEvaluation = evalModules
-    { modules = [ argsModule typeCheckingModule { inherit datom; } ]; };
+    { modules = [ argsModule typeCheckingModule { self = input; } ]; };
 
-  Datom = typeCheckingEvaluation.config.datom;
+  # self = typeCheckingEvaluation.config.self;
+  inherit (typeCheckingEvaluation.config) self;
 
-  closure = Datom // { inherit kor lib; };
+  closure = methods // { inherit self kor lib; };
 
   methods = mkLamdyz { klozyr = closure; lamdyz = spec.methods; };
 
+  type = name + "Datom";
+
 in
-methods // { inherit name Datom; }
+methods // { inherit type self; }
