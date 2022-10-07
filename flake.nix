@@ -139,7 +139,7 @@
             let
               inherit (uyrld.pkdjz) meikImaks;
               mkProfileImaks = profileName: profile:
-                meikImaks { inherit kriozon krimyn profile; };
+                meikImaks { inherit krimyn profile; };
             in
             mapAttrs mkProfileImaks krimynProfiles;
 

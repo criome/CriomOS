@@ -230,15 +230,6 @@ let
     };
   };
 
-  domeinSubmodule = {
-    options = {
-      type = mkOption {
-        type = enum [ "cloudflare" ];
-        default = "cloudflare";
-      };
-    };
-  };
-
   krimynSubmodule = {
     options = komynKrimynOptions;
   };
@@ -254,11 +245,6 @@ let
 
       krimynz = mkOption {
         type = attrsOf (submodule krimynSubmodule);
-      };
-
-      domeinz = mkOption {
-        type = attrsOf (submodule domeinSubmodule);
-        default = { };
       };
 
       trost = mkOption {

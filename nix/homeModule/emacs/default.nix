@@ -1,7 +1,7 @@
 { pkdjz, krimyn, kriozon, profile, ... }:
 let
   inherit (pkdjz) meikImaks slynkPackages;
-  package = meikImaks { inherit kriozon krimyn profile; };
+  package = meikImaks { inherit krimyn profile; };
 
   slynkPkgs = with slynkPackages; [
     slynk # slynk-asdf slynk-quicklisp slynk-macrostep
