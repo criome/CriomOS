@@ -98,7 +98,13 @@
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateKriosfirProposalFromName = name:
-        hob."${name}".NeksysProposal or { };
+        let
+          subKriomConfig = hob."${name}".NeksysProposal or { };
+          explicitNodes = subKriomConfig.astriz or { };
+          implicitNodes = import ./implicitNodes.nix;
+          allNodes = explicitNodes // implicitNodes;
+        in
+        subKriomConfig // { astriz = allNodes; };
 
       uncheckedKriosfirProposal = genAttrs
         neksysNames

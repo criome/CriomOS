@@ -2,13 +2,12 @@
 let
   inherit (lib) evalModules;
 
-  PriMetastriz = uncheckedKriosfirProposal;
+  priMetastriz = uncheckedKriosfirProposal;
 
   argzModule = {
     config = {
-      inherit PriMetastriz;
       _module.args = {
-        inherit kor lib;
+        inherit kor lib priMetastriz;
       };
     };
   };

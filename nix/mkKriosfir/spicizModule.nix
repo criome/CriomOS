@@ -1,11 +1,10 @@
-{ kor, lib, config, ... }:
+{ kor, lib, config, priMetastriz, ... }:
 let
   inherit (builtins) attrNames attrValues;
   inherit (kor) arkSistymMap;
   inherit (lib) mkOption;
   inherit (lib.types) enum str attrsOf submodule nullOr bool int
     listOf attrs;
-  inherit (config) PriMetastriz;
 
   magnytiud = [ 0 1 2 3 ];
 
@@ -17,7 +16,7 @@ let
 
   astriSpiciz = [ "sentyr" "haibrid" "edj" ];
 
-  metastriNeimz = attrNames PriMetastriz;
+  metastriNeimz = attrNames priMetastriz;
 
   priKriomSubmodule = {
     options = {
