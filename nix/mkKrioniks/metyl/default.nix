@@ -23,54 +23,16 @@ let
     if enabledExtendedPowerSave then "powersave"
     else "schedutil";
 
-  extendedPowerSaveTable = {
-    ThinkPadX240 = { min = 775000; max = 775000; };
-  };
+  hasModelSpecificPowerTweaks = modyl == "ThinkPadE15Gen2Intel";
 
-  extendedPowerSaveMinFreq = extendedPowerSaveTable."${modyl}".min;
-  extendedPowerSaveMaxFreq = extendedPowerSaveTable."${modyl}".max;
-
-  autoCpufreqSettings = {
-    charger = {
-      governor = cpuFreqGovernor;
-      turbo = "never";
-    };
-    battery = {
-      governor = cpuFreqGovernor;
-      turbo = "never";
+  modelSpecificPowerTweaks = {
+    ThinkPadE15Gen2Intel = {
+      powerUpCommands = ''
+        echo 0 > /sys/devices/platform/thinkpad_acpi/leds/tpacpi::power/brightness
+      '';
+      powerDownCommands = "";
     };
   };
-
-  numberOfCoresIncludingFakes = korz * 2;
-
-  coreIsFake = coreNumber:
-    if (coreNumber == 0) then false
-    else if (isOdd coreNumber)
-    then true else false;
-
-  mkCoreLineFromFunction = mkCoreFunction:
-    genList mkCoreFunction numberOfCoresIncludingFakes;
-
-  mkEnableCoreLine = coreNumber:
-    if (coreNumber == 0) then "" else
-    "echo 1 > /sys/devices/system/cpu/cpu${toString coreNumber}/online";
-
-  enableAllCoresLines = mkCoreLineFromFunction mkEnableCoreLine;
-
-  mkApplyGovernorLine = coreNumber:
-    "echo ${cpuFreqGovernor} > /sys/devices/system/cpu/cpu${toString coreNumber}/cpufreq/scaling_governor";
-
-  applyGovernorLines = mkCoreLineFromFunction mkApplyGovernorLine;
-
-  mkDisableFakeCoreLine = coreNumber:
-    if (coreIsFake coreNumber)
-    then "echo 0 > /sys/devices/system/cpu/cpu${toString coreNumber}/online"
-    else "";
-
-  disableFakeCoresLines = mkCoreLineFromFunction mkDisableFakeCoreLine;
-
-  disableHyperThreadingPowerUpScript = concatStringsSep "\n" disableFakeCoresLines;
-  disableHyperThreadingPowerDownScript = concatStringsSep "\n" enableAllCoresLines;
 
 in
 {
@@ -119,12 +81,8 @@ in
 
   };
 
-  powerManagement = { inherit cpuFreqGovernor; } // (
-    optionalAttrs impozyzHaipyrThreding {
-      powerUpCommands = disableHyperThreadingPowerUpScript;
-      powerDownCommands = disableHyperThreadingPowerDownScript;
-    }
-  );
+  powerManagement = { inherit cpuFreqGovernor; }
+    // (optionalAttrs hasModelSpecificPowerTweaks modelSpecificPowerTweaks."${modyl}");
 
   programs = { };
 

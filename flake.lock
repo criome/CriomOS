@@ -557,11 +557,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1663667189,
-        "narHash": "sha256-naeZFeVmwMZbIkCIJMQ2d4b11QT6nYEtQO5JyF49npo=",
+        "lastModified": 1665206147,
+        "narHash": "sha256-Hexijr14fh7kp1Ac420plAqKBzVko+7VUKvCH53DUMc=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "f0937c6563170126eb96ddb355c79105aaa28153",
+        "rev": "019500b5594df27eb043202b531db9c3feb3a8c2",
         "type": "github"
       },
       "original": {
@@ -744,15 +744,15 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1663666260,
-        "narHash": "sha256-XR/TyZ3utVggAVUW/RiCZZH8pCseprpJtAxt9iuAbVA=",
-        "owner": "maisiliym",
+        "lastModified": 1665205857,
+        "narHash": "sha256-ifD69qYM78p3axBSMv7ECFsTEl5CcYon7hdw3OsYpyA=",
+        "owner": "LiGoldragon",
         "repo": "maisiliym",
-        "rev": "1b67b40ea3c97cdf65c423f9e4996ec76c72606f",
+        "rev": "f5de49b6c6b2fd9ceecdf1c3354894af2080dcac",
         "type": "github"
       },
       "original": {
-        "owner": "maisiliym",
+        "owner": "LiGoldragon",
         "repo": "maisiliym",
         "type": "github"
       }
@@ -803,7 +803,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-V7FkgI3jnfkXTjtUodYJzSQeXM5N0pNNX5GgPO0ja9U=",
+        "narHash": "sha256-2hXaNT5QOWA93gGI6fo6JtErtLMYqoNtQ7uKewRINow=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
