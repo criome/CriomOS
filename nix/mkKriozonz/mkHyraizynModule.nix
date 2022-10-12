@@ -242,7 +242,7 @@ let
 
         saizAtList = kor.mkSaizAtList krimyn.saiz;
 
-        matrixID = "@${krimyn.neim}:${metastra.neim}.niks";
+        matrixID = "@${krimyn.neim}:${metastra.neim}.kriom";
 
         gitSigningKey =
           if hazPriKriom then
