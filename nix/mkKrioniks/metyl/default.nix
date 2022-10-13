@@ -34,6 +34,13 @@ let
     };
   };
 
+  soundCardIndex = {
+    ThinkPadX230 = "PCH";
+    ThinkPadX240 = "PCH";
+  };
+
+  mainSoundCard = soundCardIndex."${modyl}" or "0";
+
 in
 {
   hardware = {
@@ -191,25 +198,25 @@ in
       handlers = {
         mute = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master toggle
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master toggle
           '';
           event = "button/mute";
         };
         volumeup = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master 5%+
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%+
           '';
           event = "button/volumeup";
         };
         volumedown = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master 5%-
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%-
           '';
           event = "button/volumedown";
         };
         mutemic = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Mic toggle
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Mic toggle
           '';
           event = "button/f20";
         };
