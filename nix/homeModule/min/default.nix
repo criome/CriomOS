@@ -173,6 +173,7 @@ mkIf saizAtList.min {
         init.defaultBranch = "main";
         github.user = githubId;
         ghq.root = "/git";
+        hub.protocol = "ssh";
       };
     };
 
