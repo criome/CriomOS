@@ -1,14 +1,11 @@
-{ src, lib, kynvyrt, stdenv, firn, reseter-css, writeText }:
-
-{ content
-, theme ? "simple"
-}:
+mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, writeText }:
+webpageArgs@{ src, theme ? "simple" }:
 
 let
   inherit (lib) optionalAttrs concatStrings;
   inherit (builtins) concatStringsSep readFile;
 
-  firnFiles = src;
+  firnFiles = mkWebpageArgs.src;
 
   firnConfig = {
     site = {
@@ -48,7 +45,7 @@ let
   scssImports = concatStringsSep "\n"
     (map mkScssImportString scssPackages);
 
-  mkWebpageScss = readFile (firnFiles + /sass/main.scss);
+  mkWebpageScss = readFile (firnFiles + /_sass/main.scss);
 
   finalMainScss = concatStringsSep "\n"
     [ scssImports mkWebpageScss ];
@@ -58,8 +55,8 @@ let
 in
 stdenv.mkDerivation {
   name = "website";
-  version = content.shortRev;
-  src = content;
+  version = src.shortRev;
+  inherit src;
 
   nativeBuildInputs = [ firn ];
 
@@ -67,7 +64,7 @@ stdenv.mkDerivation {
     mkdir _firn
     cp -R ${firnFiles}/* _firn/
     chmod u+w -R _firn
-    cp -f ${finalMainScssFile} _firn/sass/main.scss
+    cp -f ${finalMainScssFile} _firn/_sass/main.scss
     ln -s ${yamlConfig} _firn/config.yaml
   '';
 

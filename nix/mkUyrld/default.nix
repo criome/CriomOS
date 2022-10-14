@@ -4,7 +4,7 @@ let
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz;
 
-  meikSobUyrld = SobUyrld@{ lamdy, modz, self, src ? self, sobUyrldz ? { } }:
+  meikSobUyrld = SobUyrld@{ lamdy, modz, self ? src, src ? self, sobUyrldz ? { } }:
     let
       inherit (builtins) getAttr elem;
 
@@ -74,18 +74,17 @@ let
         in
         sobUyrldz;
 
-      mkNeksysWebpageName = neksysNeim:
-        concatStringsSep "-" [ "page" neksysNeim "niks" ];
+      mkNeksysWebpageName = neksysNeim: neksysNeim + "Webpage";
 
       neksysWebpageSpokNames = map mkNeksysWebpageName neksysNames;
 
       isWebpageSpok = spokNeim:
         elem spokNeim neksysWebpageSpokNames;
 
-      mkWebpageFleik = Webpage@{ content ? fleik, ... }:
+      mkWebpageFleik = Webpage@{ src ? fleik, ... }:
         let
           SobUyrld = {
-            self = null;
+            inherit src;
             modz = [ "pkdjz" ];
             lamdy = { mkWebpage }:
               mkWebpage Webpage;
@@ -105,8 +104,15 @@ let
 
       makeFleik = { };
 
+      typedFlakeMakerIndex = {
+        firnWebpage = mkWebpageFleik { src = fleik; };
+      };
+
+      mkTypedFlake = typedFlakeMakerIndex."${fleik.type}";
+
     in
-    if (hasAttr "HobUyrldz" fleik)
+    if (hasAttr "type" fleik) then mkTypedFlake
+    else if (hasAttr "HobUyrldz" fleik)
     then meikHobUyrldz fleik.HobUyrldz
     else if (hasAttr "HobUyrld" fleik)
     then priMeikHobUyrld spokNeim (fleik.HobUyrld hob)
@@ -117,8 +123,8 @@ let
     else if (hasAttr "Webpage" fleik)
     then mkWebpageFleik fleik.Webpage
     else if (isWebpageSpok spokNeim)
-    then mkWebpageFleik { content = fleik; }
-    else if hasFleikFile then makeFleik fleik
+    then mkWebpageFleik { src = fleik; }
+    else if hasFleikFile then makeFleik
     else fleik // optionalSystemAttributes;
 
   uyrld = mapAttrs makeSpoke hob;
