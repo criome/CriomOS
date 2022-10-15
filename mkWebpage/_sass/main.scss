@@ -1,6 +1,8 @@
+@use "open-color";
+
 * {
-    background: $base00;
-    color: $base05;
+    background: $oc-violet-0;
+    color: $oc-gray-6;
 }
 
 body{

@@ -554,6 +554,7 @@
         "nix": "nix",
         "nixpkgs": "nixpkgs",
         "nixpkgs-mozilla": "nixpkgs-mozilla",
+        "open-color": "open-color",
         "org-remark": "org-remark",
         "page-bird-uniks": "page-bird-uniks",
         "page-maisiliym-uniks": "page-maisiliym-uniks",
@@ -573,11 +574,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1665645839,
-        "narHash": "sha256-4NXCYsvYIB14shwxT/tTn8T9ueyDMl2S/2PcBpSdkj0=",
+        "lastModified": 1665839836,
+        "narHash": "sha256-pZHA7C78xirzMYfYvqqzc1+VtMLT7elLJ+OUnXnBuiQ=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "8a7398146167b5778452f5365bb0a6cb4fa7bb95",
+        "rev": "55e28279fb8fb9f4909e05c09de462694fbe47f6",
         "type": "github"
       },
       "original": {
@@ -884,7 +885,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-DL8ycWkZQCkNR8PEDeFtKb2IQjPUMZQRUt4OIcV+3uo=",
+        "narHash": "sha256-Is2c74y8jn4/naklhqmEko5m/fpLrgDlit4uTMl3uPE=",
         "path": "./mkWebpage",
         "type": "path"
       },
@@ -996,6 +997,22 @@
         "type": "github"
       }
     },
+    "open-color": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629218875,
+        "narHash": "sha256-wOhDbE3yS9ZSJnHdBd5ySDksyWXqjqdvZ3V5jWAFSZ0=",
+        "owner": "yeun",
+        "repo": "open-color",
+        "rev": "0180ac6a4cbff62c5f9bb23d9dd6b1559d5f8c46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yeun",
+        "repo": "open-color",
+        "type": "github"
+      }
+    },
     "org-remark": {
       "flake": false,
       "locked": {
@@ -1048,7 +1065,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-GeAYAmK7mY2ZEOcWbOnxIsfn1kaAQHp55WDVj3rNfQg=",
+        "narHash": "sha256-yAEhuIrClrm2OAtYWEnzv2ntLI7pOI2BI4N53hEQrxA=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

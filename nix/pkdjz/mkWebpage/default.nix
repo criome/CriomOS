@@ -1,11 +1,10 @@
-mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, writeText }:
-webpageArgs@{ src, theme ? "simple" }:
+mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, open-color, writeText }:
+webpageArgs@{ src, name ? "website", theme ? "simple" }:
 
 let
   inherit (lib) optionalAttrs concatStrings;
   inherit (builtins) concatStringsSep readFile;
-
-  firnFiles = mkWebpageArgs.src;
+  inherit (stdenv) mkDerivation;
 
   firnConfig = {
     site = {
@@ -37,43 +36,67 @@ let
     format = "yaml";
   };
 
-  scssPackages = [ reseter-css ];
+  scssPackages = [ reseter-css open-color ];
 
-  mkScssImportString = scssPackage: concatStrings
-    [ "@import " "\"" scssPackage scssPackage.passthru.scssLib "\"" ";" ];
+  mkScssUseString = scssPackage: ''
+    @use "${scssPackage}${scssPackage.passthru.scssLib}";
+  '';
 
-  scssImports = concatStringsSep "\n"
-    (map mkScssImportString scssPackages);
+  useThemeString = ''
+    @use "${mkWebpageArgs.src}/_sass/${theme}";
+  '';
 
-  mkWebpageScss = readFile (firnFiles + /_sass/main.scss);
+  scssUses = concatStringsSep "\n"
+    ((map mkScssUseString scssPackages)
+      ++ [ useThemeString ]);
 
-  finalMainScss = concatStringsSep "\n"
-    [ scssImports mkWebpageScss ];
+  mainScssFile = writeText "main.scss" scssUses;
 
-  finalMainScssFile = writeText "main.scss" finalMainScss;
+  firnEnv = mkDerivation {
+    name = "firnEnv";
+    version = src.shortRev;
+    inherit src;
+
+    inherit scssPackages;
+
+    buildPhase = ''
+      mkdir -p _firn/sass
+      for package in $scssPackages; do
+          ln -s $package/lib/scss/* _firn/sass/
+      done
+      ln -s ${mkWebpageArgs.src}/layouts _firn/
+      ln -s ${mainScssFile} _firn/sass/main.scss
+      ln -s ${yamlConfig} _firn/config.yaml
+    '';
+
+    installPhase = ''
+      mkdir -p $out/lib/_firn
+      cp -r _firn/* $out/lib/_firn
+    '';
+  };
 
 in
-stdenv.mkDerivation {
-  name = "website";
-  version = src.shortRev;
-  inherit src;
+{
+  inherit firnEnv;
 
-  nativeBuildInputs = [ firn ];
+  output = mkDerivation {
+    inherit name;
 
-  patchPhase = ''
-    mkdir _firn
-    cp -R ${firnFiles}/* _firn/
-    chmod u+w -R _firn
-    cp -f ${finalMainScssFile} _firn/_sass/main.scss
-    ln -s ${yamlConfig} _firn/config.yaml
-  '';
+    version = src.shortRev;
+    inherit src;
 
-  buildPhase = ''
-    firn build
-  '';
+    nativeBuildInputs = [ firn ];
 
-  installPhase = ''
-    mkdir $out
-    cp -r _firn/_site/* $out
-  '';
+    buildPhase = ''
+      mkdir -p _firn/_site
+      cp -R ${firnEnv}/lib/_firn/* ./_firn/
+      chmod u+w -R _firn
+      firn build
+    '';
+
+    installPhase = ''
+      mkdir $out
+      cp -r _firn/_site/* $out
+    '';
+  };
 }

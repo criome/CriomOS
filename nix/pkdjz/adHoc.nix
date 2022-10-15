@@ -173,6 +173,25 @@ in
       };
   };
 
+  open-color = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      let
+      in
+      stdenv.mkDerivation {
+        name = "open-color";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib/scss
+          cp -R ./open-color.scss $out/lib/scss
+        '';
+        passthru = {
+          scssLib = "/lib/scss/open-color";
+        };
+      };
+  };
+
   wireguardNetresolved = {
     modz = [ "pkgs" "pkdjz" ];
     src = null;
