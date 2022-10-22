@@ -2,7 +2,7 @@ mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, open-color, writeT
 webpageArgs@{ src, name ? "website", theme ? "simple" }:
 
 let
-  inherit (lib) optionalAttrs concatStrings;
+  inherit (lib) optionalAttrs concatStrings concatMapStringsSep;
   inherit (builtins) concatStringsSep readFile;
   inherit (stdenv) mkDerivation;
 
@@ -38,34 +38,24 @@ let
 
   scssPackages = [ reseter-css open-color ];
 
-  mkScssUseString = scssPackage: ''
-    @use "${scssPackage}${scssPackage.passthru.scssLib}";
+  sassLibrariesPath = "_firn/sass";
+
+  linkSassLibrary = package: ''
+    ln -s ${package}/lib/scss ${sassLibrariesPath}/${package.name}
   '';
 
-  useThemeString = ''
-    @use "${mkWebpageArgs.src}/_sass/${theme}";
-  '';
-
-  scssUses = concatStringsSep "\n"
-    ((map mkScssUseString scssPackages)
-      ++ [ useThemeString ]);
-
-  mainScssFile = writeText "main.scss" scssUses;
+  linkSassLibrariesBash = concatMapStringsSep "\n" linkSassLibrary scssPackages;
 
   firnEnv = mkDerivation {
     name = "firnEnv";
     version = src.shortRev;
     inherit src;
 
-    inherit scssPackages;
-
     buildPhase = ''
-      mkdir -p _firn/sass
-      for package in $scssPackages; do
-          ln -s $package/lib/scss/* _firn/sass/
-      done
+      mkdir -p ${sassLibrariesPath}
+      ${linkSassLibrariesBash}
       ln -s ${mkWebpageArgs.src}/layouts _firn/
-      ln -s ${mainScssFile} _firn/sass/main.scss
+      ln -s ${mkWebpageArgs.src}/_sass/main.scss _firn/sass/main.scss
       ln -s ${yamlConfig} _firn/config.yaml
     '';
 

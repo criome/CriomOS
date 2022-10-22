@@ -1,4 +1,5 @@
-@use "open-color";
+@use "reseter.css/reseter";
+@use "open-color/open-color" as *;
 
 * {
     background: $oc-violet-0;

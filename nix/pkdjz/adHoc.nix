@@ -167,9 +167,6 @@ in
           cp -R ./css $out/lib
           cp -R ./src/* $out/lib
         '';
-        passthru = {
-          scssLib = "/lib/scss/reseter.scss";
-        };
       };
   };
 
@@ -186,9 +183,6 @@ in
           mkdir -p $out/lib/scss
           cp -R ./open-color.scss $out/lib/scss
         '';
-        passthru = {
-          scssLib = "/lib/scss/open-color";
-        };
       };
   };
 
