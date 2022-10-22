@@ -1,9 +1,9 @@
 @use "reseter.css/reseter";
-@use "open-color/open-color" as *;
+@use "theme" as *;
 
 * {
-    background: $oc-violet-0;
-    color: $oc-gray-6;
+    background: $base00;
+    color: $base05;
 }
 
 body{

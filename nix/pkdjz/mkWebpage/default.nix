@@ -1,5 +1,5 @@
-mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, open-color, writeText }:
-webpageArgs@{ src, name ? "website", theme ? "simple" }:
+mkWebpageArgs@{ src, lib, kynvyrt, stdenv, firn, reseter-css, base16-styles, writeText }:
+webpageArgs@{ src, name ? "website", theme ? "tomorrow" }:
 
 let
   inherit (lib) optionalAttrs concatStrings concatMapStringsSep;
@@ -36,7 +36,7 @@ let
     format = "yaml";
   };
 
-  scssPackages = [ reseter-css open-color ];
+  scssPackages = [ reseter-css ];
 
   sassLibrariesPath = "_firn/sass";
 
@@ -54,6 +54,7 @@ let
     buildPhase = ''
       mkdir -p ${sassLibrariesPath}
       ${linkSassLibrariesBash}
+      ln -s ${base16-styles}/lib/scss/base16-${theme}.scss ${sassLibrariesPath}/_theme.scss
       ln -s ${mkWebpageArgs.src}/layouts _firn/
       ln -s ${mkWebpageArgs.src}/_sass/main.scss _firn/sass/main.scss
       ln -s ${yamlConfig} _firn/config.yaml

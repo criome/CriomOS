@@ -4,6 +4,20 @@ let
 
 in
 {
+  base16-styles = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      stdenv.mkDerivation {
+        name = "base16-styles";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib
+          cp -R ./{scss,css,sass} $out/lib
+        '';
+      };
+  };
+
   firn = {
     modz = [ "pkdjz" ];
     lamdy = { src, mkCargoNix, }:
