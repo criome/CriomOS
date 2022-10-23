@@ -574,11 +574,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1665839836,
-        "narHash": "sha256-pZHA7C78xirzMYfYvqqzc1+VtMLT7elLJ+OUnXnBuiQ=",
+        "lastModified": 1666489136,
+        "narHash": "sha256-KpRf9Oh6dPfni679ZsTGmQr5y9XpURdeY+gRg03iHnI=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "55e28279fb8fb9f4909e05c09de462694fbe47f6",
+        "rev": "9866629c57e358963eceae224548520728c0de1b",
         "type": "github"
       },
       "original": {
@@ -761,11 +761,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1665619587,
-        "narHash": "sha256-sQ+jK0oT8dyxkVjA+CcxNUSpMCkx5+3x5PtwAl+jrlA=",
+        "lastModified": 1666488922,
+        "narHash": "sha256-r7uAY5z3SY9tzAdk4erOyB3ChzkRmtlvAQHX52lPBQE=",
         "owner": "LiGoldragon",
         "repo": "maisiliym",
-        "rev": "a2d15b196de0d5658eb9b7e8141080100c9d0b05",
+        "rev": "6bd919dad6a8a1d8e51db95b99edc179c330d6ec",
         "type": "github"
       },
       "original": {
@@ -820,7 +820,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-+CbSkk0FVbN6UJOEiqcA5UrVJaf7gum30smPu2o+3G8=",
+        "narHash": "sha256-qvvnIWE6llnGKWvnOU+Q+FlikVL6U/wNiLgoZLlaVRw=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -846,7 +846,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-CfyxTyBQqlN9t7z9W8rCqgKXUXo4WF6NLaVBQxuJcls=",
+        "narHash": "sha256-li2xef3eYc5JC1phvHWU+/dmAkd5rHgM7MpFYBW2B8U=",
         "path": "./nix/mkKriozonz",
         "type": "path"
       },

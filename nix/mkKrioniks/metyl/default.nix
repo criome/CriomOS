@@ -41,6 +41,12 @@ let
 
   mainSoundCard = soundCardIndex."${modyl}" or "0";
 
+  modelKernelModulesIndex = {
+    ThinkPadX250 = [ "usb_storage" "rtsx_pci_sdmmc" ];
+  };
+
+  modelSpecificKernelModules = modelKernelModulesIndex."${modyl}" or [ ];
+
 in
 {
   hardware = {
@@ -71,7 +77,8 @@ in
       (optional modylIzThinkpad config.boot.kernelPackages.acpi_call);
 
     initrd = {
-      availableKernelModules = (optional hasThunderbolt "thunderbolt")
+      availableKernelModules = modelSpecificKernelModules
+        ++ (optional hasThunderbolt "thunderbolt")
         ++ (optional hasNvme "nvme");
     };
 

@@ -105,8 +105,8 @@ let
           izBildyr = !izEdj && izFullyTrusted && (saizAtList.med || izSentyr) && izKriodaizd;
           izDispatcyr = !izSentyr && izFullyTrusted && saizAtList.min;
           izNiksKac = izSentyr && saizAtList.min && izKriodaizd;
-          izNiksKriodaizd = niksPriKriom != null;
-          izYggKriodaizd = yggAddress != null;
+          izNiksKriodaizd = niksPriKriom != null && niksPriKriom != "";
+          izYggKriodaizd = yggAddress != null && yggAddress != "";
           izNeksisKriodaizd = izYggKriodaizd;
           izEseseitcKriodaizd = hasAttr "eseseitc" inputAstri.priKriomz;
           hazWireguardPriKriom = wireguardPriKriom != null;
