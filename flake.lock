@@ -618,7 +618,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-7KNb9LUMA9s0B0lDAjLWTVq0maWlFOrbqC6EF4I7GFk=",
+        "narHash": "sha256-PUqeZ7EagwLumiFy2HkvirSNQyEAiXlEJ08k5bDWy9I=",
         "path": "./nix/homeModule",
         "type": "path"
       },
@@ -885,7 +885,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-nzX9b1lM9mathL995FWfAyR8MRoz75tqi5PMgQ4Nw5w=",
+        "narHash": "sha256-7C66n3cBNTDvQM8TS0dVWjIkI+Cbi24c4e6ZMDBLf5E=",
         "path": "./mkWebpage",
         "type": "path"
       },
@@ -1065,7 +1065,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-rW03voYZSzJu1Jvbb/u4ZeZAln0rHiSpDmv3q+WzkOE=",
+        "narHash": "sha256-HKBu9QoUAgP86irWWWe2kg+rZzR4uxnjCUbBxZyWs8g=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

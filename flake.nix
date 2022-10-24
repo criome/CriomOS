@@ -67,19 +67,17 @@
 
       mkPkgsFromSystem = system:
         let
-          config = { allowUnfree = true; };
           overlays = [ emacs-overlay.overlay ];
         in
-        mkPkgs { inherit nixpkgs lib system config overlays; };
+        mkPkgs { inherit nixpkgs lib system overlays; };
 
       mkPkgsAndUyrldFromSystem = system:
         let
           pkgs =
             let
-              config = { allowUnfree = true; };
               overlays = [ emacs-overlay.overlay ];
             in
-            mkPkgs { inherit nixpkgs lib system config overlays; };
+            mkPkgs { inherit nixpkgs lib system overlays; };
           uyrld = mkUyrld { inherit pkgs kor lib system hob neksysNames; };
         in
         { inherit pkgs uyrld; };

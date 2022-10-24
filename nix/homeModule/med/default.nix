@@ -36,6 +36,8 @@ let
     sdcv # cli dictionary
     jq
     djvulibre
+    # NodeJS
+    nodePackages_latest.wrangler
     #== go
     ghq
     elvish
