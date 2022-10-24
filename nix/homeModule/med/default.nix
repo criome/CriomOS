@@ -7,6 +7,11 @@ let
   inherit (krimyn.spinyrz) izNiksDev iuzColemak saizAtList;
   inherit (pkgs) mksh;
 
+  tokenaizdWrangler = pkgs.writeScriptBin "wrangler" ''
+    #!${mksh}/bin/mksh
+    export CLOUDFLARE_API_TOKEN=''${CLOUDFLARE_API_TOKEN:-''$(${pkgs.gopass}/bin/gopass show -o cloudflare.com/token)}
+    exec "${pkgs.nodePackages_latest.wrangler}/bin/wrangler" "$@"
+  '';
 
   tokenaizdHub = pkgs.writeScriptBin "hub" ''
     #!${mksh}/bin/mksh
@@ -37,13 +42,14 @@ let
     jq
     djvulibre
     # NodeJS
-    nodePackages_latest.wrangler
+    tokenaizdWrangler
     #== go
     ghq
     elvish
     lf
     tokenizedWrappedHub
     #== rust
+    zola
     git-series
     nixpkgs-fmt
     tree-sitter
