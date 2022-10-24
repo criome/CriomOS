@@ -48,8 +48,8 @@ let
 
   firnEnv = mkDerivation {
     name = "firnEnv";
-    version = src.shortRev;
-    inherit src;
+    version = "alpha";
+    inherit (mkWebpageArgs) src;
 
     buildPhase = ''
       mkdir -p ${sassLibrariesPath}
@@ -73,7 +73,7 @@ in
   output = mkDerivation {
     inherit name;
 
-    version = src.shortRev;
+    version = src.shortRev or "unversioned";
     inherit src;
 
     nativeBuildInputs = [ firn ];
