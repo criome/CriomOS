@@ -207,6 +207,7 @@ mkIf saizAtList.min {
       sessionVariables = {
         FZF_DEFAULT_OPTS = "${fzfOptsString}";
         FZF_DEFAULT_COMMAND = "${pkgs.fd}/bin/fd --type file";
+        RSYNC_OLD_ARGS = 1;
       };
 
       shellAliases = {
