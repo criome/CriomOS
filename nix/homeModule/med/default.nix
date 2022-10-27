@@ -49,6 +49,7 @@ let
     lf
     tokenizedWrappedHub
     #== rust
+    watchexec
     zola
     git-series
     nixpkgs-fmt
