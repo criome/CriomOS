@@ -891,7 +891,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-vG8/SvouaPNuiytzcybt4u36K9bkbjUKbSt80ZzpaKk=",
+        "narHash": "sha256-gCfencldzrLAjGhr3zcZByIPYn6lMPCsnGW6E1blXn0=",
         "path": "./nix/mkUyrld",
         "type": "path"
       },

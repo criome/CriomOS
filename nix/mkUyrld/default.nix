@@ -4,6 +4,11 @@ let
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz mkZolaWebsite;
 
+  mkTypedZolaWebsite = flake: mkZolaWebsite {
+    src = flake;
+    name = flake.name or "unnamedwebsite";
+  };
+
   meikSobUyrld = SobUyrld@{ lamdy, modz, self ? src, src ? self, sobUyrldz ? { } }:
     let
       inherit (builtins) getAttr elem;
@@ -113,7 +118,7 @@ let
 
       typedFlakeMakerIndex = {
         firnWebpage = mkWebpageFleik { src = fleik; };
-        zolaWebsite = mkZolaWebsite { src = fleik; };
+        zolaWebsite = mkTypedZolaWebsite fleik;
         worldFunction = mkWorldFunction fleik;
       };
 
