@@ -10,6 +10,7 @@ let
   # TODO
   hasTouchpad = true;
 
+  hasQuickSyncSupport = modyl == "ThinkPadE15Gen2Intel";
   hasThunderbolt = modyl == "ThinkPadE15Gen2Intel";
   hasNvme = modyl == "ThinkPadE15Gen2Intel";
   requiresSofFirmware = modyl == "ThinkPadE15Gen2Intel";
@@ -66,7 +67,8 @@ in
     ++ optional requiresSofFirmware sof-firmware
     ;
 
-    opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel;
+    opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel
+      ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
 
   };
 

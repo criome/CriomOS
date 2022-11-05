@@ -1,4 +1,4 @@
-{ kor, pkgs, pkdjz, krimyn, config, profile, ... }:
+{ kor, pkgs, pkdjz, krimyn, config, profile, hyraizyn, ... }:
 let
   inherit (builtins) readFile mapAttrs;
   inherit (kor) mkIf optionals optionalString matcSaiz;
@@ -6,9 +6,14 @@ let
   inherit (krimyn) saiz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
+  inherit (hyraizyn.astra.mycin) modyl;
+
+  hasQuickSyncSupport = modyl == "ThinkPadE15Gen2Intel";
 
   waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
   waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
+
+  hardwareAdjustedFfmpeg = pkgs.ffmpeg.override { libmfxSupport = hasQuickSyncSupport; };
 
   shellLaunch = command: "${shell} -c '${command}'";
   homeDir = config.home.homeDirectory;
@@ -171,7 +176,7 @@ mkIf saizAtList.min {
       imv
       wf-recorder
       libva-utils
-      ffmpeg
+      hardwareAdjustedFfmpeg
       # start("GTK")
       wofi
       gitg

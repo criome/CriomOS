@@ -545,6 +545,7 @@
         "goldragonWebpage": "goldragonWebpage",
         "home-manager": "home-manager",
         "kibord": "kibord",
+        "kriomWebsite": "kriomWebsite",
         "librem5-flash-image": "librem5-flash-image",
         "mach-nix": "mach-nix",
         "maisiliym": "maisiliym",
@@ -577,11 +578,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1667373544,
-        "narHash": "sha256-uGzDwP2GbLj4RvL/7uI+z15Mm4bqMMvlzD+QdWhrqUE=",
+        "lastModified": 1667616214,
+        "narHash": "sha256-EqoDK/Fb94baOQE4Qa8mTqINYDkbjHsggb0SvWGlpGY=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "d27d3b498cd426d26b6845d2743311deb901dbd2",
+        "rev": "6c0d0c39106ae3b1b065af5e65ba96a94bf3bfd8",
         "type": "github"
       },
       "original": {
@@ -621,7 +622,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-gjtnCM1Stv+fMhk9DBOlkZRvR4fYdaTXSWSqjDSLQ9c=",
+        "narHash": "sha256-nSrf5Nfv8sQrlyCAtgNGZjLfOA/Cpe29NdXKCKfAo9k=",
         "path": "./nix/homeModule",
         "type": "path"
       },
@@ -683,6 +684,21 @@
       "original": {
         "owner": "ahtn",
         "repo": "kp_boot_32u4",
+        "type": "github"
+      }
+    },
+    "kriomWebsite": {
+      "locked": {
+        "lastModified": 1667374983,
+        "narHash": "sha256-Iymw2sGculA/7Y5+io4cSmQu63ynduRWswv1Y7jWzrw=",
+        "owner": "sajban",
+        "repo": "website",
+        "rev": "1215109bc1374d0a996af894bb2f1c29c2e07f4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sajban",
+        "repo": "website",
         "type": "github"
       }
     },
@@ -764,11 +780,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1666488922,
-        "narHash": "sha256-r7uAY5z3SY9tzAdk4erOyB3ChzkRmtlvAQHX52lPBQE=",
+        "lastModified": 1667554310,
+        "narHash": "sha256-VjP9JOzAH3P6eqwfyaCkpjcsqMqZE6PAUPw8os3jgGw=",
         "owner": "LiGoldragon",
         "repo": "maisiliym",
-        "rev": "6bd919dad6a8a1d8e51db95b99edc179c330d6ec",
+        "rev": "1d75e32fc396fb6e3abbfbfaeaed64c721e47b0e",
         "type": "github"
       },
       "original": {
@@ -823,7 +839,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-jWbUmwdlyTSsTOhf6ATegmiSwHEb0QCFFzyxKB55SME=",
+        "narHash": "sha256-5mGewfJnPP2+nIQvJJGOan67M0WieSwAtDclhFcqNuk=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
