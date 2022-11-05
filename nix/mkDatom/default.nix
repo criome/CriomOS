@@ -1,33 +1,44 @@
 { kor, lib }:
 
-{ typeModule
+{ name
+, typeModule
+, typeModuleExtraArgs ? { }
 , methods ? { }
-, extraTypecheckingModule ? { }
 , extraModuleArgs ? { }
 }@spec:
 
-inputs:
+input:
 
 let
   inherit (kor) mkLamdyz;
-  inherit (lib) evalModules submodule mkOption;
+  inherit (lib) evalModules mkOption;
+  inherit (lib.types) submoduleWith;
 
-  argsModule = { config._module.args = extraModuleArgs // { inherit lib; }; };
+  argsModule = { _module.args = extraModuleArgs // { inherit lib; }; };
 
-  typeCheckingModule = { ... }: {
-    options.inputs = mkOption { type = (submodule typeModule); };
-    config.inputs = inputs;
+  typeModuleArgs =
+    { _module.args = typeModuleExtraArgs // { inherit name kor; }; };
+
+  typeSubmodule = submoduleWith {
+    shorthandOnlyDefinesConfig = true;
+    modules = [ spec.typeModule typeModuleArgs ];
   };
 
-  typeCheckingEvaluation = evalModules {
-    modules = [ argsModule typeCheckingModule extraTypecheckingModule ];
+  typeCheckingModule = { lib, ... }: with lib; {
+    options.self = mkOption { type = typeSubmodule; };
   };
 
-  Datom = typeCheckingEvaluation.config.inputs;
+  typeCheckingEvaluation = evalModules
+    { modules = [ argsModule typeCheckingModule { self = input; } ]; };
 
-  closure = Datom // { inherit kor lib; };
+  # self = typeCheckingEvaluation.config.self;
+  inherit (typeCheckingEvaluation.config) self;
+
+  closure = methods // { inherit self kor lib; };
 
   methods = mkLamdyz { klozyr = closure; lamdyz = spec.methods; };
 
+  type = name + "Datom";
+
 in
-methods // { inherit Datom; }
+methods // { inherit type self; }

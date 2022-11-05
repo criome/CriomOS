@@ -5,19 +5,16 @@ let
   inherit (lib) mkOption listToAttrs nameValuePair;
   inherit (lib.types) enum str attrsOf submodule nullOr bool int
     listOf attrs;
-  inherit (config) PriMetastriz;
 
-  magnytiud = [ 0 1 2 3 ];
+  magnitude = [ 0 1 2 3 ];
 
   mycinArkz = attrNames arkSistymMap;
   sistymz = attrValues arkSistymMap;
 
   butlodyrz = [ "uefi" "mbr" "uboot" ];
-  kibordz = [ "qwerty" "colemak" ];
+  keyboardTypes = [ "qwerty" "colemak" ];
 
-  astriSpiciz = [ "sentyr" "haibrid" "edj" ];
-
-  metastriNeimz = attrNames PriMetastriz;
+  nodeTypes = [ "center" "hybrid" "edge" ];
 
   priKriomSubmodule = {
     options = {
@@ -33,11 +30,11 @@ let
 
   komynKrimynOptions = {
     saiz = mkOption {
-      type = enum magnytiud;
+      type = enum magnitude;
       default = 0;
     };
 
-    spici = mkOption {
+    type = mkOption {
       type = enum [ "Niks" "Sema" "Onlimityd" ];
       default = "Sema";
     };
@@ -65,7 +62,7 @@ let
 
   mycinSpici = submodule {
     options = {
-      spici = mkOption {
+      type = mkOption {
         type = enum [ "metyl" "pod" ];
         default = "metyl";
       };
@@ -90,7 +87,7 @@ let
         default = null;
       };
 
-      ubyrAstri = mkOption {
+      ubyrNode = mkOption {
         type = nullOr str;
         default = null;
       };
@@ -104,7 +101,7 @@ let
 
   IoOptions = {
     kibord = mkOption {
-      type = enum kibordz;
+      type = enum keyboardTypes;
       default = "colemak";
     };
 
@@ -126,7 +123,7 @@ let
 
   mothyrBordSpiciNeimz = [ "ondyfaind" ];
 
-  AstriPriKriomSpici = submodule {
+  nodePriKriomSpici = submodule {
     options = {
       eseseitc = mkOption {
         type = nullOr str;
@@ -157,56 +154,58 @@ let
     };
   };
 
-  astriSubmodule = ({ name, config, ... }: {
-    let preNexus = { };
+  nodeSubmodule = ({ name, config, ... }:
+    let
+      preNexus = { };
     in
-    options = {
-      spici = mkOption {
-        type = enum astriSpiciz;
-        default = "sentyr";
-      };
+    {
+      options = {
+        type = mkOption {
+          type = enum nodeTypes;
+          default = "center";
+        };
 
-      saiz = mkOption {
-        type = enum magnytiud;
-        default = 0;
-      };
+        saiz = mkOption {
+          type = enum magnitude;
+          default = 0;
+        };
 
-      trost = mkOption {
-        type = enum magnytiud;
-        default = 1;
-      };
+        trost = mkOption {
+          type = enum magnitude;
+          default = 1;
+        };
 
-      mycin = mkOption {
-        type = mycinSpici;
-      };
+        mycin = mkOption {
+          type = mycinSpici;
+        };
 
-      io = mkOption {
-        type = submodule { options = IoOptions; };
-        default = { };
-      };
+        io = mkOption {
+          type = submodule { options = IoOptions; };
+          default = { };
+        };
 
-      priKriomz = mkOption {
-        type = AstriPriKriomSpici;
-        default = { };
-      };
+        priKriomz = mkOption {
+          type = nodePriKriomSpici;
+          default = { };
+        };
 
-      linkLocalIPs = mkOption {
-        type = listOf attrs;
-        default = [ ];
-      };
+        linkLocalIPs = mkOption {
+          type = listOf attrs;
+          default = [ ];
+        };
 
-      neksysIp = mkOption {
-        type = nullOr str;
-        default = null;
-      };
+        neksysIp = mkOption {
+          type = nullOr str;
+          default = null;
+        };
 
-      wireguardPriKriom = mkOption {
-        type = nullOr str;
-        default = null;
-      };
+        wireguardPriKriom = mkOption {
+          type = nullOr str;
+          default = null;
+        };
 
-    };
-  });
+      };
+    });
 
 
   defaultTrost = 1;
@@ -217,30 +216,16 @@ let
 
   trostSubmodule = {
     options = {
-      metastra = mkOption {
-        type = enum magnytiud;
-        default = 1;
+      subKrioms = mkOption {
+        type = attrsOf (enum magnitude);
       };
 
-      metastriz = mkOption {
-        type = attrsOf (enum magnytiud);
-      };
-
-      astriz = mkOption {
-        type = attrsOf (enum magnytiud);
+      nodes = mkOption {
+        type = attrsOf (enum magnitude);
       };
 
       krimynz = mkOption {
-        type = attrsOf (enum magnytiud);
-      };
-    };
-  };
-
-  domeinSubmodule = {
-    options = {
-      spici = mkOption {
-        type = enum [ "cloudflare" ];
-        default = "cloudflare";
+        type = attrsOf (enum magnitude);
       };
     };
   };
@@ -249,10 +234,10 @@ let
     options = komynKrimynOptions;
   };
 
-  metastriSubmodule = {
+  subKriomSubmodule = {
     options = {
-      astriz = mkOption {
-        type = attrsOf (submodule astriSubmodule);
+      nodes = mkOption {
+        type = attrsOf (submodule nodeSubmodule);
         default = {
           priKriomz = { };
         };
@@ -260,11 +245,6 @@ let
 
       krimynz = mkOption {
         type = attrsOf (submodule krimynSubmodule);
-      };
-
-      domeinz = mkOption {
-        type = attrsOf (submodule domeinSubmodule);
-        default = { };
       };
 
       trost = mkOption {
@@ -276,8 +256,8 @@ let
 in
 {
   options = {
-    kriozonz = mkOption {
-      type = attrsOf (submodule metastriSubmodule);
+    subKrioms = mkOption {
+      type = attrsOf (submodule subKriomSubmodule);
     };
   };
 }

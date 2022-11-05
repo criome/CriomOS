@@ -34,6 +34,7 @@ in
     gnome = {
       gnome-initial-setup.enable = false;
       chrome-gnome-shell.enable = false;
+      gnome-keyring.enable = lib.mkForce false; # To avoid overriding SSH_AUTH_SOCK
     };
 
     tumbler.enable = saizAtList.med;

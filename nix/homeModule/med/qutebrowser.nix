@@ -8,6 +8,7 @@ let
   unstrictWhitelist = [
     "https://*.google.com"
     "https://*.youtube.com"
+    "https://*.aliexpress.com"
   ];
 
   strictWhitelist = [

@@ -1,16 +1,19 @@
-{ kor, lib, kriozonz, mkOutputsOfSystem, krioniksRev }:
+{ kor, lib, self }:
+{ mkKrioniks, mkPkgsAndUyrld, krioniksRev, homeModule }:
 
 let
+  inherit (self) subKrioms;
   inherit (builtins) fold attrNames mapAttrs filterAttrs;
 
-  mkNeksysDerivations = priNeksysNeim: kriozon:
+  mkNodeDerivations = subKriomName: nodeName: node:
     let
-      inherit (kriozon) krimynz;
-      inherit (kriozon.astra.mycin) ark;
+      hyraizyn = node;
+
+      inherit (node) krimynz;
+      inherit (node.astra.mycin) ark;
       system = kor.arkSistymMap.${ark};
-      outputsOfSystem = mkOutputsOfSystem system;
-      inherit (outputsOfSystem) pkgs uyrld;
-      hyraizyn = kriozon;
+      pkgsAndUyrld = mkPkgsAndUyrld system;
+      inherit (pkgsAndUyrld) pkgs uyrld;
 
       krimynProfiles = {
         light = { dark = false; };
@@ -20,10 +23,11 @@ let
       mkKrimynHomz = krimynNeim: krimyn:
         let
           mkProfileHom = profileName: profile:
-            let homeConfig =
-              uyrld.mkHomeConfig
-                { inherit kriozon krimyn profile; };
-            in homeConfig.home.activationPackage;
+            let
+              homeConfig = uyrld.mkHomeConfig
+                { inherit hyraizyn krimyn profile; };
+            in
+            homeConfig.home.activationPackage;
         in
         mapAttrs mkProfileHom krimynProfiles;
 
@@ -31,19 +35,22 @@ let
         let
           inherit (uyrld.pkdjz) meikImaks;
           mkProfileImaks = profileName: profile:
-            meikImaks { inherit kriozon krimyn profile; };
+            meikImaks { inherit krimyn profile; };
         in
         mapAttrs mkProfileImaks krimynProfiles;
 
     in
     {
-      os = mkKrioniks { inherit krioniksRev nixpkgs kor uyrld hyraizyn; };
+      os = mkKrioniks { inherit krioniksRev kor uyrld hyraizyn homeModule; };
       hom = mapAttrs mkKrimynHomz krimynz;
       imaks = mapAttrs mkKrimynImaks krimynz;
     };
 
-  mkNeksysDerivationIndex = neksysNeim: neksysPrineksysIndeks:
-    mapAttrs mkNeksysDerivations neksysPrineksysIndeks;
+  mkSubKriomDerivations = subKriomName: nodes:
+    let
+      primedMkNodeDerivations = mkNodeDerivations subKriomName;
+    in
+    mapAttrs mkNodeDerivations nodes;
 
 in
-mapAttrs mkNeksysDerivationIndex kriozonz
+mapAttrs mkSubKriomDerivations subKrioms

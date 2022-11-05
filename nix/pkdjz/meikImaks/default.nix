@@ -99,7 +99,7 @@ let
   overiddenEmacsPackages = emacsPackages // customPackages;
 
 in
-{ kriozon, krimyn, profile }:
+{ krimyn, profile }:
 let
   inherit (builtins) readFile concatStringsSep;
 

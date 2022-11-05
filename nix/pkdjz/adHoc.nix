@@ -4,6 +4,20 @@ let
 
 in
 {
+  base16-styles = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      stdenv.mkDerivation {
+        name = "base16-styles";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib
+          cp -R ./{scss,css,sass} $out/lib
+        '';
+      };
+  };
+
   firn = {
     modz = [ "pkdjz" ];
     lamdy = { src, mkCargoNix, }:
@@ -167,9 +181,22 @@ in
           cp -R ./css $out/lib
           cp -R ./src/* $out/lib
         '';
-        passthru = {
-          scssLib = "/lib/scss/reseter.scss";
-        };
+      };
+  };
+
+  open-color = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      let
+      in
+      stdenv.mkDerivation {
+        name = "open-color";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib/scss
+          cp -R ./open-color.scss $out/lib/scss
+        '';
       };
   };
 

@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, priMetastriz, config, ... }@topArgs:
 let
   inherit (builtins) mapAttrs attrNames listToAttrs;
   inherit (lib) mkOption nameValuePair;
@@ -127,36 +127,62 @@ let
     options = komynKrimynOptions;
   };
 
-  metastriSubmodule = {
-    options = {
-      astriz = mkOption {
-        type = attrsOf (submodule astriSubmodule);
-        default = {
-          priKriomz = { };
+  metastriSubmodule = ({ name, config, ... }@metastriArgs:
+    let
+      priMetastri = priMetastriz."${name}";
+      mkDefaultAstriTrost = name: astri:
+        priMetastri.trost.astriz."${name}" or 1;
+    in
+    {
+      options = {
+        astriz = mkOption {
+          type = attrsOf (submodule astriSubmodule);
+        };
+
+        krimynz = mkOption {
+          type = attrsOf (submodule krimynSubmodule);
+        };
+
+        domeinz = mkOption {
+          type = attrsOf (submodule domeinSubmodule);
+          default = { };
+        };
+
+        trost = mkOption {
+          type = submodule ({
+            options = {
+              metastra = mkOption {
+                type = enum magnytiud;
+                default = 1;
+              };
+
+              metastriz = mkOption {
+                type = attrsOf (enum magnytiud);
+              };
+
+              astriz = mkOption {
+                type = attrsOf (enum magnytiud);
+              };
+
+              krimynz = mkOption {
+                type = attrsOf (enum magnytiud);
+              };
+            };
+
+            config = {
+              astriz = mapAttrs mkDefaultAstriTrost priMetastri.astriz;
+            };
+          });
         };
       };
-
-      krimynz = mkOption {
-        type = attrsOf (submodule krimynSubmodule);
-      };
-
-      domeinz = mkOption {
-        type = attrsOf (submodule domeinSubmodule);
-        default = { };
-      };
-
-      trost = mkOption {
-        type = submodule trostSubmodule;
-      };
-    };
-  };
+    });
 
 in
 {
   options = {
-    PriMetastriz = mkOption {
-      type = attrsOf (submodule metastriSubmodule);
-    };
+    # PriMetastriz = mkOption {
+    #   type = attrsOf (submodule metastriSubmodule);
+    # };
 
     Metastriz = mkOption {
       type = attrsOf (submodule metastriSubmodule);
@@ -164,5 +190,5 @@ in
   };
 
   /* Normalize Metastriz here */
-  config.Metastriz = config.PriMetastriz;
+  config.Metastriz = priMetastriz;
 }

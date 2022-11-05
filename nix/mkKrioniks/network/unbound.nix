@@ -5,8 +5,8 @@ let
   inherit (hyraizyn.astra) krioniksNeim;
   inherit (hyraizyn.astra.spinyrz) izEdj;
 
-  listenIPs = [ "::1" ];
-  allowedIPs = [ "::1" ];
+  listenIPs = [ "::1" "127.0.0.1" ];
+  allowedIPs = [ "::1" "127.0.0.1" ];
 
   TLSDNServers = {
     "cloudflare-dns.com" = [

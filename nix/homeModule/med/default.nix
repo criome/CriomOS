@@ -1,21 +1,29 @@
-{ kor, krimyn, pkgs, pkdjz, uyrld, ... }:
+{ kor, lib, krimyn, pkgs, pkdjz, uyrld, ... }:
 let
   inherit (builtins) readFile toJSON;
   inherit (kor) optionalString optionals;
   inherit (pkdjz) kynvyrt;
+  inherit (krimyn) githubId;
   inherit (krimyn.spinyrz) izNiksDev iuzColemak saizAtList;
   inherit (pkgs) mksh;
 
-  tokenaizdGhcli = pkgs.writeScriptBin "gh" ''
+  tokenaizdWrangler = pkgs.writeScriptBin "wrangler" ''
     #!${mksh}/bin/mksh
-    export GITHUB_TOKEN=''${GITHUB_TOKEN:-''$(${pkgs.gopass}/bin/gopass show -o github.com/token)}
-    exec "${pkgs.gitAndTools.gh}/bin/gh" "$@"
+    export CLOUDFLARE_API_TOKEN=''${CLOUDFLARE_API_TOKEN:-''$(${pkgs.gopass}/bin/gopass show -o cloudflare.com/token)}
+    exec "${pkgs.nodePackages_latest.wrangler}/bin/wrangler" "$@"
   '';
 
   tokenaizdHub = pkgs.writeScriptBin "hub" ''
     #!${mksh}/bin/mksh
     export GITHUB_TOKEN=''${GITHUB_TOKEN:-''$(${pkgs.gopass}/bin/gopass show -o github.com/token)}
+    export GITHUB_USER=''${GITHUB_USER:-''$(${pkgs.gopass}/bin/gopass show github.com/token login)}
     exec "${pkgs.gitAndTools.hub}/bin/hub" "$@"
+  '';
+
+  tokenizedWrappedHub = pkgs.runCommand "hub" { } ''
+    mkdir -p $out/bin
+    ln -s ${pkgs.hub}/share $out/
+    ln -s ${tokenaizdHub}/bin/hub $out/bin/
   '';
 
   niksDevPackages = with pkgs; [
@@ -33,13 +41,16 @@ let
     sdcv # cli dictionary
     jq
     djvulibre
+    # NodeJS
+    tokenaizdWrangler
     #== go
     ghq
     elvish
     lf
-    # tokenaizdGhcli # broken by gopass
-    # tokenaizdHub # broken by gopass
+    tokenizedWrappedHub
     #== rust
+    watchexec
+    zola
     git-series
     nixpkgs-fmt
     tree-sitter
@@ -83,7 +94,7 @@ kor.mkIf saizAtList.med {
       opusTools
       mediainfo
       #== go
-      # gopass # broken, fixed in nixpkgs master
+      gopass
       git-bug
       lazygit
       #== rust

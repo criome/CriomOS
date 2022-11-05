@@ -2,7 +2,7 @@
   description = "Krioniks";
 
   inputs = {
-    hob.url = github:sajban/hob/frameOfReference;
+    hob.url = github:sajban/hob/itsBedTime;
     KLambdaBootstrap = { url = path:./KLambdaBootstrap; flake = false; };
     ShenAski = { url = path:./ShenAski; flake = false; };
     ShenCoreBootstrap = { url = path:./ShenCoreBootstrap; flake = false; };
@@ -63,11 +63,32 @@
           mkHomeConfig neksysNames mkUyrld homeModule files;
       };
 
-      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks;
+      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks mkUyrld;
+
+      mkPkgsFromSystem = system:
+        let
+          overlays = [ emacs-overlay.overlay ];
+        in
+        mkPkgs { inherit nixpkgs lib system overlays; };
+
+      mkPkgsAndUyrldFromSystem = system:
+        let
+          pkgs =
+            let
+              overlays = [ emacs-overlay.overlay ];
+            in
+            mkPkgs { inherit nixpkgs lib system overlays; };
+          uyrld = mkUyrld { inherit pkgs kor lib system hob neksysNames; };
+        in
+        { inherit pkgs uyrld; };
+
+      perSystemPkgsAndUyrld = eachDefaultSystem mkPkgsAndUyrldFromSystem;
+
+      mkPkgsAndUyrld = system:
+        mapAttrs (name: value: value.${system}) perSystemPkgsAndUyrld;
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
-      mkKriomDatom = import inputs.mkKriomDatom
-        { inherit kor lib mkDatom mkKrioniks; };
+      mkKriomDatom = import inputs.mkKriomDatom { inherit kor lib mkDatom; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (nixpkgs) lib;
@@ -75,7 +96,13 @@
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateKriosfirProposalFromName = name:
-        hob."${name}".NeksysProposal or { };
+        let
+          subKriomConfig = hob."${name}".NeksysProposal or { };
+          explicitNodes = subKriomConfig.astriz or { };
+          implicitNodes = import ./implicitNodes.nix;
+          allNodes = explicitNodes // implicitNodes;
+        in
+        subKriomConfig // { astriz = allNodes; };
 
       uncheckedKriosfirProposal = genAttrs
         neksysNames
@@ -86,8 +113,8 @@
           inherit (kriozon) krimynz;
           inherit (kriozon.astra.mycin) ark;
           system = arkSistymMap.${ark};
-          uyrld = self.uyrld.${system};
-          pkgs = self.pkgs.${system};
+          pkgsAndUyrld = mkPkgsAndUyrld system;
+          inherit (pkgsAndUyrld) pkgs uyrld;
           hyraizyn = kriozon;
 
           krimynProfiles = {
@@ -116,7 +143,7 @@
             let
               inherit (uyrld.pkdjz) meikImaks;
               mkProfileImaks = profileName: profile:
-                meikImaks { inherit kriozon krimyn profile; };
+                meikImaks { inherit krimyn profile; };
             in
             mapAttrs mkProfileImaks krimynProfiles;
 
@@ -135,21 +162,11 @@
         in
         mapAttrs mkNeksysDerivationIndex kriozonz;
 
-      mkOutputs = system:
+      mkNixApiOutputsPerSystem = system:
         let
-          pkgs =
-            let
-              config = { allowUnfree = true; };
-              overlays = [ emacs-overlay.overlay ];
-            in
-            mkPkgs { inherit nixpkgs lib system config overlays; };
-
+          pkgsAndUyrld = mkPkgsAndUyrld system;
+          inherit (pkgsAndUyrld) pkgs uyrld;
           inherit (pkgs) symlinkJoin linkFarm;
-
-          uyrld = imports.mkUyrld
-            { inherit pkgs kor lib system hob neksysNames; };
-
-          mkKrioniksFromKriom = kriom@{ ... }: { };
 
           inherit (uyrld.pkdjz) shen-ecl-bootstrap;
           shen = shen-ecl-bootstrap;
@@ -180,24 +197,19 @@
           tests = import inputs.tests { inherit lib mkDatom; };
 
         in
-        { inherit uyrld pkgs tests packages devShell; };
+        { inherit tests packages devShell; };
 
-      perSystemOutputs = eachDefaultSystem mkOutputs;
+      perSystemAllOutputs = eachDefaultSystem mkNixApiOutputsPerSystem;
 
       proposedKriosfir = imports.mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
       proposedKriozonz = imports.mkKriozonz { inherit kor lib proposedKriosfir; };
 
       kriomInput = uncheckedKriosfirProposal;
-      kriomDatom = mkKriomDatom kriomInput;
-
-      mkOutputsOfSystem = system:
-        mapAttrs (name: value: value.${system}) perSystemOutputs;
-
-      argumentsForKriomOutputs = { inherit krioniksRev mkOutputsOfSystem; };
+      Kriom = mkKriomDatom { subKrioms = kriomInput; };
 
     in
-    perSystemOutputs // {
+    perSystemAllOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      kriom = kriomDatom.mkOutputs argumentsForKriomOutputs;
+      outputs = Kriom.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld homeModule; };
     };
 }

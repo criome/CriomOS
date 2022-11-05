@@ -104,6 +104,7 @@ let
     eva # tui calculator
 
   ] ++ (optionals izNiksDev [
+    miniserve
     yggdrasil
     delta
     cpulimit
@@ -173,6 +174,7 @@ mkIf saizAtList.min {
         init.defaultBranch = "main";
         github.user = githubId;
         ghq.root = "/git";
+        hub.protocol = "ssh";
       };
     };
 
@@ -205,6 +207,7 @@ mkIf saizAtList.min {
       sessionVariables = {
         FZF_DEFAULT_OPTS = "${fzfOptsString}";
         FZF_DEFAULT_COMMAND = "${pkgs.fd}/bin/fd --type file";
+        RSYNC_OLD_ARGS = 1;
       };
 
       shellAliases = {

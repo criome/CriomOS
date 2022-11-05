@@ -10,6 +10,7 @@ let
   # TODO
   hasTouchpad = true;
 
+  hasQuickSyncSupport = modyl == "ThinkPadE15Gen2Intel";
   hasThunderbolt = modyl == "ThinkPadE15Gen2Intel";
   hasNvme = modyl == "ThinkPadE15Gen2Intel";
   requiresSofFirmware = modyl == "ThinkPadE15Gen2Intel";
@@ -23,54 +24,29 @@ let
     if enabledExtendedPowerSave then "powersave"
     else "schedutil";
 
-  extendedPowerSaveTable = {
-    ThinkPadX240 = { min = 775000; max = 775000; };
-  };
+  hasModelSpecificPowerTweaks = modyl == "ThinkPadE15Gen2Intel";
 
-  extendedPowerSaveMinFreq = extendedPowerSaveTable."${modyl}".min;
-  extendedPowerSaveMaxFreq = extendedPowerSaveTable."${modyl}".max;
-
-  autoCpufreqSettings = {
-    charger = {
-      governor = cpuFreqGovernor;
-      turbo = "never";
-    };
-    battery = {
-      governor = cpuFreqGovernor;
-      turbo = "never";
+  modelSpecificPowerTweaks = {
+    ThinkPadE15Gen2Intel = {
+      powerUpCommands = ''
+        echo 0 > /sys/devices/platform/thinkpad_acpi/leds/tpacpi::power/brightness
+      '';
+      powerDownCommands = "";
     };
   };
 
-  numberOfCoresIncludingFakes = korz * 2;
+  soundCardIndex = {
+    ThinkPadX230 = "PCH";
+    ThinkPadX240 = "PCH";
+  };
 
-  coreIsFake = coreNumber:
-    if (coreNumber == 0) then false
-    else if (isOdd coreNumber)
-    then true else false;
+  mainSoundCard = soundCardIndex."${modyl}" or "0";
 
-  mkCoreLineFromFunction = mkCoreFunction:
-    genList mkCoreFunction numberOfCoresIncludingFakes;
+  modelKernelModulesIndex = {
+    ThinkPadX250 = [ "usb_storage" "rtsx_pci_sdmmc" ];
+  };
 
-  mkEnableCoreLine = coreNumber:
-    if (coreNumber == 0) then "" else
-    "echo 1 > /sys/devices/system/cpu/cpu${toString coreNumber}/online";
-
-  enableAllCoresLines = mkCoreLineFromFunction mkEnableCoreLine;
-
-  mkApplyGovernorLine = coreNumber:
-    "echo ${cpuFreqGovernor} > /sys/devices/system/cpu/cpu${toString coreNumber}/cpufreq/scaling_governor";
-
-  applyGovernorLines = mkCoreLineFromFunction mkApplyGovernorLine;
-
-  mkDisableFakeCoreLine = coreNumber:
-    if (coreIsFake coreNumber)
-    then "echo 0 > /sys/devices/system/cpu/cpu${toString coreNumber}/online"
-    else "";
-
-  disableFakeCoresLines = mkCoreLineFromFunction mkDisableFakeCoreLine;
-
-  disableHyperThreadingPowerUpScript = concatStringsSep "\n" disableFakeCoresLines;
-  disableHyperThreadingPowerDownScript = concatStringsSep "\n" enableAllCoresLines;
+  modelSpecificKernelModules = modelKernelModulesIndex."${modyl}" or [ ];
 
 in
 {
@@ -91,7 +67,8 @@ in
     ++ optional requiresSofFirmware sof-firmware
     ;
 
-    opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel;
+    opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel
+      ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
 
   };
 
@@ -102,7 +79,8 @@ in
       (optional modylIzThinkpad config.boot.kernelPackages.acpi_call);
 
     initrd = {
-      availableKernelModules = (optional hasThunderbolt "thunderbolt")
+      availableKernelModules = modelSpecificKernelModules
+        ++ (optional hasThunderbolt "thunderbolt")
         ++ (optional hasNvme "nvme");
     };
 
@@ -119,20 +97,17 @@ in
 
   };
 
-  powerManagement = { inherit cpuFreqGovernor; } // (
-    optionalAttrs impozyzHaipyrThreding {
-      powerUpCommands = disableHyperThreadingPowerUpScript;
-      powerDownCommands = disableHyperThreadingPowerDownScript;
-    }
-  );
+  powerManagement = { inherit cpuFreqGovernor; }
+    // (optionalAttrs hasModelSpecificPowerTweaks modelSpecificPowerTweaks."${modyl}");
 
   programs = { };
 
   console.useXkbConfig = iuzColemak;
 
   environment = {
-    systemPackages = (with pkgs; [ lm_sensors ]
-      ++ optionals tcipIzIntel [ libva-utils i7z ]);
+    systemPackages = with pkgs; [ lm_sensors ]
+      ++ optionals tcipIzIntel [ libva-utils i7z ]
+      ++ optionals saizAtList.max [ win-virtio ];
 
   };
 
@@ -232,25 +207,25 @@ in
       handlers = {
         mute = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master toggle
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master toggle
           '';
           event = "button/mute";
         };
         volumeup = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master 5%+
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%+
           '';
           event = "button/volumeup";
         };
         volumedown = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Master 5%-
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%-
           '';
           event = "button/volumedown";
         };
         mutemic = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card PCH set Mic toggle
+            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Mic toggle
           '';
           event = "button/f20";
         };
@@ -270,5 +245,10 @@ in
       };
 
     };
+  };
+
+  virtualisation = {
+    libvirtd = { enable = saizAtList.max; };
+    spiceUSBRedirection.enable = saizAtList.max;
   };
 }
