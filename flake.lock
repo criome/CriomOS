@@ -293,6 +293,22 @@
         "type": "github"
       }
     },
+    "buttons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1507310801,
+        "narHash": "sha256-upJBWx3iMVM7i8vjTbzc2g9uTgoWo3q8W1MQzPyLuho=",
+        "owner": "alexwolfe",
+        "repo": "Buttons",
+        "rev": "0a91b65bc9e3a8bbbefbe1af20047dabed0d742e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexwolfe",
+        "repo": "Buttons",
+        "type": "github"
+      }
+    },
     "crate2nix": {
       "flake": false,
       "locked": {
@@ -533,6 +549,7 @@
         "arcnmxNixexprs": "arcnmxNixexprs",
         "base16-styles": "base16-styles",
         "base16-theme": "base16-theme",
+        "buttons": "buttons",
         "crate2nix": "crate2nix",
         "dunst": "dunst",
         "emacs-overlay": "emacs-overlay",
@@ -578,11 +595,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1667616214,
-        "narHash": "sha256-EqoDK/Fb94baOQE4Qa8mTqINYDkbjHsggb0SvWGlpGY=",
+        "lastModified": 1667962405,
+        "narHash": "sha256-67y2S0q4dAJBawgY/982k/ukSqaTFkLrXjbTTHO02Ag=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "6c0d0c39106ae3b1b065af5e65ba96a94bf3bfd8",
+        "rev": "e56524c3e8605d6d10aba378bc3f20a77ceb9d6d",
         "type": "github"
       },
       "original": {
@@ -1099,7 +1116,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-HKBu9QoUAgP86irWWWe2kg+rZzR4uxnjCUbBxZyWs8g=",
+        "narHash": "sha256-E20V0S1iUpPrPurpLZBFpZv/2OBw0fCkaqRaqPwPbC4=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

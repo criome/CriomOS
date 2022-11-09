@@ -18,6 +18,20 @@ in
       };
   };
 
+  buttons = {
+    modz = [ "pkgs" ];
+    lamdy = { src, stdenv }:
+      stdenv.mkDerivation {
+        name = "buttons";
+        inherit src;
+        phases = [ "unpackPhase" "installPhase" ];
+        installPhase = ''
+          mkdir -p $out/lib
+          cp -R ./{scss,css} $out/lib
+        '';
+      };
+  };
+
   firn = {
     modz = [ "pkdjz" ];
     lamdy = { src, mkCargoNix, }:
