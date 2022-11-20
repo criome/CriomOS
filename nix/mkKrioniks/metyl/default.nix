@@ -84,7 +84,8 @@ in
         ++ (optional hasNvme "nvme");
     };
 
-    kernelModules = [ "coretemp" ];
+    kernelModules = [ "coretemp" ]
+      ++ (optional saizAtList.max "v4l2loopback");
 
     kernelParams = (optionals tcipIzIntel [ "intel_pstate=disable" ])
       ++ (optionals computerIs.rpi3B [
