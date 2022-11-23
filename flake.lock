@@ -261,6 +261,39 @@
         "type": "github"
       }
     },
+    "aski": {
+      "inputs": {
+        "AskiCore": "AskiCore",
+        "AskiCoreFleik": "AskiCoreFleik",
+        "AskiCoreNiks": "AskiCoreNiks",
+        "AskiDefaultBuilder": "AskiDefaultBuilder",
+        "AskiNiks": "AskiNiks",
+        "KLambdaBootstrap": "KLambdaBootstrap",
+        "LispCore": "LispCore",
+        "LispCorePrimitives": "LispCorePrimitives",
+        "LispExtendedPrimitives": "LispExtendedPrimitives",
+        "ShenAski": "ShenAski",
+        "ShenCore": "ShenCore",
+        "ShenCoreBootstrap": "ShenCoreBootstrap",
+        "ShenCoreTests": "ShenCoreTests",
+        "ShenExtended": "ShenExtended",
+        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
+        "ShenExtendedTests": "ShenExtendedTests"
+      },
+      "locked": {
+        "lastModified": 1669181846,
+        "narHash": "sha256-no5uGzefOS/2WCxZ6t3pVIHRj4b6k1NC4qEgBxrT6N8=",
+        "owner": "sajban",
+        "repo": "aski",
+        "rev": "d8a71f3f98edeb49ac166721a494396cca5ea6c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sajban",
+        "repo": "aski",
+        "type": "github"
+      }
+    },
     "base16-styles": {
       "flake": false,
       "locked": {
@@ -547,6 +580,7 @@
     "hob": {
       "inputs": {
         "arcnmxNixexprs": "arcnmxNixexprs",
+        "aski": "aski",
         "base16-styles": "base16-styles",
         "base16-theme": "base16-theme",
         "buttons": "buttons",
@@ -595,11 +629,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1667962405,
-        "narHash": "sha256-67y2S0q4dAJBawgY/982k/ukSqaTFkLrXjbTTHO02Ag=",
+        "lastModified": 1669182172,
+        "narHash": "sha256-NaA+UKbvmW8oT3sKJc0+ateUByKG8zLHiYPud9gNxBM=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "e56524c3e8605d6d10aba378bc3f20a77ceb9d6d",
+        "rev": "2edfceaaf43233fc250c32a84683d55a49f92cbf",
         "type": "github"
       },
       "original": {
@@ -1283,22 +1317,6 @@
     },
     "root": {
       "inputs": {
-        "AskiCore": "AskiCore",
-        "AskiCoreFleik": "AskiCoreFleik",
-        "AskiCoreNiks": "AskiCoreNiks",
-        "AskiDefaultBuilder": "AskiDefaultBuilder",
-        "AskiNiks": "AskiNiks",
-        "KLambdaBootstrap": "KLambdaBootstrap",
-        "LispCore": "LispCore",
-        "LispCorePrimitives": "LispCorePrimitives",
-        "LispExtendedPrimitives": "LispExtendedPrimitives",
-        "ShenAski": "ShenAski",
-        "ShenCore": "ShenCore",
-        "ShenCoreBootstrap": "ShenCoreBootstrap",
-        "ShenCoreTests": "ShenCoreTests",
-        "ShenExtended": "ShenExtended",
-        "ShenExtendedBootstrap": "ShenExtendedBootstrap",
-        "ShenExtendedTests": "ShenExtendedTests",
         "files": "files",
         "hob": "hob",
         "homeModule": "homeModule",
