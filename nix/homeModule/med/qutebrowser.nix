@@ -9,6 +9,8 @@ let
     "https://*.google.com"
     "https://*.youtube.com"
     "https://*.aliexpress.com"
+    "https://*.locals.com"
+    "https://*.stripe.com"
   ];
 
   strictWhitelist = [

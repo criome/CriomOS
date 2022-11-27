@@ -122,6 +122,8 @@ let
         worldFunction = mkWorldFunction fleik;
       };
 
+      flakeTypeExists = hasAttr fleik.type typedFlakeMakerIndex;
+
       mkTypedFlake = typedFlakeMakerIndex."${fleik.type}";
 
     in
