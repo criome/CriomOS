@@ -49,7 +49,7 @@ in
   };
 
   nix = {
-    package = uyrld.nix.packages.default;
+    package = pkgs.nixUnstable;
 
     settings = {
       trusted-users = [ "root" "@nixdev" ] ++ optional izBildyr "nixBuilder";

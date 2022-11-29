@@ -65,7 +65,7 @@ kor.mkIf saizAtList.max {
       plugins =
         with pkgs.obs-studio-plugins;
         with uyrld.arcnmxNixexprs.legacyPackages.obs-studio-plugins;
-        [ obs-streamfx updatedDroidCamObs wlrobs ];
+        [ updatedDroidCamObs wlrobs ];
     };
 
   };
