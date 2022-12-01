@@ -1,4 +1,0 @@
-(defun shen.add-primitives (V1100) (cond ((= () V1100) ()) ((and (cons? V1100) (cons? (tl V1100))) (let LambdaTableUpdated (update-lambda-table (hd V1100) (hd (tl V1100))) (shen.add-primitives (tl (tl V1100))))) (true (shen.f-error shen.add-primitives))))
-
-(shen.add-primitives (cons compile-lisp-file (cons 1 (cons delete-file (cons 1 (cons load-lisp (cons 1 (cons posix-argv (cons 0 (cons exit (cons 1 (cons directory-files (cons 1 (cons ensure-directories-exist (cons 1 (cons copy-file (cons 2 (cons run-program (cons 1 ())))))))))))))))))))
-

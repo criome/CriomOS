@@ -17,6 +17,9 @@
     tests = { url = path:./nix/tests; flake = false; };
     mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
     files = { url = path:./nix/files; flake = false; };
+    AskiCoreNiks = { url = path:./AskiCoreNiks; flake = false; };
+    AskiNiks = { url = path:./AskiNiks; flake = false; };
+    AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
   };
 
   outputs = inputs@{ self, ... }:
@@ -26,12 +29,8 @@
         in self.shortRev or shortHash;
 
       localHobSources = {
-        inherit (inputs) KLambdaBootstrap LispCore LispCorePrimitives
-          LispExtendedPrimitives ShenAski ShenCoreBootstrap ShenCore
-          ShenCoreTests ShenExtendedBootstrap ShenExtended ShenExtendedTests
-          AskiCore AskiCoreFleik AskiCoreNiks AskiNiks AskiDefaultBuilder
-          mkWebpage;
-
+        inherit (inputs) mkWebpage
+          AskiCoreNiks AskiNiks AskiDefaultBuilder;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 

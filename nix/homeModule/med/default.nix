@@ -56,7 +56,7 @@ let
     tree-sitter
     gitAndTools.gitui
     # Python
-    pkdjz.mach-nix.package
+    # pkdjz.mach-nix.package # broken
     uyrld.kibord.kpBootCli
     # Manuals
     unbound.man
