@@ -712,7 +712,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-5kqc5zTstv7GAf/zReB++pckidcT8oFmh0Wxfv9MzaU=",
+        "narHash": "sha256-ze8rgNizdRYUXz6fv4FfoeQKhfCnnCI7YMUam53Yw2I=",
         "path": "./nix/homeModule",
         "type": "path"
       },

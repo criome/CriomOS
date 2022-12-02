@@ -38,10 +38,10 @@ let
   };
 
   fontDeriveicynz = [ pkgs.noto-fonts-cjk ]
-    ++ (optionals saizAtList.med [
+    ++ (optionals saizAtList.med (with pkgs; [
     pkdjz.nerd-fonts.firaCode
-    pkgs.fira-code
-  ]);
+    fira-code
+  ]));
 
 
   mkFootSrcTheme = themeName:
@@ -199,6 +199,7 @@ mkIf saizAtList.min {
       (hunspellWithDicts [ hunspellDicts.en-us-large ])
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
       hunspellDicts.en-us-large
+      tor-browser-bundle-bin
     ]
     ++ (optionals izNiksDev (with pkgs; [
     ]))
