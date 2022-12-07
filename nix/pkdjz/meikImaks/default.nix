@@ -103,8 +103,6 @@ in
 let
   inherit (builtins) readFile concatStringsSep;
 
-  launcher = "selectrum"; # TODO profile
-
   imaksTheme =
     if profile.dark then "'modus-vivendi"
     else "'modus-operandi";
@@ -115,9 +113,8 @@ let
     '';
 
   commonPackagesEl = readFile ./packages.el;
-  launcherCommonEl = readFile ./vertico-selectrum-common.el;
-  launcherStyleEl = (if (launcher == "vertico") then
-    (readFile ./vertico.el) else (readFile ./selectrum.el));
+  launcherCommonEl = readFile ./selector-common.el;
+  launcherStyleEl = readFile ./vertico.el;
 
   packagesEl = concatStringsSep "\n"
     [ commonPackagesEl launcherCommonEl launcherStyleEl ];

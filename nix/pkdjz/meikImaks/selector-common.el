@@ -39,3 +39,7 @@
   (orderless-style-dispatchers
    '(flex-if-twiddle without-if-bang))
   (orderless-matching-styles '(orderless-regexp)))
+
+(use-package prescient
+  :config
+  (prescient-persist-mode +1))
