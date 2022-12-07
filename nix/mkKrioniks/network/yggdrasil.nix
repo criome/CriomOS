@@ -97,7 +97,7 @@ in
           RestrictNamespaces = true;
           RestrictRealtime = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = "~@clock @cpu-emulation @debug @keyring @module @mount @obsolete @raw-io @resources";
+          SystemCallFilter = [ "@system-service" "~@privileged @keyring" ];
         };
       };
     };

@@ -930,7 +930,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-F5wqULYVcZ4+fOZwfbWBuAGzHRP3ChraDW5r1PIMWUU=",
+        "narHash": "sha256-sBrbs4aD78ho9CyfGt1qY1cI5mrwkybzNbWtUK1oM4s=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
