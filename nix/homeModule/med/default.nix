@@ -30,6 +30,7 @@ let
     qrencode
     sbcl
     pkdjz.ql2nix.ql2nix
+    jmtpfs
     # start('bash')
     nix-prefetch-git
     # start('pythonPackages')
