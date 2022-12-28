@@ -2,4 +2,6 @@
   :config
   (vertico-mode))
 
-(use-package vertico-prescient)
+(use-package vertico-prescient
+  :config
+  (vertico-prescient-mode))
