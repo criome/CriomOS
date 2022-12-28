@@ -4,6 +4,7 @@
 (delete-selection-mode 1)
 (electric-pair-mode 1)
 (recentf-mode 1)
+(run-at-time nil (* 5 60) 'recentf-save-list)
 (custom-set-variables
  '(recentf-max-menu-items 1024)
  '(recentf-max-saved-items 10024)
