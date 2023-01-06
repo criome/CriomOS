@@ -104,6 +104,7 @@ let
     eva # tui calculator
 
   ] ++ (optionals izNiksDev [
+    lsof
     miniserve
     yggdrasil
     delta

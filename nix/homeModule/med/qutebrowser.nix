@@ -53,6 +53,7 @@ let
     "https://odysee.com"
     "https://astro-charts.com"
     "https://www.amazon.com"
+    "https://twitter.com"
   ];
 
   whitelist = unstrictWhitelist ++ strictWhitelist;
