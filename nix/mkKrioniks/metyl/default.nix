@@ -75,8 +75,9 @@ in
   location.provider = if saizAtList.min then "geoclue2" else "manual";
 
   boot = {
-    extraModulePackages = [ ] ++
-      (optional modylIzThinkpad config.boot.kernelPackages.acpi_call);
+    extraModulePackages = [ ]
+      ++ (optional modylIzThinkpad config.boot.kernelPackages.acpi_call)
+      ++ (optional saizAtList.max config.boot.kernelPackages.v4l2loopback);
 
     initrd = {
       availableKernelModules = modelSpecificKernelModules
@@ -108,7 +109,7 @@ in
   environment = {
     systemPackages = with pkgs; [ lm_sensors ]
       ++ optionals tcipIzIntel [ libva-utils i7z ]
-      ++ optionals saizAtList.max [ win-virtio ];
+      ++ optionals saizAtList.max [ win-virtio v4l-utils ];
 
   };
 

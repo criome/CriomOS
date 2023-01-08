@@ -54,8 +54,9 @@ in
       };
     };
 
-    systemPackages = [
+    systemPackages = with pkgs; [
       uyrld.skrips.root
+      tcpdump
     ];
 
     interactiveShellInit = optionalString iuzColemak "stty -ixon";
