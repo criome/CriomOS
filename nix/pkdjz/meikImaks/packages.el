@@ -30,7 +30,14 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory "~/git/wiki"))
+  (org-roam-directory "~/git/wiki")
+  (org-roam-file-extensions '("org" "md")))
+
+(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+
+(use-package md-roam
+  :config
+  (md-roam-mode 1))
 
 (use-package password-store)
 

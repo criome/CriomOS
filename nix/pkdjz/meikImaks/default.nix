@@ -44,6 +44,16 @@ let
         buildInputs = attrs.buildInputs ++ [ delta ];
       });
 
+    md-roam =
+      let
+        src = hob.md-roam;
+      in
+      trivialBuild {
+        pname = "md-roam";
+        version = src.shortRev;
+        inherit src;
+      };
+
     org-remark =
       let
         src = hob.org-remark;

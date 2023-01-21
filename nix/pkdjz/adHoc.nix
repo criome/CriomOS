@@ -43,6 +43,13 @@ in
       cargoNixRyzylt.workspaceMembers.firn.build;
   };
 
+  flowblade = {
+    modz = [ "pkgs" ];
+    lamdy = { flowblade, fetchFromGitHub, src }:
+      flowblade.overrideAttrs (oldAttrs:
+        { inherit src; });
+  };
+
   jumpdrive = {
     modz = [ "pkgs" "pkdjz" ];
     src = null;

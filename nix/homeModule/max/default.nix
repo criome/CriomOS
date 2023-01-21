@@ -1,4 +1,4 @@
-{ kor, pkgs, krimyn, uyrld, ... }:
+{ kor, pkgs, krimyn, uyrld, pkdjz, ... }:
 let
   inherit (kor) optionals;
   inherit (krimyn.spinyrz) izNiksDev izSemaDev saizAtList;
@@ -8,7 +8,7 @@ let
     [ pandoc ];
 
   semaDevPackages = with pkgs;
-    [ krita calibre shotcut zoom-us virt-manager gimp ];
+    [ krita calibre pkdjz.flowblade zoom-us virt-manager gimp ];
 
   updatedDroidCamObs = droidcam-obs.overrideAttrs (attrs:
     let version = "1.5.1"; in
