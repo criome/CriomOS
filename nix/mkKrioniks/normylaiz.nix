@@ -57,6 +57,7 @@ in
     systemPackages = with pkgs; [
       uyrld.skrips.root
       tcpdump
+      librist
     ];
 
     interactiveShellInit = optionalString iuzColemak "stty -ixon";
