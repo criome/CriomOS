@@ -964,7 +964,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-IaIhQkLzUpJu50rslwag6zlGe7vVGhTO8f9tCPJeEcY=",
+        "narHash": "sha256-6aiFQPA9OrEC5bVXbDXEFRnCFVNt/tkGXNygEP2BZ/8=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },
@@ -1224,7 +1224,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-6nUCT+DjBOiKnpY9ZDnuaEszsimExqRQoXgLjwR3+VU=",
+        "narHash": "sha256-upGpF12rQewxme0x5+X0YowWyboZmugih5Ba1dvQywU=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

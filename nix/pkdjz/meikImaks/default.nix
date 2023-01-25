@@ -52,6 +52,8 @@ let
         pname = "md-roam";
         version = src.shortRev;
         inherit src;
+        packageRequires = with emacsPackages;
+          [ markdown-mode org-roam ];
       };
 
     org-remark =

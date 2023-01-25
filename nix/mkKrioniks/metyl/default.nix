@@ -85,8 +85,11 @@ in
         ++ (optional hasNvme "nvme");
     };
 
-    kernelModules = [ "coretemp" ]
-      ++ (optional saizAtList.max "v4l2loopback");
+    kernelModules = [ "coretemp" ];
+
+    extraModprobeConfig = (optionalString saizAtList.max ''
+      options v4l2loopback devices=2 card_label="camera","obs"
+    '');
 
     kernelParams = (optionals tcipIzIntel [ "intel_pstate=disable" ])
       ++ (optionals computerIs.rpi3B [

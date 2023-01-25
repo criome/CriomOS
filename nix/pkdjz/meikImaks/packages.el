@@ -31,9 +31,7 @@
   (setq org-roam-v2-ack t)
   :custom
   (org-roam-directory "~/git/wiki")
-  (org-roam-file-extensions '("org" "md")))
-
-(setq org-roam-file-extensions '("org" "md")) ; enable Org-roam for a markdown extension
+  (org-roam-file-extensions '("md")))
 
 (use-package md-roam
   :config
