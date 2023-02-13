@@ -107,6 +107,60 @@ in
       releases;
   };
 
+  ndi = {
+    modz = [ "pkgs" ];
+    lamdy =
+      { src, lib, stdenv, requireFile, avahi, obs-studio-plugins }:
+      let
+        version = "5.5.x";
+        majorVersion = builtins.head (builtins.splitVersion version);
+        installerName = "Install_NDI_SDK_v${majorVersion}_Linux";
+
+      in
+      stdenv.mkDerivation rec {
+        pname = "ndi";
+        inherit version src;
+
+        buildInputs = [ avahi ];
+
+        buildPhase = ''
+          echo y | ./${installerName}.sh
+        '';
+
+        installPhase = ''
+          mkdir $out
+          cd "NDI SDK for Linux";
+          mv bin/x86_64-linux-gnu $out/bin
+          for i in $out/bin/*; do
+            patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$i"
+          done
+          patchelf --set-rpath "${avahi}/lib:${stdenv.cc.libc}/lib" $out/bin/ndi-record
+          mv lib/x86_64-linux-gnu $out/lib
+          for i in $out/lib/*; do
+            if [ -L "$i" ]; then continue; fi
+            patchelf --set-rpath "${avahi}/lib:${stdenv.cc.libc}/lib" "$i"
+          done
+          mv include examples $out/
+          mkdir -p $out/share/doc/${pname}-${version}
+          mv licenses $out/share/doc/${pname}-${version}/licenses
+          mv logos $out/share/doc/${pname}-${version}/logos
+          mv documentation/* $out/share/doc/${pname}-${version}/
+        '';
+
+        # Stripping breaks ndi-record.
+        dontStrip = true;
+
+        passthru.updateScript = ./update.py;
+
+        meta = with lib; {
+          homepage = "https://ndi.tv/sdk/";
+          description = "NDI Software Developer Kit";
+          platforms = [ "x86_64-linux" ];
+          hydraPlatforms = [ ];
+        };
+      };
+  };
+
   netresolve = {
     modz = [ "pkgs" ];
     lamdy =
@@ -205,6 +259,57 @@ in
       };
   };
 
+  obs-ndi = {
+    modz = [ "pkgsSet" "pkgs" "pkdjz" ];
+    src = null;
+    lamdy = { pkgs, lib, stdenv, fetchFromGitHub, obs-studio, cmake, qt6Packages, ndi }:
+
+      stdenv.mkDerivation rec {
+        pname = "obs-ndi";
+        version = "4.10.0";
+
+        nativeBuildInputs = [ cmake ];
+        buildInputs = [ obs-studio qt6Packages.qtbase ndi ];
+
+        src = fetchFromGitHub {
+          owner = "Palakis";
+          repo = "obs-ndi";
+          rev = "dummy-tag-${version}";
+          sha256 = "sha256-eQ/hQ2AnwyBNOotqlUZq07m4FXoeir2f7cTVq594obc=";
+        };
+
+        patches = [
+          (pkgs.path + /pkgs/applications/video/obs-studio/plugins/hardcode-ndi-path.patch)
+        ];
+
+        postPatch = ''
+          # Add path (variable added in hardcode-ndi-path.patch)
+          sed -i -e s,@NDI@,${ndi},g src/obs-ndi.cpp
+
+          # Replace bundled NDI SDK with the upstream version
+          # (This fixes soname issues)
+          rm -rf lib/ndi
+          ln -s ${ndi}/include lib/ndi
+        '';
+
+        postInstall = ''
+          mkdir $out/lib $out/share
+          mv $out/obs-plugins/64bit $out/lib/obs-plugins
+          rm -rf $out/obs-plugins
+          mv $out/data $out/share/obs
+        '';
+
+        dontWrapQtApps = true;
+
+        meta = with lib; {
+          description = "Network A/V plugin for OBS Studio";
+          homepage = "https://github.com/Palakis/obs-ndi";
+          platforms = platforms.linux;
+          hydraPlatforms = ndi.meta.hydraPlatforms;
+        };
+      };
+  };
+
   open-color = {
     modz = [ "pkgs" ];
     lamdy = { src, stdenv }:
@@ -218,6 +323,23 @@ in
           mkdir -p $out/lib/scss
           cp -R ./open-color.scss $out/lib/scss
         '';
+      };
+  };
+
+  skylendar = {
+    modz = [ "pkgs" ];
+    src = null;
+    lamdy = { stdenv, fetchurl }:
+      let
+        pname = "skylendar";
+        version = "5.0nn";
+      in
+      stdenv.mkDerivation {
+        inherit pname version;
+        src = fetchurl {
+          url = "mirror://sourceforge/skylendar/${pname}-${version}.tar.xz";
+          sha256 = "sha256-j7iCCzHXwffHdhQcyzxPBvQK+RXaY3QSjXUtHu463fI=";
+        };
       };
   };
 

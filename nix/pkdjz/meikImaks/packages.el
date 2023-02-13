@@ -31,7 +31,7 @@
   (setq org-roam-v2-ack t)
   :custom
   (org-roam-directory "~/git/wiki")
-  (org-roam-file-extensions '("md")))
+  (org-roam-file-extensions '("md" "org")))
 
 (use-package md-roam
   :config
