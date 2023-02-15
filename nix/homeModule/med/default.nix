@@ -92,6 +92,7 @@ kor.mkIf saizAtList.med {
       yt-dlp
       # ocrmypdf
       # C/C++
+      imagemagick
       opusTools
       mediainfo
       #== go

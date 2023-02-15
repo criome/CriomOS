@@ -191,6 +191,8 @@
 
 (use-package phi-search)
 
+(use-package poly-markdown)
+
 (use-package doom-modeline
   :config
   (doom-modeline-mode 1))
@@ -292,3 +294,5 @@
   :hook
   ((find-file projectile-after-switch-project)
    . zoxide-add))
+
+(use-package ztree)
