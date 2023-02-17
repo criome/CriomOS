@@ -13,7 +13,7 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  niksOSShell = mksh + mksh.shellPath;
+  kriomOSShell = mksh + mksh.shellPath;
 
   mkAstriKnownHost = n: astri:
     concatStringsSep " " [ astri.krioniksNeim astri.eseseitc ];
@@ -38,7 +38,7 @@ in
   };
 
   environment = {
-    binsh = niksOSShell;
+    binsh = kriomOSShell;
     shells = [ "/run/current-system/sw${mksh.shellPath}" ];
 
     etc = {

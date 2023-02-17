@@ -188,6 +188,11 @@ let
       modz = [ "pkgs" "pkdjz" ];
     };
 
+    videocut = {
+      lamdy = import ./videocut;
+      modz = [ "pkgs" ];
+    };
+
     vimPloginz = {
       lamdy = import ./vimPloginz;
       modz = [ "pkgs" "pkdjz" "hob" ];

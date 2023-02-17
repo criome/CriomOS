@@ -26,10 +26,14 @@ let
     ln -s ${tokenaizdHub}/bin/hub $out/bin/
   '';
 
+  lispDevPackages = with pkgs.lispPackages; [
+    pkgs.sbcl
+    pkdjz.ql2nix.ql2nix
+    quicklisp
+  ];
+
   niksDevPackages = with pkgs; [
     qrencode
-    sbcl
-    pkdjz.ql2nix.ql2nix
     jmtpfs
     # start('bash')
     nix-prefetch-git
@@ -56,6 +60,8 @@ let
     nixpkgs-fmt
     tree-sitter
     gitAndTools.gitui
+    # Haskell
+    nvfetcher
     # Python
     # pkdjz.mach-nix.package # broken
     uyrld.kibord.kpBootCli
@@ -101,7 +107,7 @@ kor.mkIf saizAtList.med {
       lazygit
       #== rust
     ]
-    ++ optionals izNiksDev niksDevPackages;
+    ++ optionals izNiksDev (niksDevPackages ++ lispDevPackages);
 
     file = {
       # ".config/jesseduffield/lazygit/config.yml".text = { };
