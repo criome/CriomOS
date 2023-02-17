@@ -998,7 +998,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-8B3OyDm4esqap0BCTaZQY3EnzGIg8Rv+zptNIUqvo4g=",
+        "narHash": "sha256-eDaHzlIi71pkc7zp+KNXgOdi683rIVrdBS8JM2u9cjg=",
         "path": "./nix/mkKrioniks",
         "type": "path"
       },

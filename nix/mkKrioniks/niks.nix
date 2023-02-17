@@ -26,7 +26,7 @@ let
       to = {
         type = "github";
         owner = "sajban";
-        repo = "uniks";
+        repo = "kriomOS";
       };
     }];
     version = 2;
