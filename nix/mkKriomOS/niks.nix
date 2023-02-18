@@ -166,7 +166,7 @@ in
           wantedBy = [ "multi-user.target" ];
           serviceConfig = { type = "oneshot"; };
           script = ''
-            nix key generate-secret --key-name ${astra.krioniksNeim} > ${priKriad}
+            nix key generate-secret --key-name ${astra.kriomOSNeim} > ${priKriad}
           '';
         };
       });

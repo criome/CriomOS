@@ -16,7 +16,7 @@ let
   kriomOSShell = mksh + mksh.shellPath;
 
   mkAstriKnownHost = n: astri:
-    concatStringsSep " " [ astri.krioniksNeim astri.eseseitc ];
+    concatStringsSep " " [ astri.kriomOSNeim astri.eseseitc ];
 
   sshKnownHosts = concatStringsSep "\n"
     (mapAttrsToList mkAstriKnownHost exAstriz);

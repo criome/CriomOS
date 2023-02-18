@@ -13,7 +13,7 @@ let
   astriNeimz = attrNames inputMetastra.astriz;
   krimynNeimz = attrNames inputMetastra.krimynz;
 
-  neksysKrioniksNeim = concatStringsSep "."
+  neksysKriomOSNeim = concatStringsSep "."
     [ metastraNeim "kriom" ];
 
   metaTrost = inputMetastra.trost.metastra;
@@ -82,8 +82,8 @@ let
 
         inherit (inputAstri.priKriomz) niksPriKriom;
 
-        krioniksNeim = concatStringsSep "."
-          [ astriNeim neksysKrioniksNeim ];
+        kriomOSNeim = concatStringsSep "."
+          [ astriNeim neksysKriomOSNeim ];
 
         sistym = arkSistymMap.${mycin.ark};
 
@@ -93,7 +93,7 @@ let
       spinyrz =
         let
           inherit (astri) spici trost saiz niksPriKriom
-            yggAddress krioniksNeim;
+            yggAddress kriomOSNeim;
 
         in
         rec {
@@ -118,9 +118,9 @@ let
             else mkEseseitcString inputAstri.priKriomz.eseseitc;
 
           nixPriKriom = optionalString izNiksKriodaizd
-            (concatStringsSep ":" [ krioniksNeim niksPriKriom ]);
+            (concatStringsSep ":" [ kriomOSNeim niksPriKriom ]);
 
-          nixCacheDomain = if izNiksKac then ("nix." + krioniksNeim) else null;
+          nixCacheDomain = if izNiksKac then ("nix." + kriomOSNeim) else null;
           nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
         };
 
@@ -139,7 +139,7 @@ let
       mkBildyr = n:
         let astri = exAstriz.${n};
         in {
-          hostName = astri.krioniksNeim;
+          hostName = astri.kriomOSNeim;
           sshUser = "nixBuilder";
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           supportedFeatures = optional astri.spinyrz.izSentyr "big-parallel";

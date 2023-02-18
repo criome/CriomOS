@@ -1,7 +1,7 @@
-#+title: Krioniks
+#+title: KriomOS
 
 * A more correct =unix=
-Krioniks is slated to be the first [[hob:sajban][sajban]]
+KriomOS is slated to be the first [[hob:sajban][sajban]]
 dialect. It aims to provide a /correct/ runtime for
 [[hob:krios][kriOS]] using linux. It can be thought of
 as an evolved version of NixOS, which is used

@@ -1,5 +1,5 @@
 { kor, lib, self }:
-{ mkKrioniks, mkPkgsAndUyrld, krioniksRev, homeModule }:
+{ mkKriomOS, mkPkgsAndUyrld, kriomOSRev, homeModule }:
 
 let
   inherit (self) subKrioms;
@@ -41,7 +41,7 @@ let
 
     in
     {
-      os = mkKrioniks { inherit krioniksRev kor uyrld hyraizyn homeModule; };
+      os = mkKriomOS { inherit kriomOSRev kor uyrld hyraizyn homeModule; };
       hom = mapAttrs mkKrimynHomz krimynz;
       imaks = mapAttrs mkKrimynImaks krimynz;
     };

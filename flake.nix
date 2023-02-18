@@ -1,5 +1,5 @@
 {
-  description = "Krioniks";
+  description = "KriomOS - KriOS on Linux";
 
   inputs = {
     hob.url = github:sajban/hob/flamingArrow;
@@ -10,7 +10,7 @@
     mkUyrld = { url = path:./nix/mkUyrld; flake = false; };
     mkKriosfir = { flake = false; url = path:./nix/mkKriosfir; };
     mkKriozonz = { flake = false; url = path:./nix/mkKriozonz; };
-    mkKrioniks = { flake = false; url = path:./nix/mkKrioniks; };
+    mkKriomOS = { flake = false; url = path:./nix/mkKriomOS; };
     pkdjz = { flake = false; url = path:./nix/pkdjz; };
     homeModule = { flake = false; url = path:./nix/homeModule; };
     neksysNames = { flake = false; url = path:./nix/neksysNames; };
@@ -24,7 +24,7 @@
 
   outputs = inputs@{ self, ... }:
     let
-      krioniksRev =
+      kriomOSRev =
         let shortHash = kor.cortHacString self.narHash;
         in self.shortRev or shortHash;
 
@@ -42,11 +42,11 @@
       inherit (hob) nixpkgs flake-utils emacs-overlay;
 
       imports = mapAttrs importInput {
-        inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKrioniks
+        inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
           mkHomeConfig neksysNames mkUyrld homeModule files;
       };
 
-      inherit (imports) kor neksysNames mkPkgs homeModule mkKrioniks mkUyrld;
+      inherit (imports) kor neksysNames mkPkgs homeModule mkKriomOS mkUyrld;
 
       mkPkgsFromSystem = system:
         let
@@ -132,8 +132,8 @@
 
         in
         {
-          os = imports.mkKrioniks
-            { inherit krioniksRev kor uyrld hyraizyn homeModule; };
+          os = imports.mkKriomOS
+            { inherit kriomOSRev kor uyrld hyraizyn homeModule; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };
@@ -156,7 +156,7 @@
 
           devShell = pkgs.mkShell {
             inputsFrom = [ ];
-            KRIONIKSBOOTFILE = self + /boot.shen;
+            KRIOMOSBOOTFILE = self + /boot.shen;
             buildInputs = [ shen ];
           };
 
@@ -193,6 +193,6 @@
     in
     perSystemAllOutputs // {
       kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      outputs = Kriom.mkOutputs { inherit mkKrioniks krioniksRev mkPkgsAndUyrld homeModule; };
+      outputs = Kriom.mkOutputs { inherit mkKriomOS kriomOSRev mkPkgsAndUyrld homeModule; };
     };
 }

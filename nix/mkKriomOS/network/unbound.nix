@@ -2,7 +2,7 @@
 let
   inherit (builtins) map concatStringsSep concatMap attrNames;
   inherit (lib) mapAttrsToList concatMapStringsSep lowPrio;
-  inherit (hyraizyn.astra) krioniksNeim;
+  inherit (hyraizyn.astra) kriomOSNeim;
   inherit (hyraizyn.astra.spinyrz) izEdj;
 
   listenIPs = [ "::1" "127.0.0.1" ];

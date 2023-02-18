@@ -1,2 +1,2 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i "shen script $KRIONIKSBOOTFILE"
+#! nix-shell -i "shen script $KRIOMOSBOOTFILE"

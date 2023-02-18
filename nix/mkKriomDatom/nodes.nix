@@ -13,7 +13,7 @@ let
       inputAstri = nexusKriozon;
       astriz = horizons.${subKriomName};
 
-      neksysKrioniksNeim = concatStringsSep "."
+      neksysKriomOSNeim = concatStringsSep "."
         [ metastraNeim "kriom" ];
 
       inherit (inputAstri.priKriomz) yggdrasil;
@@ -79,8 +79,8 @@ let
 
         inherit (inputAstri.priKriomz) niksPriKriom;
 
-        krioniksNeim = concatStringsSep "."
-          [ astriNeim neksysKrioniksNeim ];
+        kriomOSNeim = concatStringsSep "."
+          [ astriNeim neksysKriomOSNeim ];
 
         sistym = arkSistymMap.${mycin.ark};
 
@@ -90,7 +90,7 @@ let
       spinyrz =
         let
           inherit (astri) spici trost saiz niksPriKriom
-            yggAddress krioniksNeim;
+            yggAddress kriomOSNeim;
 
         in
         rec {
@@ -115,9 +115,9 @@ let
             else mkEseseitcString inputAstri.priKriomz.eseseitc;
 
           nixPriKriom = optionalString izNiksKriodaizd
-            (concatStringsSep ":" [ krioniksNeim niksPriKriom ]);
+            (concatStringsSep ":" [ kriomOSNeim niksPriKriom ]);
 
-          nixCacheDomain = if izNiksKac then ("nix." + krioniksNeim) else null;
+          nixCacheDomain = if izNiksKac then ("nix." + kriomOSNeim) else null;
           nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
         };
 
