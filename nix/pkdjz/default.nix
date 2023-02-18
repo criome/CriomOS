@@ -4,7 +4,6 @@ let
   pkdjz = {
     beaker = {
       lamdy = import ./beaker;
-      modz = [ "pkgs" ];
       self = null;
     };
 
@@ -27,17 +26,14 @@ let
 
     dunst = {
       lamdy = import ./dunst;
-      modz = [ "pkgs" ];
     };
 
     ementEl = {
       lamdy = import ./ement-el;
-      modz = [ "pkgs" ];
     };
 
     fetchPijul = {
       lamdy = import ./fetchPijul;
-      modz = [ "pkgs" ];
     };
 
     guix = {
@@ -76,7 +72,6 @@ let
 
     librem5-flash-image = {
       lamdy = import ./librem5/flashImage.nix;
-      modz = [ "pkgs" ];
     };
 
     mach-nix = { lamdy = import ./mach-nix; };
@@ -89,7 +84,6 @@ let
 
     mfgtools = {
       lamdy = import ./mfgtools;
-      modz = [ "pkgs" ];
     };
 
     mkCargoNix = {
@@ -111,7 +105,6 @@ let
 
     naersk = {
       lamdy = import ./naersk;
-      modz = [ "pkgs" ];
     };
 
     nvimLuaPloginz = {
@@ -128,7 +121,6 @@ let
 
     nerd-fonts = {
       lamdy = import ./nerd-fonts;
-      modz = [ "pkgs" ];
       self = null;
     };
 
@@ -162,24 +154,23 @@ let
 
     shen-bootstrap = {
       lamdy = import ./shen/bootstrap.nix;
-      modz = [ "pkgs" ];
       self = hob.shen;
     };
 
     shen-ecl-bootstrap = {
       lamdy = import ./shen/ecl.nix;
-      modz = [ "pkgs" ];
       self = null;
     };
 
-    shenPrelude = {
-      lamdy = import ./shen/prelude.nix;
-      modz = [ "pkgs" ];
+    remux = {
+      lamdy = import ./remux;
+      self = hob.videocut;
     };
+
+    shenPrelude.lamdy = import ./shen/prelude.nix;
 
     slynkPackages = {
       lamdy = import ./slynkPackages;
-      modz = [ "pkgs" ];
       self = null;
     };
 
@@ -190,7 +181,6 @@ let
 
     videocut = {
       lamdy = import ./videocut;
-      modz = [ "pkgs" ];
     };
 
     vimPloginz = {

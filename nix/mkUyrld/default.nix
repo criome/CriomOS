@@ -58,7 +58,7 @@ let
         in
         meikSobUyrld { inherit src self modz lamdy; };
 
-      priMeikHobUyrld = neim: HobUyrld@{ modz ? [ ], lamdy, ... }:
+      priMeikHobUyrld = neim: HobUyrld@{ modz ? [ "pkgs" ], lamdy, ... }:
         let
           implaidSelf = hob.${neim} or null;
           src = HobUyrld.src or (HobUyrld.self or implaidSelf);

@@ -5,7 +5,6 @@ let
 in
 {
   base16-styles = {
-    modz = [ "pkgs" ];
     lamdy = { src, stdenv }:
       stdenv.mkDerivation {
         name = "base16-styles";
@@ -19,7 +18,6 @@ in
   };
 
   buttons = {
-    modz = [ "pkgs" ];
     lamdy = { src, stdenv }:
       stdenv.mkDerivation {
         name = "buttons";
@@ -44,7 +42,6 @@ in
   };
 
   flowblade = {
-    modz = [ "pkgs" ];
     lamdy = { flowblade, fetchFromGitHub, src }:
       flowblade.overrideAttrs (oldAttrs:
         { inherit src; });
@@ -108,7 +105,6 @@ in
   };
 
   ndi = {
-    modz = [ "pkgs" ];
     lamdy =
       { src, lib, stdenv, requireFile, avahi, obs-studio-plugins }:
       let
@@ -162,7 +158,6 @@ in
   };
 
   netresolve = {
-    modz = [ "pkgs" ];
     lamdy =
       { src
       , stdenv
@@ -243,7 +238,6 @@ in
   };
 
   reseter-css = {
-    modz = [ "pkgs" ];
     lamdy = { src, stdenv }:
       let
       in
@@ -311,7 +305,6 @@ in
   };
 
   open-color = {
-    modz = [ "pkgs" ];
     lamdy = { src, stdenv }:
       let
       in
@@ -327,7 +320,6 @@ in
   };
 
   skylendar = {
-    modz = [ "pkgs" ];
     src = null;
     lamdy = { stdenv, fetchurl }:
       let
