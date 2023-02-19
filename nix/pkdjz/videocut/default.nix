@@ -1,4 +1,4 @@
-{ src, python3Packages, mpv, ffmpeg }:
+{ src, python3Packages, mpv, remux }:
 let
 in
 python3Packages.buildPythonApplication {
@@ -8,12 +8,7 @@ python3Packages.buildPythonApplication {
   version = src.shortRev;
 
   nativeBuildInputs = with python3Packages;
-    [ pyqt5 mpv ffmpeg pillow ];
-
-  buildPhase = ''
-    make -C src/ffmpeg/src/ -f makefile5
-    make -C src/ffmpeg/src/ -f makefile5 clean
-  '';
+    [ pyqt5 mpv pillow ];
 
   installPhase = ''
     mkdir -p $out/share/applications

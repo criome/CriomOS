@@ -181,6 +181,7 @@ let
 
     videocut = {
       lamdy = import ./videocut;
+      modz = [ "pkgs" "pkdjz" ];
     };
 
     vimPloginz = {
