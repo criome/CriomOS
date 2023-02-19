@@ -13,7 +13,7 @@ let
   waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
   waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
 
-  hardwareAdjustedFfmpeg = pkgs.ffmpeg.override { libmfxSupport = hasQuickSyncSupport; };
+  hardwareAdjustedFfmpeg = pkgs.ffmpeg.override { withMfx = hasQuickSyncSupport; };
 
   shellLaunch = command: "${shell} -c '${command}'";
   homeDir = config.home.homeDirectory;
