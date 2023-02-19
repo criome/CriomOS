@@ -97,7 +97,7 @@ in
   services = {
     openssh = {
       enable = true;
-      passwordAuthentication = false;
+      PasswordAuthentication = false;
       ports = [ 22 ];
     };
 
