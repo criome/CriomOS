@@ -97,7 +97,7 @@ in
   services = {
     openssh = {
       enable = true;
-      PasswordAuthentication = false;
+      settings.PasswordAuthentication = false;
       ports = [ 22 ];
     };
 
