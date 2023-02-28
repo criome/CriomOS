@@ -88,7 +88,7 @@ in
     kernelModules = [ "coretemp" ];
 
     extraModprobeConfig = (optionalString saizAtList.max ''
-      options v4l2loopback devices=2 card_label="camera","obs"
+      options v4l2loopback devices=2 card_label="camera","obs" exclusive_caps=1
     '');
 
     kernelParams = (optionals tcipIzIntel [ "intel_pstate=disable" ])

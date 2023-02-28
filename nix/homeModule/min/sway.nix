@@ -176,7 +176,7 @@ mkIf saizAtList.min {
       imv
       wf-recorder
       libva-utils
-      hardwareAdjustedFfmpeg
+      ffmpeg-full # hardwareAdjustedFfmpeg
       # start("GTK")
       wofi
       gitg
