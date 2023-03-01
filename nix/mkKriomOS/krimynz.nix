@@ -30,7 +30,9 @@ let
         ++
         (optional (config.programs.sway.enable == true) "sway")
         ++
-        (optional ((trost >=2) && (config.networking.networkmanager.enable == true)) "networkmanager")
+        (optionals (trost >=2)
+          ([ "video" ] ++
+            (optional (config.networking.networkmanager.enable == true)) "networkmanager"))
         ++
         (optionals (trost >= 3) [
           "adbusers"

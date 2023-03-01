@@ -273,7 +273,7 @@ in
         };
 
         patches = [
-          (pkgs.path + /pkgs/applications/video/obs-studio/plugins/hardcode-ndi-path.patch)
+          (pkgs.path + /pkgs/applications/video/obs-studio/plugins/obs-ndi/hardcode-ndi-path.patch)
         ];
 
         postPatch = ''

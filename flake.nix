@@ -2,7 +2,7 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = github:sajban/hob/flamingArrow;
+    hob.url = github:sajban/hob/fishyThings;
     mkWebpage = { url = path:./mkWebpage; flake = false; };
     kor = { url = path:./nix/kor; flake = false; };
     mkPkgs = { url = path:./nix/mkPkgs; flake = false; };

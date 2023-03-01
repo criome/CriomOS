@@ -288,6 +288,8 @@
 (use-package sly-asdf)
 (use-package sly-quicklisp)
 
+(use-package tokei)
+
 (use-package visual-regexp-steroids)
 
 (use-package zoxide

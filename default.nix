@@ -1,5 +1,5 @@
 let
-  flakeCompat = import ./nix/flake-compat.nix;
+  flakeCompat = import ./nix/flake-compat;
 
 in
 flakeCompat.defaultNix
