@@ -21,7 +21,7 @@ let
   hobLockFile = (import hobSrc).lockFile;
   flakeCompatSrc = getLockFileInput hobLockFile "flake-compat";
   flakeCompatFn = import flakeCompatSrc;
-  flakeCompat = flakeCompatFn { src = ../.; };
+  flakeCompat = flakeCompatFn { src = ../../.; };
 
 in
 flakeCompat
