@@ -3,6 +3,7 @@
 
   inputs = {
     hob.url = github:sajban/hob/fishyThings;
+    flake-parts.url = github:hercules-ci/flake-parts;
     mkWebpage = { url = path:./mkWebpage; flake = false; };
     kor = { url = path:./nix/kor; flake = false; };
     mkPkgs = { url = path:./nix/mkPkgs; flake = false; };
@@ -145,43 +146,6 @@
         in
         mapAttrs mkNeksysDerivationIndex kriozonz;
 
-      mkNixApiOutputsPerSystem = system:
-        let
-          pkgsAndUyrld = mkPkgsAndUyrld system;
-          inherit (pkgsAndUyrld) pkgs uyrld;
-          inherit (pkgs) symlinkJoin linkFarm;
-
-          inherit (uyrld.pkdjz) shen-ecl-bootstrap;
-          shen = shen-ecl-bootstrap;
-
-          devShell = pkgs.mkShell {
-            inputsFrom = [ ];
-            KRIOMOSBOOTFILE = self + /boot.shen;
-            buildInputs = [ shen ];
-          };
-
-          mkHobOutput = name: src:
-            symlinkJoin { inherit name; paths = [ src.outPath ]; };
-
-          hobOutputs = mapAttrs mkHobOutput hob;
-
-          mkSpokFarmEntry = name: spok:
-            { inherit name; path = spok.outPath; };
-
-          allMeinHobOutputs = linkFarm "hob"
-            (kor.mapAttrsToList mkSpokFarmEntry hobOutputs);
-
-          packages = uyrld // {
-            inherit pkgs;
-            hob = hobOutputs;
-            fullHob = allMeinHobOutputs;
-          };
-
-          tests = import inputs.tests { inherit lib mkDatom; };
-
-        in
-        { inherit tests packages devShell; };
-
       perSystemAllOutputs = eachDefaultSystem mkNixApiOutputsPerSystem;
 
       proposedKriosfir = imports.mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
@@ -191,8 +155,16 @@
       Kriom = mkKriomDatom { subKrioms = kriomInput; };
 
     in
-    perSystemAllOutputs // {
-      kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      outputs = Kriom.mkOutputs { inherit mkKriomOS kriomOSRev mkPkgsAndUyrld homeModule; };
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [
+        inputs.treefmt-nix.flakeModule
+        self.flakeModule
+      ];
+      flake = {
+        flakeModules.default = import inputs.flakeModules;
+        kriozonz = mkEachKriozonDerivations proposedKriozonz;
+        outputs = Kriom.mkOutputs { inherit mkKriomOS kriomOSRev mkPkgsAndUyrld homeModule; };
+      };
     };
 }
