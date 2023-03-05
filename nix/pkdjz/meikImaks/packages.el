@@ -11,6 +11,8 @@
 
 (use-package json-mode)
 
+(use-package haskell-mode)
+
 (use-package tera-mode)
 
 (use-package rust-mode)
