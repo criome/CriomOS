@@ -1050,7 +1050,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-njBdQiIOdzeYU0XP58PN5gET3E/FTFSiD1O5hs7JSVc=",
+        "narHash": "sha256-1gUhLw3HmgrD6xoTMCgDj1C4tkGQUIL4OeGQnMiPGbQ=",
         "path": "./nix/mkUyrld",
         "type": "path"
       },
