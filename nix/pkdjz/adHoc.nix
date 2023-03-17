@@ -237,18 +237,15 @@ in
       };
   };
 
-  reseter-css = {
+  gardevoir = {
     lamdy = { src, stdenv }:
-      let
-      in
       stdenv.mkDerivation {
-        name = "reseter.css";
+        name = "gardevoir";
         inherit src;
         phases = [ "unpackPhase" "installPhase" ];
         installPhase = ''
-          mkdir -p $out/lib
-          cp -R ./css $out/lib
-          cp -R ./src/* $out/lib
+          mkdir -p $out/lib/scss
+          cp -R ./src/* $out/lib/scss
         '';
       };
   };
