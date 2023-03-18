@@ -44,6 +44,7 @@
 (use-package base16-theme)
 
 (use-package clojure-mode)
+(use-package flycheck-clj-kondo)
 
 (use-package company
   :hook

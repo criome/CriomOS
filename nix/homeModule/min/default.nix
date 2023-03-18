@@ -56,7 +56,7 @@ let
     { youtubeSupport = saizAtList.med; };
 
   nixpkgsPackages = with pkgs; [
-    pijul
+
     mksh # saner bash
     retry
     ovyridynFzf
@@ -104,6 +104,11 @@ let
     eva # tui calculator
 
   ] ++ (optionals izNiksDev [
+    # Clojure
+    clojure
+    babashka
+    clj-kondo
+
     lsof
     miniserve
     yggdrasil
