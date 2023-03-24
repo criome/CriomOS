@@ -43,12 +43,14 @@
 
 (use-package base16-theme)
 
+;; Clojure
 (use-package clojure-mode)
 (use-package flycheck-clj-kondo)
+(use-package cider)
 
 (use-package company
   :hook
-  ((lisp-mode nix-mode shen-mode emacs-lisp-mode)
+  ((lisp-mode nix-mode shen-mode emacs-lisp-mode clojure-mode)
    . company-mode))
 
 (use-package dockerfile-mode :mode "Dockerfile")
