@@ -167,6 +167,11 @@ mkIf saizAtList.min {
       };
     };
 
+    direnv = {
+      enable = izNiksDev;
+      nix-direnv.enable = izNiksDev;
+    };
+
     git = {
       enable = true;
       userEmail = matrixID;

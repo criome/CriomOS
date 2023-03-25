@@ -1,3 +1,6 @@
+(use-package envrc
+  :config (envrc-global-mode))
+
 (use-package toodoo
   :init
   (setq toodoo-evil-base nil)
