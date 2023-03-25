@@ -41,6 +41,11 @@ in
       cargoNixRyzylt.workspaceMembers.firn.build;
   };
 
+  flake-registry = {
+    lamdy = { src, copyPathToStore }:
+      copyPathToStore (src + /flake-registry.json);
+  };
+
   flowblade = {
     lamdy = { flowblade, fetchFromGitHub, src }:
       flowblade.overrideAttrs (oldAttrs:

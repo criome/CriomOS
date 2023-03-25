@@ -555,6 +555,22 @@
         "type": "github"
       }
     },
+    "flake-registry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1674218164,
+        "narHash": "sha256-oLNWhwrV252kiy2tGQwwJNKFR+iG0fjsw0GSE/XVTR8=",
+        "owner": "NixOS",
+        "repo": "flake-registry",
+        "rev": "507c028d8d189b6647592dfd10ee677578de45a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-registry",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -694,6 +710,7 @@
         "fenix": "fenix",
         "firn": "firn",
         "flake-compat": "flake-compat",
+        "flake-registry": "flake-registry",
         "flake-utils": "flake-utils",
         "flowblade": "flowblade",
         "gardevoir": "gardevoir",
@@ -737,11 +754,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1678875105,
-        "narHash": "sha256-mheZmey2cEK8UMbQhj7KIVrYMrQnaZfUapG2DCS0Bjc=",
+        "lastModified": 1679719018,
+        "narHash": "sha256-ZDx9YDqbmD2a8HZAdgnwgiV80AYQQV2dKTAhmLaszcg=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "adf3c5d4353248a53cdcf90da81f8aa1be0c3a73",
+        "rev": "4c8b373919f507586decb660eb13a0ae92b04b63",
         "type": "github"
       },
       "original": {
@@ -1014,7 +1031,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-u8coni41BcHwsKy0Tn8f7jrezjBc9vQZAeLuHhOKy24=",
+        "narHash": "sha256-f29WR7/HAu5oPOkPGhppef5m1gMPbVE8O/kVeFHQRhc=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1325,7 +1342,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Yi5JF0uxFBqgVe64EtAFKP2Ut4TYRewHfU4ekvypibU=",
+        "narHash": "sha256-nYR8HdV1FrrFLm+Uw0vmeT1Tthd8QrOVg3BhZ/+XclA=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

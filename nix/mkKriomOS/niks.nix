@@ -1,7 +1,7 @@
 { kor, lib, pkgs, hyraizyn, uyrld, konstynts, config, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter;
-  inherit (lib) boolToString;
+  inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
 
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
@@ -17,23 +17,36 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  nixRegistry = {
-    flakes = [{
-      from = {
-        type = "indirect";
-        id = "kriomOS";
+  flakeEntriesOverrides = {
+    kriomOS = {
+      type = "github";
+      owner = "sajban";
+      repo = "kriomOS";
+    };
+  };
+
+  mkFlakeEntriesListFromSet = entriesMap:
+    let
+      mkFlakeEntry = name: value: {
+        from = { type = "indirect"; id = name; };
+        to = value;
       };
-      to = {
-        type = "github";
-        owner = "sajban";
-        repo = "kriomOS";
-      };
-    }];
+    in
+    mapAttrsToList mkFlakeEntry entriesMap;
+
+  kriomOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
+
+  nixOSFlakeEntries =
+    let nixOSFlakeRegistry = importJSON uyrld.pkdjz.flake-registry;
+    in nixOSFlakeRegistry.flakes;
+
+  nixFlakeRegistry = {
+    flakes = nixOSFlakeEntries ++ kriomOSFlakeEntries;
     version = 2;
   };
 
-  redjistri = eksportJSON "nixRegistry.json"
-    nixRegistry;
+  nixFlakeRegistryJson = eksportJSON "nixFlakeRegistry.json"
+    nixFlakeRegistry;
 
 in
 {
@@ -70,7 +83,7 @@ in
     daemonIOSchedPriority = 7;
 
     extraOptions = ''
-      flake-registry = ${redjistri}
+      flake-registry = ${nixFlakeRegistryJson}
       experimental-features = nix-command flakes recursive-nix
       secret-key-files = ${priKriad}
       keep-derivations = ${boolToString saizAtList.med}

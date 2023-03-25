@@ -132,7 +132,7 @@
 
         in
         {
-          os = imports.mkKriomOS
+          os = mkKriomOS
             { inherit kriomOSRev kor uyrld hyraizyn homeModule; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
