@@ -18,6 +18,11 @@ let
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
   flakeEntriesOverrides = {
+    hob = {
+      type = "github";
+      owner = "sajban";
+      repo = "hob";
+    };
     kriomOS = {
       type = "github";
       owner = "sajban";
