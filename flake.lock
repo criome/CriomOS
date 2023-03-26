@@ -754,16 +754,15 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1679719018,
+        "lastModified": 1679796415,
         "narHash": "sha256-ZDx9YDqbmD2a8HZAdgnwgiV80AYQQV2dKTAhmLaszcg=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "4c8b373919f507586decb660eb13a0ae92b04b63",
+        "rev": "43415b781515b83b2f26dd639427fe9d0a5fdc45",
         "type": "github"
       },
       "original": {
         "owner": "sajban",
-        "ref": "fishyThings",
         "repo": "hob",
         "type": "github"
       }
@@ -1031,7 +1030,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-f29WR7/HAu5oPOkPGhppef5m1gMPbVE8O/kVeFHQRhc=",
+        "narHash": "sha256-HqVF+Uy2v89MCbcNZ7wHKESeSeetMkGnzeuAn8btPJE=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
