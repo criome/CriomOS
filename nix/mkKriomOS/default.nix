@@ -1,4 +1,4 @@
-{ kriomOSRev, homeModule, kor, uyrld, hyraizyn }:
+{ kriomOSRev, homeModule, kor, hob, uyrld, hyraizyn }:
 let
   inherit (kor) optional;
   inherit (uyrld) pkdjz home-manager;
@@ -41,7 +41,7 @@ let
     ++ (optional iuzMetylModule metylModule);
 
   nixosArgs = {
-    inherit kor uyrld pkdjz hyraizyn kriomOSRev homeModule;
+    inherit kor hob uyrld pkdjz hyraizyn kriomOSRev homeModule;
     konstynts = import ./konstynts.nix;
   };
 

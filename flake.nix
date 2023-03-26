@@ -133,7 +133,7 @@
         in
         {
           os = mkKriomOS
-            { inherit kriomOSRev kor uyrld hyraizyn homeModule; };
+            { inherit kriomOSRev kor hob uyrld hyraizyn homeModule; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };

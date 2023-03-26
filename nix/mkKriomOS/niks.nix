@@ -1,4 +1,4 @@
-{ kor, lib, pkgs, hyraizyn, uyrld, konstynts, config, ... }:
+{ kor, lib, pkgs, hyraizyn, hob, konstynts, config, ... }:
 let
   inherit (builtins) mapAttrs attrNames filter;
   inherit (lib) boolToString mapAttrsToList importJSON;
@@ -25,23 +25,33 @@ let
     };
   };
 
-  mkFlakeEntriesListFromSet = entriesMap:
-    let
-      mkFlakeEntry = name: value: {
-        from = { type = "indirect"; id = name; };
-        to = value;
-      };
-    in
-    mapAttrsToList mkFlakeEntry entriesMap;
+  mkFlakeEntryFromHobInput = name: value: {
+    from = { type = "indirect"; id = name; };
+    to = { inherit type owner repo; };
+  };
 
-  kriomOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
+  kriomOSFlakeEntries = mapAttrsToList mkFlakeEntryFromHobInput hobFlakeInputs;
 
+  # Debugging here: flake inputs have lost data! No URL data, it's gone! The data monsters ate it.
+  inputIsFlake = name: input: lib.traceSeqN 1 (input.sourceInfo or null) input ? "isFlake" && input.isFlake;
+  hobFlakeInputs = lib.filterAttrs inputIsFlake hob;
+
+  # (Idea <hob could have an attribute for true flakes, to create registry entries>)
   nixOSFlakeEntries =
-    let nixOSFlakeRegistry = importJSON uyrld.pkdjz.flake-registry;
+    let nixOSFlakeRegistry = importJSON (hob.flake-registry + /flake-registry.json);
     in nixOSFlakeRegistry.flakes;
 
+  getFlakeEntryId = entry: entry.from.id;
+
+  doesNotClashWithHob = entry:
+    let flakeIsOnHob = lib.hasAttr entry.from.id hobFlakeInputs;
+    in if flakeIsOnHob then false else true;
+
+  filteredNixOSFlakeEntries = filter doesNotClashWithHob nixOSFlakeEntries;
+
   nixFlakeRegistry = {
-    flakes = nixOSFlakeEntries ++ kriomOSFlakeEntries;
+    # (Todo (verify priority (note (or (filterOut nixOS duplicates) (merge upstream)))))
+    flakes = filteredNixOSFlakeEntries ++ kriomOSFlakeEntries;
     version = 2;
   };
 
