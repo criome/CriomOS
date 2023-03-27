@@ -18,23 +18,16 @@ let
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
   flakeEntriesOverrides = {
-    hob = {
-      type = "github";
-      owner = "sajban";
-      repo = "hob";
-    };
-    kriomOS = {
-      type = "github";
-      owner = "sajban";
-      repo = "kriomOS";
-    };
+    hob = { type = "github"; owner = "sajban"; };
+    kriomOS = { type = "github"; owner = "sajban"; };
+    std = { type = "github"; owner = "divnix"; };
   };
 
   mkFlakeEntriesListFromSet = entriesMap:
     let
       mkFlakeEntry = name: value: {
         from = { type = "indirect"; id = name; };
-        to = value;
+        to = value // { repo = name; };
       };
     in
     mapAttrsToList mkFlakeEntry entriesMap;
