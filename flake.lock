@@ -1341,7 +1341,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-nYR8HdV1FrrFLm+Uw0vmeT1Tthd8QrOVg3BhZ/+XclA=",
+        "narHash": "sha256-Z4bC0F0/Vt1D/hv/NAY4UT5/eMRt2gdVWBTkUXlvEhM=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

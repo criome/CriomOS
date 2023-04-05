@@ -214,6 +214,8 @@
 (use-package forge
   :after (magit))
 
+(use-package code-review)
+
 (use-package magit
   :config
   (put 'magit-clean 'disabled nil))
