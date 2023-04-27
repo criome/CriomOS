@@ -13,7 +13,7 @@ let
     exec "${pkgs.nodePackages_latest.wrangler}/bin/wrangler" "$@"
   '';
 
-  tokenaizdHub = pkgs.writeScriptBin "hub" ''
+  tokenizedHub = pkgs.writeScriptBin "hub" ''
     #!${mksh}/bin/mksh
     export GITHUB_TOKEN=''${GITHUB_TOKEN:-''$(${pkgs.gopass}/bin/gopass show -o github.com/token)}
     export GITHUB_USER=''${GITHUB_USER:-''$(${pkgs.gopass}/bin/gopass show github.com/token login)}
@@ -23,7 +23,7 @@ let
   tokenizedWrappedHub = pkgs.runCommand "hub" { } ''
     mkdir -p $out/bin
     ln -s ${pkgs.hub}/share $out/
-    ln -s ${tokenaizdHub}/bin/hub $out/bin/
+    ln -s ${tokenizedHub}/bin/hub $out/bin/
   '';
 
   lispDevPackages = with pkgs.lispPackages; [
