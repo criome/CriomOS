@@ -32,9 +32,11 @@
 (use-package ssh-deploy)
 
 (use-package org-roam
-  :init
-  (setq org-roam-v2-ack t)
+  :after (md-roam)
+  :config
+  (org-roam-db-autosync-mode 1)
   :custom
+  (org-roam-v2-ack t)
   (org-roam-directory "~/git/wiki")
   (org-roam-file-extensions '("md" "org")))
 

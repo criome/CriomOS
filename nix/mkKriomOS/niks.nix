@@ -28,6 +28,12 @@ let
       owner = "sajban";
       repo = "kriomOS";
     };
+    nixpkgs = {
+      type = "github";
+      owner = "sajban";
+      repo = "nixpkgs";
+      ref = "fishyThings"; # (TODO kriomOSVersion)
+    };
   };
 
   mkFlakeEntriesListFromSet = entriesMap:
