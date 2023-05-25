@@ -306,6 +306,34 @@ in
       };
   };
 
+  obs-StreamFX = {
+    modz = [ "pkgsSet" "pkgs" "pkdjz" ];
+    lamdy =
+      { src
+      , lib
+      , stdenv
+      , cmake
+      , pkg-config
+      , git
+      , obs-studio
+      , ffmpeg
+      , qt6Packages
+      , curl
+      , libaom
+      , ninja
+      }:
+
+      stdenv.mkDerivation rec {
+        pname = "obs-streamfx";
+        inherit src;
+
+        nativeBuildInputs = [ cmake pkg-config git curl ninja ];
+        buildInputs = [ obs-studio ffmpeg qt6Packages.qtbase libaom ];
+
+        dontWrapQtApps = true;
+      };
+  };
+
   open-color = {
     lamdy = { src, stdenv }:
       let
