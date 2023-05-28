@@ -67,6 +67,8 @@ in
     ++ optional requiresSofFirmware sof-firmware
     ;
 
+    ledger.enable = izEdj;
+
     opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel
       ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
 

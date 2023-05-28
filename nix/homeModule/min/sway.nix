@@ -163,6 +163,7 @@ mkIf saizAtList.min {
 
   home = {
     packages = with pkgs; [
+      ledger-live-desktop
       element-desktop
       # C
       # ctags
