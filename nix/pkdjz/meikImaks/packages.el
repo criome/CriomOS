@@ -52,6 +52,7 @@
 (use-package clojure-mode)
 (use-package flycheck-clj-kondo)
 (use-package cider)
+(use-package zprint-format)
 
 (use-package company
   :hook

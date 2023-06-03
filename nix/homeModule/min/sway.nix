@@ -203,6 +203,8 @@ mkIf saizAtList.min {
       tor-browser-bundle-bin
     ]
     ++ (optionals izNiksDev (with pkgs; [
+      # Clojure
+      zprint
     ]))
     ++ (optionals izSemaDev (with pkgs; [
       inkscape
