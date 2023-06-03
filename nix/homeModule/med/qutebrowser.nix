@@ -25,6 +25,7 @@ let
     "https://gitea.com"
     "https://codeberg.org"
     "https://source.puri.sm"
+    "https://clojure.org"
     "https://crates.io"
     "https://docs.rs"
     "https://doc.rust-lang.org"
