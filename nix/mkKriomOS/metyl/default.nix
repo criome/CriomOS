@@ -132,6 +132,11 @@ in
 
     localtimed = { enable = saizAtList.min; };
 
+    printing = {
+      enable = true;
+      cups-pdf.enable = saizAtList.min;
+    };
+
     udev.extraRules = ''
       # USBasp - USB programmer for Atmel AVR controllers
       SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", GROUP="plugdev"

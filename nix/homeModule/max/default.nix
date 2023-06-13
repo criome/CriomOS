@@ -43,6 +43,7 @@ kor.mkIf saizAtList.max {
   home = {
     packages = with pkgs; [
       # freecad # broken
+      wineWowPackages.waylandFull
     ]
     ++ (optionals izNiksDev niksDevPackages)
     ++ (optionals izSemaDev semaDevPackages);
