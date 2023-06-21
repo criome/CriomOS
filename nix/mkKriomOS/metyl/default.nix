@@ -104,8 +104,11 @@ in
 
   };
 
-  powerManagement = { inherit cpuFreqGovernor; }
-    // (optionalAttrs hasModelSpecificPowerTweaks modelSpecificPowerTweaks."${modyl}");
+  powerManagement = {
+    inherit cpuFreqGovernor;
+    powertop.enable = true;
+  } //
+  (optionalAttrs hasModelSpecificPowerTweaks modelSpecificPowerTweaks."${modyl}");
 
   programs = { };
 
