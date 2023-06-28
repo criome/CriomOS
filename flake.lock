@@ -823,11 +823,11 @@
         "xah-fly-keys": "xah-fly-keys"
       },
       "locked": {
-        "lastModified": 1687353352,
-        "narHash": "sha256-wUtz5ovcV3jtj0dRTSW8m8mv9I72RaJhwKG9F+S85a8=",
+        "lastModified": 1687941001,
+        "narHash": "sha256-YBYB5C1n/Cs6LkvKRKm0SojyyjSvI2hpsT3mTe4GfwI=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "66fcf79d43b6cbc16bdd838850dea7e9e5eb5242",
+        "rev": "6abef3fdb82694baf02989767ee9d5850408d967",
         "type": "github"
       },
       "original": {
@@ -842,23 +842,18 @@
         "nixpkgs": [
           "hob",
           "nixpkgs"
-        ],
-        "utils": [
-          "hob",
-          "flake-utils"
         ]
       },
       "locked": {
-        "lastModified": 1669679750,
-        "narHash": "sha256-uScB9/H4zWEmbA2ZMN3Yp/v7AE2+EBsQiQ2glszqvF8=",
-        "owner": "sajban",
+        "lastModified": 1687901550,
+        "narHash": "sha256-p0AWnbv6+6dxBgvTZuvMHu9FW/spaISiT9k+r4bWm2g=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3b88724d48e1b1712ebc1d0848ca8a44c124d3f3",
+        "rev": "9dd107a1d5395fae9b969597e02f3ef3a43ddd47",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
-        "ref": "fix-pueue-empty-settings",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
