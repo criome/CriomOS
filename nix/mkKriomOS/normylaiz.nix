@@ -132,4 +132,10 @@ in
     groups.dialout = { };
   };
 
+  xdg = {
+    portal = mkIf hasAcceleratedVideoOutput {
+      enable = true;
+      wlr.enable = true;
+    };
+  };
 }
