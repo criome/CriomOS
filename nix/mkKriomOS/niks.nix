@@ -1,6 +1,6 @@
 { kor, lib, pkgs, hyraizyn, uyrld, konstynts, config, ... }:
+with builtins;
 let
-  inherit (builtins) mapAttrs attrNames filter;
   inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
 
@@ -32,7 +32,7 @@ let
       type = "github";
       owner = "sajban";
       repo = "nixpkgs";
-      ref = "fishyThings"; # (TODO kriomOSVersion)
+      ref = "robertsModule"; # (TODO kriomOSVersion)
     };
   };
 
@@ -51,8 +51,18 @@ let
     let nixOSFlakeRegistry = importJSON uyrld.pkdjz.flake-registry;
     in nixOSFlakeRegistry.flakes;
 
+  filterOutRegistry = entry:
+    let
+      flakeName = entry.from.id;
+      flakeOverrideNames = attrNames flakeEntriesOverrides;
+      entryIsOverridden = elem flakeName flakeOverrideNames;
+    in
+      !(entryIsOverridden);
+
+  filteredNixosFlakeEntries = filter filterOutRegistry nixOSFlakeEntries;
+
   nixFlakeRegistry = {
-    flakes = nixOSFlakeEntries ++ kriomOSFlakeEntries;
+    flakes = kriomOSFlakeEntries ++ filteredNixosFlakeEntries;
     version = 2;
   };
 
@@ -81,6 +91,9 @@ in
       allowed-users = [ "@users" "nix-serve" ];
 
       build-cores = astra.nbOfBildKorz;
+
+      connect-timeout = 5;
+      fallback = true;
 
       trusted-public-keys = trostydBildPriKriomz;
       substituters = kacURLz;
