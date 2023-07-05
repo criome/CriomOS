@@ -85,7 +85,7 @@ mkIf saizAtList.min {
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures = { base = true; gtk = true; };
-    systemdIntegration = true;
+    systemd.enable = true;
     extraSessionCommands = '' '';
     config = null;
     extraConfig = swayConfigString;

@@ -1,11 +1,10 @@
 { kor, lib, src, pkgs, hob }:
 let
   emacs-overlay = src;
-  inherit (pkgs) writeText emacsPackagesFor emacsPgtkNativeComp
-    delta;
+  inherit (pkgs) writeText emacsPackagesFor emacs29-pgtk;
 
-  emacs = emacsPgtkNativeComp;
-  emacsPackages = emacsPackagesFor emacsPgtkNativeComp;
+  emacs = emacs29-pgtk;
+  emacsPackages = emacsPackagesFor emacs29-pgtk;
   inherit (emacsPackages) elpaBuild withPackages melpaBuild
     trivialBuild;
 
@@ -41,7 +40,7 @@ let
 
     magit-delta = emacsPackages.magit-delta.overrideAttrs
       (attrs: {
-        buildInputs = attrs.buildInputs ++ [ delta ];
+        buildInputs = attrs.buildInputs ++ [ pkgs.delta ];
       });
 
     md-roam =
