@@ -8,7 +8,7 @@
 
 (use-package consult
   :custom
-  (consult-preview-key (kbd "M-.")))
+  (consult-preview-key "M-."))
 
 (use-package consult-flycheck)
 

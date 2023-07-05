@@ -1584,7 +1584,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-/6bUvXAw8mhAtQvF9Mjt4AwMGwcBbU0LD7CrVF4PwXY=",
+        "narHash": "sha256-TskB/C5SyHgYquXv5ujAOjdCzQ0gtq3udATYSKAdGw4=",
         "path": "./nix/pkdjz",
         "type": "path"
       },
