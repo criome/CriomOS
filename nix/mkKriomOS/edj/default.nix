@@ -5,6 +5,11 @@ let
 
   inherit (hyraizyn.astra.spinyrz) saizAtList izEdj;
 
+  minPackages = optionals saizAtList.min (with pkgs.gnome; [
+    adwaita-icon-theme
+    nautilus
+  ]);
+
   medPackages = optionals saizAtList.med (with pkgs; [ ]);
   maxPackages = optionals saizAtList.max (with pkgs; [ ]);
 
@@ -13,7 +18,7 @@ in
   hardware.pulseaudio.enable = false;
 
   environment = {
-    systemPackages = [ ] ++ medPackages ++ maxPackages;
+    systemPackages = with pkgs; minPackages ++ medPackages ++ maxPackages;
 
     gnome.excludePackages = with pkgs.gnome3; [
       gnome-software
@@ -24,6 +29,37 @@ in
     droidcam.enable = saizAtList.max;
     file-roller.enable = saizAtList.med;
     fish.enable = saizAtList.min;
+    zsh.enable = true;
+
+    hyprland = {
+      enable = true;
+    };
+
+    regreet = {
+      enable = !(saizAtList.min);
+      settings = {
+        GTK = {
+          application_prefer_dark_theme = true;
+          cursor_theme_name = "Adwaita";
+          icon_theme_name = "Adwaita";
+          theme_name = "Adwaita";
+        };
+      };
+    };
+
+    sway = {
+      enable = true;
+      wrapperFeatures = {
+        base = true;
+        gtk = true;
+      };
+
+      extraSessionCommands = ''
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export GDK_BACKEND=wayland
+      '';
+    };
   };
 
   services = {
@@ -32,32 +68,27 @@ in
     dbus.packages = mkIf saizAtList.med [ pkgs.gcr ];
 
     gnome = {
-      gnome-initial-setup.enable = false;
-      gnome-browser-connector.enable = false;
-      gnome-keyring.enable = lib.mkForce false; # To avoid overriding SSH_AUTH_SOCK
+      core-utilities.enable = true;
     };
 
     tumbler.enable = saizAtList.med;
 
     xserver = {
-      enable = saizAtList.med;
+      enable = saizAtList.min;
       excludePackages = with pkgs; [ xorg.xorgserver.out ];
       displayManager = {
         gdm = {
-          enable = saizAtList.med;
+          enable = saizAtList.min;
           autoSuspend = izEdj;
         };
       };
+    };
+  };
 
-      desktopManager = {
-        gnome = {
-          enable = saizAtList.max;
-          extraGSettingsOverrides = ''
-            [org.gnome.desktop.peripherals.touchpad]
-            tap-to-click=true
-          '';
-        };
-      };
+  xdg = {
+    portal = {
+      enable = true;
+      wlr.enable = true;
     };
   };
 }

@@ -5,9 +5,10 @@ let
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
   inherit (krimyn.spinyrz) iuzColemak hazPriKriom
-    gitSigningKey matrixID saizAtList izNiksDev;
+    gitSigningKey matrixID saizAtList izNiksDev izSemaDev;
   inherit (krimyn) githubId neim;
   inherit (profile) dark;
+  inherit (pkgs) writeText;
 
   homeDir = config.home.homeDirectory;
 
@@ -43,6 +44,84 @@ let
       '';
   });
 
+  waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
+  waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
+
+  fontDeriveicynz = [ pkgs.noto-fonts-cjk ]
+    ++ (optionals saizAtList.med (with pkgs; [
+    pkdjz.nerd-fonts.firaCode
+    fira-code
+  ]));
+
+  mkFcCache = pkgs.makeFontsCache { fontDirectories = fontDeriveicynz; };
+
+  mkFontPaths = kor.concatMapStringsSep "\n"
+    (path: "<dir>${path}/share/fonts</dir>")
+    fontDeriveicynz;
+
+  mkFontConf = ''
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+    <fontconfig>
+      ${mkFontPaths}
+      <cachedir>${mkFcCache}</cachedir>
+    </fontconfig>
+  '';
+
+  mkFootSrcTheme = themeName:
+    let
+      themeString = readFile (pkgs.foot.src + "/themes/${themeName}");
+    in
+    writeText "foot-theme-${themeName}" themeString;
+
+  footThemeFile =
+    let
+      darkTheme = mkFootSrcTheme "derp";
+      lightTheme = mkFootSrcTheme "selenized-white";
+    in
+    if dark then darkTheme else lightTheme;
+
+  modernGraphicalPackages = with pkgs; [
+    ledger-live-desktop
+    element-desktop
+    # C
+    # ctags
+    swaylock
+    grim
+    slurp
+    waybar
+    zathura
+    wl-clipboard
+    libnotify
+    imv
+    wf-recorder
+    libva-utils
+    ffmpeg-full
+    # start("GTK")
+    wofi
+    gitg
+    pavucontrol
+    sonata
+    dino
+    transmission-remote-gtk
+    ptask
+    bookworm
+    pantheon.elementary-files
+    pantheon.elementary-code
+    # start("Qt")
+    adwaita-qt
+    qgnomeplatform
+    waylandQtpass
+    qtox
+    waylandPass
+    qjackctl
+    # TODO('hyraizyn language')
+    (hunspellWithDicts [ hunspellDicts.en-us-large ])
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    hunspellDicts.en-us-large
+    tor-browser-bundle-bin
+  ];
+
   brootConfig = toJSON { };
 
   mpv = pkgs.wrapMpv
@@ -56,7 +135,6 @@ let
     { youtubeSupport = saizAtList.med; };
 
   nixpkgsPackages = with pkgs; [
-
     mksh # saner bash
     retry
     ovyridynFzf
@@ -103,11 +181,15 @@ let
     tokei # loc counter
     eva # tui calculator
 
-  ] ++ (optionals izNiksDev [
+  ]
+  ++ modernGraphicalPackages # (Todo configure)
+  ++ (optionals izNiksDev [
     # Clojure
     clojure
     babashka
     clj-kondo
+    # lisp
+    zprint
 
     lsof
     miniserve
@@ -128,6 +210,11 @@ let
     shfmt
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
     i7z
+  ]))
+  ++ (optionals izSemaDev (with pkgs; [
+    inkscape
+    shotwell
+    gthumb
   ]));
 
   uyrldPackages = with uyrld; [
@@ -138,6 +225,53 @@ let
 in
 mkIf saizAtList.min {
   services = {
+    dunst = {
+      enable = true;
+      package = pkdjz.dunst;
+      waylandDisplay = "wayland-0";
+      # (TODO theme)
+      settings = {
+        global = {
+          geometry = "300x5-30+50";
+          transparency = 10;
+          frame_color = "#eceff1";
+          font = "Fira Code 10";
+        };
+
+        urgency_normal = {
+          background = "#37474f";
+          foreground = "#eceff1";
+          timeout = 10;
+        };
+      };
+    };
+
+    pantalaimon = {
+      enable = saizAtList.med;
+      settings = {
+        Default = {
+          LogLevel = "Debug";
+          SSL = true;
+        };
+        local-matrix = {
+          Homeserver = "https://matrix.org";
+          ListenAddress = "127.0.0.1";
+          ListenPort = 8009;
+          IgnoreVerification = true;
+          SSL = false;
+        };
+      };
+    };
+
+    gammastep = {
+      enable = true;
+      provider = "geoclue2";
+      temperature = {
+        day = 6000;
+        night = 2700;
+      };
+    };
+
     gpg-agent = {
       enable = true;
       verbose = true;
@@ -170,6 +304,16 @@ mkIf saizAtList.min {
     direnv = {
       enable = izNiksDev;
       nix-direnv.enable = izNiksDev;
+    };
+
+    foot = {
+      enable = true;
+      settings = {
+        main = {
+          include = toString footThemeFile;
+          font = "Fira Code:size=9";
+        };
+      };
     };
 
     git = {
@@ -250,6 +394,30 @@ mkIf saizAtList.min {
     };
 
     file = {
+      ".config/gtk-3.0/settings.ini".text = ''
+        [Settings]
+        gtk-application-prefer-dark-theme=${if dark then "1" else "0"}
+      '';
+
+      ".config/IJHack/QtPass.conf".text = ''
+        [General]
+        autoclearSeconds=20
+        passwordLength=32
+        useTrayIcon=false
+        hideContent=false
+        hidePassword=true
+        clipBoardType=1
+        hideOnClose=false
+        passExecutable=${waylandPass}/bin/pass
+        passTemplate=login\nurl
+        pwgenExecutable=${pkgs.pwgen}bin/pwgen
+        startMinimized=false
+        templateAllFields=false
+        useAutoclear=true
+        useTrayIcon=false
+        version=${pkgs.qtpass.version}
+      '';
+
       ".config/broot/conf.toml".text = brootConfig;
 
       ".cargo/config.toml".source = kynvyrt {
@@ -265,6 +433,8 @@ mkIf saizAtList.min {
   };
 
   xdg.configFile = {
+    "fontconfig/conf.d/10-niksIuzyr-fonts.conf".text = mkFontConf;
+
     "jj/config.toml".source = kynvyrt {
       neim = "jujutsuConfigToml";
       format = "toml";

@@ -72,26 +72,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   programs = {
-
     adb.enable = saizAtList.med;
-
     light.enable = hasVideoOutput;
-
-    sway = mkIf hasAcceleratedVideoOutput {
-      enable = true;
-      wrapperFeatures = {
-        base = true;
-        gtk = true;
-      };
-
-      extraSessionCommands = ''
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export GDK_BACKEND=wayland
-      '';
-    };
-
-    zsh.enable = true;
   };
 
   services = {
