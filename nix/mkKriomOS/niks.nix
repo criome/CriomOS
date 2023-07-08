@@ -34,6 +34,11 @@ let
       repo = "nixpkgs";
       ref = "robertsModule"; # (TODO kriomOSVersion)
     };
+    xdg-desktop-portal-hyprland = {
+      type = "github";
+      owner = "hyprwm";
+      repo = "xdg-desktop-portal-hyprland";
+    };
   };
 
   mkFlakeEntriesListFromSet = entriesMap:

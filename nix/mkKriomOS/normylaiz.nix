@@ -113,11 +113,4 @@ in
     defaultUserShell = "/run/current-system/sw/bin/zsh";
     groups.dialout = { };
   };
-
-  xdg = {
-    portal = mkIf hasAcceleratedVideoOutput {
-      enable = true;
-      wlr.enable = true;
-    };
-  };
 }

@@ -19,6 +19,7 @@
   (consult-ghq-grep-function #'consult-grep))
 
 (use-package embark)
+(use-package embark-consult)
 
 (use-package marginalia
   :config (marginalia-mode))

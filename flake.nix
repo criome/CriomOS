@@ -20,6 +20,14 @@
     AskiCoreNiks = { url = path:./AskiCoreNiks; flake = false; };
     AskiNiks = { url = path:./AskiNiks; flake = false; };
     AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
+
+    nixpkgs = { type = "indirect"; id = "nixpkgs"; };
+    xdg-desktop-portal-hyprland = {
+      type = "indirect";
+      id = "xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = inputs@{ self, ... }:
@@ -29,8 +37,8 @@
         in self.shortRev or shortHash;
 
       localHobSources = {
-        inherit (inputs) mkWebpage
-          AskiCoreNiks AskiNiks AskiDefaultBuilder;
+        inherit (inputs) AskiCoreNiks AskiNiks AskiDefaultBuilder
+          xdg-desktop-portal-hyprland mkWebpage;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 

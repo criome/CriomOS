@@ -1,4 +1,4 @@
-{ kor, hyraizyn, config, pkgs, lib, uyrld, ... }:
+{ kor, hyraizyn, config, pkgs, lib, uyrld, pkdjz, ... }:
 let
   inherit (kor) mkIf optional optionals optionalString optionalAttrs;
   inherit (lib) mkOverride;
@@ -25,8 +25,11 @@ in
     ];
   };
 
+
   programs = {
+    dconf.enable = true;
     droidcam.enable = saizAtList.max;
+    evolution.enable = true;
     file-roller.enable = saizAtList.med;
     fish.enable = saizAtList.min;
     zsh.enable = true;
@@ -68,7 +71,10 @@ in
     dbus.packages = mkIf saizAtList.med [ pkgs.gcr ];
 
     gnome = {
+      at-spi2-core.enable = true;
       core-utilities.enable = true;
+      evolution-data-server.enable = true;
+      gnome-settings-daemon.enable = true;
     };
 
     tumbler.enable = saizAtList.med;
@@ -82,13 +88,6 @@ in
           autoSuspend = izEdj;
         };
       };
-    };
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      wlr.enable = true;
     };
   };
 }

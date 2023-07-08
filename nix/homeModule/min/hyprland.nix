@@ -13,20 +13,8 @@ let
   waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
   waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
 
-  hardwareAdjustedFfmpeg = pkgs.ffmpeg.override { withMfx = hasQuickSyncSupport; };
-
-  shellLaunch = command: "${shell} -c '${command}'";
-  homeDir = config.home.homeDirectory;
-  nixProfileExec = name: "${homeDir}/.nix-profile/bin/${name}";
-
-  shell = zshEksek;
-  zshEksek = nixProfileExec "zsh";
-  neovim = nixProfileExec "nvim";
-  elementaryCode = nixProfileExec "io.elementary.code";
-  termVis = shellLaunch "exec ${terminal} -e  ${nixProfileExec "vis"}";
-  termNeovim = shellLaunch "exec ${terminal} -e ${neovim}";
-  termBrowser = shellLaunch "exec ${terminal} -e ${nixProfileExec "w3m"}";
-  terminal = nixProfileExec "foot";
+  terminal = "foot";
+  keyboardLauncher = "wofi --show drun";
 
   swayArgz = {
     inherit iuzColemak optionalString;
@@ -59,10 +47,18 @@ let
 
 in
 mkIf saizAtList.min {
+  home.packages = with pkdjz; [ hyprland-relative-workspace ];
+
   # (Todo theme)
   xdg.configFile."hypr/hyprland.conf".text = with keys; ''
+    exec-once=waybar
+
+    monitor=,preferred,auto,1
+
     input {
       kb_layout = us
+      kb_variant=colemak
+      kb_options = ctrl:nocaps,altwin:swap_alt_win
       accel_profile = flat
       follow_mouse = 1
       mouse_refocus = 0
@@ -133,20 +129,19 @@ mkIf saizAtList.min {
     $SUPER_SHIFT = ${modifier}_SHIFT
     $SUPER_ALT = ${modifier}_ALT
 
-    bind = $SUPER_SHIFT, Return, exec, kitty
+    bind = $SUPER_SHIFT, Return, exec, ${terminal}
+    bind = $SUPER, O, exec, ${keyboardLauncher}
     bind = $SUPER, Q, killactive
     bind = $SUPER, P, exec, dunstify --icon=$(grimblast save screen) Screenshot Captured.
     bind = , Print, exec, grimblast copy area
     bind = $SUPER_ALT, delete, exit
     bind = $SUPER, ${float}, togglefloating
     bind = $SUPER, B, centerwindow
-    bind = $SUPER, I, exec, hyprctl keyword decoration:dim_inactive $((1 - $(hyprctl getoption decoration:dim_inactive -j | jq -r ".int")))
     bind = $SUPER, X, pin
     bind = $SUPER, ${fullscreen}, fullscreen
     bind = $SUPER, ${specialWorkspace}, togglespecialworkspace
     bind = $SUPER_SHIFT, ${specialWorkspace}, movetoworkspace, special
     bind = $SUPER_SHIFT, ${specialWorkspace}, focuscurrentorlast
-    bind = $SUPER, F1, exec, killall rofi || rofi -show drun
     bind = $SUPER, F2, togglespecialworkspace
 
     bind = $SUPER, Return, layoutmsg, swapwithmaster master
@@ -191,8 +186,6 @@ mkIf saizAtList.min {
     bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notify-send -t 2000 "Muted" "$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
     bindl=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -t 2000 "Raised volume to" "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | tail -c 3)%"
     bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && notify-send -t 2000 "Lowered volume to" "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | tail -c 3)%"
-    bindl=, XF86MonBrightnessDown, exec, brightnessctl set 5%- && notify-send -t 2000 "Decreased brightness to" "$(brightnessctl get)"
-    bindl=, XF86MonBrightnessUp, exec, brightnessctl set +5% && notify-send -t 2000 "Increased brightness to" "$(brightnessctl get)"
 
     misc {
       disable_hyprland_logo = yes

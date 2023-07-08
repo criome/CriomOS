@@ -247,7 +247,7 @@ mkIf saizAtList.min {
     };
 
     pantalaimon = {
-      enable = saizAtList.med;
+      enable = false;
       settings = {
         Default = {
           LogLevel = "Debug";

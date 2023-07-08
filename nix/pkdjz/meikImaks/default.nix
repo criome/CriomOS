@@ -1,10 +1,11 @@
 { kor, lib, src, pkgs, hob }:
+with builtins;
 let
   emacs-overlay = src;
-  inherit (pkgs) writeText emacsPackagesFor emacs29-pgtk;
+  inherit (pkgs) writeText emacsPackagesFor delta;
 
-  emacs = emacs29-pgtk;
-  emacsPackages = emacsPackagesFor emacs29-pgtk;
+  emacs = pkgs.emacs-unstable;
+  emacsPackages = emacsPackagesFor emacs;
   inherit (emacsPackages) elpaBuild withPackages melpaBuild
     trivialBuild;
 
@@ -110,10 +111,9 @@ let
   overiddenEmacsPackages = emacsPackages // customPackages;
 
 in
+
 { krimyn, profile }:
 let
-  inherit (builtins) readFile concatStringsSep;
-
   imaksTheme =
     if profile.dark then "'modus-vivendi"
     else "'modus-operandi";
@@ -137,11 +137,16 @@ let
     });
 
   mkPackageError = name:
+    let
+      coreEmacsPackageNames = [ "auth-source-pass" ];
+      packageIsInCore = elem name coreEmacsPackageNames;
+    in
+    if packageIsInCore then null else
     builtins.trace
       "Emacs package ${name}, declared wanted with use-package, not found."
       null;
 
-  findPackage = name: overiddenEmacsPackages.${name}  or (mkPackageError name);
+  findPackage = name: overiddenEmacsPackages.${name} or (mkPackageError name);
   usePackages = map findPackage usePackagesNames;
 
   elpaHeader = readFile ./elpaHeader.el;
