@@ -1,12 +1,6 @@
 (use-package envrc
   :config (envrc-global-mode))
 
-(use-package toodoo
-  :init
-  (setq toodoo-evil-base nil)
-  :custom
-  (toodoo-main-file "~/git/wiki/todo.org"))
-
 (use-package org-remark
   :custom
   (org-remark-notes-file-name "~/git/wiki/remark.org")
@@ -203,10 +197,6 @@
 (use-package phi-search)
 
 (use-package poly-markdown)
-
-(use-package doom-modeline
-  :config
-  (doom-modeline-mode 1))
 
 (use-package which-key
   :config

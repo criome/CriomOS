@@ -56,10 +56,9 @@ mkIf saizAtList.min {
     monitor=,preferred,auto,1
 
     input {
-      kb_layout = us
-      kb_variant=colemak
-      kb_options = ctrl:nocaps,altwin:swap_alt_win
       accel_profile = flat
+      repeat_rate=50
+      repeat_delay=350
       follow_mouse = 1
       mouse_refocus = 0
       sensitivity = 0
@@ -67,6 +66,16 @@ mkIf saizAtList.min {
         natural_scroll = yes
         disable_while_typing = no
       }
+    }
+
+    device:at-translated-set-2-keyboard {
+      kb_layout = us
+      kb_variant=colemak
+      kb_options = ctrl:nocaps,altwin:swap_alt_win
+    }
+
+    device:k.t.e.c.-ergodone-keyboard {
+      kb_layout = us
     }
 
     general {
