@@ -56,6 +56,8 @@ mkIf saizAtList.min {
     monitor=,preferred,auto,1
 
     input {
+      kb_layout = us
+      kb_variant=colemak
       accel_profile = flat
       repeat_rate=50
       repeat_delay=350
@@ -76,12 +78,13 @@ mkIf saizAtList.min {
 
     device:k.t.e.c.-ergodone-keyboard {
       kb_layout = us
+      kb_variant=
     }
 
     general {
-      gaps_in = 0
-      gaps_out = -1
-      border_size = 0
+      gaps_in = 3
+      gaps_out = 3
+      border_size = 3
       col.active_border = rgba(665c54ee) rgba(a65c54ee) 45deg
       col.inactive_border = rgba(28282899)
       layout = master

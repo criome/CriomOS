@@ -227,8 +227,6 @@ mkIf saizAtList.min {
   services = {
     dunst = {
       enable = true;
-      package = pkdjz.dunst;
-      waylandDisplay = "wayland-0";
       # (TODO theme)
       settings = {
         global = {
