@@ -230,10 +230,6 @@
   (eshell-highlight-prompt nil)
   (eshell-prompt-function 'epe-theme-lambda))
 
-(use-package fish-completion
-  :config
-  (global-fish-completion-mode))
-
 (use-package lispy
   :hook ((emacs-lisp-mode lisp-mode)
 	 . lispy-mode))

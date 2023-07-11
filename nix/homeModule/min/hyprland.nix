@@ -78,7 +78,7 @@ mkIf saizAtList.min {
 
     device:k.t.e.c.-ergodone-keyboard {
       kb_layout = us
-      kb_variant=
+      kb_variant=colemak
     }
 
     general {
@@ -88,6 +88,7 @@ mkIf saizAtList.min {
       col.active_border = rgba(665c54ee) rgba(a65c54ee) 45deg
       col.inactive_border = rgba(28282899)
       layout = master
+      cursor_inactive_timeout = 3
     }
 
     decoration {

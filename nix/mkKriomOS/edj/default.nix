@@ -31,8 +31,6 @@ in
     droidcam.enable = saizAtList.max;
     evolution.enable = true;
     file-roller.enable = saizAtList.med;
-    fish.enable = saizAtList.min;
-    zsh.enable = true;
 
     hyprland = {
       enable = true;
@@ -48,20 +46,6 @@ in
           theme_name = "Adwaita";
         };
       };
-    };
-
-    sway = {
-      enable = true;
-      wrapperFeatures = {
-        base = true;
-        gtk = true;
-      };
-
-      extraSessionCommands = ''
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-        export GDK_BACKEND=wayland
-      '';
     };
   };
 

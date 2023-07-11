@@ -106,8 +106,6 @@ let
     transmission-remote-gtk
     ptask
     bookworm
-    pantheon.elementary-files
-    pantheon.elementary-code
     # start("Qt")
     adwaita-qt
     qgnomeplatform
@@ -213,8 +211,6 @@ let
   ]))
   ++ (optionals izSemaDev (with pkgs; [
     inkscape
-    shotwell
-    gthumb
   ]));
 
   uyrldPackages = with uyrld; [

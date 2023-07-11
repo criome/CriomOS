@@ -8,7 +8,7 @@ let
     [ pandoc ];
 
   semaDevPackages = with pkgs;
-    [ krita calibre pkdjz.flowblade zoom-us virt-manager gimp jitsi-meet-electron ];
+    [ krita calibre virt-manager gimp ];
 
   updatedDroidCamObs = droidcam-obs.overrideAttrs (attrs:
     let version = "1.5.1"; in
