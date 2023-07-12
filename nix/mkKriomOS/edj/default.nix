@@ -10,15 +10,18 @@ let
     nautilus
   ]);
 
-  medPackages = optionals saizAtList.med (with pkgs; [ ]);
-  maxPackages = optionals saizAtList.max (with pkgs; [ ]);
+  medPackages = with pkgs; [ ];
+
+  maxPackages = with pkgs; [ ];
 
 in
 {
   hardware.pulseaudio.enable = false;
 
   environment = {
-    systemPackages = with pkgs; minPackages ++ medPackages ++ maxPackages;
+    systemPackages = with pkgs; minPackages
+      ++ (optionals saizAtList.med medPackages
+      ++ (optionals saizAtList.max maxPackages));
 
     gnome.excludePackages = with pkgs.gnome3; [
       gnome-software

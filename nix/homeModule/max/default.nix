@@ -70,4 +70,8 @@ kor.mkIf saizAtList.max {
     };
 
   };
+
+  services = {
+    easyeffects = { enable = true; };
+  };
 }
