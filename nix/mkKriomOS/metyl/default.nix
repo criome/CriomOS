@@ -1,7 +1,7 @@
-{ lib, hyraizyn, kor, config, pkgs, ... }:
+{ lib, hyraizyn, config, pkgs, ... }:
 let
   inherit (builtins) readFile genList concatStringsSep;
-  inherit (kor) mkIf optional optionals optionalString optionalAttrs isOdd;
+  inherit (lib) mkIf optional optionals optionalString optionalAttrs isOdd;
   inherit (lib.generators) toINI;
   inherit (hyraizyn.astra.mycin) modyl korz;
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
@@ -64,8 +64,7 @@ in
       openelec-dvb-firmware
     ]
     ++ optional computerIs.rpi3B raspberrypiWirelessFirmware
-    ++ optional requiresSofFirmware sof-firmware
-    ;
+    ++ optional requiresSofFirmware sof-firmware;
 
     ledger.enable = izEdj;
 

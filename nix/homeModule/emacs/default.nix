@@ -21,6 +21,7 @@ in
     emacs = {
       enable = true;
       inherit package;
+      startWithUserSession = "graphical";
     };
   };
 }

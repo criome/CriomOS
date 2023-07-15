@@ -862,7 +862,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-bSLb9tNCeCb3KyJJfVe7jJLoVY/HipSSB0hB8JKkp40=",
+        "narHash": "sha256-6vK6qZr6ShfnHYY8szyWMyI8vPtGC0TtzVT29lR3qsM=",
         "path": "./nix/homeModule",
         "type": "path"
       },
@@ -1139,7 +1139,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Po+ywK5ibKDxBPRt42NXgG86YKzUS+n7Jq+cX8CfuZA=",
+        "narHash": "sha256-koE/OHl4vGSzow7CuzOTz2Zaypsin00zOejLVgfe5Fc=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1152,7 +1152,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Lt8guDy+pTqsfvcKHHSZIZhcHcUiQVwNJ0kjDxQ6+wU=",
+        "narHash": "sha256-LhYG2gS+vWZqKXYHM3gCKqo8MOOdU0KUGNfp/0KfBdA=",
         "path": "./nix/mkKriosfir",
         "type": "path"
       },
