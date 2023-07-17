@@ -179,6 +179,12 @@ let
       modz = [ "pkgs" "pkdjz" ];
     };
 
+    obs-ndi = {
+      modz = [ "pkgsSet" "pkgs" "pkdjz" ];
+      src = null;
+      lamdy = import ./obs-ndi;
+    };
+
     videocut = {
       lamdy = import ./videocut;
       modz = [ "pkgs" "pkdjz" ];

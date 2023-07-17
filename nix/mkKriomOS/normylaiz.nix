@@ -72,6 +72,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   programs = {
+    zsh.enable = true;
     adb.enable = saizAtList.med;
     light.enable = hasVideoOutput;
   };

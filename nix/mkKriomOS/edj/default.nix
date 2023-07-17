@@ -53,6 +53,8 @@ in
   };
 
   services = {
+    avahi.enable = saizAtList.min;
+
     power-profiles-daemon.enable = false;
 
     dbus.packages = mkIf saizAtList.med [ pkgs.gcr ];
