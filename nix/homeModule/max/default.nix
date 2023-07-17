@@ -66,7 +66,7 @@ kor.mkIf saizAtList.max {
       plugins =
         with pkgs.obs-studio-plugins;
         with uyrld.arcnmxNixexprs.legacyPackages.obs-studio-plugins;
-        [ updatedDroidCamObs wlrobs pkdjz.obs-ndi ];
+        [ updatedDroidCamObs wlrobs pkdjz.obs-ndi obs-pipewire-audio-capture advanced-scene-switcher ];
     };
 
   };

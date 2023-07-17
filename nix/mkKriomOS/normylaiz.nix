@@ -86,9 +86,10 @@ in
 
     pipewire = mkIf hasAudioOutput {
       enable = true;
-      alsa.enable = true;
-      jack.enable = true;
-      pulse.enable = true;
+      alsa.enable = false;
+      jack.enable = false;
+      pulse.enable = false;
+      wireplumber.enable = true;
     };
 
     udev = {
@@ -97,6 +98,7 @@ in
         ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="dialout", MODE="0660"
       '';
     };
+
   };
 
   sound = {
