@@ -3,7 +3,6 @@ with builtins;
 let
   inherit (kor) mkIf;
   inherit (krimyn.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
-  inherit (krimyn) saiz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
   inherit (hyraizyn.astra.mycin) modyl;
@@ -15,21 +14,9 @@ let
 
   terminal = "foot";
   keyboardLauncher = "wofi --show drun";
-
-  swayArgz = {
-    inherit iuzColemak optionalString;
-    waybarEksek = nixProfileExec "waybar";
-    swaylockEksek = nixProfileExec "swaylock";
-    browser = matcSaiz saiz "" termBrowser "${nixProfileExec "qutebrowser"}" "${nixProfileExec "qutebrowser"}";
-    launcher = "${nixProfileExec "wofi"} --show drun";
-    shellTerm = shellLaunch "export SHELL=${zshEksek}; exec ${terminal} ${zshEksek}";
-  };
-
-  fontDeriveicynz = [ pkgs.noto-fonts-cjk ]
-    ++ (optionals saizAtList.med (with pkgs; [
-    pkdjz.nerd-fonts.firaCode
-    fira-code
-  ]));
+  lockScreen = "swaylock --color 000000";
+  turnOffScreens = "hyrctl dispatch dpms off";
+  turnOnScreens = "hyrctl dispatch dpms on";
 
   modifier = "SUPER";
 
@@ -46,7 +33,7 @@ let
   keys = colemakKeys;
 
 in
-mkIf saizAtList.min {
+{
   home.packages = with pkdjz; [ hyprland-relative-workspace ];
 
   # (Todo theme)
@@ -207,4 +194,17 @@ mkIf saizAtList.min {
       disable_autoreload = yes
     }
   '';
+
+  services = {
+    swayidle = {
+      enable = true;
+      systemdTarget = "hyprland-session.target";
+      timeouts = [
+        { timeout = 300; command = turnOffScreens; resumeCommand = turnOnScreens; }
+        { timeout = 900; command = lockScreen; }
+      ];
+      events = [
+      ];
+    };
+  };
 }

@@ -1,23 +1,35 @@
-{ kor, pkgs, krimyn, profile, config, ... }:
+{ lib, pkgs, krimyn, profile, config, ... }:
 let
   inherit (builtins) readFile toString;
-  inherit (kor) mkIf optionalString;
+  inherit (lib) mkIf optionalString;
   inherit (krimyn.spinyrz) iuzColemak saizAtList;
   inherit (profile) dark;
 
-  unstrictWhitelist = [
-    "https://*.google.com"
-    "https://*.youtube.com"
-    "https://*.aliexpress.com"
-    "https://*.locals.com"
-    "https://*.stripe.com"
+  badDomains = [
+    "https://www.reddit.com"
+    "https://www.goodreads.com"
+    "https://www.allmusic.com"
+    "https://www.imdb.com"
+    "https://rumble.com"
+    "https://astro-charts.com"
+    "https://www.amazon.com"
+    "https://twitter.com"
+    "https://canva.com"
   ];
 
-  strictWhitelist = [
+  undesirableDomains = [
     "https://duckduckgo.com"
+    "https://www.cloudflare.com"
+    "https://dash.cloudflare.com"
+    "https://admin.gandi.net"
+    "https://cloud.linode.com"
+    "https://login.linode.com"
     "https://github.com"
-    "https://gitlab.com"
     "https://bitbucket.org"
+  ];
+
+  betterDomains = [
+    "https://gitlab.com"
     "https://gitlab.gnome.org"
     "https://gitlab.redox-os.org"
     "https://gitlab.freedesktop.org"
@@ -32,30 +44,31 @@ let
     "https://rustc-dev-guide.rust-lang.org"
     "https://rust-lang.github.io/async-book"
     "https://hydra.nixos.org"
-    "https://admin.gandi.net"
-    "https://cloud.linode.com"
-    "https://login.linode.com"
+    "https://download.lineageos.org"
+    "https://opengapps.org"
+    "https://postmarketos.org"
+    "https://odysee.com"
     "https://mail.protonmail.com"
     "https://login.protonmail.com"
     "https://mail.proton.me"
     "https://login.proton.me"
     "https://account.proton.me"
-    "https://www.cloudflare.com"
-    "https://dash.cloudflare.com"
-    "https://download.lineageos.org"
-    "https://opengapps.org"
-    "https://postmarketos.org"
     "https://asciinema.org"
-    "https://www.reddit.com"
-    "https://www.goodreads.com"
-    "https://www.allmusic.com"
-    "https://www.imdb.com"
-    "https://rumble.com"
-    "https://odysee.com"
-    "https://astro-charts.com"
-    "https://www.amazon.com"
-    "https://twitter.com"
+    "https://cal.com"
+    "https://meet.jit.si"
   ];
+
+  unsafeBadDomains = [
+    "https://*.google.com"
+    "https://*.youtube.com"
+    "https://*.aliexpress.com"
+    "https://*.locals.com"
+    "https://*.stripe.com"
+  ];
+
+  unstrictWhitelist = unsafeBadDomains;
+
+  strictWhitelist = betterDomains ++ undesirableDomains ++ badDomains;
 
   whitelist = unstrictWhitelist ++ strictWhitelist;
 
@@ -65,7 +78,7 @@ let
   domainListBlok = builtins.concatStringsSep "\n" mkDomainsList;
 
 in
-kor.mkIf saizAtList.med {
+lib.mkIf saizAtList.med {
   home = {
     packages = [ pkgs.qutebrowser ];
 

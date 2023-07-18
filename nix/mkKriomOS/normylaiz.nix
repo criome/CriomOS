@@ -86,9 +86,9 @@ in
 
     pipewire = mkIf hasAudioOutput {
       enable = true;
-      alsa.enable = false;
+      alsa.enable = true;
       jack.enable = false;
-      pulse.enable = false;
+      pulse.enable = true;
       wireplumber.enable = true;
     };
 
