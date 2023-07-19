@@ -57,7 +57,6 @@ in
       firmwareLinuxNonfree
       intel2200BGFirmware
       rtl8192su-firmware
-      rtl8723bs-firmware
       rtlwifi_new-firmware
       zd1211fw
       alsa-firmware

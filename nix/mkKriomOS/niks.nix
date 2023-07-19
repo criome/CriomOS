@@ -22,17 +22,19 @@ let
       type = "github";
       owner = "sajban";
       repo = "hob";
+      ref = "secondLanding"; # (TODO kriomOSVersion)
     };
     kriomOS = {
       type = "github";
       owner = "sajban";
       repo = "kriomOS";
+      ref = "secondLanding"; # (TODO kriomOSVersion)
     };
     nixpkgs = {
       type = "github";
       owner = "sajban";
       repo = "nixpkgs";
-      ref = "robertsModule"; # (TODO kriomOSVersion)
+      ref = "secondLanding"; # (TODO kriomOSVersion)
     };
     xdg-desktop-portal-hyprland = {
       type = "github";
