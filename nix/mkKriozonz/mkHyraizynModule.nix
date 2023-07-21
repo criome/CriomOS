@@ -95,13 +95,20 @@ let
           inherit (astri) spici trost saiz niksPriKriom
             yggAddress kriomOSNeim;
 
+          mkTypeIsFromTypeName = name:
+            let isOfThisType = name == spici; in
+            nameValuePair name isOfThisType;
+
+          typeIs = listToAttrs
+            (map mkTypeIsFromTypeName config.spiciz.astriSpiciz);
+
         in
         rec {
           izFullyTrusted = trost == 3;
           saizAtList = kor.mkSaizAtList saiz;
-          izEdj = spici == "edj";
-          izSentyr = spici == "sentyr";
-          izHaibrid = spici == "haibrid";
+          izEdj = typeIs.edj;
+          izSentyr = typeIs.sentyr;
+          izHaibrid = typeIs.haibrid;
           izBildyr = !izEdj && izFullyTrusted && (saizAtList.med || izSentyr) && izKriodaizd;
           izDispatcyr = !izSentyr && izFullyTrusted && saizAtList.min;
           izNiksKac = izSentyr && saizAtList.min && izKriodaizd;
@@ -122,6 +129,7 @@ let
 
           nixCacheDomain = if izNiksKac then ("nix." + kriomOSNeim) else null;
           nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
+
         };
 
     in
@@ -165,7 +173,7 @@ let
 
       computerModylz = thinkpadModylz ++ [ "rpi3B" ];
 
-      computerIsNotMap = builtins.listToAttrs
+      computerIsNotMap = listToAttrs
         (map (n: nameValuePair n false) computerModylz);
 
     in

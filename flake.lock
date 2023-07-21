@@ -1165,7 +1165,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-wP/WmVEh6kubLeqmENr9wffw+6+VH/kzPdG69bw0euA=",
+        "narHash": "sha256-1tbIwv4ASTo4icu75/p8oWL8Hnr+/rm2hdlSj/SamNc=",
         "path": "./nix/mkKriozonz",
         "type": "path"
       },
@@ -2118,11 +2118,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685385764,
-        "narHash": "sha256-r+XMyOoRXq+hlfjayb+fyi9kq2JK48TrwuNIAXqlj7U=",
+        "lastModified": 1689849710,
+        "narHash": "sha256-89eDnx/0VioAtgjx6l03qSQZJvwS0losLK8uJ8zrB3s=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "4d9ff0c17716936e0b5ca577a39e263633901ed1",
+        "rev": "43300c11a9c58020c3dd4f7587e30bcb2b1b0bec",
         "type": "github"
       },
       "original": {
