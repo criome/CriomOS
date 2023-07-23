@@ -36,6 +36,11 @@ let
           plz
           cl-lib
           ts
+          magit-section
+          taxy-magit-section
+          taxy
+          svg-lib
+          persist
         ];
       };
 
@@ -153,7 +158,7 @@ let
   elpaFooter = ";;; default.el ends here";
   defaultEl = elpaHeader + initEl + packagesEl + elpaFooter;
 
-  defaultElPackage = elpaBuild {
+  defaultElPackage = trivialBuild {
     pname = "default-el";
     version = kor.cortHacString defaultEl;
     src = writeText "default.el" defaultEl;

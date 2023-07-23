@@ -1,3 +1,5 @@
+(use-package ement)
+
 (use-package envrc
   :config (envrc-global-mode))
 
