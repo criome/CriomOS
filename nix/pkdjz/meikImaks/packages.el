@@ -52,7 +52,7 @@
 
 (use-package company
   :hook
-  ((lisp-mode nix-mode shen-mode emacs-lisp-mode clojure-mode)
+  ((lisp-mode nix-mode emacs-lisp-mode clojure-mode)
    . company-mode))
 
 (use-package dockerfile-mode :mode "Dockerfile")
@@ -237,7 +237,7 @@
 	 . lispy-mode))
 
 (use-package adaptive-wrap
-  :hook ((emacs-lisp-mode shen-mode lisp-mode nix-mode)
+  :hook ((emacs-lisp-mode lisp-mode nix-mode)
 	 . adaptive-wrap-prefix-mode))
 
 (use-package transmission
@@ -267,10 +267,6 @@
 
 (use-package notmuch :commands notmuch)
 (use-package notmuch-maildir)
-
-(use-package shen-elisp)
-(use-package shen-mode
-  :mode "\\.\\(shen\\|aski\\)\\'")
 
 (use-package unicode-fonts
   :config (unicode-fonts-setup))
