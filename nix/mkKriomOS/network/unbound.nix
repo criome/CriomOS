@@ -2,8 +2,7 @@
 let
   inherit (builtins) map concatStringsSep concatMap attrNames;
   inherit (lib) mapAttrsToList concatMapStringsSep lowPrio;
-  inherit (hyraizyn.astra) kriomOSNeim;
-  inherit (hyraizyn.astra.spinyrz) izEdj;
+  inherit (hyraizyn.astra) typeIs kriomOSNeim;
 
   listenIPs = [ "::1" "127.0.0.1" ];
   allowedIPs = [ "::1" "127.0.0.1" ];
@@ -33,7 +32,7 @@ let
 in
 {
   services.unbound = {
-    # enable = (!izEdj); # bootstrap
+    # enable = (!typeIs.edj); # bootstrap
     enable = true;
     settings = {
       server = {

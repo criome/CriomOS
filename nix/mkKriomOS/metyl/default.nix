@@ -3,9 +3,10 @@ let
   inherit (builtins) readFile genList concatStringsSep;
   inherit (lib) mkIf optional optionals optionalString optionalAttrs isOdd;
   inherit (lib.generators) toINI;
+  inherit (hyraizyn.astra) typeIs;
   inherit (hyraizyn.astra.mycin) modyl korz;
   inherit (hyraizyn.astra.spinyrz) saizAtList tcipIzIntel modylIzThinkpad
-    impozyzHaipyrThreding iuzColemak izSentyr izEdj computerIs;
+    impozyzHaipyrThreding iuzColemak computerIs;
 
   # TODO
   hasTouchpad = true;
@@ -65,7 +66,7 @@ in
     ++ optional computerIs.rpi3B raspberrypiWirelessFirmware
     ++ optional requiresSofFirmware sof-firmware;
 
-    ledger.enable = izEdj;
+    ledger.enable = typeIs.edj;
 
     opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel
       ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
@@ -167,12 +168,12 @@ in
       autoRepeatDelay = 200;
       autoRepeatInterval = 28;
 
-      digimend.enable = !izSentyr;
+      digimend.enable = !typeIs.sentyr;
     };
 
     logind = {
-      lidSwitch = if izSentyr then "ignore" else "suspend";
-      lidSwitchExternalPower = if izEdj then "suspend" else "ignore";
+      lidSwitch = if typeIs.sentyr then "ignore" else "suspend";
+      lidSwitchExternalPower = if typeIs.edj then "suspend" else "ignore";
     };
 
     thinkfan = mkIf modylIzThinkpad {

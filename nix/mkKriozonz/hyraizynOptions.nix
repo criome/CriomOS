@@ -91,6 +91,11 @@ let
       type = attrs;
       default = { };
     };
+
+    typeIs = mkOption {
+      type = attrs;
+      default = { };
+    };
   };
 
   metastraSubmodule = {

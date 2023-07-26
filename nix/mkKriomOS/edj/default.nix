@@ -3,7 +3,8 @@ let
   inherit (kor) mkIf optional optionals optionalString optionalAttrs;
   inherit (lib) mkOverride;
 
-  inherit (hyraizyn.astra.spinyrz) saizAtList izEdj;
+  inherit (hyraizyn.astra) typeIs;
+  inherit (hyraizyn.astra.spinyrz) saizAtList;
 
   minPackages = optionals saizAtList.min (with pkgs.gnome; [
     adwaita-icon-theme
@@ -16,7 +17,10 @@ let
 
 in
 {
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    opengl.driSupport32Bit = saizAtList.max;
+    pulseaudio.enable = false;
+  };
 
   environment = {
     systemPackages = with pkgs; minPackages
@@ -27,7 +31,6 @@ in
       gnome-software
     ];
   };
-
 
   programs = {
     dconf.enable = true;
@@ -74,7 +77,7 @@ in
       displayManager = {
         gdm = {
           enable = saizAtList.min;
-          autoSuspend = izEdj;
+          autoSuspend = typeIs.edj;
         };
       };
     };

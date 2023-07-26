@@ -130,6 +130,7 @@ in
   options = {
     spiciz = mkOption {
       type = attrs;
+      default = { };
     };
   };
 

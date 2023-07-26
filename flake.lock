@@ -1139,7 +1139,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-qr5XgKqTpZmhlYzaMDjeuyzDBQKEsHAUj9c+MCWoG7w=",
+        "narHash": "sha256-VEN+lv04+Hs9PYOL3Rv5R+nXMJQMpJIyIcVSk6L8I1M=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1152,7 +1152,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-LhYG2gS+vWZqKXYHM3gCKqo8MOOdU0KUGNfp/0KfBdA=",
+        "narHash": "sha256-XrwZrlKGuVQJ8C1RkIfNpNmxti5H7DXSBSK2z+Wt59o=",
         "path": "./nix/mkKriosfir",
         "type": "path"
       },
@@ -1165,7 +1165,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-o6aIFEisFBVbrO8o0qc5V1NcaUfumpdplGpNFcbDI4U=",
+        "narHash": "sha256-mUE8MvX6hklY8s1PF9vly8FHhhPB1MeDNjWkIlbZvSY=",
         "path": "./nix/mkKriozonz",
         "type": "path"
       },
@@ -2118,11 +2118,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1689849710,
-        "narHash": "sha256-89eDnx/0VioAtgjx6l03qSQZJvwS0losLK8uJ8zrB3s=",
+        "lastModified": 1690120086,
+        "narHash": "sha256-rwlNEpIjzWByz0mwXaoY7U9iGw9CG2zlqRcBvU/xKho=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "43300c11a9c58020c3dd4f7587e30bcb2b1b0bec",
+        "rev": "af539f4e4d54d83cdab5303c5812877f2e8c87b6",
         "type": "github"
       },
       "original": {

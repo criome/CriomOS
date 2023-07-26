@@ -3,8 +3,8 @@ let
   inherit (builtins) filter concatStringsSep listToAttrs hasAttr attrNames concatMap elem;
   inherit (kor) louestOf nameValuePair filterAttrs spiciDatum optional
     mapAttrsToList optionalAttrs optionalString arkSistymMap unique;
-  inherit (config) metastraNeim astraNeim;
-  inherit (metastrizSpiciz) metastriNeimz;
+  inherit (config) metastraNeim astraNeim spiciz;
+  inherit (metastrizSpiciz) metastriNeimz astriSpiciz;
 
   inputMetastra = Metastriz.${metastraNeim};
   inputAstriz = inputMetastra.astriz;
@@ -26,7 +26,9 @@ let
 
   mkAstri = astriNeim:
     let
+      # (TODO typecheck)
       inputAstri = inputAstriz.${astriNeim};
+      inherit (inputAstri) saiz spici;
       inherit (inputAstri.priKriomz) yggdrasil;
 
       filteredMycin = spiciDatum {
@@ -61,10 +63,15 @@ let
       neksysIp = inputAstri.neksysIp or null;
       wireguardPriKriom = inputAstri.wireguardPriKriom or null;
 
+      mkTypeIsFromTypeName = name:
+        let isOfThisType = name == spici; in
+        nameValuePair name isOfThisType;
+
       astri = {
+        inherit saiz spici;
+
         neim = astriNeim;
         inherit mycin wireguardPriKriom neksysIp;
-        inherit (inputAstri) saiz spici;
 
         linkLocalIPs =
           if (hasAttr "linkLocalIPs" inputAstri)
@@ -88,30 +95,23 @@ let
         sistym = arkSistymMap.${mycin.ark};
 
         nbOfBildKorz = 1; #TODO
+
+        typeIs = listToAttrs
+          (map mkTypeIsFromTypeName astriSpiciz);
       };
 
       spinyrz =
         let
           inherit (astri) spici trost saiz niksPriKriom
-            yggAddress kriomOSNeim;
-
-          mkTypeIsFromTypeName = name:
-            let isOfThisType = name == spici; in
-            nameValuePair name isOfThisType;
-
-          typeIs = listToAttrs
-            (map mkTypeIsFromTypeName config.spiciz.astriSpiciz);
+            yggAddress kriomOSNeim typeIs;
 
         in
         rec {
           izFullyTrusted = trost == 3;
           saizAtList = kor.mkSaizAtList saiz;
-          izEdj = typeIs.edj;
-          izSentyr = typeIs.sentyr;
-          izHaibrid = typeIs.haibrid;
-          izBildyr = !izEdj && izFullyTrusted && (saizAtList.med || izSentyr) && izKriodaizd;
-          izDispatcyr = !izSentyr && izFullyTrusted && saizAtList.min;
-          izNiksKac = izSentyr && saizAtList.min && izKriodaizd;
+          izBildyr = !typeIs.edj && izFullyTrusted && (saizAtList.med || typeIs.sentyr) && izKriodaizd;
+          izDispatcyr = !typeIs.sentyr && izFullyTrusted && saizAtList.min;
+          izNiksKac = typeIs.sentyr && saizAtList.min && izKriodaizd;
           izNiksKriodaizd = niksPriKriom != null && niksPriKriom != "";
           izYggKriodaizd = yggAddress != null && yggAddress != "";
           izNeksisKriodaizd = izYggKriodaizd;
@@ -129,6 +129,7 @@ let
 
           nixCacheDomain = if izNiksKac then ("nix." + kriomOSNeim) else null;
           nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
+
 
         };
 
@@ -150,7 +151,7 @@ let
           hostName = astri.kriomOSNeim;
           sshUser = "nixBuilder";
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
-          supportedFeatures = optional astri.spinyrz.izSentyr "big-parallel";
+          supportedFeatures = optional astri.typeIs.sentyr "big-parallel";
           system = astri.sistym;
           maxJobs = astri.nbOfBildKorz;
         };

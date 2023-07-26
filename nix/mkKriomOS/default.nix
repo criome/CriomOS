@@ -3,13 +3,12 @@ let
   inherit (kor) optional;
   inherit (uyrld) pkdjz home-manager;
   inherit (pkdjz) ivalNixos;
-  inherit (hyraizyn.astra.spinyrz) izEdj izHaibrid;
-  inherit (hyraizyn.astra) mycin io;
+  inherit (hyraizyn.astra) mycin io typeIs;
 
   iuzPodModule = (mycin.spici == "pod");
   iuzMetylModule = (mycin.spici == "metyl");
 
-  iuzEdjModule = izEdj || izHaibrid;
+  iuzEdjModule = typeIs.edj || typeIs.haibrid;
   iuzIsoModule = !iuzPodModule && (io.disks == { });
 
   krimynzModule = import ./krimynz.nix;
