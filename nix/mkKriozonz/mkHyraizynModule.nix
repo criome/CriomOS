@@ -151,7 +151,7 @@ let
           hostName = astri.kriomOSNeim;
           sshUser = "nixBuilder";
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
-          supportedFeatures = optional astri.typeIs.sentyr "big-parallel";
+          supportedFeatures = optional (!astri.typeIs.edj) "big-parallel";
           system = astri.sistym;
           maxJobs = astri.nbOfBildKorz;
         };
@@ -179,10 +179,7 @@ let
 
     in
     {
-      bildyrKonfigz =
-        let
-        in
-        map mkBildyr bildyrz;
+      bildyrKonfigz = map mkBildyr bildyrz;
 
       kacURLz =
         let
