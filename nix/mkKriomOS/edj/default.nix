@@ -18,7 +18,7 @@ let
 in
 {
   hardware = {
-    opengl.driSupport32Bit = saizAtList.max;
+    # opengl.driSupport32Bit = saizAtList.max;
     pulseaudio.enable = false;
   };
 
