@@ -36,6 +36,13 @@ let
       repo = "nixpkgs";
       ref = "secondLanding"; # (TODO kriomOSVersion)
     };
+    nixpkgs-master = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "d50ab4868ceffae60bfcc5e02013770f2ce98588"; # (TODO kriomOSVersion)
+    };
+
     xdg-desktop-portal-hyprland = {
       type = "github";
       owner = "hyprwm";

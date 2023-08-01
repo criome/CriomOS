@@ -1,6 +1,7 @@
-{ kor, pkgs, lib, hob, system, neksysNames }:
+{ lib, pkgs, hob, system, imports }:
 let
   inherit (builtins) hasAttr mapAttrs concatStringsSep elem readDir;
+  inherit (imports) kor neksysNames mkPkgs;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz mkZolaWebsite;
 
@@ -18,6 +19,7 @@ let
         "pkgsStatic"
         "pkgsSet"
         "hob"
+        "mkPkgs"
         "pkdjz"
         "uyrld"
         "uyrldSet"
@@ -33,6 +35,7 @@ let
         // optionalAttrs iuzMod.hob { inherit hob; }
         // optionalAttrs iuzMod.pkgsSet { inherit pkgs; }
         // optionalAttrs iuzMod.uyrldSet { inherit uyrld; }
+        // optionalAttrs iuzMod.mkPkgs { inherit mkPkgs; }
         // sobUyrldz
         // { inherit kor lib; }
         // { inherit system; }

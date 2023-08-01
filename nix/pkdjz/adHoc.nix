@@ -328,6 +328,16 @@ in
       };
   };
 
+  pkgs-master = {
+    modz = [ "mkPkgs" ];
+    self = hob.nixpkgs-master;
+    lamdy = { lib, src, system, mkPkgs }:
+      mkPkgs {
+        inherit lib system;
+        nixpkgs = src;
+      };
+  };
+
   skylendar = {
     src = null;
     lamdy = { stdenv, fetchurl }:

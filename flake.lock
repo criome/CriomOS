@@ -1139,7 +1139,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-VEN+lv04+Hs9PYOL3Rv5R+nXMJQMpJIyIcVSk6L8I1M=",
+        "narHash": "sha256-0H7rp9qwG+IZ0v60FrskgjPxRFunRwnyILSQDlRwNbo=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1191,7 +1191,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-1gUhLw3HmgrD6xoTMCgDj1C4tkGQUIL4OeGQnMiPGbQ=",
+        "narHash": "sha256-7RTf3K0vYBKkjwRsULuspXchA492ylHyE0pErPABK1g=",
         "path": "./nix/mkUyrld",
         "type": "path"
       },
@@ -1394,6 +1394,20 @@
         "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1690792050,
+        "narHash": "sha256-02XNtPANQAT/CYlHlk1POX6To2IEn3ese6Njj0mkOeM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d50ab4868ceffae60bfcc5e02013770f2ce98588",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs-master",
+        "type": "indirect"
       }
     },
     "nixpkgs-mozilla": {
@@ -1619,7 +1633,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-EBd+O11XeYV3m4UYfeQwIKkjKKwjxS2uru/n9WxL5dg=",
+        "narHash": "sha256-EDRFiD6DNGSM3IRfO4KI0IIxdlgXgfWqhX5BGKAQv40=",
         "path": "./nix/pkdjz",
         "type": "path"
       },
@@ -1788,6 +1802,7 @@
         "mkWebpage": "mkWebpage",
         "neksysNames": "neksysNames",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-master": "nixpkgs-master",
         "pkdjz": "pkdjz",
         "tests": "tests",
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"

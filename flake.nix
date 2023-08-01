@@ -22,6 +22,8 @@
     AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
 
     nixpkgs = { type = "indirect"; id = "nixpkgs"; };
+    nixpkgs-master = { type = "indirect"; id = "nixpkgs-master"; };
+
     xdg-desktop-portal-hyprland = {
       type = "indirect";
       id = "xdg-desktop-portal-hyprland";
@@ -30,15 +32,17 @@
 
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
+      inherit (nixpkgs) lib;
+
       kriomOSRev =
         let shortHash = kor.cortHacString self.narHash;
         in self.shortRev or shortHash;
 
       localHobSources = {
         inherit (inputs) AskiCoreNiks AskiNiks AskiDefaultBuilder
-          xdg-desktop-portal-hyprland mkWebpage;
+          xdg-desktop-portal-hyprland mkWebpage nixpkgs-master;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -47,7 +51,7 @@
 
       hob = inputs.hob.Hob // localHobSources;
 
-      inherit (hob) nixpkgs flake-utils emacs-overlay;
+      inherit (hob) flake-utils emacs-overlay;
 
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
@@ -69,7 +73,7 @@
               overlays = [ emacs-overlay.overlay ];
             in
             mkPkgs { inherit nixpkgs lib system overlays; };
-          uyrld = mkUyrld { inherit pkgs kor lib system hob neksysNames; };
+          uyrld = mkUyrld { inherit lib pkgs system hob imports; };
         in
         { inherit pkgs uyrld; };
 
@@ -82,7 +86,6 @@
       mkKriomDatom = import inputs.mkKriomDatom { inherit kor lib mkDatom; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
-      inherit (nixpkgs) lib;
       inherit (kor) mkLamdy arkSistymMap genAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
 
