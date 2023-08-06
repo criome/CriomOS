@@ -8,6 +8,15 @@
   (org-remark-notes-file-name "~/git/wiki/remark.org")
   (org-remark-source-file-name #'abbreviate-file-name))
 
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  :hook
+  (nix-mode . eglot-ensure))
+
+(use-package nix-mode)
+(use-package nixpkgs-fmt)
+
 (use-package json-mode)
 
 (use-package haskell-mode)
@@ -271,9 +280,6 @@
 (use-package unicode-fonts
   :config (unicode-fonts-setup))
 
-(use-package nix-mode)
-(use-package nixpkgs-fmt
-  :hook (nix-mode . nixpkgs-fmt-on-save-mode))
 
 (use-package ghq :commands ghq)
 

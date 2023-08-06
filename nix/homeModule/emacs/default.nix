@@ -1,4 +1,4 @@
-{ pkdjz, krimyn, kriozon, profile, ... }:
+{ pkgs, pkdjz, krimyn, kriozon, profile, ... }:
 let
   inherit (pkdjz) meikImaks slynkPackages;
   package = meikImaks { inherit krimyn profile; };
@@ -10,7 +10,9 @@ let
 in
 {
   home = {
-    packages = [ package ] ++ slynkPkgs;
+    packages = [ package ]
+      ++ (with pkgs; [ nil ])
+      ++ slynkPkgs;
 
     sessionVariables = {
       EDITOR = "emacsclient -c";
