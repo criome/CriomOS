@@ -55,6 +55,7 @@ let
     "https://account.proton.me"
     "https://asciinema.org"
     "https://cal.com"
+    "https://app.cal.com"
     "https://meet.jit.si"
   ];
 

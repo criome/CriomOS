@@ -81,6 +81,8 @@ let
     in
     if dark then darkTheme else lightTheme;
 
+  bleedingEdgeGraphicalPackages = with pkdjz.pkgs-master; [ ];
+
   modernGraphicalPackages = with pkgs; [
     ledger-live-desktop
     element-desktop
@@ -180,6 +182,7 @@ let
     eva # tui calculator
 
   ]
+  ++ bleedingEdgeGraphicalPackages # (Todo configure)
   ++ modernGraphicalPackages # (Todo configure)
   ++ (optionals izNiksDev [
     # Clojure

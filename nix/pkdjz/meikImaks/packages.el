@@ -14,6 +14,12 @@
   :hook
   (nix-mode . eglot-ensure))
 
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
+
 (use-package nix-mode)
 (use-package nixpkgs-fmt)
 

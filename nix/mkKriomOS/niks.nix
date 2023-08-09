@@ -40,7 +40,7 @@ let
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "d50ab4868ceffae60bfcc5e02013770f2ce98588"; # (TODO kriomOSVersion)
+      ref = "85963eba3a76ff2ae4928b9d5de45cbfe9eee2d8"; # (TODO kriomOSVersion)
     };
 
     xdg-desktop-portal-hyprland = {

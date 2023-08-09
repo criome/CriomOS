@@ -49,6 +49,13 @@ let
 
   modelSpecificKernelModules = modelKernelModulesIndex."${modyl}" or [ ];
 
+  # (Todo Hack)
+  useVaapiIntel = true;
+  hasOpenClSupport = saizAtList.max;
+
+  intelOpenGlPackages = optional useVaapiIntel pkgs.vaapiIntel
+    ++ optional hasOpenClSupport pkgs.intel-compute-runtime;
+
 in
 {
   hardware = {
@@ -68,7 +75,7 @@ in
 
     ledger.enable = typeIs.edj;
 
-    opengl.extraPackages = optional tcipIzIntel pkgs.vaapiIntel
+    opengl.extraPackages = optionals tcipIzIntel intelOpenGlPackages
       ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
 
   };
