@@ -1,4 +1,4 @@
-{ kor, lib, src, pkgs, hob }:
+{ kor, lib, src, pkgs, hob, tdlib }:
 with builtins;
 let
   emacs-overlay = src;
@@ -84,6 +84,17 @@ let
            :fetcher github)
         '';
       };
+
+    telega = emacsPackages.telega.overrideAttrs
+      (attrs:
+        let
+          src = hob.telega-el;
+          filteredBuildInputs = filter (pkg: pkg != pkgs.tdlib) attrs.buildInputs;
+        in {
+          inherit src;
+          version = "0.8.150";
+          buildInputs = filteredBuildInputs ++ [ tdlib ];
+        });
 
     tera-mode =
       let src = hob.tera-mode; in

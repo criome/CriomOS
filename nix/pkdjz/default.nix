@@ -78,7 +78,7 @@ let
 
     meikImaks = {
       lamdy = import ./meikImaks;
-      modz = [ "pkgsSet" "hob" ];
+      modz = [ "pkgsSet" "hob" "pkdjz" ];
       self = hob.emacs-overlay;
     };
 

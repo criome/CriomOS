@@ -315,8 +315,6 @@ in
 
   open-color = {
     lamdy = { src, stdenv }:
-      let
-      in
       stdenv.mkDerivation {
         name = "open-color";
         inherit src;
@@ -352,6 +350,14 @@ in
           sha256 = "sha256-j7iCCzHXwffHdhQcyzxPBvQK+RXaY3QSjXUtHu463fI=";
         };
       };
+  };
+
+   tdlib = {
+    lamdy = { src, tdlib }:
+      tdlib.overrideAttrs (attrs: {
+        version = "1.8.16";
+        inherit src;
+      });
   };
 
   wireguardNetresolved = {

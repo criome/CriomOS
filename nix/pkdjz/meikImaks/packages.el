@@ -1,4 +1,7 @@
-(use-package ement)
+(use-package ement
+  :config
+  (require 'ement-room-list)
+  (require 'ement-tabulated-room-list))
 
 (use-package envrc
   :config (envrc-global-mode))
