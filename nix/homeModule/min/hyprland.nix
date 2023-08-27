@@ -1,17 +1,5 @@
-{ kor, pkgs, pkdjz, krimyn, config, profile, hyraizyn, ... }:
-with builtins;
+{ pkdjz, ... }:
 let
-  inherit (kor) mkIf;
-  inherit (krimyn.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
-  inherit (profile) dark;
-  inherit (pkgs) writeText;
-  inherit (hyraizyn.astra.mycin) modyl;
-
-  hasQuickSyncSupport = modyl == "ThinkPadE15Gen2Intel";
-
-  waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
-  waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
-
   terminal = "foot";
   keyboardLauncher = "wofi --show drun";
   lockScreen = "swaylock --color 000000";
@@ -133,7 +121,7 @@ in
     bind = $SUPER, O, exec, ${keyboardLauncher}
     bind = $SUPER, Q, killactive
     bind = $SUPER, P, exec, dunstify --icon=$(grimblast save screen) Screenshot Captured.
-    bind = , Print, exec, grimblast copy area
+    bind = $SUPER, Print, exec, grimblast copy area
     bind = $SUPER_ALT, delete, exit
     bind = $SUPER, ${float}, togglefloating
     bind = $SUPER, B, centerwindow

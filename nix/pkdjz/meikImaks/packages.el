@@ -1,7 +1,9 @@
 (use-package ement
   :config
   (require 'ement-room-list)
-  (require 'ement-tabulated-room-list))
+  (require 'ement-tabulated-room-list)
+  :custom
+  (ement-notify-sound "message-new-instant"))
 
 (use-package envrc
   :config (envrc-global-mode))
