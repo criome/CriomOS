@@ -106,6 +106,7 @@ kor.mkIf saizAtList.med {
       git-bug
       lazygit
       #== rust
+      spotify-player
     ]
     ++ optionals izNiksDev (niksDevPackages ++ lispDevPackages);
 

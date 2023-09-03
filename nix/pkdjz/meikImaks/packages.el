@@ -1,3 +1,5 @@
+(use-package telega)
+
 (use-package ement
   :config
   (require 'ement-room-list)

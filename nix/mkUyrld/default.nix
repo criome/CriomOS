@@ -1,6 +1,7 @@
 { lib, pkgs, hob, system, imports }:
 let
-  inherit (builtins) hasAttr mapAttrs concatStringsSep elem readDir;
+  l = lib // builtins;
+  inherit (builtins) hasAttr mapAttrs   readDir;
   inherit (imports) kor neksysNames mkPkgs;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz mkZolaWebsite;
@@ -12,8 +13,6 @@ let
 
   meikSobUyrld = SobUyrld@{ lamdy, modz, self ? src, src ? self, sobUyrldz ? { } }:
     let
-      inherit (builtins) getAttr elem;
-
       Modz = [
         "pkgs"
         "pkgsStatic"
@@ -25,7 +24,7 @@ let
         "uyrldSet"
       ];
 
-      iuzMod = genAttrs Modz (n: (elem n modz));
+      iuzMod = genAttrs Modz (n: (l.elem n modz));
 
       /* Warning: sets shadowing */
       klozyr = optionalAttrs iuzMod.pkgs pkgs
@@ -94,7 +93,7 @@ let
       neksysWebpageSpokNames = lib.concatMap mkNeksysWebpageName neksysNames;
 
       isWebpageSpok = spokNeim:
-        elem spokNeim neksysWebpageSpokNames;
+        l.elem spokNeim neksysWebpageSpokNames;
 
       mkWebpageFleik = Webpage@{ src ? fleik, ... }:
         let
@@ -125,9 +124,10 @@ let
         worldFunction = mkWorldFunction fleik;
       };
 
-      flakeTypeExists = hasAttr fleik.type typedFlakeMakerIndex;
-
-      mkTypedFlake = typedFlakeMakerIndex."${fleik.type}";
+      mkTypedFlake = let inherit (fleik) type; in
+        typedFlakeMakerIndex."${type}" or l.trace
+          "Flake type ${type} does not exist. ${toString fleik} is returned as-is"
+          fleik;
 
     in
     if (hasAttr "type" fleik) then mkTypedFlake
