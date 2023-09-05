@@ -114,7 +114,7 @@ let
     waylandQtpass
     qtox
     waylandPass
-    qjackctl
+    qpwgraph
     # TODO('hyraizyn language')
     (hunspellWithDicts [ hunspellDicts.en-us-large ])
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
