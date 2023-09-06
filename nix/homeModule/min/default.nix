@@ -12,8 +12,6 @@ let
 
   homeDir = config.home.homeDirectory;
 
-  zshEksek = "${pkgs.zsh}/bin/zsh";
-
   fzfBinds = [ ];
   fzfColemakBinds = import ./fzfColemak.nix;
 

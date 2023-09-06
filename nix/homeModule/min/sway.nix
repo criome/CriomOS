@@ -1,6 +1,5 @@
 { kor, pkgs, pkdjz, krimyn, config, profile, hyraizyn, ... }:
 let
-  inherit (builtins) readFile mapAttrs;
   inherit (kor) mkIf optionals optionalString matcSaiz;
   inherit (krimyn.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
   inherit (krimyn) saiz;
