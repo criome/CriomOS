@@ -21,9 +21,10 @@ let
   flakeEntriesOverrides = {
     blank = { owner = "divnix"; };
     incl = { owner = "divnix"; };
+    haumea = { owner = "nix-community"; ref = "v0.2.2"; };
     paisano = { owner = "paisano-nix"; repo = "core"; };
-    paisano-tui = { owner = "paisano-tui"; };
-    dmerge = { owner = "divnix"; };
+    paisano-tui = { owner = "paisano-tui"; ref = "0.1.1"; };
+    dmerge = { owner = "divnix"; ref = "0.2.1"; };
     yants = { owner = "divnix"; };
     std = { owner = "divnix"; };
 
