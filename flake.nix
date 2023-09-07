@@ -2,24 +2,24 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = github:sajban/hob/secondLanding;
-    mkWebpage = { url = path:./mkWebpage; flake = false; };
-    kor = { url = path:./nix/kor; flake = false; };
-    mkPkgs = { url = path:./nix/mkPkgs; flake = false; };
-    mkDatom = { url = path:./nix/mkDatom; flake = false; };
-    mkUyrld = { url = path:./nix/mkUyrld; flake = false; };
-    mkKriosfir = { flake = false; url = path:./nix/mkKriosfir; };
-    mkKriozonz = { flake = false; url = path:./nix/mkKriozonz; };
-    mkKriomOS = { flake = false; url = path:./nix/mkKriomOS; };
-    pkdjz = { flake = false; url = path:./nix/pkdjz; };
-    homeModule = { flake = false; url = path:./nix/homeModule; };
-    neksysNames = { flake = false; url = path:./nix/neksysNames; };
-    tests = { url = path:./nix/tests; flake = false; };
-    mkKriomDatom = { url = path:./nix/mkKriomDatom; flake = false; };
-    files = { url = path:./nix/files; flake = false; };
-    AskiCoreNiks = { url = path:./AskiCoreNiks; flake = false; };
-    AskiNiks = { url = path:./AskiNiks; flake = false; };
-    AskiDefaultBuilder = { url = path:./AskiDefaultBuilder; flake = false; };
+    hob.url = "github:sajban/hob/secondLanding";
+    mkWebpage = { url = "path:./mkWebpage"; flake = false; };
+    kor = { url = "path:./nix/kor"; flake = false; };
+    mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };
+    mkDatom = { url = "path:./nix/mkDatom"; flake = false; };
+    mkUyrld = { url = "path:./nix/mkUyrld"; flake = false; };
+    mkKriosfir = { flake = false; url = "path:./nix/mkKriosfir"; };
+    mkKriozonz = { flake = false; url = "path:./nix/mkKriozonz"; };
+    mkKriomOS = { flake = false; url = "path:./nix/mkKriomOS"; };
+    pkdjz = { flake = false; url = "path:./nix/pkdjz"; };
+    homeModule = { flake = false; url = "path:./nix/homeModule"; };
+    neksysNames = { flake = false; url = "path:./nix/neksysNames"; };
+    tests = { url = "path:./nix/tests"; flake = false; };
+    mkKriomDatom = { url = "path:./nix/mkKriomDatom"; flake = false; };
+    files = { url = "path:./nix/files"; flake = false; };
+    AskiCoreNiks = { url = "path:./AskiCoreNiks"; flake = false; };
+    AskiNiks = { url = "path:./AskiNiks"; flake = false; };
+    AskiDefaultBuilder = { url = "path:./AskiDefaultBuilder"; flake = false; };
 
     nixpkgs = { type = "indirect"; id = "nixpkgs"; };
     nixpkgs-master = { type = "indirect"; id = "nixpkgs-master"; };

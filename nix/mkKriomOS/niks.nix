@@ -19,73 +19,36 @@ let
   nixpkgsTag = "secondLanding";
 
   flakeEntriesOverrides = {
-    blank = {
-      type = "github";
-      owner = "divnix";
-    };
-    incl = {
-      type = "github";
-      owner = "divnix";
-    };
-    paisano = {
-      type = "github";
-      owner = "paisano";
-    };
-    paisano-tui = {
-      type = "github";
-      owner = "paisano-tui";
-    };
-    dmerge = {
-      type = "github";
-      owner = "dmerge";
-    };
-    yants = {
-      type = "github";
-      owner = "yants";
-    };
+    blank = { owner = "divnix"; };
+    incl = { owner = "divnix"; };
+    paisano = { owner = "paisano-nix"; repo = "core"; };
+    paisano-tui = { owner = "paisano-tui"; };
+    dmerge = { owner = "divnix"; };
+    yants = { owner = "divnix"; };
+    std = { owner = "divnix"; };
 
-    hob = {
-      type = "github";
-      owner = "sajban";
-      ref = "secondLanding"; # (TODO kriomOSVersion)
-    };
-    kriomOS = {
-      type = "github";
-      owner = "sajban";
-      ref = "secondLanding"; # (TODO kriomOSVersion)
-    };
+    hob = { owner = "sajban"; ref = "secondLanding"; };
+    kriomOS = { owner = "sajban"; ref = "secondLanding"; };
 
-    lib = {
-      type = "github";
-      owner = "NixOS";
-      ref = "${nixpkgsTag}?dir=lib";
-    };
-    nixpkgs = {
-      type = "github";
-      owner = "sajban";
-      ref = nixpkgsTag; # (TODO kriomOSVersion)
-    };
+    lib = { owner = "NixOS"; ref = "${nixpkgsTag}?dir=lib"; };
+    nixpkgs = { owner = "sajban"; ref = nixpkgsTag; };
     nixpkgs-master = {
-      type = "github";
       owner = "NixOS";
+      repo = "nixpkgs";
       ref = "85963eba3a76ff2ae4928b9d5de45cbfe9eee2d8"; # (TODO kriomOSVersion)
     };
 
-    xdg-desktop-portal-hyprland = {
-      type = "github";
-      owner = "hyprwm";
-      repo = "xdg-desktop-portal-hyprland";
-    };
+    xdg-desktop-portal-hyprland = { owner = "hyprwm"; };
   };
 
   mkFlakeEntriesListFromSet = entriesMap:
     let
       mkFlakeEntry = name: value: {
         from = {
+          id = name;
           type = "indirect";
-          owner = name;
         };
-        to = (value // { repo = name; });
+        to = ({ repo = name; type = "github"; } // value);
       };
     in
     mapAttrsToList mkFlakeEntry entriesMap;
