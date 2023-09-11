@@ -27,10 +27,14 @@ let
     paisano-tui = { owner = "paisano-nix"; repo = "tui"; ref = "0.2.0"; };
     dmerge = { owner = "divnix"; ref = "0.2.1"; };
     yants = { owner = "divnix"; };
-    std = { owner = "divnix"; };
+    std = { owner = "LiGoldragon"; ref = "fixLibFollows"; };
+    call-flake = { owner = "divnix"; };
+    nosys = { owner = "divnix"; };
+    devshell = { owner = "numtide"; };
+    nixago = { owner = "nix-community"; };
 
     hob = { owner = "sajban"; ref = "secondLanding"; };
-    kriomOS = { owner = "sajban"; ref = "secondLanding"; };
+    kriomOS = { owner = "sajban"; ref = "newHorizons"; };
 
     lib = nixpkgsOwnerAndRef // { dir = "lib"; };
     nixpkgs = nixpkgsOwnerAndRef;
