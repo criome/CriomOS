@@ -17,13 +17,14 @@ let
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
   nixpkgsTag = "secondLanding";
+  nixpkgsOwnerAndRef = { owner = "sajban"; repo = "nixpkgs"; ref = nixpkgsTag; };
 
   flakeEntriesOverrides = {
     blank = { owner = "divnix"; };
     incl = { owner = "divnix"; };
     haumea = { owner = "nix-community"; ref = "v0.2.2"; };
     paisano = { owner = "paisano-nix"; repo = "core"; };
-    paisano-tui = { owner = "paisano-tui"; ref = "0.1.1"; };
+    paisano-tui = { owner = "paisano-nix"; repo = "tui"; ref = "0.2.0"; };
     dmerge = { owner = "divnix"; ref = "0.2.1"; };
     yants = { owner = "divnix"; };
     std = { owner = "divnix"; };
@@ -31,13 +32,16 @@ let
     hob = { owner = "sajban"; ref = "secondLanding"; };
     kriomOS = { owner = "sajban"; ref = "secondLanding"; };
 
-    lib = { owner = "NixOS"; ref = "${nixpkgsTag}?dir=lib"; };
-    nixpkgs = { owner = "sajban"; ref = nixpkgsTag; };
-    nixpkgs-master = {
+    lib = nixpkgsOwnerAndRef // { dir = "lib"; };
+    nixpkgs = nixpkgsOwnerAndRef;
+
+    nixpkgs-next = {
       owner = "NixOS";
       repo = "nixpkgs";
       ref = "85963eba3a76ff2ae4928b9d5de45cbfe9eee2d8"; # (TODO kriomOSVersion)
     };
+
+    nixpkgs-master = { owner = "NixOS"; repo = "nixpkgs"; };
 
     xdg-desktop-portal-hyprland = { owner = "hyprwm"; };
   };
