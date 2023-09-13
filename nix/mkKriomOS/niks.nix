@@ -32,7 +32,9 @@ let
     nosys = { owner = "divnix"; };
     devshell = { owner = "numtide"; };
     nixago = { owner = "nix-community"; };
+    clj-nix = { owner = "jlesquembre"; };
 
+    flakeWorld = { owner = "sajban"; };
     hob = { owner = "sajban"; ref = "secondLanding"; };
     kriomOS = { owner = "sajban"; ref = "newHorizons"; };
 

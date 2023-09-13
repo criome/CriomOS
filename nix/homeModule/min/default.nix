@@ -82,8 +82,6 @@ let
   bleedingEdgeGraphicalPackages = with pkdjz.pkgs-master; [ ];
 
   modernGraphicalPackages = with pkgs; [
-    ledger-live-desktop
-    element-desktop
     # C
     # ctags
     swaylock

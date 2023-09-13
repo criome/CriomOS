@@ -73,6 +73,13 @@ let
     node2nix
   ]);
 
+  graphicalPackages = with pkgs; [
+    ledger-live-desktop
+    element-desktop
+    telegram-desktop
+    losslesscut-bin
+  ];
+
 in
 kor.mkIf saizAtList.med {
   programs = {
@@ -108,6 +115,7 @@ kor.mkIf saizAtList.med {
       #== rust
       spotify-player
     ]
+    ++ graphicalPackages
     ++ optionals izNiksDev (niksDevPackages ++ lispDevPackages);
 
     file = {
