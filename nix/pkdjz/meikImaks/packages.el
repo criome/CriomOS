@@ -56,7 +56,12 @@
   :custom
   (org-roam-v2-ack t)
   (org-roam-directory "~/git/wiki")
-  (org-roam-file-extensions '("md" "org")))
+  (org-roam-file-extensions '("md" "org"))
+  (org-roam-capture-templates
+   (list '("d" "default" plain "" :target
+      (file+head "%<%Y%m%d%H%M%S-${title}>.md"
+		 "---\ntitle: ${title}\nid: %<%Y-%m-%dT%H%M%S>\ncategory: \n---\n")
+      :unnarrowed t))))
 
 (use-package md-roam
   :config
