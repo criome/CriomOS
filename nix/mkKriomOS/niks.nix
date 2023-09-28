@@ -35,7 +35,7 @@ let
     clj-nix = { owner = "jlesquembre"; };
 
     flakeWorld = { owner = "sajban"; };
-    hob = { owner = "sajban"; ref = "secondLanding"; };
+    hob = { owner = "sajban"; ref = "autumnCleaning"; };
     kriomOS = { owner = "sajban"; ref = "newHorizons"; };
 
     lib = nixpkgsOwnerAndRef // { dir = "lib"; };
