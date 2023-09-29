@@ -171,7 +171,7 @@ let
     sd
     ripgrep
     fd
-    exa
+    eza
     bat
     broot
     tokei # loc counter
