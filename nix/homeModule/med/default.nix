@@ -60,8 +60,6 @@ let
     nixpkgs-fmt
     tree-sitter
     gitAndTools.gitui
-    # Haskell
-    nvfetcher
     # Python
     # pkdjz.mach-nix.package # broken
     uyrld.kibord.kpBootCli

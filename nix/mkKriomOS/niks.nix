@@ -16,8 +16,11 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  nixpkgsTag = "secondLanding";
-  nixpkgsOwnerAndRef = { owner = "sajban"; repo = "nixpkgs"; ref = nixpkgsTag; };
+  nixpkgsOwnerAndRef = {
+    owner = "sajban";
+    repo = "nixpkgs";
+    ref = "209f6f3c21a8cf3de1b708fef5cd1e6d7988475c";
+  };
 
   flakeEntriesOverrides = {
     blank = { owner = "divnix"; };

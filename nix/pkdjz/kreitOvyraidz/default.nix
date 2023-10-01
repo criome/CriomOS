@@ -2,7 +2,7 @@
 , systemd
 , cryptsetup
 , llvmPackages
-, pkgconfig
+, pkg-config
 , utillinux
 , cmake
 , python2
@@ -26,31 +26,31 @@ let
 in
 {
   pkg-config = attrs: {
-    buildInputs = [ pkgconfig ];
+    buildInputs = [ pkg-config ];
   };
 
   libudev-sys = attrs: {
-    PKG_CONFIG_PATH = "${systemd.dev}/lib/pkgconfig";
-    buildInputs = [ pkgconfig systemd.dev ];
+    PKG_CONFIG_PATH = "${systemd.dev}/lib/pkg-config";
+    buildInputs = [ pkg-config systemd.dev ];
   };
 
   libcryptsetup-rs-sys = attrs: {
-    PKG_CONFIG_PATH = "${cryptsetupDev}/lib/pkgconfig";
+    PKG_CONFIG_PATH = "${cryptsetupDev}/lib/pkg-config";
     LIBCLANG_PATH = "${libclang}/lib";
     BINDGEN_EXTRA_CLANG_ARGS = mkClangIncludes [ "${cryptsetupDev}/include" "${clang}/lib/clang/${clang.version}/include/" ];
-    buildInputs = [ pkgconfig cryptsetupDev libclang ];
+    buildInputs = [ pkg-config cryptsetupDev libclang ];
   };
 
   libcryptsetup-rs = attrs: {
-    buildInputs = [ pkgconfig cryptsetupDev ];
+    buildInputs = [ pkg-config cryptsetupDev ];
   };
 
   libstratis = attrs: {
-    buildInputs = [ pkgconfig cryptsetupDev utillinux ];
+    buildInputs = [ pkg-config cryptsetupDev utillinux ];
   };
 
   expat-sys = attrs: {
-    buildInputs = [ pkgconfig expat cmake ];
+    buildInputs = [ pkg-config expat cmake ];
   };
 
   skia-bindings = attrs: {
@@ -58,15 +58,15 @@ in
   };
 
   servo-fontconfig-sys = attrs: {
-    buildInputs = [ pkgconfig fontconfig ];
+    buildInputs = [ pkg-config fontconfig ];
   };
 
   bzip2-sys = attrs: {
-    buildInputs = [ pkgconfig bzip2 ];
+    buildInputs = [ pkg-config bzip2 ];
   };
 
   freetype-sys = attrs: {
-    buildInputs = [ pkgconfig freetype cmake ];
+    buildInputs = [ pkg-config freetype cmake ];
   };
 
 }
