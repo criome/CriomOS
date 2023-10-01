@@ -4,7 +4,7 @@ let
   emacs-overlay = src;
   inherit (pkgs) writeText emacsPackagesFor delta;
 
-  emacs = pkgs.emacs-unstable;
+  emacs = pkgs.emacs29-pgtk;
   emacsPackages = emacsPackagesFor emacs;
   inherit (emacsPackages) elpaBuild withPackages melpaBuild
     trivialBuild;
