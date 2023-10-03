@@ -74,6 +74,7 @@ in
     xserver = {
       enable = saizAtList.min;
       excludePackages = with pkgs; [ xorg.xorgserver.out ];
+      desktopManager.gnome.enable = saizAtList.max;
       displayManager = {
         gdm = {
           enable = saizAtList.min;
