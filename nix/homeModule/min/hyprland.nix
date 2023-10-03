@@ -60,7 +60,7 @@ in
       gaps_in = 3
       gaps_out = 3
       border_size = 3
-      col.active_border = rgba(665c54ee) rgba(a65c54ee) 45deg
+      col.active_border = rgb(fa00fa) rgb(ff00ff) 45deg
       col.inactive_border = rgba(28282899)
       layout = master
       cursor_inactive_timeout = 3
