@@ -249,7 +249,8 @@ let
 
         saizAtList = kor.mkSaizAtList krimyn.saiz;
 
-        matrixID = "@${krimyn.neim}:${metastra.neim}.kriom";
+        emailAddress = "${krimyn.neim}@${metastra.neim}.kriom.me";
+        matrixID = "@${krimyn.neim}:${metastra.neim}.kriom.me";
 
         gitSigningKey =
           if hazPriKriom then

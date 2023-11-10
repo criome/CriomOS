@@ -6,7 +6,7 @@ let
   inherit (hyraizyn) astra;
   inherit (krimyn.spinyrz) iuzColemak hazPriKriom
     gitSigningKey matrixID saizAtList izNiksDev izSemaDev;
-  inherit (krimyn) githubId neim;
+  inherit (krimyn) githubId neim spinyrz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
 
@@ -311,7 +311,7 @@ mkIf saizAtList.min {
 
     git = {
       enable = true;
-      userEmail = matrixID;
+      userEmail = spinyrz.emailAddress;
       userName = neim;
       signing = mkIf hazPriKriom {
         key = gitSigningKey;
