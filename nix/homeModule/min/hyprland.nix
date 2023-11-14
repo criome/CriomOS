@@ -32,7 +32,7 @@ in
 
     input {
       kb_layout = us
-      kb_variant=colemak
+      kb_variant=
       accel_profile = flat
       repeat_rate=50
       repeat_delay=350
@@ -54,6 +54,11 @@ in
     device:k.t.e.c.-ergodone-keyboard {
       kb_layout = us
       kb_variant=colemak
+    }
+
+    device:that-canadian-minidox {
+      kb_layout = us
+      kb_variant=
     }
 
     general {
