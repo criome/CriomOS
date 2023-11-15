@@ -2,7 +2,7 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = "github:sajban/hob/autumnCleaning";
+    hob.url = "github:sajban/hob/fixedOBS";
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
     mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };

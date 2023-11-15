@@ -19,7 +19,7 @@ let
   nixpkgsOwnerAndRef = {
     owner = "sajban";
     repo = "nixpkgs";
-    ref = "209f6f3c21a8cf3de1b708fef5cd1e6d7988475c";
+    ref = "ac1dd9de6ce5e3040c49101f21f204744905f418";
   };
 
   flakeEntriesOverrides = {

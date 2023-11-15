@@ -15,17 +15,21 @@ let
     modules = baseModules;
   });
 
-  nixosNixpkgsConfig = {
-    nixpkgs = { inherit pkgs system; };
-  };
-
   specialArgs = {
     modulesPath = toString (src + /nixos/modules);
   };
 
-  baseModules = import (src + /nixos/modules/module-list.nix);
+  nixpkgsConfig = { nixpkgs = { inherit pkgs; }; };
+
+  nixpkgsModules = [ nixpkgsConfig src.nixosModules.readOnlyPkgs ];
+
+  baseModules = import (src + /nixos/modules/module-list.nix)
+    ++ nixpkgsModules;
+
+
   qemuVmModule = import
     (src + /nixos/modules/virtualisation/qemu-vm.nix);
+
   isoImageModule = import
     (src + /nixos/modules/installer/cd-dvd/iso-image.nix);
 
@@ -41,7 +45,7 @@ in
 evalModules {
   inherit specialArgs;
   modules = argz.modules ++ baseModules
-    ++ [ moduleArgsModule nixosNixpkgsConfig ]
+    ++ [ moduleArgsModule ]
     ++ (optional iuzQemuVmModule qemuVmModule)
     ++ (optional iuzIsoModule isoImageModule);
 }
