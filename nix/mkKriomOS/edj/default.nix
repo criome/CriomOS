@@ -9,6 +9,7 @@ let
   minPackages = optionals saizAtList.min (with pkgs.gnome; [
     adwaita-icon-theme
     nautilus
+    pkgs.libinput
   ]);
 
   medPackages = with pkgs; [ ];

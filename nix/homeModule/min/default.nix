@@ -88,6 +88,7 @@ let
     grim
     slurp
     waybar
+    wayland-warpd
     zathura
     wl-clipboard
     libnotify
@@ -129,6 +130,8 @@ let
       screenSaverSupport = false;
     })
     { youtubeSupport = saizAtList.med; };
+
+  wayland-warpd = pkgs.warpd.override { withX = false; };
 
   nixpkgsPackages = with pkgs; [
     mksh # saner bash
