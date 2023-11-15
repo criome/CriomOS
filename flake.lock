@@ -1145,7 +1145,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-nwDese0AF5KWcP8fUR8y4qkQmr2a+wK1wBC2Eb0tsMI=",
+        "narHash": "sha256-Wxq9sxL2CiLVwHd0kb7oBNHTpYWGZqr/qsZryQO20sE=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1158,7 +1158,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-XrwZrlKGuVQJ8C1RkIfNpNmxti5H7DXSBSK2z+Wt59o=",
+        "narHash": "sha256-ZnZL36p5Iw6N5bD7petN7kxMHtIWJzGCpFupIwrhfRk=",
         "path": "./nix/mkKriosfir",
         "type": "path"
       },

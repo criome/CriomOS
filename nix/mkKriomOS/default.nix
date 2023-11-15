@@ -7,6 +7,7 @@ let
 
   iuzPodModule = (mycin.spici == "pod");
   iuzMetylModule = (mycin.spici == "metyl");
+  useTemporaryHostModule = (mycin.spici == "cloudBroadcaster");
 
   iuzEdjModule = typeIs.edj || typeIs.haibrid;
   iuzIsoModule = !iuzPodModule && (io.disks == { });
@@ -17,18 +18,17 @@ let
   networkModule = import ./network;
   edjModule = import ./edj;
 
-  disksModule =
-    if iuzPodModule
-    then import ./pod.nix
-    else if iuzIsoModule
-    then import ./liveIso.nix
+  persistenceModule =
+    if iuzPodModule then import ./pod.nix
+    else if useTemporaryHostModule then import ./temporaryHost.nix
+    else if iuzIsoModule then import ./liveIso.nix
     else import ./priInstyld.nix;
 
   metylModule = import ./metyl;
 
   beisModules = [
     krimynzModule
-    disksModule
+    persistenceModule
     niksModule
     normylaizModule
     networkModule

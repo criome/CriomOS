@@ -14,7 +14,15 @@ let
   butlodyrz = [ "uefi" "mbr" "uboot" ];
   kibordz = [ "qwerty" "colemak" ];
 
-  astriSpiciz = [ "sentyr" "haibrid" "edj" "edjTesting" "mediaBroadcast" "mainRouter" ];
+  astriSpiciz = [
+    "sentyr"
+    "haibrid"
+    "edj"
+    "edjTesting"
+    "mediaBroadcast"
+    "cloudBroadcast"
+    "mainRouter"
+  ];
 
   metastriNeimz = attrNames priMetastriz;
 
