@@ -153,7 +153,7 @@ let
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           supportedFeatures = optional (!astri.typeIs.edj) "big-parallel";
           system = astri.sistym;
-          # extraPlatforms = lib.optional (astri.sistym == "x86_64-linux") "i686-linux";
+          systems = lib.optional (astri.sistym == "x86_64-linux") "i686-linux";
           maxJobs = astri.nbOfBildKorz;
         };
 

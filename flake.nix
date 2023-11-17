@@ -3,6 +3,7 @@
 
   inputs = {
     hob.url = "github:sajban/hob/fixedOBS";
+
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
     mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };
@@ -20,29 +21,17 @@
     AskiCoreNiks = { url = "path:./AskiCoreNiks"; flake = false; };
     AskiNiks = { url = "path:./AskiNiks"; flake = false; };
     AskiDefaultBuilder = { url = "path:./AskiDefaultBuilder"; flake = false; };
-
-    nixpkgs = { type = "indirect"; id = "nixpkgs"; };
-    nixpkgs-master = { type = "indirect"; id = "nixpkgs-master"; };
-
-    xdg-desktop-portal-hyprland = {
-      type = "indirect";
-      id = "xdg-desktop-portal-hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs = inputs@{ self, ... }:
     let
-      inherit (nixpkgs) lib;
-
       kriomOSRev =
         let shortHash = kor.cortHacString self.narHash;
         in self.shortRev or shortHash;
 
       localHobSources = {
         inherit (inputs) AskiCoreNiks AskiNiks AskiDefaultBuilder
-          xdg-desktop-portal-hyprland mkWebpage nixpkgs-master;
+          xdg-desktop-portal-hyprland mkWebpage;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -51,7 +40,9 @@
 
       hob = inputs.hob.Hob // localHobSources;
 
-      inherit (hob) flake-utils emacs-overlay;
+      inherit (hob) flake-utils emacs-overlay nixpkgs;
+
+      inherit (nixpkgs) lib;
 
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS

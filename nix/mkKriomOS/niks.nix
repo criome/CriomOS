@@ -19,7 +19,7 @@ let
   nixpkgsOwnerAndRef = {
     owner = "sajban";
     repo = "nixpkgs";
-    ref = "ac1dd9de6ce5e3040c49101f21f204744905f418";
+    ref = "main";
   };
 
   flakeEntriesOverrides = {
@@ -43,12 +43,6 @@ let
 
     lib = nixpkgsOwnerAndRef // { dir = "lib"; };
     nixpkgs = nixpkgsOwnerAndRef;
-
-    nixpkgs-next = {
-      owner = "NixOS";
-      repo = "nixpkgs";
-      ref = "85963eba3a76ff2ae4928b9d5de45cbfe9eee2d8"; # (TODO kriomOSVersion)
-    };
 
     nixpkgs-master = { owner = "NixOS"; repo = "nixpkgs"; };
 
