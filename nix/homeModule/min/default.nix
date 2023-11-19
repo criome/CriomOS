@@ -79,7 +79,7 @@ let
     in
     if dark then darkTheme else lightTheme;
 
-  bleedingEdgeGraphicalPackages = with pkdjz.pkgs-master; [ ];
+  bleedingEdgeGraphicalPackages = [];
 
   modernGraphicalPackages = with pkgs; [
     # C

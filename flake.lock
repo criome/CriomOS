@@ -1188,7 +1188,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-lnoLvEW0upr0RMd8WBVHv9g1ofy+mZlF7tVmufNgSHo=",
+        "narHash": "sha256-vnwv+POiINxVxa+CnzQ5PDXSUzRHjNBIDCgCm9FeUtY=",
         "path": "./nix/mkPkgs",
         "type": "path"
       },

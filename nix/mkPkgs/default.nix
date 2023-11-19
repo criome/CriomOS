@@ -1,3 +1,4 @@
+## Lean version of (nixpkgs + /pkgs/top-level/impure.nix)
 args@
 { nixpkgs
 , system ? localSystem.system
@@ -8,13 +9,13 @@ args@
 , config ? { allowUnfree = true; }
 }:
 let
-  # Note: somehow, `removeAttrs system args` doesnt work here.
-  pkgsTopLevelArguments = { inherit localSystem crossSystem lib overlays config; };
+  forcedNonOptionalArguments = { inherit config overlays localSystem; };
   mkPkgsFn = import (nixpkgs + /pkgs/top-level);
-
+  explicitArguments = builtins.removeAttrs args [ "system" ];
+  pkgsTopLevelArguments = explicitArguments // forcedNonOptionalArguments;
 in
 # If `localSystem` was explicitly passed, legacy `system` should
-  # not be passed, and vice-versa.
+# not be passed, and vice-versa.
 assert args ? localSystem -> !(args ? system);
 assert args ? system -> !(args ? localSystem);
 
