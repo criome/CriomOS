@@ -47,7 +47,7 @@ let
     jq
     djvulibre
     # NodeJS
-    tokenaizdWrangler
+    # tokenaizdWrangler
     #== go
     ghq
     elvish
