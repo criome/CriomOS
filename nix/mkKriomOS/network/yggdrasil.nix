@@ -53,8 +53,8 @@ in
   environment.systemPackages = [ package ];
 
   networking.firewall = {
-    allowedUDPPorts = [ ports.multicast ];
-    allowedTCPPorts = [ ports.linkLocalTCP ];
+    allowedUDPPorts = [ ports.linkLocalTCP ports.multicast ];
+    allowedTCPPorts = [ ports.linkLocalTCP ports.multicast ];
     trustedInterfaces = [ interfaceName ];
   };
 
@@ -83,10 +83,10 @@ in
 
           StateDirectory = subDirName;
           RuntimeDirectory = subDirName;
-          RuntimeDirectoryMode = "0755";
+          RuntimeDirectoryMode = "0750";
 
-          AmbientCapabilities = "CAP_NET_ADMIN";
-          CapabilityBoundingSet = "CAP_NET_ADMIN";
+          AmbientCapabilities = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
+          CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
           DynamicUser = true;
           MemoryDenyWriteExecute = true;
           ProtectControlGroups = true;
