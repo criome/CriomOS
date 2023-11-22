@@ -33,74 +33,19 @@ let
     ];
   };
 
-  configFile = mkConfigFile yggdrasilConfig;
-
-  seedYggdrasil = !izYggKriodaizd;
-
-  seedYggdrasilScript = pkgs.writeScript "createYggdrasilKeys.sh" ''
-    if [[ ! -e ${priKriadJson} ]]; then
-      ${yggExec} -genconf -json | \
-        ${pkgs.jq}/bin/jq '{ PublicKey, PrivateKey }' > ${priKriadJson}
-    fi
-  '';
-
-  extractPreKriomJson = ''
-    ${yggCtlExec} -json -v getself > ${preKriomJson}
-  '';
-
 in
 {
   environment.systemPackages = [ package ];
 
   networking.firewall = {
-    allowedUDPPorts = [ ports.linkLocalTCP ports.multicast ];
-    allowedTCPPorts = [ ports.linkLocalTCP ports.multicast ];
-    trustedInterfaces = [ interfaceName ];
+    allowedTCPPorts = [ ports.linkLocalTCNP ];
   };
 
-  systemd = {
-    services = {
-      yggdrasil = {
-        description = "Yggdrasil Network Service";
-        bindsTo = [ "network-online.target" ];
-        after = [ "network-online.target" ];
-        wantedBy = [ "multi-user.target" ];
-
-        preStart = ''
-          ${optionalString seedYggdrasil seedYggdrasilScript} 
-          ${pkgs.jq}/bin/jq --slurp add ${priKriadJson} ${configFile} > ${combinedConfigJson}
-        '';
-
-        postStart = optionalString seedYggdrasil extractPreKriomJson;
-
-        serviceConfig = {
-          ExecStart = '' 
-            ${yggExec} -useconffile ${combinedConfigJson}
-          '';
-
-          ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
-          Restart = "always";
-
-          StateDirectory = subDirName;
-          RuntimeDirectory = subDirName;
-          RuntimeDirectoryMode = "0750";
-
-          AmbientCapabilities = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
-          CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
-          DynamicUser = true;
-          MemoryDenyWriteExecute = true;
-          ProtectControlGroups = true;
-          ProtectHome = "tmpfs";
-          ProtectKernelModules = true;
-          ProtectKernelTunables = true;
-          RestrictAddressFamilies = "AF_UNIX AF_INET AF_INET6 AF_NETLINK";
-          RestrictNamespaces = true;
-          RestrictRealtime = true;
-          SystemCallArchitectures = "native";
-          SystemCallFilter = [ "@system-service" "~@privileged @keyring" ];
-        };
-      };
-    };
-
+  services.yggdrasil = {
+    inherit package;
+    enable = true;
+    settings = yggdrasilConfig;
+    openMulticastPort = true;
+    persistentKeys = true;
   };
 }
