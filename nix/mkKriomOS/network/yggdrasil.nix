@@ -87,6 +87,7 @@ in
 
           AmbientCapabilities = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
           CapabilityBoundingSet = "CAP_NET_ADMIN CAP_NET_BIND_SERVICE";
+          SecureBits = "keep-caps";
           DynamicUser = true;
           MemoryDenyWriteExecute = true;
           ProtectControlGroups = true;

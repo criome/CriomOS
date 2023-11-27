@@ -39,6 +39,8 @@ in
     evolution.enable = true;
     file-roller.enable = saizAtList.med;
 
+    firejail.enable = saizAtList.med;
+    
     hyprland = {
       enable = true;
     };
