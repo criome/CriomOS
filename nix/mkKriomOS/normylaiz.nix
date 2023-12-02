@@ -104,10 +104,10 @@ in
     extraConfig = "";
   };
 
+  system.stateVersion = "24.05";
+
   systemd = {
-    package = pkgs.systemd.override {
-      withHomed = true;
-    };
+    package = uyrld.pkgss.systemd253.systemd;
   };
 
   users = {

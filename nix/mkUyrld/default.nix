@@ -129,6 +129,7 @@ let
         firnWebpage = mkWebpageFleik { src = fleik; };
         nixpkgs = mkPkgs { nixpkgs = fleik; inherit system; };
         nixpkgsHob = mkNixpkgsHob fleik;
+        pureNixLib = fleik.value;
         worldFunction = mkWorldFunction fleik;
         zolaWebsite = mkTypedZolaWebsite spokNeim fleik;
       };

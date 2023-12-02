@@ -4,8 +4,6 @@
   inputs = {
     hob.url = "github:sajban/hob/10Sagittarius5917AM-hobReno";
 
-    nixpkgsHob.url = "github:sajban/nixpkgsHob";
-
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
     mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };
@@ -40,10 +38,11 @@
       importInput = name: value:
         import value;
 
-      hob = inputs.hob.Hob // localHobSources;
+      hob = inputs.hob.value // localHobSources;
 
-      inherit (hob) flake-utils emacs-overlay nixpkgs lib;
-
+      inherit (hob) flake-utils emacs-overlay nixpkgs;
+      inherit (hob.lib) lib;
+      
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
           mkHomeConfig neksysNames mkUyrld homeModule files;
