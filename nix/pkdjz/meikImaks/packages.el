@@ -119,7 +119,7 @@
        ("K" . phi-search-backward)     ; HAK - xfk bog (shift'ed keys)
        ("c" . previous-line)
        ("d" . xah-beginning-of-line-or-block)
-       ("e" . xah-delete-backward-char-or-bracket-text)
+       ("e" . xah-delete-left-char-or-selection)
        ("f" . undo)
        ("g" . backward-word)
        ("h" . backward-char)

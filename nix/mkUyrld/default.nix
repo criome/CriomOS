@@ -1,7 +1,7 @@
 { lib, pkgs, hob, system, imports }:
 let
   l = lib // builtins;
-  inherit (builtins) hasAttr mapAttrs   readDir;
+  inherit (builtins) hasAttr mapAttrs readDir;
   inherit (imports) kor neksysNames mkPkgs;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz mkZolaWebsite;
@@ -120,8 +120,9 @@ let
 
       typedFlakeMakerIndex = {
         firnWebpage = mkWebpageFleik { src = fleik; };
-        zolaWebsite = mkTypedZolaWebsite spokNeim fleik;
+        nixpkgs = mkPkgs { nixpkgs = fleik; inherit system; };
         worldFunction = mkWorldFunction fleik;
+        zolaWebsite = mkTypedZolaWebsite spokNeim fleik;
       };
 
       mkTypedFlake = let inherit (fleik) type; in

@@ -3,6 +3,7 @@ with builtins;
 let
   inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
+  inherit (uyrld) hob;
 
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
   inherit (hyraizyn) astra;
@@ -15,12 +16,6 @@ let
   inherit (konstynts.network.niks) serve;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
-
-  nixpkgsOwnerAndRef = {
-    owner = "sajban";
-    repo = "nixpkgs";
-    ref = "main";
-  };
 
   flakeEntriesOverrides = {
     blank = { owner = "divnix"; };
@@ -41,8 +36,10 @@ let
     hob = { owner = "sajban"; ref = "autumnCleaning"; };
     kriomOS = { owner = "sajban"; ref = "newHorizons"; };
 
-    lib = nixpkgsOwnerAndRef // { dir = "lib"; };
-    nixpkgs = nixpkgsOwnerAndRef;
+    lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
+
+    nixpkgs = { inherit (hob.nixpkgs) owner repo rev; }
+      // optionalAttrs (hob.nixpkgs ? ref) { inherit (hob.nixpkgs) ref; };
 
     nixpkgs-master = { owner = "NixOS"; repo = "nixpkgs"; };
 
