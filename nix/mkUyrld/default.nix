@@ -118,9 +118,17 @@ let
 
       makeFleik = { };
 
+      mkNixpkgsHob = flake:
+        let
+          mkPkgsFromNameValue = name: value:
+            mkPkgs { inherit system lib; nixpkgs = value; };
+        in
+        mapAttrs mkPkgsFromNameValue flake.value;
+
       typedFlakeMakerIndex = {
         firnWebpage = mkWebpageFleik { src = fleik; };
         nixpkgs = mkPkgs { nixpkgs = fleik; inherit system; };
+        nixpkgsHob = mkNixpkgsHob fleik;
         worldFunction = mkWorldFunction fleik;
         zolaWebsite = mkTypedZolaWebsite spokNeim fleik;
       };

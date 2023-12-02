@@ -2,7 +2,9 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = "github:sajban/hob/fixedOBS";
+    hob.url = "github:sajban/hob/10Sagittarius5917AM-hobReno";
+
+    nixpkgsHob.url = "github:sajban/nixpkgsHob";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
