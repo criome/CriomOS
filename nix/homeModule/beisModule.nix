@@ -8,7 +8,8 @@ in
     home = {
       username = krimyn.neim;
       homeDirectory = "/home/" + krimyn.neim;
-      stateVersion = lib.trivial.release;
+      # TODO
+      stateVersion = "23.11";
     };
   };
 }
