@@ -1,9 +1,8 @@
-{ kor, lib, pkgs, hyraizyn, uyrld, konstynts, config, ... }:
+{ kor, lib, pkgs, hob, hyraizyn, uyrld, konstynts, config, ... }:
 with builtins;
 let
   inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
-  inherit (uyrld) hob;
 
   inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
   inherit (hyraizyn) astra;
@@ -38,8 +37,11 @@ let
 
     lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
 
-    nixpkgs = { inherit (hob.nixpkgs) owner repo rev; }
-      // optionalAttrs (hob.nixpkgs ? ref) { inherit (hob.nixpkgs) ref; };
+    nixpkgs = {
+      owner = "NixOS";
+      repo = "nixpkgs";
+      inherit (hob.nixpkgs) rev;
+    } // optionalAttrs (hob.nixpkgs ? ref) { inherit (hob.nixpkgs) ref; };
 
     nixpkgs-master = { owner = "NixOS"; repo = "nixpkgs"; };
 

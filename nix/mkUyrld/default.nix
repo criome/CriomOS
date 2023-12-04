@@ -118,26 +118,22 @@ let
 
       makeFleik = { };
 
-      mkNixpkgsHob = flake:
+      mkNixpkgsHob = nixpkgsSet:
         let
           mkPkgsFromNameValue = name: value:
-            mkPkgs { inherit system lib; nixpkgs = value; };
+            mkPkgs { inherit system; nixpkgs = value; };
         in
-        mapAttrs mkPkgsFromNameValue flake.value;
+        mapAttrs mkPkgsFromNameValue nixpkgsSet;
 
       typedFlakeMakerIndex = {
         firnWebpage = mkWebpageFleik { src = fleik; };
-        nixpkgs = mkPkgs { nixpkgs = fleik; inherit system; };
-        nixpkgsHob = mkNixpkgsHob fleik;
-        pureNixLib = fleik.value;
+        nixpkgsHob = mkNixpkgsHob fleik.value;
         worldFunction = mkWorldFunction fleik;
         zolaWebsite = mkTypedZolaWebsite spokNeim fleik;
       };
 
       mkTypedFlake = let inherit (fleik) type; in
-        typedFlakeMakerIndex."${type}" or l.trace
-          "Flake type ${type} does not exist. ${toString fleik} is returned as-is"
-          fleik;
+        builtins.getAttr type typedFlakeMakerIndex;
 
     in
     if (hasAttr "type" fleik) then mkTypedFlake

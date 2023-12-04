@@ -41,7 +41,7 @@
       hob = inputs.hob.value // localHobSources;
 
       inherit (hob) flake-utils emacs-overlay nixpkgs;
-      inherit (hob.lib) lib;
+      inherit (nixpkgs) lib;
       
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
@@ -128,7 +128,7 @@
         in
         {
           os = mkKriomOS
-            { inherit kriomOSRev kor uyrld hyraizyn homeModule; };
+            { inherit kriomOSRev kor uyrld hyraizyn homeModule hob; };
           hom = mapAttrs mkKrimynHomz krimynz;
           imaks = mapAttrs mkKrimynImaks krimynz;
         };

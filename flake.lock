@@ -354,21 +354,6 @@
         "type": "github"
       }
     },
-    "coreNixLib": {
-      "locked": {
-        "lastModified": 1701492284,
-        "narHash": "sha256-gKCEaRGvKSiX4OtURSbUcfjirnQjDIJoCK68J2575gE=",
-        "owner": "sajban",
-        "repo": "coreNixLib",
-        "rev": "28b775cbfaaf4f95acb1bdfb1ebe6828862d98c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sajban",
-        "repo": "coreNixLib",
-        "type": "github"
-      }
-    },
     "crate2nix": {
       "flake": false,
       "locked": {
@@ -787,7 +772,6 @@
         "base16-styles": "base16-styles",
         "base16-theme": "base16-theme",
         "buttons": "buttons",
-        "coreNixLib": "coreNixLib",
         "crate2nix": "crate2nix",
         "dunst": "dunst",
         "emacs-overlay": "emacs-overlay",
@@ -845,11 +829,11 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1701510299,
-        "narHash": "sha256-0SIqc31swFBehNkYPOm66NMiVJIT02Xc5Cen5YtH3fs=",
+        "lastModified": 1701560751,
+        "narHash": "sha256-teJrqQprnYaJJNzuR+lgCljzCOyOYVgBG6IxUhlCqsI=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "51bf55696e8721eb176b46a4234f542053bc6c8e",
+        "rev": "d02e27dab7dd95b785720e156f85f4c34e2d06f3",
         "type": "github"
       },
       "original": {
@@ -1182,7 +1166,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-Mt9oNbYuYlMpqaZsig4pXH30C7OXV2PPhsWZsU9ALTA=",
+        "narHash": "sha256-lmsIMPHcVWXoE1nPtUGJD/N9AJ6JIsqRhNXv4eJOzwg=",
         "path": "./nix/mkKriomOS",
         "type": "path"
       },
@@ -1234,7 +1218,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-uBPjN/0o/tZt7YjIqwCXe/qnIJz7Jxpn+lWnH8M4K+Y=",
+        "narHash": "sha256-dIVItX76LJ6VN71HYPoJnm5NpgIQNNyY20HydP7lQkc=",
         "path": "./nix/mkUyrld",
         "type": "path"
       },
