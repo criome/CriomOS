@@ -106,10 +106,6 @@ in
 
   system.stateVersion = "24.05";
 
-  systemd = {
-    package = uyrld.pkgss.systemd253.systemd;
-  };
-
   users = {
     defaultUserShell = "/run/current-system/sw/bin/zsh";
     groups.dialout = { };
