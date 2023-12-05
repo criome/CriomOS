@@ -829,11 +829,11 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1701677299,
-        "narHash": "sha256-64JQStlr9/w4f+5ZeRM+or582OT6n4JphjvJMRri0z0=",
+        "lastModified": 1701752281,
+        "narHash": "sha256-LkFuQnL2WcBcth12EyZDhXRQsTz2XKHDbmMLORO/xd4=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "b7564e650a6673e765b462ddd99349df41698c43",
+        "rev": "0c94c9743174e2358612f2841dabddcb0f10f1ee",
         "type": "github"
       },
       "original": {
@@ -1091,11 +1091,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1667554310,
-        "narHash": "sha256-VjP9JOzAH3P6eqwfyaCkpjcsqMqZE6PAUPw8os3jgGw=",
+        "lastModified": 1701752191,
+        "narHash": "sha256-Rcord1PVivr727Kx3TM7W3TrGjHFcYwWY6MhIdU7jeQ=",
         "owner": "LiGoldragon",
         "repo": "maisiliym",
-        "rev": "1d75e32fc396fb6e3abbfbfaeaed64c721e47b0e",
+        "rev": "78b4090ad67c17f540a4a6db3de878d2d21cf79d",
         "type": "github"
       },
       "original": {
