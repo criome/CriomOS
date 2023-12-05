@@ -3,13 +3,13 @@ let
   l = lib // builtins;
   inherit (hyraizyn.astra) typeIs;
 
-  wanInterface = "enp0s20u2c2";
+  wanInterface = "enp0s20u2";
   lanInterfaceOne = "enp0s25";
   lanInterfaceTwo = "enp0s26u1u2";
   lanBridgeInterface = "br-lan";
-  lanSubnetPrefix = "10.74.0";
-  lanFullAdress = "${lanSubnetPrefix}.1/24";
-
+  lanSubnetPrefix = "10.18.0";
+  lanAddress = "${lanSubnetPrefix}.1";
+  lanFullAdress = "${lanAddress}/24";
 
 in
 {
@@ -54,14 +54,13 @@ in
   services = {
     kea = {
       dhcp4 = {
+        enable = true;
         settings = {
           valid-lifetime = 4000;
           renew-timer = 1000;
           rebind-timer = 2000;
           interfaces-config = {
-            interfaces = [
-              lanInterfaceOne
-            ];
+            interfaces = [ lanBridgeInterface ];
           };
           lease-database = {
             type = "memfile";
@@ -69,10 +68,9 @@ in
             name = "/var/lib/kea/dhcp4.leases";
           };
           subnet4 = [{
-            subnet = lanSubnetPrefix;
-            pools = [{
-              pool = "${lanSubnetPrefix}.100 - ${lanSubnetPrefix}.240";
-            }];
+            subnet = lanFullAdress;
+            pools = [{ pool = "${lanSubnetPrefix}.100 - ${lanSubnetPrefix}.240"; }];
+            option-data = [{ name = "routers"; data = lanAddress; }];
           }];
         };
       };
