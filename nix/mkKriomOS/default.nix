@@ -36,6 +36,7 @@ let
 
   nixosModules = beisModules
     ++ (optional iuzEdjModule edjModule)
+    ++ (optional typeIs.router ./router)
     ++ (optional iuzIsoModule home-manager.nixosModules.default)
     ++ (optional iuzMetylModule metylModule);
 

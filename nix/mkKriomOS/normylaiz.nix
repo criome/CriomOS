@@ -1,9 +1,11 @@
 { config, kor, hyraizyn, pkgs, lib, uyrld, ... }:
 let
+  l = lib // builtins;
   inherit (kor) mapAttrsToList eksportJSON;
   inherit (lib) concatStringsSep mkOverride optional mkIf optionalString optionalAttrs;
   inherit (pkgs) mksh writeScript gnupg;
   inherit (hyraizyn) astra exAstriz;
+  inherit (hyraizyn.astra) typeIs;
   inherit (hyraizyn.astra.spinyrz) tcipIzIntel saizAtList iuzColemak;
 
   # TODO
@@ -67,7 +69,9 @@ in
     });
   };
 
-  networking.networkmanager.enable = saizAtList.min;
+  networking.networkmanager = {
+    enable = saizAtList.min && !typeIs.router;
+  };
 
   programs = {
     zsh.enable = true;
