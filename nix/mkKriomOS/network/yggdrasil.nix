@@ -53,8 +53,7 @@ in
   environment.systemPackages = [ package ];
 
   networking.firewall = {
-    allowedUDPPorts = [ ports.linkLocalTCP ports.multicast ];
-    allowedTCPPorts = [ ports.linkLocalTCP ports.multicast ];
+    allowedUDPPorts = [  ports.multicast ];
     trustedInterfaces = [ interfaceName ];
   };
 
