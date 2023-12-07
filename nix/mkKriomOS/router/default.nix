@@ -27,7 +27,10 @@ in
           chain input {
             type filter hook input priority 0; policy drop;
 
-            iifname { ${lanBridgeInterface} } accept comment "Allow local network to access the router"
+            ip6 saddr fe80::/64 ip6 daddr fe80::/64 udp dport 9001 accept
+            ip6 saddr fe80::/64 ip6 daddr fe80::/64 tcp dport 10001 accept
+
+            iifname { ${lanBridgeInterface}, yggTun } accept comment "Allow local network to access the router"
             iifname "${wanInterface}" ct state { established, related } accept comment "Allow established traffic"
             iifname "${wanInterface}" icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
             iifname "${wanInterface}" counter drop comment "Drop all other unsolicited traffic from ${wanInterface}"
@@ -58,7 +61,6 @@ in
         wlan0 = {
           band = "2g";
           countryCode = "PL";
-          channel = 0; # ACS
           wifi4.enable = true;
           networks = {
             wlan0 = {

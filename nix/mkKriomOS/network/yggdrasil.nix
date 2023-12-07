@@ -54,6 +54,7 @@ in
 
   networking.firewall = {
     allowedUDPPorts = [  ports.multicast ];
+    allowedTCPPorts = [ ports.linkLocalTCP ];
     trustedInterfaces = [ interfaceName ];
   };
 
