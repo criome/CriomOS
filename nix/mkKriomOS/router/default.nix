@@ -5,7 +5,7 @@ let
 
   wanInterface = "enp0s20u2";
   lanInterfaceOne = "enp0s25";
-  lanInterfaceTwo = "enp0s26u1u2";
+  lanInterfaceTwo = "enp0s20u1c2";
   lanBridgeInterface = "br-lan";
   lanSubnetPrefix = "10.18.0";
   lanAddress = "${lanSubnetPrefix}.1";
