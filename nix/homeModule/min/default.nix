@@ -79,7 +79,7 @@ let
     in
     if dark then darkTheme else lightTheme;
 
-  bleedingEdgeGraphicalPackages = [];
+  bleedingEdgeGraphicalPackages = [ ];
 
   modernGraphicalPackages = with pkgs; [
     # C
@@ -285,7 +285,14 @@ mkIf saizAtList.min {
       musicDirectory = "~/Music";
     };
 
-    pueue = { enable = izNiksDev; };
+    pueue = {
+      enable = izNiksDev;
+      settings = {
+        shared = { };
+        client = { dark_mode = dark; };
+        daemon = { default_parallel_tasks = 1; };
+      };
+    };
   };
 
   programs = {
