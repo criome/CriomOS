@@ -42,7 +42,7 @@ in
     firejail.enable = saizAtList.med;
     
     hyprland = {
-      enable = true;
+      enable = typeIs.edjTesting || typeIs.haibrid;
     };
 
     regreet = {
@@ -77,6 +77,7 @@ in
     xserver = {
       enable = saizAtList.min;
       excludePackages = with pkgs; [ xorg.xorgserver.out ];
+      desktopManager.gnome.enable = saizAtList.med && typeIs.edj;
       displayManager = {
         gdm = {
           enable = saizAtList.min;
