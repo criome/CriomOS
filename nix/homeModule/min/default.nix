@@ -188,6 +188,8 @@ let
     clojure
     babashka
     clj-kondo
+    clojure-lsp
+    leiningen
     # lisp
     zprint
 

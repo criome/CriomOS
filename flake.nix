@@ -2,7 +2,7 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = "github:sajban/hob/10Sagittarius5917AM-hobReno";
+    hob.url = "github:sajban/hob/20Sagittarius-lojixBootstrap";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
@@ -40,8 +40,7 @@
 
       hob = inputs.hob.value // localHobSources;
 
-      inherit (hob) flake-utils emacs-overlay nixpkgs;
-      inherit (nixpkgs) lib;
+      inherit (hob) flake-utils emacs-overlay nixpkgs lib;
       
       imports = mapAttrs importInput {
         inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
