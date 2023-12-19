@@ -17,9 +17,9 @@
 
 (use-package eglot
   :config
-  (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
+  (add-to-list 'eglot-server-programs '(nix-ts-mode . ("nil")))
   :hook
-  (nix-mode . eglot-ensure))
+  (nix-ts-mode . eglot-ensure))
 
 (use-package flycheck-eglot
   :ensure t
@@ -27,7 +27,10 @@
   :config
   (global-flycheck-eglot-mode 1))
 
-(use-package nix-mode)
+(use-package nix-ts-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-ts-mode)))
+
 (use-package nixpkgs-fmt)
 
 (use-package json-mode)
@@ -72,18 +75,29 @@
 (use-package base16-theme)
 
 ;; Clojure
-(use-package clojure-mode
-  :after (flycheck-clj-kondo)
-  :config (require 'flycheck-clj-kondo))
 (use-package clojure-ts-mode
   :custom (clojure-ts-ensure-grammars nil))
-(use-package flycheck-clj-kondo :ensure t)
+
+(use-package flycheck-clj-kondo
+  :after clojure-ts-mode
+  :hook
+  ((clojure-ts-mode clojurescript-ts-mode clojurec-ts-mode)
+   . flycheck-mode)
+  :config
+  (progn
+    (flycheck-clj-kondo--define-checker clj-kondo-clj "clj" clojure-ts-mode "--cache")
+    (flycheck-clj-kondo--define-checker clj-kondo-cljs "cljs" clojurescript-ts-mode "--cache")
+    (flycheck-clj-kondo--define-checker clj-kondo-cljc "cljc" clojurec-ts-mode "--cache")
+    (flycheck-clj-kondo--define-checker clj-kondo-edn "edn" clojure-ts-mode "--cache")
+    (dolist (element '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
+      (add-to-list 'flycheck-checkers element))))
+
 (use-package cider)
 (use-package zprint-format)
 
 (use-package company
   :hook
-  ((lisp-mode nix-mode emacs-lisp-mode clojure-mode)
+  ((lisp-mode nix-ts-mode emacs-lisp-mode clojure-ts-mode)
    . company-mode))
 
 (use-package dockerfile-mode :mode "Dockerfile")
@@ -268,7 +282,7 @@
 	 . lispy-mode))
 
 (use-package adaptive-wrap
-  :hook ((emacs-lisp-mode lisp-mode nix-mode)
+  :hook ((emacs-lisp-mode lisp-mode nix-ts-mode)
 	 . adaptive-wrap-prefix-mode))
 
 (use-package transmission
@@ -295,8 +309,6 @@
 (use-package flycheck-guile
   :custom
   (geiser-default-implementation 'guile))
-
-(use-package flycheck-clj-kondo)
 
 (use-package notmuch :commands notmuch)
 (use-package notmuch-maildir)
