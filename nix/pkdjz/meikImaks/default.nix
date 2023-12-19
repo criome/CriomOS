@@ -90,7 +90,8 @@ let
         let
           src = hob.telega-el;
           filteredBuildInputs = filter (pkg: pkg != pkgs.tdlib) attrs.buildInputs;
-        in {
+        in
+        {
           inherit src;
           version = "0.8.150";
           buildInputs = filteredBuildInputs ++ [ tdlib ];
@@ -176,7 +177,9 @@ let
     packageRequires = usePackages;
   };
 
-  imaksPackages = usePackages ++ [ defaultElPackage ];
+  treeSitterPackages = [ (emacsPackages.treesit-grammars.with-all-grammars) ];
+
+  imaksPackages = usePackages ++ [ defaultElPackage ] ++ treeSitterPackages;
   imaks = withPackages imaksPackages;
 
 in

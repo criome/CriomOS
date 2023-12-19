@@ -190,6 +190,8 @@ let
     clj-kondo
     clojure-lsp
     leiningen
+    cljfmt
+
     # lisp
     zprint
 

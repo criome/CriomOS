@@ -72,8 +72,12 @@
 (use-package base16-theme)
 
 ;; Clojure
-(use-package clojure-mode)
-(use-package flycheck-clj-kondo)
+(use-package clojure-mode
+  :after (flycheck-clj-kondo)
+  :config (require 'flycheck-clj-kondo))
+(use-package clojure-ts-mode
+  :custom (clojure-ts-ensure-grammars nil))
+(use-package flycheck-clj-kondo :ensure t)
 (use-package cider)
 (use-package zprint-format)
 
@@ -291,6 +295,8 @@
 (use-package flycheck-guile
   :custom
   (geiser-default-implementation 'guile))
+
+(use-package flycheck-clj-kondo)
 
 (use-package notmuch :commands notmuch)
 (use-package notmuch-maildir)
