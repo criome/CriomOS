@@ -79,7 +79,6 @@
   :custom (clojure-ts-ensure-grammars nil))
 
 (use-package flycheck-clj-kondo
-  :after clojure-ts-mode
   :hook
   ((clojure-ts-mode clojurescript-ts-mode clojurec-ts-mode)
    . flycheck-mode)
@@ -91,6 +90,9 @@
     (flycheck-clj-kondo--define-checker clj-kondo-edn "edn" clojure-ts-mode "--cache")
     (dolist (element '(clj-kondo-clj clj-kondo-cljs clj-kondo-cljc clj-kondo-edn))
       (add-to-list 'flycheck-checkers element))))
+
+; TODO figure out why this double entry is needed
+(use-package flycheck-clj-kondo)
 
 (use-package cider)
 (use-package zprint-format)
