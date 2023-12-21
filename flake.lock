@@ -383,6 +383,35 @@
         "type": "github"
       }
     },
+    "clojure-lsp": {
+      "inputs": {
+        "clj-nix": [
+          "hob",
+          "clj-nix"
+        ],
+        "flake-utils": [
+          "hob",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "hob",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702754443,
+        "narHash": "sha256-RhFZYkHtVaBLaR/+idK3s8Xfv1SYnAlEom3osiIU/Ig=",
+        "owner": "clojure-lsp",
+        "repo": "clojure-lsp",
+        "rev": "4c4705c93edb7e9e23275fc018319f38a66c2881",
+        "type": "github"
+      },
+      "original": {
+        "owner": "clojure-lsp",
+        "repo": "clojure-lsp",
+        "type": "github"
+      }
+    },
     "crate2nix": {
       "flake": false,
       "locked": {
@@ -847,6 +876,7 @@
         "base16-theme": "base16-theme",
         "buttons": "buttons",
         "clj-nix": "clj-nix",
+        "clojure-lsp": "clojure-lsp",
         "crate2nix": "crate2nix",
         "devshell": "devshell",
         "dunst": "dunst",
@@ -912,11 +942,11 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1702470592,
-        "narHash": "sha256-qb/t56CQz8JYWjEx6avPJ8l0IA9LhLTyZbafv1xOXLw=",
+        "lastModified": 1703135189,
+        "narHash": "sha256-nEKBT/kv+NFuyCqbOWlThMMdgDJC15OYjNtYLSa/y/4=",
         "owner": "sajban",
         "repo": "hob",
-        "rev": "bb5ae20e3f20677ef36de37d1726a0e90c5c4140",
+        "rev": "0fd48d622d09400ca0bca11e7368e09789733ec1",
         "type": "github"
       },
       "original": {
@@ -951,7 +981,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-N6DOLjaD+LB8p32KIH/aE514Pl4HhBHDGhejFb7foWQ=",
+        "narHash": "sha256-8KzFjo5bW1xshoiMMYTC74h9vvCDBLYI0a+29PWOfhQ=",
         "path": "./nix/homeModule",
         "type": "path"
       },

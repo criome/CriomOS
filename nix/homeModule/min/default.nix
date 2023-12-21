@@ -188,7 +188,6 @@ let
     clojure
     babashka
     clj-kondo
-    clojure-lsp
     leiningen
     cljfmt
 
@@ -222,6 +221,7 @@ let
   uyrldPackages = with uyrld; [
     pkdjz.shen-bootstrap
     skrips.user
+    clojure-lsp.packages.default
   ];
 
 in
