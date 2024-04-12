@@ -275,7 +275,7 @@ mkIf saizAtList.min {
     gpg-agent = {
       enable = true;
       verbose = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
       defaultCacheTtl = 10800;
       maxCacheTtl = 86400;
       defaultCacheTtlSsh = 3600;

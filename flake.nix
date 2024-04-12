@@ -2,7 +2,7 @@
   description = "KriomOS - KriOS on Linux";
 
   inputs = {
-    hob.url = "github:sajban/hob/20Sagittarius-lojixBootstrap";
+    hob.url = "github:sajban/hob/23Aries5918AM-Update";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
