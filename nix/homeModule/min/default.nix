@@ -1,7 +1,7 @@
 { kor, pkgs, pkdjz, krimyn, hyraizyn, config, profile, uyrld, ... }:
 let
-  inherit (builtins) concatStringsSep toString readFile toJSON;
-  inherit (kor) optionalString optionals mkIf mapAttrsToList optional;
+  inherit (builtins) toString readFile toJSON;
+  inherit (kor) optionalString optionals mkIf  optional;
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
   inherit (krimyn.spinyrz) iuzColemak hazPriKriom
@@ -12,35 +12,22 @@ let
 
   homeDir = config.home.homeDirectory;
 
-  fzfBinds = [ ];
   fzfColemakBinds = import ./fzfColemak.nix;
 
-  mkFzfBinds = list: "--bind=" + (concatStringsSep "," list);
+  fzfBinds = (optionals iuzColemak fzfColemakBinds);
 
-  fzfBindsString = mkFzfBinds (fzfBinds ++ (optionals iuzColemak fzfColemakBinds));
+  mkFzfBinds = list: "--bind=" + (builtins.concatStringsSep "," list);
 
-  fzfColors = if dark then import ./fzfDark.nix else import ./fzfLight.nix;
+  fzfBindsString = optionalString (fzfBinds != []) (mkFzfBinds fzfBinds);
+
+  fzfTheme = if dark then import ./fzfDark.nix else import ./fzfLight.nix;
   fzfBase16Map = import ./fzfBase16map.nix;
 
   mkFzfColor = n: v:
-    let color = fzfColors.${v};
-    in "${n}:${color}";
+    let color = fzfTheme.${v};
+    in color;
 
-  fzfColorString = "--color=" + (concatStringsSep ","
-    (mapAttrsToList mkFzfColor fzfBase16Map));
-
-  fzfOptsString = toString [ fzfBindsString fzfColorString ];
-
-  ovyridynFzf = pkgs.fzf.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = oldAttrs.nativeBuildInputs
-      ++ [ pkgs.makeWrapper ];
-    postInstall = oldAttrs.postInstall +
-      ''
-         wrapProgram $out/bin/fzf \
-        --set-default FZF_DEFAULT_OPTS "${fzfOptsString}" \
-        --set-default FZF_DEFAULT_COMMAND "${pkgs.fd}/bin/fd --type file" \
-      '';
-  });
+  fzfColors = builtins.mapAttrs mkFzfColor fzfBase16Map;
 
   waylandQtpass = pkgs.qtpass.override { pass = waylandPass; };
   waylandPass = pkgs.pass.override { x11Support = false; waylandSupport = true; };
@@ -136,7 +123,6 @@ let
   nixpkgsPackages = with pkgs; [
     mksh # saner bash
     retry
-    ovyridynFzf
     alsaUtils
     pamixer
     ncpamixer
@@ -323,6 +309,13 @@ mkIf saizAtList.min {
       };
     };
 
+    fzf = {
+      enable = true;
+      colors = fzfColors;
+      defaultCommand = "fd --type f";
+      defaultOptions = [ fzfBindsString ];
+    };
+
     git = {
       enable = true;
       userEmail = spinyrz.emailAddress;
@@ -367,8 +360,6 @@ mkIf saizAtList.min {
       defaultKeymap = "viins";
 
       sessionVariables = {
-        FZF_DEFAULT_OPTS = "${fzfOptsString}";
-        FZF_DEFAULT_COMMAND = "${pkgs.fd}/bin/fd --type file";
         RSYNC_OLD_ARGS = 1;
       };
 
@@ -381,8 +372,6 @@ mkIf saizAtList.min {
       initExtra = builtins.readFile ../nonNix/zshrc +
         ''
           if [[ $options[zle] = on ]]; then
-          . ${ovyridynFzf}/share/fzf/completion.zsh
-          . ${ovyridynFzf}/share/fzf/key-bindings.zsh
           . ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
           fi
         ''

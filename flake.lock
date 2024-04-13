@@ -996,7 +996,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-9Gy7Di/X/QvEPOOhRbXndtsiPuFKzFzhuvXGlp58Rc0=",
+        "narHash": "sha256-DbJEWHtaldIbtko6hvpxaJ+n9nSc42nwqOLNwKpQEIg=",
         "path": "./nix/homeModule",
         "type": "path"
       },
