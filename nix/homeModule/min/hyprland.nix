@@ -45,18 +45,15 @@ in
       }
     }
 
-    device:at-translated-set-2-keyboard {
+    device {
+      name = at-translated-set-2-keyboard
       kb_layout = us
       kb_variant=colemak
       kb_options = ctrl:nocaps,altwin:swap_alt_win
     }
 
-    device:k.t.e.c.-ergodone-keyboard {
-      kb_layout = us
-      kb_variant=colemak
-    }
-
-    device:that-canadian-minidox {
+    device {
+      name = that-canadian-minidox
       kb_layout = us
       kb_variant=
     }

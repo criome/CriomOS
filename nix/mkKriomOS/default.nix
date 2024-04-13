@@ -8,7 +8,7 @@ let
   iuzPodModule = (mycin.spici == "pod");
   iuzMetylModule = (mycin.spici == "metyl");
 
-  iuzEdjModule = typeIs.edj || typeIs.haibrid;
+  iuzEdjModule = typeIs.edj || typeIs.haibrid || typeIs.edjTesting;
   iuzIsoModule = !iuzPodModule && (io.disks == { });
 
   krimynzModule = import ./krimynz.nix;

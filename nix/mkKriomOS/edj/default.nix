@@ -84,6 +84,8 @@ in
           autoSuspend = typeIs.edj;
         };
       };
+
+      windowManager.hypr.enable = typeIs.edjTesting || typeIs.haibrid;
     };
   };
 }
