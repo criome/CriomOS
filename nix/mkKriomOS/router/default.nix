@@ -3,9 +3,9 @@ let
   l = lib // builtins;
   inherit (hyraizyn.astra) typeIs;
 
-  wanInterface = "enp0s20u2";
+  wanInterface = "enp0s20u2c2";
   lanInterfaceOne = "enp0s25";
-  lanInterfaceTwo = "enp0s20u1c2";
+  lanInterfaceTwo = "enp0s20u1";
   lanBridgeInterface = "br-lan";
   lanSubnetPrefix = "10.18.0";
   lanAddress = "${lanSubnetPrefix}.1";

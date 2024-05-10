@@ -269,7 +269,7 @@ in
   };
 
   virtualisation = {
-    libvirtd = { enable = saizAtList.max; };
+    libvirtd = { enable = (saizAtList.max && !typeIs.router); };
     spiceUSBRedirection.enable = saizAtList.max;
   };
 }
