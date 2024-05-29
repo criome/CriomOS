@@ -1,4 +1,4 @@
-{ pkgs, lib, hyraizyn, kor, kriomOSRev, nixOSRev, uyrld, homeModule, ... }:
+{ pkgs, lib, hyraizyn, kor, criomeOSRev, nixOSRev, uyrld, homeModule, ... }:
 let
   inherit (builtins) mapAttrs;
   inherit (lib) mkOverride;
@@ -7,8 +7,8 @@ let
   iuzMetylModule = hyraizyn.astra.mycin.spici == "metyl";
   profile = { dark = false; };
 
-  mkUserConfig = name: krimyn:
-    { _module.args = { inherit krimyn profile; }; };
+  mkUserConfig = name: user:
+    { _module.args = { inherit user profile; }; };
 
 in
 {
@@ -23,12 +23,12 @@ in
     extraSpecialArgs = { inherit kor pkdjz uyrld hyraizyn; };
     sharedModules = [ homeModule ];
     useGlobalPkgs = true;
-    users = mapAttrs mkUserConfig hyraizyn.krimynz;
+    users = mapAttrs mkUserConfig hyraizyn.users;
   };
 
   isoImage = {
-    isoBaseName = "kriomOS";
-    volumeID = "kriomOS-${kriomOSRev}-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
+    isoBaseName = "criomeOS";
+    volumeID = "criomeOS-${criomeOSRev}-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
 
     makeUsbBootable = true;
     makeEfiBootable = true;

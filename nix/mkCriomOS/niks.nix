@@ -4,14 +4,14 @@ let
   inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
 
-  inherit (hyraizyn.metastra.spinyrz) trostydBildPriKriomz;
+  inherit (hyraizyn.metastra.spinyrz) trostydBildPriCriomez;
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz)
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
-    izBildyr izNiksKac izDispatcyr izNiksKriodaizd
+    izBildyr izNiksKac izDispatcyr izNiksCriodaizd
     nixCacheDomain;
 
-  inherit (konstynts.fileSystem.niks) priKriad;
+  inherit (konstynts.fileSystem.niks) preCriad;
   inherit (konstynts.network.niks) serve;
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
@@ -33,7 +33,7 @@ let
 
     flakeWorld = { owner = "sajban"; };
     hob = { owner = "sajban"; ref = "autumnCleaning"; };
-    kriomOS = { owner = "sajban"; ref = "newHorizons"; };
+    criomeOS = { owner = "sajban"; ref = "newHorizons"; };
 
     lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
 
@@ -60,7 +60,7 @@ let
     in
     mapAttrsToList mkFlakeEntry entriesMap;
 
-  kriomOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
+  criomeOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
 
   nixOSFlakeEntries =
     let nixOSFlakeRegistry = importJSON uyrld.pkdjz.flake-registry;
@@ -77,7 +77,7 @@ let
   filteredNixosFlakeEntries = filter filterOutRegistry nixOSFlakeEntries;
 
   nixFlakeRegistry = {
-    flakes = kriomOSFlakeEntries ++ filteredNixosFlakeEntries;
+    flakes = criomeOSFlakeEntries ++ filteredNixosFlakeEntries;
     version = 2;
   };
 
@@ -110,7 +110,7 @@ in
       connect-timeout = 5;
       fallback = true;
 
-      trusted-public-keys = trostydBildPriKriomz;
+      trusted-public-keys = trostydBildPriCriomez;
       substituters = kacURLz;
       trusted-binary-caches = kacURLz;
 
@@ -124,7 +124,7 @@ in
     extraOptions = ''
       flake-registry = ${nixFlakeRegistryJson}
       experimental-features = nix-command flakes recursive-nix
-      secret-key-files = ${priKriad}
+      secret-key-files = ${preCriad}
       keep-derivations = ${boolToString saizAtList.med}
       keep-outputs = ${boolToString saizAtList.max}
       !include nixTokens
@@ -179,7 +179,7 @@ in
       cfg = {
         bindAddress = "127.0.0.1";
         port = serve.ports.internal;
-        secretKeyFile = priKriad;
+        secretKeyFile = preCriad;
         extraParams = "";
       };
     in
@@ -212,13 +212,13 @@ in
             "NIX_SECRET_KEY_FILE:${cfg.secretKeyFile}";
         };
       }
-      // optionalAttrs (!izNiksKriodaizd) ({
-        mkNixPreKriad = {
+      // optionalAttrs (!izNiksCriodaizd) ({
+        mkNixPreCriad = {
           description = "";
           wantedBy = [ "multi-user.target" ];
           serviceConfig = { type = "oneshot"; };
           script = ''
-            nix key generate-secret --key-name ${astra.kriomOSNeim} > ${priKriad}
+            nix key generate-secret --key-name ${astra.criomeOSNeim} > ${preCriad}
           '';
         };
       });

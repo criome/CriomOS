@@ -1,1 +1,1 @@
-(output "hello kriomOS~%")
+(output "hello CriomOS~%")

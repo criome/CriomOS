@@ -129,7 +129,7 @@ let
 
 in
 
-{ krimyn, profile }:
+{ user, profile }:
 let
   imaksTheme =
     if profile.dark then "'modus-vivendi"

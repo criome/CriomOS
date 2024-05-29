@@ -1,10 +1,10 @@
-{ kor, lib, krimyn, pkgs, pkdjz, uyrld, ... }:
+{ kor, lib, user, pkgs, pkdjz, uyrld, ... }:
 let
   inherit (builtins) readFile toJSON;
   inherit (kor) optionalString optionals;
   inherit (pkdjz) kynvyrt;
-  inherit (krimyn) githubId;
-  inherit (krimyn.spinyrz) izNiksDev iuzColemak saizAtList;
+  inherit (user) githubId;
+  inherit (user.spinyrz) izNiksDev iuzColemak saizAtList;
   inherit (pkgs) mksh;
 
   tokenaizdWrangler = pkgs.writeScriptBin "wrangler" ''

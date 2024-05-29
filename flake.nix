@@ -1,5 +1,5 @@
 {
-  description = "KriomOS - KriOS on Linux";
+  description = "CriomOS";
 
   inputs = {
     hob.url = "github:sajban/hob/23Aries5918AM-Update";
@@ -9,14 +9,13 @@
     mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };
     mkDatom = { url = "path:./nix/mkDatom"; flake = false; };
     mkUyrld = { url = "path:./nix/mkUyrld"; flake = false; };
-    mkKriosfir = { flake = false; url = "path:./nix/mkKriosfir"; };
-    mkKriozonz = { flake = false; url = "path:./nix/mkKriozonz"; };
-    mkKriomOS = { flake = false; url = "path:./nix/mkKriomOS"; };
+    mkCrioSphere = { flake = false; url = "path:./nix/mkCrioSphere"; };
+    mkCrioZones = { flake = false; url = "path:./nix/mkCrioZones"; };
+    mkCriomOS = { flake = false; url = "path:./nix/mkCriomOS"; };
     pkdjz = { flake = false; url = "path:./nix/pkdjz"; };
     homeModule = { flake = false; url = "path:./nix/homeModule"; };
     neksysNames = { flake = false; url = "path:./nix/neksysNames"; };
     tests = { url = "path:./nix/tests"; flake = false; };
-    mkKriomDatom = { url = "path:./nix/mkKriomDatom"; flake = false; };
     files = { url = "path:./nix/files"; flake = false; };
     AskiCoreNiks = { url = "path:./AskiCoreNiks"; flake = false; };
     AskiNiks = { url = "path:./AskiNiks"; flake = false; };
@@ -25,7 +24,7 @@
 
   outputs = inputs@{ self, ... }:
     let
-      kriomOSRev =
+      criomeOSRev =
         let shortHash = kor.cortHacString self.narHash;
         in self.shortRev or shortHash;
 
@@ -41,13 +40,13 @@
       hob = inputs.hob.value // localHobSources;
 
       inherit (hob) flake-utils emacs-overlay nixpkgs lib;
-      
+
       imports = mapAttrs importInput {
-        inherit (inputs) kor mkPkgs mkKriosfir mkKriozonz mkKriomOS
+        inherit (inputs) kor mkPkgs mkCrioSphere mkCrioZones mkCriomOS
           mkHomeConfig neksysNames mkUyrld homeModule files;
       };
 
-      inherit (imports) kor neksysNames mkPkgs homeModule mkKriomOS mkUyrld;
+      inherit (imports) kor neksysNames mkPkgs homeModule mkCriomOS mkUyrld;
 
       mkPkgsAndUyrldFromSystem = system:
         let
@@ -66,40 +65,40 @@
         mapAttrs (name: value: value.${system}) perSystemPkgsAndUyrld;
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
-      mkKriomDatom = import inputs.mkKriomDatom { inherit kor lib mkDatom; };
+      mkCriomeDatom = import inputs.mkCriomeDatom { inherit kor lib mkDatom; };
 
       inherit (builtins) fold attrNames mapAttrs filterAttrs;
       inherit (kor) mkLamdy arkSistymMap genAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
 
-      generateKriosfirProposalFromName = name:
+      generateCrioSphereProposalFromName = name:
         let
-          subKriomConfig = hob."${name}".NeksysProposal or { };
-          explicitNodes = subKriomConfig.astriz or { };
+          subCriomeConfig = hob."${name}".NeksysProposal or { };
+          explicitNodes = subCriomeConfig.astriz or { };
           implicitNodes = import ./implicitNodes.nix;
           allNodes = explicitNodes // implicitNodes;
         in
-        subKriomConfig // { astriz = allNodes; };
+        subCriomeConfig // { astriz = allNodes; };
 
-      uncheckedKriosfirProposal = genAttrs
+      uncheckedCrioSphereProposal = genAttrs
         neksysNames
-        generateKriosfirProposalFromName;
+        generateCrioSphereProposalFromName;
 
-      mkNeksysDerivations = priNeksysNeim: kriozon:
+      mkNeksysDerivations = priNeksysNeim: crioZone:
         let
-          inherit (kriozon) krimynz;
-          inherit (kriozon.astra.mycin) ark;
+          inherit (crioZone) users;
+          inherit (crioZone.astra.mycin) ark;
           system = arkSistymMap.${ark};
           pkgsAndUyrld = mkPkgsAndUyrld system;
           inherit (pkgsAndUyrld) pkgs uyrld;
-          hyraizyn = kriozon;
+          hyraizyn = crioZone;
 
-          krimynProfiles = {
+          userProfiles = {
             light = { dark = false; };
             dark = { dark = true; };
           };
 
-          mkKrimynHomz = krimynNeim: krimyn:
+          mkUserHomz = userNeim: user:
             let
               inherit (uyrld) pkdjz;
 
@@ -107,37 +106,37 @@
                 let
                   modules = [ homeModule ];
                   extraSpecialArgs =
-                    { inherit kor pkdjz uyrld hyraizyn krimyn profile; };
+                    { inherit kor pkdjz uyrld hyraizyn user profile; };
                   evalHomeManager = hob.home-manager.lib.homeManagerConfiguration;
                   evaluation = evalHomeManager
                     { inherit modules extraSpecialArgs pkgs; };
                 in
                 evaluation.config.home.activationPackage;
             in
-            mapAttrs mkProfileHom krimynProfiles;
+            mapAttrs mkProfileHom userProfiles;
 
-          mkKrimynImaks = krimynNeim: krimyn:
+          mkUserImaks = userNeim: user:
             let
               inherit (uyrld.pkdjz) meikImaks;
               mkProfileImaks = profileName: profile:
-                meikImaks { inherit krimyn profile; };
+                meikImaks { inherit user profile; };
             in
-            mapAttrs mkProfileImaks krimynProfiles;
+            mapAttrs mkProfileImaks userProfiles;
 
         in
         {
-          os = mkKriomOS
-            { inherit kriomOSRev kor uyrld hyraizyn homeModule hob; };
-          hom = mapAttrs mkKrimynHomz krimynz;
-          imaks = mapAttrs mkKrimynImaks krimynz;
+          os = mkCriomOS
+            { inherit criomeOSRev kor uyrld hyraizyn homeModule hob; };
+          hom = mapAttrs mkUserHomz users;
+          imaks = mapAttrs mkUserImaks users;
         };
 
-      mkEachKriozonDerivations = kriozonz:
+      mkEachCrioZoneDerivations = crioZones:
         let
           mkNeksysDerivationIndex = neksysNeim: neksysPrineksysIndeks:
             mapAttrs mkNeksysDerivations neksysPrineksysIndeks;
         in
-        mapAttrs mkNeksysDerivationIndex kriozonz;
+        mapAttrs mkNeksysDerivationIndex crioZones;
 
       mkNixApiOutputsPerSystem = system:
         let
@@ -150,7 +149,7 @@
 
           devShell = pkgs.mkShell {
             inputsFrom = [ ];
-            KRIOMOSBOOTFILE = self + /boot.shen;
+            CRIOMOSBOOTFILE = self + /boot.shen;
             buildInputs = [ shen ];
           };
 
@@ -178,15 +177,11 @@
 
       perSystemAllOutputs = eachDefaultSystem mkNixApiOutputsPerSystem;
 
-      proposedKriosfir = imports.mkKriosfir { inherit uncheckedKriosfirProposal kor lib; };
-      proposedKriozonz = imports.mkKriozonz { inherit kor lib proposedKriosfir; };
-
-      kriomInput = uncheckedKriosfirProposal;
-      Kriom = mkKriomDatom { subKrioms = kriomInput; };
+      proposedCrioSphere = imports.mkCrioSphere { inherit uncheckedCrioSphereProposal kor lib; };
+      proposedCrioZones = imports.mkCrioZones { inherit kor lib proposedCrioSphere; };
 
     in
     perSystemAllOutputs // {
-      kriozonz = mkEachKriozonDerivations proposedKriozonz;
-      outputs = Kriom.mkOutputs { inherit mkKriomOS kriomOSRev mkPkgsAndUyrld homeModule; };
+      crioZones = mkEachCrioZoneDerivations proposedCrioZones;
     };
 }

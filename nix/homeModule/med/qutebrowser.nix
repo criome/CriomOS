@@ -1,8 +1,8 @@
-{ lib, pkgs, krimyn, profile, config, ... }:
+{ lib, pkgs, user, profile, config, ... }:
 let
   inherit (builtins) readFile toString;
   inherit (lib) mkIf optionalString;
-  inherit (krimyn.spinyrz) iuzColemak saizAtList;
+  inherit (user.spinyrz) iuzColemak saizAtList;
   inherit (profile) dark;
 
   badDomains = [

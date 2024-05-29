@@ -5,7 +5,7 @@ let
     listOf attrs;
 
   inherit (metastrizSpiciz) metastriNeimz astriSpiciz
-    magnytiud sistymz komynKrimynOptions mycinSpici IoOptions;
+    magnytiud sistymz komynUserOptions mycinSpici IoOptions;
 
   astriOptions = {
     neim = mkOption {
@@ -21,7 +21,7 @@ let
       type = enum magnytiud;
     };
 
-    kriomOSNeim = mkOption {
+    criomeOSNeim = mkOption {
       type = str;
     };
 
@@ -42,7 +42,7 @@ let
       type = mycinSpici;
     };
 
-    yggPriKriom = mkOption {
+    yggPriCriome = mkOption {
       type = nullOr str;
       default = null;
     };
@@ -62,7 +62,7 @@ let
       default = null;
     };
 
-    niksPriKriom = mkOption {
+    niksPriCriome = mkOption {
       type = nullOr str;
       default = null;
     };
@@ -77,7 +77,7 @@ let
       default = null;
     };
 
-    wireguardPriKriom = mkOption {
+    wireguardPriCriome = mkOption {
       type = nullOr str;
       default = null;
     };
@@ -118,8 +118,8 @@ let
     };
   };
 
-  krimynSubmodule = {
-    options = komynKrimynOptions // {
+  userSubmodule = {
+    options = komynUserOptions // {
       neim = mkOption {
         type = str;
       };
@@ -149,8 +149,8 @@ let
         type = attrsOf (submodule { options = astriOptions; });
       };
 
-      krimynz = mkOption {
-        type = attrsOf (submodule krimynSubmodule);
+      users = mkOption {
+        type = attrsOf (submodule userSubmodule);
       };
 
       spinyrz = mkOption {

@@ -16,7 +16,7 @@ in
 
     niks = rec {
       stateDirectory = "/etc/nix";
-      priKriad = "/etc/nix/priKriad";
+      preCriad = "/etc/nix/preCriad";
     };
 
     inherit systemd;
@@ -29,8 +29,8 @@ in
       runtimeDirectory = systemd.runtimeDirectory
         + "/" + subDirName;
 
-      preKriomJson = runtimeDirectory + "/preKriom.json";
-      priKriadJson = stateDirectory + "/priKriad.json";
+      preCriomeJson = runtimeDirectory + "/preCriome.json";
+      preCriadJson = stateDirectory + "/preCriad.json";
       combinedConfigJson = stateDirectory + "/combinedConfig.json";
 
       interfaceName = "yggtun";

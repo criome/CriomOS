@@ -1,7 +1,7 @@
-{ kor, pkgs, krimyn, uyrld, pkdjz, ... }:
+{ kor, pkgs, user, uyrld, pkdjz, ... }:
 let
   inherit (kor) optionals;
-  inherit (krimyn.spinyrz) izNiksDev izSemaDev saizAtList;
+  inherit (user.spinyrz) izNiksDev izSemaDev saizAtList;
 
   niksDevPackages = with pkgs;
     [ pandoc ];

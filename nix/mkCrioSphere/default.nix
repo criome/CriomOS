@@ -1,8 +1,8 @@
-{ kor, lib, uncheckedKriosfirProposal }:
+{ kor, lib, uncheckedCrioSphereProposal }:
 let
   inherit (lib) evalModules;
 
-  priMetastriz = uncheckedKriosfirProposal;
+  priMetastriz = uncheckedCrioSphereProposal;
 
   argzModule = {
     config = {

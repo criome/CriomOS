@@ -3,13 +3,13 @@
 let
   inherit (builtins) map;
   inherit (lib) mkOverride;
-  inherit (hyraizyn.astra) kriomOSNeim;
+  inherit (hyraizyn.astra) criomeOSNeim;
   inherit (pkdjz) trust-dns;
 
   trustDnsEksek = "${trust-dns}/bin/named";
 
   astraZone = {
-    zone = kriomOSNeim;
+    zone = criomeOSNeim;
     zone_type = "Master";
     file = "example.com.zone";
     allow_update = false;

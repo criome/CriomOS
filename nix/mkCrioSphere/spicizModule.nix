@@ -18,7 +18,7 @@ let
 
   metastriNeimz = attrNames priMetastriz;
 
-  priKriomSubmodule = {
+  priCriomeSubmodule = {
     options = {
       eseseitc = mkOption {
         type = str;
@@ -30,7 +30,7 @@ let
     };
   };
 
-  komynKrimynOptions = {
+  komynUserOptions = {
     saiz = mkOption {
       type = enum magnytiud;
       default = 0;
@@ -46,8 +46,8 @@ let
       default = "emacs";
     };
 
-    priKriomz = mkOption {
-      type = attrsOf (submodule priKriomSubmodule);
+    priCriomez = mkOption {
+      type = attrsOf (submodule priCriomeSubmodule);
     };
 
     kibord = mkOption {
@@ -94,7 +94,7 @@ let
         default = null;
       };
 
-      ubyrKrimyn = mkOption {
+      ubyrUser = mkOption {
         type = nullOr str;
         default = null;
       };
@@ -135,7 +135,7 @@ in
   };
 
   config.spiciz = {
-    inherit komynKrimynOptions IoOptions mycinSpici kibordz butlodyrz magnytiud
+    inherit komynUserOptions IoOptions mycinSpici kibordz butlodyrz magnytiud
       metastriNeimz astriSpiciz sistymz;
   };
 

@@ -3,7 +3,7 @@ let
   inherit (builtins) mapAttrs attrNames filter concatStringsSep;
   inherit (kor) mkIf mapAttrsToList optionalAttrs filterAttrs;
   inherit (hyraizyn) astra exAstriz;
-  inherit (hyraizyn.astra.spinyrz) hazWireguardPriKriom
+  inherit (hyraizyn.astra.spinyrz) hazWireguardPriCriome
     wireguardUntrustedProxies;
 
   mkUntrustedProxy = untrustedProxy: {
@@ -19,14 +19,14 @@ let
 
   mkNeksysPeer = neim: astri: {
     allowedIPs = [ astri.neksysIp ];
-    publicKey = astri.wireguardPriKriom;
-    endpoint = "wg.${astri.kriomOSNeim}:51820";
+    publicKey = astri.wireguardPriCriome;
+    endpoint = "wg.${astri.criomeOSNeim}:51820";
   };
 
-  kriomaizdPriNeksiz = filterAttrs (n: v: v.spinyrz.hazWireguardPriKriom)
+  criomeaizdPriNeksiz = filterAttrs (n: v: v.spinyrz.hazWireguardPriCriome)
     exAstriz;
 
-  neksysPeers = mapAttrsToList mkNeksysPeer kriomaizdPriNeksiz;
+  neksysPeers = mapAttrsToList mkNeksysPeer criomeaizdPriNeksiz;
 
   privateKeyFile = "/etc/wireguard/privateKey";
 

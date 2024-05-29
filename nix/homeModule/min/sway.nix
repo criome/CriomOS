@@ -1,8 +1,8 @@
-{ kor, pkgs, pkdjz, krimyn, config, profile, hyraizyn, ... }:
+{ kor, pkgs, pkdjz, user, config, profile, hyraizyn, ... }:
 let
   inherit (kor) mkIf optionals optionalString matcSaiz;
-  inherit (krimyn.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
-  inherit (krimyn) saiz;
+  inherit (user.spinyrz) saizAtList iuzColemak izNiksDev izSemaDev;
+  inherit (user) saiz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
   inherit (hyraizyn.astra.mycin) modyl;

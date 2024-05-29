@@ -5,19 +5,19 @@ let
   inherit (hyraizyn) astra exAstriz;
   inherit (builtins) concatStringsSep;
 
-  mkKriomHostEntries = neim: astri:
+  mkCriomeHostEntries = neim: astri:
     let
-      inherit (astri) kriomOSNeim neksysIp yggAddress;
+      inherit (astri) criomeOSNeim neksysIp yggAddress;
       inherit (astri.spinyrz) izNiksKac nixCacheDomain;
 
       mkPreNeksysHost = linkLocalIP: {
         name = linkLocalIP;
-        value = [ ("wg." + kriomOSNeim) ];
+        value = [ ("wg." + criomeOSNeim) ];
       };
 
       neksysHost = {
         name = neksysIp;
-        value = [ kriomOSNeim ];
+        value = [ criomeOSNeim ];
       };
 
       preNeksysHosts = map mkPreNeksysHost astri.linkLocalIPs;
@@ -27,7 +27,7 @@ let
 
       yggdrasilHost = optional (yggAddress != null) {
         name = yggAddress;
-        value = [ kriomOSNeim ] ++
+        value = [ criomeOSNeim ] ++
           (optional izNiksKac nixCacheDomain);
       };
 
@@ -45,7 +45,7 @@ in
     hostName = astra.neim;
     dhcpcd.extraConfig = "noipv4ll";
     nameservers = [ "::1" "127.0.0.1" ];
-    hosts = concatMapAttrs mkKriomHostEntries exAstriz;
+    hosts = concatMapAttrs mkCriomeHostEntries exAstriz;
   };
 
   services = {

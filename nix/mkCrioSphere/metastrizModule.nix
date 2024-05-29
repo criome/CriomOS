@@ -4,9 +4,9 @@ let
   inherit (lib) mkOption nameValuePair;
   inherit (lib.types) enum str attrsOf submodule nullOr attrs listOf;
   inherit (config.spiciz) magnytiud metastriNeimz astriSpiciz
-    komynKrimynOptions mycinSpici IoOptions;
+    komynUserOptions mycinSpici IoOptions;
 
-  AstriPriKriomSpici = submodule {
+  AstriPriCriomeSpici = submodule {
     options = {
       eseseitc = mkOption {
         type = nullOr str;
@@ -14,7 +14,7 @@ let
       };
 
       yggdrasil = {
-        priKriom = mkOption {
+        priCriome = mkOption {
           type = nullOr str;
           default = null;
         };
@@ -30,7 +30,7 @@ let
         };
       };
 
-      niksPriKriom = mkOption {
+      niksPriCriome = mkOption {
         type = nullOr str;
         default = null;
       };
@@ -63,8 +63,8 @@ let
         default = { };
       };
 
-      priKriomz = mkOption {
-        type = AstriPriKriomSpici;
+      priCriomez = mkOption {
+        type = AstriPriCriomeSpici;
         default = { };
       };
 
@@ -78,7 +78,7 @@ let
         default = null;
       };
 
-      wireguardPriKriom = mkOption {
+      wireguardPriCriome = mkOption {
         type = nullOr str;
         default = null;
       };
@@ -108,7 +108,7 @@ let
         type = attrsOf (enum magnytiud);
       };
 
-      krimynz = mkOption {
+      users = mkOption {
         type = attrsOf (enum magnytiud);
       };
     };
@@ -123,8 +123,8 @@ let
     };
   };
 
-  krimynSubmodule = {
-    options = komynKrimynOptions;
+  userSubmodule = {
+    options = komynUserOptions;
   };
 
   metastriSubmodule = ({ name, config, ... }@metastriArgs:
@@ -139,8 +139,8 @@ let
           type = attrsOf (submodule astriSubmodule);
         };
 
-        krimynz = mkOption {
-          type = attrsOf (submodule krimynSubmodule);
+        users = mkOption {
+          type = attrsOf (submodule userSubmodule);
         };
 
         domeinz = mkOption {
@@ -164,7 +164,7 @@ let
                 type = attrsOf (enum magnytiud);
               };
 
-              krimynz = mkOption {
+              users = mkOption {
                 type = attrsOf (enum magnytiud);
               };
             };

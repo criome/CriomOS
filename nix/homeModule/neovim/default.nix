@@ -1,8 +1,8 @@
-{ kor, pkgs, pkdjz, krimyn, config, profile, hyraizyn, ... }:
+{ kor, pkgs, pkdjz, user, config, profile, hyraizyn, ... }:
 let
   inherit (builtins) concatStringsSep readFile elem concatMap toJSON;
   inherit (kor) optionalString optionals mkIf mapAttrsToList optional optionalAttrs;
-  inherit (krimyn.spinyrz) izNiksDev saizAtList iuzColemak;
+  inherit (user.spinyrz) izNiksDev saizAtList iuzColemak;
   inherit (hyraizyn) astra;
   inherit (profile) dark;
   inherit (pkgs) parinfer-rust writeText;

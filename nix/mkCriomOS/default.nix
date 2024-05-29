@@ -1,4 +1,4 @@
-{ kriomOSRev, homeModule, kor, uyrld, hyraizyn, hob }:
+{ criomeOSRev, homeModule, kor, uyrld, hyraizyn, hob }:
 let
   inherit (kor) optional;
   inherit (uyrld) pkdjz home-manager;
@@ -11,7 +11,7 @@ let
   iuzEdjModule = typeIs.edj || typeIs.haibrid || typeIs.edjTesting;
   iuzIsoModule = !iuzPodModule && (io.disks == { });
 
-  krimynzModule = import ./krimynz.nix;
+  usersModule = import ./users.nix;
   niksModule = import ./niks.nix;
   normylaizModule = import ./normylaiz.nix;
   networkModule = import ./network;
@@ -27,7 +27,7 @@ let
   metylModule = import ./metyl;
 
   beisModules = [
-    krimynzModule
+    usersModule
     disksModule
     niksModule
     normylaizModule
@@ -41,7 +41,7 @@ let
     ++ (optional iuzMetylModule metylModule);
 
   nixosArgs = {
-    inherit kor uyrld pkdjz hyraizyn kriomOSRev homeModule hob;
+    inherit kor uyrld pkdjz hyraizyn criomeOSRev homeModule hob;
     konstynts = import ./konstynts.nix;
   };
 

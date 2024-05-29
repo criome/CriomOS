@@ -1,12 +1,12 @@
-{ kor, pkgs, pkdjz, krimyn, hyraizyn, config, profile, uyrld, ... }:
+{ kor, pkgs, pkdjz, user, hyraizyn, config, profile, uyrld, ... }:
 let
   inherit (builtins) toString readFile toJSON;
   inherit (kor) optionalString optionals mkIf  optional;
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
-  inherit (krimyn.spinyrz) iuzColemak hazPriKriom
+  inherit (user.spinyrz) iuzColemak hazPriCriome
     gitSigningKey matrixID saizAtList izNiksDev izSemaDev;
-  inherit (krimyn) githubId neim spinyrz;
+  inherit (user) githubId neim spinyrz;
   inherit (profile) dark;
   inherit (pkgs) writeText;
 
@@ -267,7 +267,7 @@ mkIf saizAtList.min {
       defaultCacheTtlSsh = 3600;
       maxCacheTtlSsh = 86400;
       enableSshSupport = true;
-      sshKeys = (optional hazPriKriom krimyn.priKriomz.${astra.neim}.keygrip);
+      sshKeys = (optional hazPriCriome user.priCriomez.${astra.neim}.keygrip);
     };
 
     mpd = {
@@ -320,7 +320,7 @@ mkIf saizAtList.min {
       enable = true;
       userEmail = spinyrz.emailAddress;
       userName = neim;
-      signing = mkIf hazPriKriom {
+      signing = mkIf hazPriCriome {
         key = gitSigningKey;
         signByDefault = true;
       };

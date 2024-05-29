@@ -2,10 +2,10 @@
 let
   inherit (builtins) mapAttrs attrNames filter;
   inherit (kor) mkIf optionalString;
-  inherit (hyraizyn.astra.spinyrz) izYggKriodaizd;
+  inherit (hyraizyn.astra.spinyrz) izYggCriodaizd;
   inherit (konstynts) fileSystem;
-  inherit (konstynts.fileSystem.yggdrasil) priKriadJson
-    subDirName preKriomJson interfaceName combinedConfigJson;
+  inherit (konstynts.fileSystem.yggdrasil) preCriadJson
+    subDirName preCriomeJson interfaceName combinedConfigJson;
   inherit (konstynts.network.yggdrasil) ports;
 
   package = pkgs.yggdrasil;
@@ -13,7 +13,7 @@ let
   yggCtlExec = "${package}/bin/yggdrasilctl";
   jqEksek = "${pkgs.jq}/bin/jq";
 
-  yggKriodFilterSocket = fileSystem.systemd.runtimeDirectory + "/yggKriodFilter";
+  yggCriodFilterSocket = fileSystem.systemd.runtimeDirectory + "/yggCriodFilter";
 
   mkConfigFile = conf: pkgs.writeTextFile {
     name = "yggdrasilConf.json";
@@ -35,17 +35,17 @@ let
 
   configFile = mkConfigFile yggdrasilConfig;
 
-  seedYggdrasil = !izYggKriodaizd;
+  seedYggdrasil = !izYggCriodaizd;
 
   seedYggdrasilScript = pkgs.writeScript "createYggdrasilKeys.sh" ''
-    if [[ ! -e ${priKriadJson} ]]; then
+    if [[ ! -e ${preCriadJson} ]]; then
       ${yggExec} -genconf -json | \
-        ${pkgs.jq}/bin/jq '{ PublicKey, PrivateKey }' > ${priKriadJson}
+        ${pkgs.jq}/bin/jq '{ PublicKey, PrivateKey }' > ${preCriadJson}
     fi
   '';
 
-  extractPreKriomJson = ''
-    ${yggCtlExec} -json -v getself > ${preKriomJson}
+  extractPreCriomeJson = ''
+    ${yggCtlExec} -json -v getself > ${preCriomeJson}
   '';
 
 in
@@ -68,10 +68,10 @@ in
 
         preStart = ''
           ${optionalString seedYggdrasil seedYggdrasilScript} 
-          ${pkgs.jq}/bin/jq --slurp add ${priKriadJson} ${configFile} > ${combinedConfigJson}
+          ${pkgs.jq}/bin/jq --slurp add ${preCriadJson} ${configFile} > ${combinedConfigJson}
         '';
 
-        postStart = optionalString seedYggdrasil extractPreKriomJson;
+        postStart = optionalString seedYggdrasil extractPreCriomeJson;
 
         serviceConfig = {
           ExecStart = '' 

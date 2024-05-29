@@ -1,14 +1,14 @@
-{ kor, lib, proposedKriosfir }:
+{ kor, lib, proposedCrioSphere }:
 let
   inherit (builtins) mapAttrs;
   inherit (lib) evalModules;
 
-  metastriz = proposedKriosfir;
+  metastriz = proposedCrioSphere;
 
   hyraizynOptions = import ./hyraizynOptions.nix;
   mkHyraizynModule = import ./mkHyraizynModule.nix;
 
-  mkKriozon = neksysNeim: priNeksysNeim:
+  mkCrioZone = neksysNeim: priNeksysNeim:
     let
       astraNeim = priNeksysNeim;
       metastraNeim = neksysNeim;
@@ -32,16 +32,16 @@ let
         ];
       };
 
-      kriozon = ivaliueicyn.config.hyraizyn;
+      crioZone = ivaliueicyn.config.hyraizyn;
 
     in
-    kriozon;
+    crioZone;
 
-  mkNeksysKriozonz = neksysNeim: neksys:
+  mkNeksysCrioZones = neksysNeim: neksys:
     # let priNeksysNeimz = attrNames neksys.astriz; in
-    mapAttrs (pnn: pn: mkKriozon neksysNeim pnn) neksys.astriz;
+    mapAttrs (pnn: pn: mkCrioZone neksysNeim pnn) neksys.astriz;
 
-  ryzylt = mapAttrs mkNeksysKriozonz proposedKriosfir.datom;
+  ryzylt = mapAttrs mkNeksysCrioZones proposedCrioSphere.datom;
 
 in
 ryzylt

@@ -4,22 +4,22 @@ let
     concatStringsSep concatMap;
   inherit (kor) optionals optional optionalString mkIf optionalAttrs;
 
-  inherit (hyraizyn) astra exAstriz krimynz;
-  inherit (astra.spinyrz) adminEseseitcPriKriomz;
+  inherit (hyraizyn) astra exAstriz users;
+  inherit (astra.spinyrz) adminEseseitcPriCriomez;
 
-  krimynNeimz = attrNames krimynz;
+  userNeimz = attrNames users;
 
-  mkEseseitcString = priKriom: concatStringsSep " "
-    [ "ed25519" priKriom.eseseitc ];
+  mkEseseitcString = priCriome: concatStringsSep " "
+    [ "ed25519" priCriome.eseseitc ];
 
-  mkKrimyn = attrNeim: krimyn:
+  mkUser = attrNeim: user:
     let
-      inherit (krimyn) trost spinyrz;
-      inherit (krimyn.spinyrz) eseseitcyz hazPriKriom;
+      inherit (user) trost spinyrz;
+      inherit (user.spinyrz) eseseitcyz hazPriCriome;
 
     in
     optionalAttrs (trost > 0) {
-      name = krimyn.neim;
+      name = user.neim;
 
       useDefaultShell = true;
       isNormalUser = true;
@@ -45,14 +45,14 @@ let
         ]);
     };
 
-  mkKrimynUsers = mapAttrs mkKrimyn krimynz;
+  mkUserUsers = mapAttrs mkUser users;
 
 
   rootUserAkses = {
     root = {
-      openssh.authorizedKeys.keys = adminEseseitcPriKriomz;
+      openssh.authorizedKeys.keys = adminEseseitcPriCriomez;
     };
   };
 
 in
-{ users = { users = mkKrimynUsers // rootUserAkses; }; }
+{ users = { users = mkUserUsers // rootUserAkses; }; }
