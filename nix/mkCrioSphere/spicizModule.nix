@@ -18,7 +18,7 @@ let
 
   metastriNeimz = attrNames priMetastriz;
 
-  priCriomeSubmodule = {
+  preCriomeSubmodule = {
     options = {
       eseseitc = mkOption {
         type = str;
@@ -46,8 +46,8 @@ let
       default = "emacs";
     };
 
-    priCriomez = mkOption {
-      type = attrsOf (submodule priCriomeSubmodule);
+    preCriomes = mkOption {
+      type = attrsOf (submodule preCriomeSubmodule);
     };
 
     kibord = mkOption {

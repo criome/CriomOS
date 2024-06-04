@@ -4,7 +4,7 @@ let
   inherit (lib) boolToString mapAttrsToList importJSON;
   inherit (kor) optionals mkIf optional eksportJSON optionalAttrs;
 
-  inherit (hyraizyn.metastra.spinyrz) trostydBildPriCriomez;
+  inherit (hyraizyn.metastra.spinyrz) trostydBildPreCriomes;
   inherit (hyraizyn) astra;
   inherit (hyraizyn.astra.spinyrz)
     bildyrKonfigz kacURLz dispatcyrzEseseitcKiz saizAtList
@@ -110,7 +110,7 @@ in
       connect-timeout = 5;
       fallback = true;
 
-      trusted-public-keys = trostydBildPriCriomez;
+      trusted-public-keys = trostydBildPreCriomes;
       substituters = kacURLz;
       trusted-binary-caches = kacURLz;
 

@@ -42,7 +42,7 @@ let
       type = mycinSpici;
     };
 
-    yggPriCriome = mkOption {
+    yggPreCriome = mkOption {
       type = nullOr str;
       default = null;
     };
@@ -62,7 +62,7 @@ let
       default = null;
     };
 
-    niksPriCriome = mkOption {
+    niksPreCriome = mkOption {
       type = nullOr str;
       default = null;
     };
@@ -77,7 +77,7 @@ let
       default = null;
     };
 
-    wireguardPriCriome = mkOption {
+    wireguardPreCriome = mkOption {
       type = nullOr str;
       default = null;
     };

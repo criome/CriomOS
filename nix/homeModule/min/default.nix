@@ -4,7 +4,7 @@ let
   inherit (kor) optionalString optionals mkIf  optional;
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
-  inherit (user.spinyrz) iuzColemak hazPriCriome
+  inherit (user.spinyrz) iuzColemak hazPreCriome
     gitSigningKey matrixID saizAtList izNiksDev izSemaDev;
   inherit (user) githubId neim spinyrz;
   inherit (profile) dark;
@@ -267,7 +267,7 @@ mkIf saizAtList.min {
       defaultCacheTtlSsh = 3600;
       maxCacheTtlSsh = 86400;
       enableSshSupport = true;
-      sshKeys = (optional hazPriCriome user.priCriomez.${astra.neim}.keygrip);
+      sshKeys = (optional hazPreCriome user.preCriomes.${astra.neim}.keygrip);
     };
 
     mpd = {
@@ -320,7 +320,7 @@ mkIf saizAtList.min {
       enable = true;
       userEmail = spinyrz.emailAddress;
       userName = neim;
-      signing = mkIf hazPriCriome {
+      signing = mkIf hazPreCriome {
         key = gitSigningKey;
         signByDefault = true;
       };

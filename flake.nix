@@ -14,7 +14,7 @@
     mkCriomOS = { flake = false; url = "path:./nix/mkCriomOS"; };
     pkdjz = { flake = false; url = "path:./nix/pkdjz"; };
     homeModule = { flake = false; url = "path:./nix/homeModule"; };
-    neksysNames = { flake = false; url = "path:./nix/neksysNames"; };
+    neksysNames = { flake = false; url = "path:./neksysNames.nix"; };
     tests = { url = "path:./nix/tests"; flake = false; };
     files = { url = "path:./nix/files"; flake = false; };
     AskiCoreNiks = { url = "path:./AskiCoreNiks"; flake = false; };

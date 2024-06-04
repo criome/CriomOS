@@ -6,7 +6,7 @@ let
   inherit (config.spiciz) magnytiud metastriNeimz astriSpiciz
     komynUserOptions mycinSpici IoOptions;
 
-  AstriPriCriomeSpici = submodule {
+  AstriPreCriomeSpici = submodule {
     options = {
       eseseitc = mkOption {
         type = nullOr str;
@@ -14,7 +14,7 @@ let
       };
 
       yggdrasil = {
-        priCriome = mkOption {
+        preCriome = mkOption {
           type = nullOr str;
           default = null;
         };
@@ -30,7 +30,7 @@ let
         };
       };
 
-      niksPriCriome = mkOption {
+      niksPreCriome = mkOption {
         type = nullOr str;
         default = null;
       };
@@ -63,8 +63,8 @@ let
         default = { };
       };
 
-      priCriomez = mkOption {
-        type = AstriPriCriomeSpici;
+      preCriomes = mkOption {
+        type = AstriPreCriomeSpici;
         default = { };
       };
 
@@ -78,7 +78,7 @@ let
         default = null;
       };
 
-      wireguardPriCriome = mkOption {
+      wireguardPreCriome = mkOption {
         type = nullOr str;
         default = null;
       };

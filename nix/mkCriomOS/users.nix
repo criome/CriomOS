@@ -5,17 +5,17 @@ let
   inherit (kor) optionals optional optionalString mkIf optionalAttrs;
 
   inherit (hyraizyn) astra exAstriz users;
-  inherit (astra.spinyrz) adminEseseitcPriCriomez;
+  inherit (astra.spinyrz) adminEseseitcPreCriomes;
 
   userNeimz = attrNames users;
 
-  mkEseseitcString = priCriome: concatStringsSep " "
-    [ "ed25519" priCriome.eseseitc ];
+  mkEseseitcString = preCriome: concatStringsSep " "
+    [ "ed25519" preCriome.eseseitc ];
 
   mkUser = attrNeim: user:
     let
       inherit (user) trost spinyrz;
-      inherit (user.spinyrz) eseseitcyz hazPriCriome;
+      inherit (user.spinyrz) eseseitcyz hazPreCriome;
 
     in
     optionalAttrs (trost > 0) {
@@ -50,7 +50,7 @@ let
 
   rootUserAkses = {
     root = {
-      openssh.authorizedKeys.keys = adminEseseitcPriCriomez;
+      openssh.authorizedKeys.keys = adminEseseitcPreCriomes;
     };
   };
 
