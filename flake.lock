@@ -280,13 +280,13 @@
       "locked": {
         "lastModified": 1680142962,
         "narHash": "sha256-q+V3P6gZWpf/l4kUHevRz7B2cviUOTQzO5k4sDfgQZI=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "aski",
         "rev": "4897a746727d87f4e09388ea0e0f06a9d4433a9a",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "aski",
         "type": "github"
       }
@@ -425,6 +425,21 @@
       "original": {
         "owner": "kolloch",
         "repo": "crate2nix",
+        "type": "github"
+      }
+    },
+    "criome-website": {
+      "locked": {
+        "lastModified": 1716418911,
+        "narHash": "sha256-CzZKZBKu62fMJ88RQ6KfYy7u9jgpBwObojrpWU1lvWI=",
+        "owner": "criome",
+        "repo": "website",
+        "rev": "cd2ea9b78a31e5f4fad85e27906a816d910e77ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "criome",
+        "repo": "website",
         "type": "github"
       }
     },
@@ -893,6 +908,7 @@
         "clj-nix": "clj-nix",
         "clojure-lsp": "clojure-lsp",
         "crate2nix": "crate2nix",
+        "criome-website": "criome-website",
         "devshell": "devshell",
         "dunst": "dunst",
         "eldev": "eldev",
@@ -910,7 +926,6 @@
         "goldragonWebpage": "goldragonWebpage",
         "home-manager": "home-manager",
         "kibord": "kibord",
-        "kriomWebsite": "kriomWebsite",
         "lib": "lib",
         "librem5-flash-image": "librem5-flash-image",
         "lojix": "lojix",
@@ -957,16 +972,16 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1712972904,
-        "narHash": "sha256-Xucagdo29JIX9DyqeV/iYFafMdivapA77IuwNh9zHqU=",
-        "owner": "sajban",
+        "lastModified": 1717541878,
+        "narHash": "sha256-tW1W1Iufdnp9RTCBTlUFASeTGmbdr7ke0T9FiUeYm9E=",
+        "owner": "criome",
         "repo": "hob",
-        "rev": "0ba4a98b2a5f4467fb5c61ce6b425e85ed43cc4f",
+        "rev": "3c40221e50f043653d681f2ab0156cd4ef1aa66e",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
-        "ref": "23Aries5918AM-Update",
+        "owner": "criome",
+        "ref": "15Gemini5918AM-rename",
         "repo": "hob",
         "type": "github"
       }
@@ -1134,21 +1149,6 @@
         "type": "github"
       }
     },
-    "kriomWebsite": {
-      "locked": {
-        "lastModified": 1689668283,
-        "narHash": "sha256-giz0RTfVlkQci7jG/V+sOehKyu7JV+tMts8LhygCp6E=",
-        "owner": "sajban",
-        "repo": "website",
-        "rev": "9f9e74c5743d92cfa4afb6fc185941e8ef041a8c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sajban",
-        "repo": "website",
-        "type": "github"
-      }
-    },
     "lib": {
       "inputs": {
         "nixpkgs": [
@@ -1159,13 +1159,13 @@
       "locked": {
         "lastModified": 1702361717,
         "narHash": "sha256-RuJkKuTMftaa2k9xJOawosSkb60dW6uOxTGBNiRw3j8=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "lib",
         "rev": "f6baecf1016dab267da43cbd232f13f67645a97c",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "lib",
         "type": "github"
       }
@@ -1220,15 +1220,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1703226416,
-        "narHash": "sha256-qpTcAKCXYxHgIfsJYSyWruqmBIsIdGy/NSFFrkP0p3s=",
-        "owner": "sajban",
+        "lastModified": 1717445340,
+        "narHash": "sha256-RAa5OE/1id460AI+1uQgE5KJtS0iKcHSjafNfAvNcLk=",
+        "owner": "criome",
         "repo": "lojix",
-        "rev": "866b26bcb3a158f5c94079d4866211417623d767",
+        "rev": "f6e1d13ed7f81232a09774d4a5fe84d26bb08630",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "lojix",
         "type": "github"
       }
@@ -1417,13 +1417,13 @@
       "locked": {
         "lastModified": 1668044468,
         "narHash": "sha256-f91kp2YwgNQZQsH2Cyr91QxiqHq4UfPBC+/GJ3Oetdo=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "mkZolaWebsite",
         "rev": "f5b255600575a9ab027f8ebe41e5cc6a73aa683b",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "mkZolaWebsite",
         "type": "github"
       }
@@ -1631,13 +1631,13 @@
       "locked": {
         "lastModified": 1702362402,
         "narHash": "sha256-delkziI4IpNOIC1upRbdhoRSZ14TNM/ihdXy/31yYgc=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "lib",
         "rev": "9a2b715ab0ad9e34ec0a4720980431467cf6de18",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "ref": "nestedAttribute",
         "repo": "lib",
         "type": "github"
@@ -1882,13 +1882,13 @@
       "locked": {
         "lastModified": 1701677235,
         "narHash": "sha256-fJcAcpKzzwgn4dp0HYH0Ozmp8/jxcvNzHDdubUo3YYw=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "pkgss",
         "rev": "cc352840f7844e294f5ce47ed6793aa258fbf7b8",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "pkgss",
         "type": "github"
       }
@@ -2078,15 +2078,15 @@
     "sajban": {
       "flake": false,
       "locked": {
-        "lastModified": 1680144135,
-        "narHash": "sha256-27alDaqDNcqCAzFjfHwDCCiQgrfbyjfLW6EuVSDcy18=",
-        "owner": "sajban",
+        "lastModified": 1713112941,
+        "narHash": "sha256-9ozSUDlj0y3cTTHh4gWyqkCguYr3n8kIGv8I9GB9CFY=",
+        "owner": "criome",
         "repo": "sajban",
-        "rev": "2561f7fc49d755d645858142bca7eb06a7358c28",
+        "rev": "d4a62e40811c6a47cad91e5422a846d89b8c13ae",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "sajban",
         "type": "github"
       }
@@ -2095,13 +2095,13 @@
       "locked": {
         "lastModified": 1667373205,
         "narHash": "sha256-6Uk1fgv0p8bTdnTPqBAoFHvfHkE6DiITRlpPuHJqacs=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "seahawk",
         "rev": "b0da7be1ab2eee592db9de192288b8dc2850dd3a",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "seahawk",
         "type": "github"
       }
@@ -2127,13 +2127,13 @@
       "locked": {
         "lastModified": 1642569955,
         "narHash": "sha256-FVFoYeQJQjKIVWND6RdqwV++/F7u84u7KOn1QZeRzTM=",
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "shen",
         "rev": "0a5286bb99b27a89664f8944fbb1eb104d812a61",
         "type": "github"
       },
       "original": {
-        "owner": "sajban",
+        "owner": "criome",
         "repo": "shen",
         "type": "github"
       }

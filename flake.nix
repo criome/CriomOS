@@ -2,7 +2,7 @@
   description = "CriomOS";
 
   inputs = {
-    hob.url = "github:sajban/hob/23Aries5918AM-Update";
+    hob.url = "github:criome/hob/15Gemini5918AM-rename";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
