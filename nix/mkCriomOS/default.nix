@@ -8,6 +8,7 @@ let
   iuzPodModule = (mycin.spici == "pod");
   iuzMetylModule = (mycin.spici == "metyl");
 
+  useRouterModule = typeIs.haibrid || typeIs.router;
   iuzEdjModule = typeIs.edj || typeIs.haibrid || typeIs.edjTesting;
   iuzIsoModule = !iuzPodModule && (io.disks == { });
 
@@ -36,7 +37,7 @@ let
 
   nixosModules = beisModules
     ++ (optional iuzEdjModule edjModule)
-    ++ (optional typeIs.router ./router)
+    ++ (optional useRouterModule ./router)
     ++ (optional iuzIsoModule home-manager.nixosModules.default)
     ++ (optional iuzMetylModule metylModule);
 
