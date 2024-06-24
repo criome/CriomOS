@@ -972,11 +972,11 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1717541878,
-        "narHash": "sha256-tW1W1Iufdnp9RTCBTlUFASeTGmbdr7ke0T9FiUeYm9E=",
+        "lastModified": 1719259834,
+        "narHash": "sha256-enl6S3vdNoCocQcaN7+NR/hdzQsTeMD/JzL2QnTtXlM=",
         "owner": "criome",
         "repo": "hob",
-        "rev": "3c40221e50f043653d681f2ab0156cd4ef1aa66e",
+        "rev": "d4c5e116c0450578b3e7d784bdcfc973506fd011",
         "type": "github"
       },
       "original": {
@@ -1277,11 +1277,11 @@
     },
     "maisiliym": {
       "locked": {
-        "lastModified": 1712966746,
-        "narHash": "sha256-yjL6T5vT2499h6IEb6FVahKVKfeduFTbCVjnGXoKaMM=",
+        "lastModified": 1719259360,
+        "narHash": "sha256-HYCS5Dp8xwK5spe1TmU7GykMjPAM8DipY59N6h3FPFU=",
         "owner": "LiGoldragon",
         "repo": "maisiliym",
-        "rev": "15eba6c04474499331ca498d925c21628571e85c",
+        "rev": "013580cfd74b57cdecad772ae19d860307063809",
         "type": "github"
       },
       "original": {
@@ -1352,7 +1352,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-opBF8sgnIEw7VavaTpnD+uPa0p7DslzM23HlTiDrssc=",
+        "narHash": "sha256-6z2mxokAOwvLWI+r+pNW7ydKnlXtFePH6g2qpXYWQoA=",
         "path": "./nix/mkCriomOS",
         "type": "path"
       },
@@ -1866,7 +1866,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-MmP3qFx1YA2DK/5LTiSRQWlOQBzpT2rv3A9yIbo9XhY=",
+        "narHash": "sha256-dvSzf2qALJQSFFjRe96TRiw6pxV59Rv/aZ+uYE8AcFc=",
         "path": "./nix/pkdjz",
         "type": "path"
       },

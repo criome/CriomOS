@@ -1,3 +1,5 @@
+(use-package apheleia)
+
 (use-package telega)
 
 (use-package ement
