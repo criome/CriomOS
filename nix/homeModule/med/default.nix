@@ -69,6 +69,7 @@ let
     stylelint
     postcss
     node2nix
+    prettier
   ]);
 
   graphicalPackages = with pkgs; [
