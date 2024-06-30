@@ -173,6 +173,7 @@ let
     # Clojure
     clojure
     babashka
+    neil
     clj-kondo
     leiningen
     cljfmt
