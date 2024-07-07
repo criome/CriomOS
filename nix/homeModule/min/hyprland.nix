@@ -65,7 +65,6 @@ in
       col.active_border = rgb(fa00fa) rgb(ff00ff) 45deg
       col.inactive_border = rgba(28282899)
       layout = master
-      cursor_inactive_timeout = 3
     }
 
     decoration {
@@ -96,7 +95,6 @@ in
     }
 
     master {
-      new_is_master = no
       new_on_top = no
       mfact = 0.65
       special_scale_factor = 1
