@@ -108,16 +108,6 @@ let
 
   brootConfig = toJSON { };
 
-  mpv = pkgs.wrapMpv
-    (pkgs.mpv-unwrapped.override {
-      x11Support = false;
-      xineramaSupport = false;
-      xvSupport = false;
-      waylandSupport = true;
-      screenSaverSupport = false;
-    })
-    { youtubeSupport = saizAtList.med; };
-
   wayland-warpd = pkgs.warpd.override { withX = false; };
 
   nixpkgsPackages = with pkgs; [
@@ -155,7 +145,7 @@ let
     acpi
     sox # audio capture
     tio # serial tty
-    androidenv.androidPkgs_9_0.platform-tools # adb/fastboot
+    androidenv.androidPkgs.platform-tools # adb/fastboot
     #== rust
     sd
     ripgrep
@@ -194,8 +184,6 @@ let
     parted # Disk utils
     avrdude
     wireguard-tools
-    pkdjz.firn
-    pkdjz.crate2nix
     cargo
     shfmt
   ] ++ (optionals (astra.mycin.ark == "x86-64") [
@@ -208,7 +196,7 @@ let
   uyrldPackages = with uyrld; [
     pkdjz.shen-bootstrap
     skrips.user
-    clojure-lsp.packages.default
+    # clojure-lsp.packages.default
   ];
 
 in

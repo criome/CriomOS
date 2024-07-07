@@ -26,10 +26,8 @@ let
     ln -s ${tokenizedHub}/bin/hub $out/bin/
   '';
 
-  lispDevPackages = with pkgs.lispPackages; [
-    pkgs.sbcl
-    pkdjz.ql2nix.ql2nix
-    quicklisp
+  lispDevPackages = with pkgs; [
+    sbcl
   ];
 
   niksDevPackages = with pkgs; [

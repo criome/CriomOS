@@ -1,18 +1,13 @@
 { pkgs, pkdjz, user, crioZone, profile, ... }:
 let
-  inherit (pkdjz) meikImaks slynkPackages;
+  inherit (pkdjz) meikImaks ;
   package = meikImaks { inherit user profile; };
-
-  slynkPkgs = with slynkPackages; [
-    slynk # slynk-asdf slynk-quicklisp slynk-macrostep
-  ];
 
 in
 {
   home = {
     packages = [ package ]
-      ++ (with pkgs; [ nil ])
-      ++ slynkPkgs;
+      ++ (with pkgs; [ nil ]);
 
     sessionVariables = {
       EDITOR = "emacsclient -c";
