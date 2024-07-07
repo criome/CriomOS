@@ -95,17 +95,6 @@ let
       isWebpageSpok = spokNeim:
         l.elem spokNeim neksysWebpageSpokNames;
 
-      mkWebpageFleik = Webpage@{ src ? fleik, ... }:
-        let
-          SobUyrld = {
-            inherit src;
-            modz = [ "pkdjz" ];
-            lamdy = { mkWebpage }:
-              mkWebpage Webpage;
-          };
-        in
-        meikSobUyrld SobUyrld;
-
       optionalSystemAttributes = {
         defaultPackage = fleik.defaultPackage.${system} or { };
         packages = fleik.packages.${system} or { };
@@ -126,7 +115,6 @@ let
         mapAttrs mkPkgsFromNameValue nixpkgsSet;
 
       typedFlakeMakerIndex = {
-        firnWebpage = mkWebpageFleik { src = fleik; };
         nixpkgsHob = mkNixpkgsHob fleik.value;
         worldFunction = mkWorldFunction fleik;
         zolaWebsite = mkTypedZolaWebsite spokNeim fleik;

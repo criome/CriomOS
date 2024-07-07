@@ -13,32 +13,8 @@ let
       self = null;
     };
 
-    crate2nix = {
-      lamdy = import ./crate2nix;
-      modz = [ "pkdjz" ];
-    };
-
-    deryveicyn = {
-      lamdy = import ./deryveicyn;
-      modz = [ "pkgs" "uyrld" ];
-      self = null;
-    };
-
-    dunst = {
-      lamdy = import ./dunst;
-    };
-
     ementEl = {
       lamdy = import ./ement-el;
-    };
-
-    fetchPijul = {
-      lamdy = import ./fetchPijul;
-    };
-
-    guix = {
-      lamdy = import ./guix;
-      modz = [ "lib" "pkgs" "hob" ];
     };
 
     home-manager = {
@@ -101,10 +77,6 @@ let
       lamdy = import ./mozPkgs;
       modz = [ "pkdjz" ];
       self = hob.nixpkgs-mozilla;
-    };
-
-    naersk = {
-      lamdy = import ./naersk;
     };
 
     nvimLuaPloginz = {

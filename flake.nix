@@ -2,7 +2,7 @@
   description = "CriomOS";
 
   inputs = {
-    hob.url = "github:criome/hob/15Gemini5918AM-rename";
+    hob.url = "github:criome/hob/16Cancer5918AM-cleanup";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };
@@ -17,9 +17,6 @@
     neksysNames = { flake = false; url = "path:./neksysNames.nix"; };
     tests = { url = "path:./nix/tests"; flake = false; };
     files = { url = "path:./nix/files"; flake = false; };
-    AskiCoreNiks = { url = "path:./AskiCoreNiks"; flake = false; };
-    AskiNiks = { url = "path:./AskiNiks"; flake = false; };
-    AskiDefaultBuilder = { url = "path:./AskiDefaultBuilder"; flake = false; };
   };
 
   outputs = inputs@{ self, ... }:
@@ -29,8 +26,7 @@
         in self.shortRev or shortHash;
 
       localHobSources = {
-        inherit (inputs) AskiCoreNiks AskiNiks AskiDefaultBuilder
-          xdg-desktop-portal-hyprland mkWebpage;
+        inherit (inputs) xdg-desktop-portal-hyprland mkWebpage;
         pkdjz = { HobUyrldz = import inputs.pkdjz; };
       };
 
@@ -65,10 +61,9 @@
         mapAttrs (name: value: value.${system}) perSystemPkgsAndUyrld;
 
       mkDatom = import inputs.mkDatom { inherit kor lib; };
-      mkCriomeDatom = import inputs.mkCriomeDatom { inherit kor lib mkDatom; };
 
-      inherit (builtins) fold attrNames mapAttrs filterAttrs;
-      inherit (kor) mkLamdy arkSistymMap genAttrs;
+      inherit (builtins) mapAttrs;
+      inherit (kor) arkSistymMap genAttrs;
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateCrioSphereProposalFromName = name:
@@ -144,13 +139,8 @@
           inherit (pkgsAndUyrld) pkgs uyrld;
           inherit (pkgs) symlinkJoin linkFarm;
 
-          inherit (uyrld.pkdjz) shen-ecl-bootstrap;
-          shen = shen-ecl-bootstrap;
-
           devShell = pkgs.mkShell {
-            inputsFrom = [ ];
-            CRIOMOSBOOTFILE = self + /boot.shen;
-            buildInputs = [ shen ];
+            # TODO
           };
 
           mkHobOutput = name: src:

@@ -98,7 +98,7 @@ in
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
 
     settings = {
       trusted-users = [ "root" "@nixdev" ] ++ optional izBildyr "nixBuilder";

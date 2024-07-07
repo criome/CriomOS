@@ -17,39 +17,9 @@ in
       };
   };
 
-  buttons = {
-    lamdy = { src, stdenv }:
-      stdenv.mkDerivation {
-        name = "buttons";
-        inherit src;
-        phases = [ "unpackPhase" "installPhase" ];
-        installPhase = ''
-          mkdir -p $out/lib
-          cp -R ./{scss,css} $out/lib
-        '';
-      };
-  };
-
-  firn = {
-    modz = [ "pkdjz" ];
-    lamdy = { src, mkCargoNix, }:
-      let
-        cargoNixRyzylt = mkCargoNix {
-          cargoNix = import (src + /Cargo.nix);
-        };
-      in
-      cargoNixRyzylt.workspaceMembers.firn.build;
-  };
-
   flake-registry = {
     lamdy = { src, copyPathToStore }:
       copyPathToStore (src + /flake-registry.json);
-  };
-
-  flowblade = {
-    lamdy = { flowblade, fetchFromGitHub, src }:
-      flowblade.overrideAttrs (oldAttrs:
-        { inherit src; });
   };
 
   jumpdrive = {
@@ -187,26 +157,6 @@ in
       };
   };
 
-  nixStaticUnstable = {
-    modz = [ "pkgsStatic" ];
-    src = hob.nix;
-    lamdy = { src, nixUnstable }:
-      nixUnstable.overrideAttrs (attrs: {
-        inherit src;
-        hardeningEnable = [ "pie" ];
-        hardeningDisable = [ "pie" ];
-      });
-  };
-
-  pijulSrc = {
-    modz = [ "pkdjz" ];
-    lamdy = { fetchPijul }: fetchPijul {
-      name = "pijul-repo";
-      url = "https://nest.pijul.com/pijul/pijul";
-      sha256 = "J0hPEUXHHLwDRVC+90Vz9thTi/znLQ2trJ6ktUG5tKQ=";
-    };
-  };
-
   pnpm2nix = {
     modz = [ "pkgs" "pkgsSet" ];
     lamdy = { kor, src, pkgs }:
@@ -239,19 +189,6 @@ in
       mkPnpmPackage {
         inherit src;
         shrinkwrapYML = src + /pnpm-lock.yaml;
-      };
-  };
-
-  gardevoir = {
-    lamdy = { src, stdenv }:
-      stdenv.mkDerivation {
-        name = "gardevoir";
-        inherit src;
-        phases = [ "unpackPhase" "installPhase" ];
-        installPhase = ''
-          mkdir -p $out/lib/scss
-          cp -R ./src/* $out/lib/scss
-        '';
       };
   };
 
@@ -310,19 +247,6 @@ in
         buildInputs = [ obs-studio ffmpeg qt6Packages.qtbase libaom ];
 
         dontWrapQtApps = true;
-      };
-  };
-
-  open-color = {
-    lamdy = { src, stdenv }:
-      stdenv.mkDerivation {
-        name = "open-color";
-        inherit src;
-        phases = [ "unpackPhase" "installPhase" ];
-        installPhase = ''
-          mkdir -p $out/lib/scss
-          cp -R ./open-color.scss $out/lib/scss
-        '';
       };
   };
 

@@ -61,16 +61,6 @@ let
           [ markdown-mode org-roam ];
       };
 
-    org-remark =
-      let
-        src = hob.org-remark;
-      in
-      trivialBuild {
-        pname = "org-remark";
-        version = src.shortRev;
-        inherit src;
-      };
-
     shen-mode =
       let src = hob.shen-mode; in
       melpaBuild {

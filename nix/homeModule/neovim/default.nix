@@ -25,7 +25,6 @@ let
     gina-vim # git
     vista-vim # Tags
     vim-toml
-    ron-vim
     tokei-vim
     vim-nix
     dhall-vim
