@@ -133,7 +133,7 @@ let
     ifmetric
     curl
     wget
-    transmission
+    transmission_4
     aria2 # multi-protocol download
     rsync
     nload
