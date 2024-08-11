@@ -33,7 +33,7 @@ let
 
     flakeWorld = { owner = "sajban"; };
     hob = { owner = "sajban"; ref = "autumnCleaning"; };
-    criomeOS = { owner = "sajban"; ref = "newHorizons"; };
+    criomOS = { owner = "sajban"; ref = "newHorizons"; };
 
     lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
 
