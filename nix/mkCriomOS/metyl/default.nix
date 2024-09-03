@@ -133,6 +133,7 @@ in
     geoclue2 = {
       enable = saizAtList.min;
       enableDemoAgent = lib.mkOverride 0 true;
+      geoProviderUrl = "https://beacondb.net/v1/geolocate";
       appConfig.redshift = {
         isAllowed = true;
         isSystem = true;
