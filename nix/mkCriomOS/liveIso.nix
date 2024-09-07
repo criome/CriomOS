@@ -1,4 +1,4 @@
-{ pkgs, lib, hyraizyn, kor, criomeOSRev, nixOSRev, uyrld, homeModule, ... }:
+{ pkgs, lib, hyraizyn, kor, criomOS, uyrld, homeModule, ... }:
 let
   inherit (builtins) mapAttrs;
   inherit (lib) mkOverride;
@@ -27,8 +27,8 @@ in
   };
 
   isoImage = {
-    isoBaseName = "criomeOS";
-    volumeID = "criomeOS-${criomeOSRev}-${nixOSRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
+    isoBaseName = "criomOS";
+    volumeID = "criomOS-${criomOS.shortRev}-${pkgs.stdenv.hostPlatform.uname.processor}";
 
     makeUsbBootable = true;
     makeEfiBootable = true;

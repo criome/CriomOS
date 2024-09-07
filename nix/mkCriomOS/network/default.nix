@@ -7,17 +7,17 @@ let
 
   mkCriomeHostEntries = neim: astri:
     let
-      inherit (astri) criomeOSNeim neksysIp yggAddress;
+      inherit (astri) criomOSNeim neksysIp yggAddress;
       inherit (astri.spinyrz) izNiksKac nixCacheDomain;
 
       mkPreNeksysHost = linkLocalIP: {
         name = linkLocalIP;
-        value = [ ("wg." + criomeOSNeim) ];
+        value = [ ("wg." + criomOSNeim) ];
       };
 
       neksysHost = {
         name = neksysIp;
-        value = [ criomeOSNeim ];
+        value = [ criomOSNeim ];
       };
 
       preNeksysHosts = map mkPreNeksysHost astri.linkLocalIPs;
@@ -27,7 +27,7 @@ let
 
       yggdrasilHost = optional (yggAddress != null) {
         name = yggAddress;
-        value = [ criomeOSNeim ] ++
+        value = [ criomOSNeim ] ++
           (optional izNiksKac nixCacheDomain);
       };
 

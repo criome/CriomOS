@@ -15,10 +15,10 @@ let
 
   jsonHyraizynFail = eksportJSON "hyraizyn.json" hyraizyn;
 
-  criomeOSShell = mksh + mksh.shellPath;
+  criomOSShell = mksh + mksh.shellPath;
 
   mkAstriKnownHost = n: astri:
-    concatStringsSep " " [ astri.criomeOSNeim astri.eseseitc ];
+    concatStringsSep " " [ astri.criomOSNeim astri.eseseitc ];
 
   sshKnownHosts = concatStringsSep "\n"
     (mapAttrsToList mkAstriKnownHost exAstriz);
@@ -40,7 +40,7 @@ in
   };
 
   environment = {
-    binsh = criomeOSShell;
+    binsh = criomOSShell;
     shells = [ "/run/current-system/sw${mksh.shellPath}" ];
 
     etc = {

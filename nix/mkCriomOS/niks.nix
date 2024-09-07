@@ -1,4 +1,4 @@
-{ kor, lib, pkgs, hob, hyraizyn, uyrld, konstynts, config, ... }:
+{ kor, lib, pkgs, hob, hyraizyn, uyrld, konstynts, config, criomOS, ... }:
 with builtins;
 let
   inherit (lib) boolToString mapAttrsToList importJSON;
@@ -33,7 +33,7 @@ let
 
     flakeWorld = { owner = "sajban"; };
     hob = { owner = "sajban"; ref = "autumnCleaning"; };
-    criomOS = { owner = "sajban"; ref = "newHorizons"; };
+    criomOS = { owner = "sajban"; inherit (criomOS) rev; };
 
     lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
 
@@ -60,7 +60,7 @@ let
     in
     mapAttrsToList mkFlakeEntry entriesMap;
 
-  criomeOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
+  criomOSFlakeEntries = mkFlakeEntriesListFromSet flakeEntriesOverrides;
 
   nixOSFlakeEntries =
     let nixOSFlakeRegistry = importJSON uyrld.pkdjz.flake-registry;
@@ -77,7 +77,7 @@ let
   filteredNixosFlakeEntries = filter filterOutRegistry nixOSFlakeEntries;
 
   nixFlakeRegistry = {
-    flakes = criomeOSFlakeEntries ++ filteredNixosFlakeEntries;
+    flakes = criomOSFlakeEntries ++ filteredNixosFlakeEntries;
     version = 2;
   };
 
@@ -218,7 +218,7 @@ in
           wantedBy = [ "multi-user.target" ];
           serviceConfig = { type = "oneshot"; };
           script = ''
-            nix key generate-secret --key-name ${astra.criomeOSNeim} > ${preCriad}
+            nix key generate-secret --key-name ${astra.criomOSNeim} > ${preCriad}
           '';
         };
       });

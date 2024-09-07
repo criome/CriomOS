@@ -21,9 +21,7 @@
 
   outputs = inputs@{ self, ... }:
     let
-      criomeOSRev =
-        let shortHash = kor.cortHacString self.narHash;
-        in self.shortRev or shortHash;
+      criomOS = { inherit (self) shortRev rev; };
 
       localHobSources = {
         inherit (inputs) xdg-desktop-portal-hyprland mkWebpage;
@@ -121,7 +119,7 @@
         in
         {
           os = mkCriomOS
-            { inherit criomeOSRev kor uyrld hyraizyn homeModule hob; };
+            { inherit criomOS kor uyrld hyraizyn homeModule hob; };
           hom = mapAttrs mkUserHomz users;
           imaks = mapAttrs mkUserImaks users;
         };

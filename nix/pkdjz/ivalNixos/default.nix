@@ -33,11 +33,9 @@ let
   isoImageModule = import
     (src + /nixos/modules/installer/cd-dvd/iso-image.nix);
 
-  nixOSRev = src.shortRev;
-
   moduleArgsModule = {
     _module.args = {
-      inherit lib baseModules nixOSRev noUserModules;
+      inherit lib baseModules noUserModules;
     } // moduleArgs;
   };
 

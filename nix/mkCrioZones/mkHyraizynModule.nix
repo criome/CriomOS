@@ -89,7 +89,7 @@ let
 
         inherit (inputAstri.preCriomes) niksPreCriome;
 
-        criomeOSNeim = concatStringsSep "."
+        criomOSNeim = concatStringsSep "."
           [ astriNeim neksysCriomOSNeim ];
 
         sistym = arkSistymMap.${mycin.ark};
@@ -103,7 +103,7 @@ let
       spinyrz =
         let
           inherit (astri) spici trost saiz niksPreCriome
-            yggAddress criomeOSNeim typeIs;
+            yggAddress criomOSNeim typeIs;
 
         in
         rec {
@@ -125,9 +125,9 @@ let
             else mkEseseitcString inputAstri.preCriomes.eseseitc;
 
           nixPreCriome = optionalString izNiksCriodaizd
-            (concatStringsSep ":" [ criomeOSNeim niksPreCriome ]);
+            (concatStringsSep ":" [ criomOSNeim niksPreCriome ]);
 
-          nixCacheDomain = if izNiksKac then ("nix." + criomeOSNeim) else null;
+          nixCacheDomain = if izNiksKac then ("nix." + criomOSNeim) else null;
           nixUrl = if izNiksKac then ("http://" + nixCacheDomain) else null;
 
 
@@ -148,7 +148,7 @@ let
       mkBildyr = n:
         let astri = exAstriz.${n};
         in {
-          hostName = astri.criomeOSNeim;
+          hostName = astri.criomOSNeim;
           sshUser = "nixBuilder";
           sshKey = "/etc/ssh/ssh_host_ed25519_key";
           supportedFeatures = optional (!astri.typeIs.edj) "big-parallel";
