@@ -34,6 +34,8 @@ in
   };
 
   programs = {
+    browserpass.enable = saizAtList.max;
+
     dconf.enable = true;
     droidcam.enable = saizAtList.max;
     evolution.enable = true;
