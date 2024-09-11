@@ -222,7 +222,7 @@ mkIf saizAtList.min {
     };
 
     pantalaimon = {
-      enable = true;
+      enable = false; # TODO
       settings = {
         Default = {
           LogLevel = "Debug";
