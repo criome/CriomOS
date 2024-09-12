@@ -17,6 +17,7 @@ kor.mkIf saizAtList.max {
     packages = with pkgs; [
       # freecad # broken
       wineWowPackages.waylandFull
+      whatsapp-for-linux
     ]
     ++ (optionals izNiksDev niksDevPackages)
     ++ (optionals izSemaDev semaDevPackages);
