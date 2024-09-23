@@ -599,6 +599,7 @@
         "goldragonWebpage": "goldragonWebpage",
         "home-manager": "home-manager",
         "kibord": "kibord",
+        "lib": "lib",
         "lojix": "lojix",
         "maisiliym": "maisiliym",
         "md-roam": "md-roam",
@@ -634,11 +635,11 @@
         "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
       },
       "locked": {
-        "lastModified": 1727093204,
-        "narHash": "sha256-AjWCgWHUZHC611aW8nZexBzXS1Rpc8KHhemOTmVSyHY=",
+        "lastModified": 1727093827,
+        "narHash": "sha256-u/uYiApZLoJ/6GcmqzjqEiEPT/DLk4UruSFI9gEIMxo=",
         "owner": "criome",
         "repo": "hob",
-        "rev": "b8e10c17e9e3195a9e89737dbf66394a8603f0ae",
+        "rev": "c598f7830d6923c650f825e8a8fb2a930235831f",
         "type": "github"
       },
       "original": {
@@ -896,6 +897,27 @@
       "original": {
         "owner": "ahtn",
         "repo": "kp_boot_32u4",
+        "type": "github"
+      }
+    },
+    "lib": {
+      "inputs": {
+        "nixpkgs": [
+          "hob",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702361717,
+        "narHash": "sha256-RuJkKuTMftaa2k9xJOawosSkb60dW6uOxTGBNiRw3j8=",
+        "owner": "criome",
+        "repo": "lib",
+        "rev": "f6baecf1016dab267da43cbd232f13f67645a97c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "criome",
+        "repo": "lib",
         "type": "github"
       }
     },
