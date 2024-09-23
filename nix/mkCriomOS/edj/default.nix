@@ -6,10 +6,10 @@ let
   inherit (hyraizyn.astra) typeIs;
   inherit (hyraizyn.astra.spinyrz) saizAtList;
 
-  minPackages = optionals saizAtList.min (with pkgs.gnome; [
+  minPackages = optionals saizAtList.min (with pkgs; [
     adwaita-icon-theme
     nautilus
-    pkgs.libinput
+    libinput
   ]);
 
   medPackages = with pkgs; [ ];
@@ -19,7 +19,7 @@ let
 in
 {
   hardware = {
-    opengl.driSupport32Bit = saizAtList.max;
+    graphics.enable32Bit = saizAtList.max;
     pulseaudio.enable = false;
   };
 

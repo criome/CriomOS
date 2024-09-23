@@ -53,15 +53,4 @@ in
   };
 
   system.nssModules = mkOverride 0 [ ];
-
-  systemd = {
-    targets = {
-      neksys = {
-        description = "neksys network online";
-        after = [ "network-online.target" ];
-        wantedBy = [ "multi-user.target" ];
-      };
-    };
-
-  };
 }

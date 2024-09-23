@@ -53,7 +53,7 @@ let
   useVaapiIntel = true;
   hasOpenClSupport = saizAtList.max;
 
-  intelOpenGlPackages = optional useVaapiIntel pkgs.vaapiIntel
+  intelGraphicsPackages = optional useVaapiIntel pkgs.vaapiIntel
     ++ optional hasOpenClSupport pkgs.intel-compute-runtime;
 
 in
@@ -74,7 +74,7 @@ in
 
     ledger.enable = typeIs.edj;
 
-    opengl.extraPackages = optionals tcipIzIntel intelOpenGlPackages
+    graphics.extraPackages = optionals tcipIzIntel intelGraphicsPackages
       ++ optional hasQuickSyncSupport pkgs.intel-media-driver;
 
   };
@@ -160,17 +160,17 @@ in
       LABEL="librem5_rules_end"
     '';
 
-    xserver = {
-      libinput = {
-        enable = hasTouchpad;
-        touchpad = {
-          naturalScrolling = true;
-          tapping = true;
-        };
+    libinput = {
+      enable = hasTouchpad;
+      touchpad = {
+        naturalScrolling = true;
+        tapping = true;
       };
+    };
 
-      xkbVariant = optionalString iuzColemak "colemak";
-      xkbOptions = "caps:ctrl_modifier, altwin:swap_alt_win";
+    xserver = {
+      xkb.variant = optionalString iuzColemak "colemak";
+      xkb.options = "caps:ctrl_modifier, altwin:swap_alt_win";
 
       autoRepeatDelay = 200;
       autoRepeatInterval = 28;
