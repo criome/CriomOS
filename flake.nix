@@ -2,7 +2,7 @@
   description = "CriomOS";
 
   inputs = {
-    hob.url = "github:criome/hob/16Cancer5918AM-cleanup";
+    hob.url = "github:criome/hob/1Libra5918AM-update";
 
     mkWebpage = { url = "path:./mkWebpage"; flake = false; };
     kor = { url = "path:./nix/kor"; flake = false; };

@@ -47,7 +47,6 @@ kor.mkIf saizAtList.max {
           obs-move-transition
           obs-vaapi
           waveform
-          # obs-streamfx # (TODO markedAsBroken)
         ];
     };
 

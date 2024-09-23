@@ -157,28 +157,6 @@ in
       };
   };
 
-  pnpm2nix = {
-    modz = [ "pkgs" "pkgsSet" ];
-    lamdy = { kor, src, pkgs }:
-      let
-        inherit (kor) genNamedAttrs;
-        versions = [ 12 14 ];
-
-        mkPnpm2nixVersion = versionInt:
-          let version = toString versionInt; in
-          {
-            name = "v${version}";
-            value = (import src) {
-              inherit pkgs;
-              nodejs = pkgs."nodejs-${version}_x";
-              nodePackages = pkgs.nodePackages;
-            };
-          };
-
-      in
-      genNamedAttrs versions mkPnpm2nixVersion;
-  };
-
   postcss-scss = {
     modz = [ "pkdjz" ];
     lamdy = { src, pnpm2nix }:
@@ -219,34 +197,6 @@ in
           license = licenses.mit;
           maintainers = with maintainers; [ donovanglover ];
         };
-      };
-  };
-
-  obs-StreamFX = {
-    modz = [ "pkgsSet" "pkgs" "pkdjz" ];
-    lamdy =
-      { src
-      , lib
-      , stdenv
-      , cmake
-      , pkg-config
-      , git
-      , obs-studio
-      , ffmpeg
-      , qt6Packages
-      , curl
-      , libaom
-      , ninja
-      }:
-
-      stdenv.mkDerivation rec {
-        pname = "obs-streamfx";
-        inherit src;
-
-        nativeBuildInputs = [ cmake pkg-config git curl ninja ];
-        buildInputs = [ obs-studio ffmpeg qt6Packages.qtbase libaom ];
-
-        dontWrapQtApps = true;
       };
   };
 
