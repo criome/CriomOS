@@ -1,5 +1,5 @@
 let
-  kor = import ./kor.nix;
+  kor = import ../kor;
   inherit (kor) importJSON mesydj;
   getLockFileInput = lockFile: inputNeim:
     let
