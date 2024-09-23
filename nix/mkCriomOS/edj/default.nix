@@ -28,7 +28,7 @@ in
       ++ (optionals saizAtList.med medPackages
       ++ (optionals saizAtList.max maxPackages));
 
-    gnome.excludePackages = with pkgs.gnome3; [
+    gnome.excludePackages = with pkgs; [
       gnome-software
     ];
   };

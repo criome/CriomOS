@@ -65,7 +65,6 @@ in
       firmwareLinuxNonfree
       intel2200BGFirmware
       rtl8192su-firmware
-      rtlwifi_new-firmware
       zd1211fw
       alsa-firmware
       openelec-dvb-firmware

@@ -67,6 +67,7 @@ in
       radios = {
         wlan0 = {
           band = "2g";
+	  channel = 1;
           countryCode = "PL";
           wifi4.enable = true;
           networks = {
