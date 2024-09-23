@@ -103,11 +103,6 @@ in
 
   };
 
-  sound = {
-    enable = true;
-    extraConfig = "";
-  };
-
   system.stateVersion = "24.05";
 
   users = {

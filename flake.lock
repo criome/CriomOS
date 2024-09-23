@@ -1047,7 +1047,7 @@
       "flake": false,
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-ewVBkqNW+wcZ8TjZIImmfsmkW5GBx+BAYzCIf7f5M80=",
+        "narHash": "sha256-ICPU68pn8HQyMd1jF9WXLNW0Fgt5646UIOIq0hov9z4=",
         "path": "./nix/mkCriomOS",
         "type": "path"
       },
