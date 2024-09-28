@@ -310,19 +310,6 @@
         "type": "github"
       }
     },
-    "files": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-g/w8+SsvTI39Bq+seNPd7UiJffC+qzyR14BYRKb9X40=",
-        "path": "./nix/files",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/files",
-        "type": "path"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -670,19 +657,6 @@
         "type": "github"
       }
     },
-    "homeModule": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-QEvZ6juI+kS0bX/Rup5fGvuHBTjCtaCJb4drwstQfaw=",
-        "path": "./nix/homeModule",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/homeModule",
-        "type": "path"
-      }
-    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -871,19 +845,6 @@
         "type": "github"
       }
     },
-    "kor": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-yQgNf1tJH81RM62TQ4EQc+YIwZRdoROwsoztIocQlH4=",
-        "path": "./nix/kor",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/kor",
-        "type": "path"
-      }
-    },
     "kp_boot_32u4": {
       "flake": false,
       "locked": {
@@ -1017,97 +978,6 @@
         "type": "github"
       }
     },
-    "mkCrioSphere": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-gfH6OA55NFT+Mw4X3rLiDs0xK37UvsdLStCj8kL+S1M=",
-        "path": "./nix/mkCrioSphere",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkCrioSphere",
-        "type": "path"
-      }
-    },
-    "mkCrioZones": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-CIkI4ZeLXeMtx0ljdEvaaj+F2fd+s4d/Fl1pk8m5sCA=",
-        "path": "./nix/mkCrioZones",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkCrioZones",
-        "type": "path"
-      }
-    },
-    "mkCriomOS": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-a6PeegGMiOZCuekcxNWmTW2c+4mKzJF4oxNQbCFS43g=",
-        "path": "./nix/mkCriomOS",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkCriomOS",
-        "type": "path"
-      }
-    },
-    "mkDatom": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-MskTsVv1kbtAEDn2NS3NdInbFrjivKaOWLM5pH0tRv4=",
-        "path": "./nix/mkDatom",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkDatom",
-        "type": "path"
-      }
-    },
-    "mkPkgs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-vnwv+POiINxVxa+CnzQ5PDXSUzRHjNBIDCgCm9FeUtY=",
-        "path": "./nix/mkPkgs",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkPkgs",
-        "type": "path"
-      }
-    },
-    "mkUyrld": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-5bHYX+z7WWRWOiJZOnh3t1LwQ0QqH/bimHK0q20i0Fo=",
-        "path": "./nix/mkUyrld",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/mkUyrld",
-        "type": "path"
-      }
-    },
-    "mkWebpage": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-7C66n3cBNTDvQM8TS0dVWjIkI+Cbi24c4e6ZMDBLf5E=",
-        "path": "./mkWebpage",
-        "type": "path"
-      },
-      "original": {
-        "path": "./mkWebpage",
-        "type": "path"
-      }
-    },
     "mkZolaWebsite": {
       "locked": {
         "lastModified": 1668044468,
@@ -1166,19 +1036,6 @@
         "owner": "LiGoldragon",
         "repo": "ndi",
         "type": "github"
-      }
-    },
-    "neksysNames": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-W6h6IDzVGdl7WkgAljejyYq5fYaS2ljfKD3FwEKpnsw=",
-        "path": "./neksysNames.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "./neksysNames.nix",
-        "type": "path"
       }
     },
     "nix": {
@@ -1496,19 +1353,6 @@
         "type": "github"
       }
     },
-    "pkdjz": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ZfafMAwhDufyhUIXuHwUq5svzOITuuGJUayWYrvcfiM=",
-        "path": "./nix/pkdjz",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/pkdjz",
-        "type": "path"
-      }
-    },
     "postcss-scss": {
       "flake": false,
       "locked": {
@@ -1606,20 +1450,7 @@
     },
     "root": {
       "inputs": {
-        "files": "files",
-        "hob": "hob",
-        "homeModule": "homeModule",
-        "kor": "kor",
-        "mkCrioSphere": "mkCrioSphere",
-        "mkCrioZones": "mkCrioZones",
-        "mkCriomOS": "mkCriomOS",
-        "mkDatom": "mkDatom",
-        "mkPkgs": "mkPkgs",
-        "mkUyrld": "mkUyrld",
-        "mkWebpage": "mkWebpage",
-        "neksysNames": "neksysNames",
-        "pkdjz": "pkdjz",
-        "tests": "tests"
+        "hob": "hob"
       }
     },
     "sajban": {
@@ -1889,19 +1720,6 @@
         "owner": "svavs",
         "repo": "tera-mode",
         "type": "github"
-      }
-    },
-    "tests": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-DQAefrbTtRiR5SZcpTjDhj5UhMxsIA50mclje6PVPs0=",
-        "path": "./nix/tests",
-        "type": "path"
-      },
-      "original": {
-        "path": "./nix/tests",
-        "type": "path"
       }
     },
     "toodoo-el": {

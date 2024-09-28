@@ -1,46 +1,49 @@
 {
   description = "CriomOS";
 
-  inputs = {
-    hob.url = "github:criome/hob/1Libra5918AM-update";
-
-    mkWebpage = { url = "path:./mkWebpage"; flake = false; };
-    kor = { url = "path:./nix/kor"; flake = false; };
-    mkPkgs = { url = "path:./nix/mkPkgs"; flake = false; };
-    mkDatom = { url = "path:./nix/mkDatom"; flake = false; };
-    mkUyrld = { url = "path:./nix/mkUyrld"; flake = false; };
-    mkCrioSphere = { flake = false; url = "path:./nix/mkCrioSphere"; };
-    mkCrioZones = { flake = false; url = "path:./nix/mkCrioZones"; };
-    mkCriomOS = { flake = false; url = "path:./nix/mkCriomOS"; };
-    pkdjz = { flake = false; url = "path:./nix/pkdjz"; };
-    homeModule = { flake = false; url = "path:./nix/homeModule"; };
-    neksysNames = { flake = false; url = "path:./neksysNames.nix"; };
-    tests = { url = "path:./nix/tests"; flake = false; };
-    files = { url = "path:./nix/files"; flake = false; };
-  };
+  inputs = { hob.url = "github:criome/hob/1Libra5918AM-update"; };
 
   outputs = inputs@{ self, ... }:
     let
-      criomOS = { inherit (self) shortRev rev; };
+      localSources =
+        let
+          importInput = name: value:
+            import value;
+          modulePaths = {
+            kor = ./nix/kor;
+            mkPkgs = ./nix/mkPkgs;
+            mkDatom = ./nix/mkDatom;
+            mkUyrld = ./nix/mkUyrld;
+            mkCrioSphere = ./nix/mkCrioSphere;
+            mkCrioZones = ./nix/mkCrioZones;
+            mkCriomOS = ./nix/mkCriomOS;
+            pkdjz = ./nix/pkdjz;
+            homeModule = ./nix/homeModule;
+            neksysNames = ./neksysNames.nix;
+            tests = ./nix/tests;
+            files = ./nix/files;
+          };
+        in
+        mapAttrs importInput modulePaths;
 
       localHobSources = {
-        inherit (inputs) xdg-desktop-portal-hyprland mkWebpage;
-        pkdjz = { HobUyrldz = import inputs.pkdjz; };
+        inherit (localSources) mkWebpage;
+        pkdjz = { HobUyrldz = localSources.pkdjz; };
       };
-
-      importInput = name: value:
-        import value;
 
       hob = inputs.hob.value // localHobSources;
 
       inherit (hob) flake-utils emacs-overlay nixpkgs lib;
+      inherit (localSources) kor neksysNames mkPkgs homeModule mkCriomOS mkUyrld;
+      inherit (lib) optionalAttrs genAttrs hasAttr;
 
-      imports = mapAttrs importInput {
-        inherit (inputs) kor mkPkgs mkCrioSphere mkCrioZones mkCriomOS
-          mkHomeConfig neksysNames mkUyrld homeModule files;
-      };
-
-      inherit (imports) kor neksysNames mkPkgs homeModule mkCriomOS mkUyrld;
+      criomOS =
+        let
+          cleanEvaluation = hasAttr "rev" self;
+        in
+        { inherit cleanEvaluation; }
+        // optionalAttrs cleanEvaluation
+          { inherit (self) shortRev rev; };
 
       mkPkgsAndUyrldFromSystem = system:
         let
@@ -49,7 +52,7 @@
               overlays = [ emacs-overlay.overlay ];
             in
             mkPkgs { inherit nixpkgs lib system overlays; };
-          uyrld = mkUyrld { inherit lib pkgs system hob imports; };
+          uyrld = mkUyrld { inherit lib pkgs system hob localSources; };
         in
         { inherit pkgs uyrld; };
 
@@ -61,7 +64,7 @@
       mkDatom = import inputs.mkDatom { inherit kor lib; };
 
       inherit (builtins) mapAttrs;
-      inherit (kor) arkSistymMap genAttrs;
+      inherit (kor) arkSistymMap;
       inherit (flake-utils.lib) eachDefaultSystem;
 
       generateCrioSphereProposalFromName = name:
@@ -165,8 +168,8 @@
 
       perSystemAllOutputs = eachDefaultSystem mkNixApiOutputsPerSystem;
 
-      proposedCrioSphere = imports.mkCrioSphere { inherit uncheckedCrioSphereProposal kor lib; };
-      proposedCrioZones = imports.mkCrioZones { inherit kor lib proposedCrioSphere; };
+      proposedCrioSphere = localSources.mkCrioSphere { inherit uncheckedCrioSphereProposal kor lib; };
+      proposedCrioZones = localSources.mkCrioZones { inherit kor lib proposedCrioSphere; };
 
     in
     perSystemAllOutputs // {

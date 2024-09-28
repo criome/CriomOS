@@ -1,8 +1,8 @@
-{ lib, pkgs, hob, system, imports }:
+{ lib, pkgs, hob, system, localSources }:
 let
   l = lib // builtins;
   inherit (builtins) hasAttr mapAttrs readDir;
-  inherit (imports) kor neksysNames mkPkgs;
+  inherit (localSources) kor neksysNames mkPkgs;
   inherit (kor) mkLamdy optionalAttrs genAttrs;
   inherit (uyrld) pkdjz mkZolaWebsite;
 
