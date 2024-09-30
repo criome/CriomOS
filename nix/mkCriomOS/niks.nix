@@ -33,7 +33,6 @@ let
 
     flakeWorld = { owner = "sajban"; };
     hob = { owner = "sajban"; ref = "autumnCleaning"; };
-    criomOS = { owner = "sajban"; inherit (criomOS) rev; };
 
     lib = { owner = "nix-community"; repo = "nixpkgs.lib"; };
 
@@ -46,7 +45,9 @@ let
     nixpkgs-master = { owner = "NixOS"; repo = "nixpkgs"; };
 
     xdg-desktop-portal-hyprland = { owner = "hyprwm"; };
-  };
+
+  } // optionalAttrs criomOS.cleanEvaluation
+    { criomOS = { owner = "sajban"; inherit (criomOS) rev; }; };
 
   mkFlakeEntriesListFromSet = entriesMap:
     let
