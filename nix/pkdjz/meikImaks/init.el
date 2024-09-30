@@ -8,4 +8,6 @@
 (custom-set-variables
  '(recentf-max-menu-items 1024)
  '(recentf-max-saved-items 10024)
- '(inferior-lisp-program "sbcl"))
+ '(inferior-lisp-program "sbcl")
+ '(truncate-partial-width-windows nil)
+ '(truncate-lines nil))
