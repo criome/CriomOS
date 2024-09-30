@@ -97,7 +97,7 @@ kor.mkIf saizAtList.med {
   home = {
     packages = with pkgs; [
       # start('bash')
-      taskwarrior
+      taskwarrior3
       # start('pythonPackages')
       yt-dlp
       # ocrmypdf
