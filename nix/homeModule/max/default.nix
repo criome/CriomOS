@@ -43,7 +43,7 @@ kor.mkIf saizAtList.max {
           wlrobs
           pkdjz.obs-ndi
           obs-pipewire-audio-capture
-          advanced-scene-switcher
+          # advanced-scene-switcher # TODO broken.build
           obs-move-transition
           obs-vaapi
           waveform
