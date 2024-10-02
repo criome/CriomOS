@@ -228,25 +228,25 @@ in
       handlers = {
         mute = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master toggle
+            wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
           '';
           event = "button/mute";
         };
         volumeup = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%+
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
           '';
           event = "button/volumeup";
         };
         volumedown = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Master 5%-
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
           '';
           event = "button/volumedown";
         };
         mutemic = {
           action = ''
-            ${pkgs.alsaUtils}/bin/amixer --card ${mainSoundCard} set Mic toggle
+            wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
           '';
           event = "button/f20";
         };
