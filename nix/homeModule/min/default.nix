@@ -1,7 +1,7 @@
 { kor, pkgs, pkdjz, user, hyraizyn, config, profile, uyrld, ... }:
 let
   inherit (builtins) toString readFile toJSON;
-  inherit (kor) optionalString optionals mkIf  optional;
+  inherit (kor) optionalString optionals mkIf optional;
   inherit (pkdjz) kynvyrt;
   inherit (hyraizyn) astra;
   inherit (user.spinyrz) iuzColemak hazPreCriome
@@ -18,7 +18,7 @@ let
 
   mkFzfBinds = list: "--bind=" + (builtins.concatStringsSep "," list);
 
-  fzfBindsString = optionalString (fzfBinds != []) (mkFzfBinds fzfBinds);
+  fzfBindsString = optionalString (fzfBinds != [ ]) (mkFzfBinds fzfBinds);
 
   fzfTheme = if dark then import ./fzfDark.nix else import ./fzfLight.nix;
   fzfBase16Map = import ./fzfBase16map.nix;
@@ -86,11 +86,11 @@ let
     # start("GTK")
     wofi
     gitg
-    pavucontrol
+    pwvucontrol
     sonata
     dino
-    transmission-remote-gtk
     ptask
+    transmission-remote-gtk
     bookworm
     # start("Qt")
     adwaita-qt
@@ -98,7 +98,7 @@ let
     waylandQtpass
     qtox
     waylandPass
-    qpwgraph
+    helvum
     # TODO('hyraizyn language')
     (hunspellWithDicts [ hunspellDicts.en-us-large ])
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
